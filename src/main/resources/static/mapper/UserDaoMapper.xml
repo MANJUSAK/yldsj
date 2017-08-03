@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--suppress ALL -->
+<mapper namespace="com.goodsoft.yuanlin.dao.UserDao">
+    <resultMap id="userList" type="com.goodsoft.yuanlin.entity.User">
+        <result property="passWord" column="passWord"/>
+        <result property="userName" column="userName"/>
+        <result property="tel" column="tel"/>
+        <result property="gender" column="gender"/>
+    </resultMap>
+    <select id="queryUser" parameterType="list" resultMap="userList">
+    SELECT * FROM users
+    </select>
+
+    <insert id="insertUser" parameterType="com.goodsoft.yuanlin.entity.User">
+        insert INTO users (userName,passWord,tel,gender) VALUES (#{userName},#{passWord},#{tel},#{gender})
+    </insert>
+</mapper>
