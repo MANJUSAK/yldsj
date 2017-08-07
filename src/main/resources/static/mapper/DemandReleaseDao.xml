@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--suppress ALL -->
+
+<!--设备租赁查询sql-->
+<mapper namespace="com.goodsoft.yuanlin.dao.DemandReleaseDao">
+    <resultMap id="queryEquipment" type="com.goodsoft.yuanlin.entity.Equipment">
+        <result property="eid" column="eid"/>
+        <result property="titleName" column="titleName"/>
+        <result property="content" column="content"/>
+        <result property="date" column="date"/>
+        <result property="time" column="time"/>
+        <result property="contact" column="contact"/>
+        <result property="tel" column="tel"/>
+        <result property="filesId" column="filesId"/>
+    </resultMap>
+    <select id="queryEquipmentDao" parameterType="Object" resultMap="queryEquipment">
+        SELECT
+        eid,titleName,content,date,time,contact,tel,filesId
+        FROM
+        equipment
+        <where>
+            <if test="uid !=null and uid !=''">
+                and uid=#{uid}
+            </if>
+            <if test="date !=null and date !=''">
+                and date like '%${date}%'
+            </if>
+            AND ISNO=0
+            order by eid desc
+            limit #{page},20
+
+        </where>
+    </select>
+    <!--招标信息查询sql-->
+    <resultMap id="queryBid" type="com.goodsoft.yuanlin.entity.Bid">
+        <result property="bid" column="bid"/>
+        <result property="titleName" column="titleName"/>
+        <result property="content" column="content"/>
+        <result property="contact" column="contact"/>
+        <result property="tel" column="tel"/>
+        <result property="date" column="date"/>
+        <result property="time" column="time"/>
+    </resultMap>
+    <select id="queryBidDao" parameterType="Object" resultMap="queryBid">
+        SELECT
+        bid,titleName,content,contact,tel,date,time
+        FROM
+        bids
+        <where>
+            <if test="uid !=null and uid !=''">
+                and uid=#{uid}
+            </if>
+            <if test="date !=null and date !=''">
+                and date like '%${date}%'
+            </if>
+            AND ISNO=0
+            order by bid desc
+            limit #{page},20
+        </where>
+    </select>
+    <!--苗木信息查询sql-->
+    <resultMap id="querySeedling" type="com.goodsoft.yuanlin.entity.Seedling">
+        <result property="sid" column="sid"/>
+        <result property="titleName" column="titleName"/>
+        <result property="content" column="content"/>
+        <result property="contact" column="contact"/>
+        <result property="date" column="date"/>
+        <result property="time" column="time"/>
+        <result property="tel" column="tel"/>
+        <result property="address" column="address"/>
+        <result property="sub" column="sub"/>
+        <result property="supplier" column="supplier"/>
+        <result property="breed" column="breed"/>
+        <result property="filesId" column="filesId"/>
+    </resultMap>
+    <select id="querySeedlingDao" parameterType="Object" resultMap="querySeedling">
+        SELECT
+        sid,titleName,content,contact,tel,address,supplier,breed,filesId,date,time,sub
+        FROM
+        seedling
+        <where>
+            <if test="uid !=null and uid !=''">
+                and uid=#{uid}
+            </if>
+            <if test="breed !=null and breed !=''">
+                and breed =#{breed}
+            </if>
+            <if test="sub !=null and sub !=''">
+                and sub =#{sub}
+            </if>
+            <if test="date !=null and date !=''">
+                and date like '%${date}%'
+            </if>
+            AND ISNO=0
+            order by sid desc
+            limit #{page},20
+        </where>
+    </select>
+    <!--人员招聘信息查询sql-->
+    <resultMap id="queryRecruit" type="com.goodsoft.yuanlin.entity.Recruit">
+        <result property="rid" column="rid"/>
+        <result property="positions" column="positions"/>
+        <result property="companyName" column="companyName"/>
+        <result property="companyAdress" column="companyAdress"/>
+        <result property="workAdress" column="workAdress"/>
+        <result property="contact" column="contact"/>
+        <result property="date" column="date"/>
+        <result property="time" column="time"/>
+        <result property="tel" column="tel"/>
+        <result property="companyIntro" column="companyIntro"/>
+        <result property="content" column="content"/>
+        <result property="email" column="email"/>
+        <result property="money" column="money"/>
+        <result property="evaluate" column="evaluate"/>
+        <result property="experience" column="experience"/>
+        <result property="tp" column="tp"/>
+        <result property="characters" column="characters"/>
+    </resultMap>
+    <select id="queryRecruitDao" parameterType="Object" resultMap="queryRecruit">
+        SELECT
+        rid,positions,companyName,companyAdress,workAdress,companyIntro,content,
+        date,time,contact,tel,email,money,evaluate,experience,tp,characters
+        FROM
+        recruit
+        <where>
+            <if test="uid !=null and uid !=''">
+                and uid=#{uid}
+            </if>
+            <if test="tp !=null and tp !=''">
+                and tp=#{tp}
+            </if>
+            <if test="characters !=null and characters !=''">
+                and characters=#{characters}
+            </if>
+            <if test="date !=null and date !=''">
+                and date like '%${date}%'
+            </if>
+            AND ISNO=0
+            order by rid desc
+            limit #{page},20
+        </where>
+    </select>
+
+    <!--设备租赁数据录入sql-->
+    <insert id="saveEquipmentDao" parameterType="com.goodsoft.yuanlin.entity.Equipment">
+       INSERT INTO
+       equipment
+       (titleName, contact, tel, date, time, content, filesId, uid)
+       VALUES
+       (#{titleName}, #{contact}, #{tel}, #{date}, #{time}, #{content}, #{filesId}, #{uid})
+    </insert>
+    <!--招标数据录入sql-->
+    <insert id="saveBidDao" parameterType="com.goodsoft.yuanlin.entity.Bid">
+        INSERT INTO
+        bids
+        (titleName, contact, tel, date, time, content, uid)
+         VALUES
+         (#{titleName}, #{contact}, #{tel}, #{date}, #{time}, #{content}, #{uid})
+    </insert>
+    <!--苗木信息数据录入sql-->
+    <insert id="saveSeedlingDao" parameterType="com.goodsoft.yuanlin.entity.Seedling">
+        INSERT INTO seedling
+        (titleName, contact, tel, date, time,address, content, supplier, breed, sub, filesId, uid)
+        VALUES
+        (#{titleName}, #{contact}, #{tel}, #{date}, #{time},#{address}, #{content},
+        #{supplier}, #{breed}, #{sub}, #{filesId}, #{uid})
+    </insert>
+    <!--人员招聘数据录入sql-->
+    <insert id="saveRecruitDao" parameterType="com.goodsoft.yuanlin.entity.Recruit">
+       INSERT INTO
+       recruit
+       (contact,tel, date, time, money, companyName, companyIntro,companyAdress,
+       workAdress, positions, experience, content, tp, characters, email, evaluate, uid)
+       VALUES
+       (#{contact},#{tel},#{date},#{time},#{money},#{companyName},#{companyIntro},#{companyAdress},
+       #{workAdress},#{positions},#{experience},#{content},#{tp},#{characters},#{email},#{evaluate},#{uid})
+    </insert>
+</mapper>
