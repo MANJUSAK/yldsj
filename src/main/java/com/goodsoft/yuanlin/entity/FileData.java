@@ -10,6 +10,8 @@ public class FileData implements java.io.Serializable {
     private int fid;//表id
     private String fileId;//文件编号
     private String path;//文件路径
+    private String bases;//根目录
+    private String sort;//类别
 
     @Transient
     public int getFid() {
@@ -35,6 +37,22 @@ public class FileData implements java.io.Serializable {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public String getBases() {
+        return bases;
+    }
+
+    public void setBases(String bases) {
+        this.bases = bases;
+    }
+
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
     }
 }
 

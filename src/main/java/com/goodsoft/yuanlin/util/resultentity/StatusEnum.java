@@ -8,6 +8,7 @@ package com.goodsoft.yuanlin.util.resultentity;
 public enum StatusEnum implements java.io.Serializable {
     SUCCESS(0, "成功"),
     SERVER_ERROR(500, "服务器繁忙"),
+    DEFEAT(500, "失败"),
     UNKONW_ERROR(501, "未知错误"),
     ERROR(502, "错误操作"),
     NO_DATA(404, "无记录数据"),

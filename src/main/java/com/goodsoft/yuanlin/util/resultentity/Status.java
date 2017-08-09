@@ -8,20 +8,20 @@ package com.goodsoft.yuanlin.util.resultentity;
  * @author 严彬荣
  */
 public class Status implements java.io.Serializable {
-    private int errorcode;
+    private int errorCode;
     private String mag;
 
-    public Status(int errorcode, String mag) {
-        this.errorcode = errorcode;
+    public Status(int errorCode, String mag) {
+        this.errorCode = errorCode;
         this.mag = mag;
     }
 
-    public int getErrorcode() {
-        return errorcode;
+    public int getErrorCode() {
+        return errorCode;
     }
 
-    public void setErrorcode(int errorcode) {
-        this.errorcode = errorcode;
+    public void setErrorCode(int errorCode) {
+        this.errorCode = errorCode;
     }
 
     public String getMag() {

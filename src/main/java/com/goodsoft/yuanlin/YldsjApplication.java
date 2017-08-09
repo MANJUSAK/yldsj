@@ -5,10 +5,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+/**
+ * function 系统启动程序入口
+ * Created by 严彬荣 on 2017/8/4.
+ */
 
 
-@EnableTransactionManagement
 @ComponentScan(basePackages = "com.goodsoft.yuanlin")
 @ServletComponentScan(basePackages = "com.goodsoft.yuanlin.config")
 @SpringBootApplication

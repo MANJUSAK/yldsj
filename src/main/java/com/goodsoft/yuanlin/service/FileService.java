@@ -9,5 +9,6 @@ import javax.servlet.http.HttpServletRequest;
  * Created by 严彬荣 on 2017/8/4.
  */
 public interface FileService {
+    //文件上传业务处理
     public int fileUploadService(MultipartFile[] files, HttpServletRequest request, String fileType, String fileId);
 }

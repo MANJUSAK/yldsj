@@ -20,6 +20,9 @@
         FROM
         equipment
         <where>
+            <if test="keyWord !=null and keyWord !=''">
+                and titleName like '%${keyWord}%'
+            </if>
             <if test="uid !=null and uid !=''">
                 and uid=#{uid}
             </if>
@@ -48,6 +51,9 @@
         FROM
         bids
         <where>
+            <if test="keyWord !=null and keyWord !=''">
+                and titleName like '%${keyWord}%'
+            </if>
             <if test="uid !=null and uid !=''">
                 and uid=#{uid}
             </if>
@@ -80,6 +86,9 @@
         FROM
         seedling
         <where>
+            <if test="keyWord !=null and keyWord !=''">
+                and titleName like '%${keyWord}%'
+            </if>
             <if test="uid !=null and uid !=''">
                 and uid=#{uid}
             </if>
@@ -114,16 +123,17 @@
         <result property="money" column="money"/>
         <result property="evaluate" column="evaluate"/>
         <result property="experience" column="experience"/>
-        <result property="tp" column="tp"/>
-        <result property="characters" column="characters"/>
     </resultMap>
     <select id="queryRecruitDao" parameterType="Object" resultMap="queryRecruit">
         SELECT
         rid,positions,companyName,companyAdress,workAdress,companyIntro,content,
-        date,time,contact,tel,email,money,evaluate,experience,tp,characters
+        date,time,contact,tel,email,money,evaluate,experience
         FROM
         recruit
         <where>
+            <if test="keyWord !=null and keyWord !=''">
+                and positions like '%${keyWord}%'
+            </if>
             <if test="uid !=null and uid !=''">
                 and uid=#{uid}
             </if>
@@ -176,4 +186,32 @@
        (#{contact},#{tel},#{date},#{time},#{money},#{companyName},#{companyIntro},#{companyAdress},
        #{workAdress},#{positions},#{experience},#{content},#{tp},#{characters},#{email},#{evaluate},#{uid})
     </insert>
+    <!--更新设备数据状态(isNo=1表示数据已删除)-->
+    <update id="updateEquipmentDao" parameterType="java.util.Arrays">
+        UPDATE equipment SET isNo='1' WHERE eid IN
+        <foreach collection="id" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+    <!--更新苗木数据状态(isNo=1表示数据已删除)-->
+    <update id="updateSeedlingDao" parameterType="java.util.Arrays">
+        UPDATE seedling SET isNo='1' WHERE sid IN
+        <foreach collection="id" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+    <!--更新招标数据状态(isNo=1表示数据已删除)-->
+    <update id="updateBidDao" parameterType="java.util.Arrays">
+        UPDATE bids SET isNo=1 WHERE bid IN
+        <foreach collection="id" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+    <!--更新人员招聘数据状态(isNo=1表示数据已删除)-->
+    <update id="updateRecruitDao" parameterType="java.util.Arrays">
+        UPDATE recruit SET isNo='1' WHERE rid IN
+        <foreach collection="id" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
 </mapper>

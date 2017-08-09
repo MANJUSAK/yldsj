@@ -169,6 +169,7 @@ public class Recruit implements java.io.Serializable {
         this.time = time;
     }
 
+    @Transient
     public int getTp() {
         return tp;
     }
@@ -177,6 +178,7 @@ public class Recruit implements java.io.Serializable {
         this.tp = tp;
     }
 
+    @Transient
     public int getCharacters() {
         return characters;
     }

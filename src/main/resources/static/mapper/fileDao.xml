@@ -9,8 +9,8 @@
         SELECT path FROM fileData WHERE fileId=#{fileId}
     </select>
     <insert id="saveFileDao" parameterType="com.goodsoft.yuanlin.entity.FileData">
-        insert into fileData (fileId,path)
+        insert into fileData (fileId,path,bases,sort)
         values
-        (#{fileId},#{path})
+        (#{fileId},#{path},#{bases},#{sort})
     </insert>
 </mapper>

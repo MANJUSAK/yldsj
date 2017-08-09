@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 public class MybatisScannerConfig {
 
     @Bean(name = "mapperScannerConfigurer")
-    public static MapperScannerConfigurer mapperScannerConfigurer() {
+    public MapperScannerConfigurer mapperScannerConfigurer() {
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
         mapperScannerConfigurer.setBasePackage("com.goodsoft.yuanlin.dao");

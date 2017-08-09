@@ -1,4 +1,4 @@
-package com.goodsoft.yuanlin.service.servicelmpl;
+package com.goodsoft.yuanlin.service.lmpl;
 
 import com.goodsoft.yuanlin.dao.FileDao;
 import com.goodsoft.yuanlin.entity.FileData;
@@ -24,11 +24,24 @@ public class FileServicelmpl implements FileService {
     @Resource
     private FileDao dao;
 
+    /**
+     * 文件上传业务处理方法
+     *
+     * @param files 上传的文件,
+     *              request http请求（用于文件上传），
+     *              fileType 上传文件类型（苗木、设备租赁等），
+     *              fileId 文件编号（用于查询文件）。
+     * @return int 文件上传处理状态（0为成功，其余都失败）
+     */
     @Override
     public int fileUploadService(MultipartFile[] files, HttpServletRequest request, String fileType, String fileId) {
         for (int i = 0, length = files.length; i < length; ++i) {
             //判断文件是否为空
             if (!files[i].isEmpty()) {
+                //判断文件大小是否小于1.5M
+                if (files[i].getSize() > 1500000) {
+                    return 601;
+                }
                 // 获取文件名
                 String fileName = files[i].getOriginalFilename().toLowerCase();
                 // 判断文件格式是否正确
@@ -39,9 +52,9 @@ public class FileServicelmpl implements FileService {
                 return 604;
             }
         }
-        //获取服务器项目更目录
+        //获取服务器项目根目录
         String var = request.getSession().getServletContext().getRealPath("");
-        //截取服务器更目录
+        //截取服务器根目录
         String var1 = var.substring(0, var.lastIndexOf("y"));
         try {
             //初始化文件实体类
@@ -49,11 +62,24 @@ public class FileServicelmpl implements FileService {
             //设置文件编号
             file.setFileId(fileId);
             List<String> fileList = this.fileUpload.fileUpload(files, fileType, var1);
+            file.setBases(var1);
+            switch (fileType) {
+                case "seedling":
+                    file.setSort("苗木");
+                    break;
+                case "equipment":
+                    file.setSort("设备租赁");
+                    break;
+                default:
+                    break;
+            }
+
             for (int i = 0, length = fileList.size(); i < length; ++i) {
                 //设置文件路径
                 file.setPath(fileList.get(i));
                 this.dao.saveFileDao(file);
             }
+            //清除集合里的内容  避免数据混乱
             fileList.clear();
         } catch (Exception e) {
             e.printStackTrace();

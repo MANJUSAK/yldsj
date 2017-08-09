@@ -19,7 +19,7 @@ public class DruidConfiguration {
     /**
      * 注册一个StatViewServlet
      *
-     * @return 无
+     * @return servletRegistrationBean（数据源监控配置）
      */
     @Bean
     public ServletRegistrationBean DruidStatViewServle() {
