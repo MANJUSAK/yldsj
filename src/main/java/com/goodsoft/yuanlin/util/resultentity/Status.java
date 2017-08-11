@@ -9,11 +9,11 @@ package com.goodsoft.yuanlin.util.resultentity;
  */
 public class Status implements java.io.Serializable {
     private int errorCode;
-    private String mag;
+    private String msg;
 
-    public Status(int errorCode, String mag) {
+    public Status(int errorCode, String msg) {
         this.errorCode = errorCode;
-        this.mag = mag;
+        this.msg = msg;
     }
 
     public int getErrorCode() {
@@ -24,11 +24,11 @@ public class Status implements java.io.Serializable {
         this.errorCode = errorCode;
     }
 
-    public String getMag() {
-        return mag;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setMag(String mag) {
-        this.mag = mag;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 }

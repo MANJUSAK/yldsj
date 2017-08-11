@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import javax.servlet.MultipartConfigElement;
 
 /**
- * function 配置文件上传请求大写
+ * function 配置文件上传请求大小
  * Created by 严彬荣 on 2017/8/7.
  */
 @Configuration

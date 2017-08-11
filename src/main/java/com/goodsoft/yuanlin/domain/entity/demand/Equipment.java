@@ -1,10 +1,12 @@
-package com.goodsoft.yuanlin.entity;
+package com.goodsoft.yuanlin.domain.entity.demand;
+
+import com.goodsoft.yuanlin.domain.entity.file.FileData;
 
 import java.beans.Transient;
 import java.util.List;
 
 /**
- * Equipment entity. 设备租赁信息表实体
+ * Equipment domain. 设备租赁信息表实体
  *
  * @author 严彬荣
  */
@@ -26,6 +28,8 @@ public class Equipment implements java.io.Serializable {
     private String tel;
     // 图片文件编号
     private String filesId;
+    //企业编号
+    private String compId;
     // 用户编号
     private String uid;
     // 状态参数
@@ -95,6 +99,15 @@ public class Equipment implements java.io.Serializable {
 
     public void setFilesId(String filesId) {
         this.filesId = filesId;
+    }
+
+    @Transient
+    public String getCompId() {
+        return compId;
+    }
+
+    public void setCompId(String compId) {
+        this.compId = compId;
     }
 
     @Transient

@@ -17,7 +17,7 @@ public class MybatisScannerConfig {
     public MapperScannerConfigurer mapperScannerConfigurer() {
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
-        mapperScannerConfigurer.setBasePackage("com.goodsoft.yuanlin.dao");
+        mapperScannerConfigurer.setBasePackage("com.goodsoft.yuanlin.domain.dao");
         return mapperScannerConfigurer;
     }
 }

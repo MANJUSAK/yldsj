@@ -3,8 +3,8 @@
 <!--suppress ALL -->
 
 <!--设备租赁查询sql-->
-<mapper namespace="com.goodsoft.yuanlin.dao.DemandReleaseDao">
-    <resultMap id="queryEquipment" type="com.goodsoft.yuanlin.entity.Equipment">
+<mapper namespace="com.goodsoft.yuanlin.domain.dao.DemandReleaseDao">
+    <resultMap id="queryEquipment" type="com.goodsoft.yuanlin.domain.entity.demand.Equipment">
         <result property="eid" column="eid"/>
         <result property="titleName" column="titleName"/>
         <result property="content" column="content"/>
@@ -26,6 +26,9 @@
             <if test="uid !=null and uid !=''">
                 and uid=#{uid}
             </if>
+            <if test="compId !=null and compId !=''">
+                and compId=#{compId}
+            </if>
             <if test="date !=null and date !=''">
                 and date like '%${date}%'
             </if>
@@ -36,7 +39,7 @@
         </where>
     </select>
     <!--招标信息查询sql-->
-    <resultMap id="queryBid" type="com.goodsoft.yuanlin.entity.Bid">
+    <resultMap id="queryBid" type="com.goodsoft.yuanlin.domain.entity.demand.Bid">
         <result property="bid" column="bid"/>
         <result property="titleName" column="titleName"/>
         <result property="content" column="content"/>
@@ -54,6 +57,9 @@
             <if test="keyWord !=null and keyWord !=''">
                 and titleName like '%${keyWord}%'
             </if>
+            <if test="compId !=null and compId !=''">
+                and compId=#{compId}
+            </if>
             <if test="uid !=null and uid !=''">
                 and uid=#{uid}
             </if>
@@ -66,7 +72,7 @@
         </where>
     </select>
     <!--苗木信息查询sql-->
-    <resultMap id="querySeedling" type="com.goodsoft.yuanlin.entity.Seedling">
+    <resultMap id="querySeedling" type="com.goodsoft.yuanlin.domain.entity.demand.Seedling">
         <result property="sid" column="sid"/>
         <result property="titleName" column="titleName"/>
         <result property="content" column="content"/>
@@ -89,6 +95,9 @@
             <if test="keyWord !=null and keyWord !=''">
                 and titleName like '%${keyWord}%'
             </if>
+            <if test="compId !=null and compId !=''">
+                and compId=#{compId}
+            </if>
             <if test="uid !=null and uid !=''">
                 and uid=#{uid}
             </if>
@@ -107,7 +116,7 @@
         </where>
     </select>
     <!--人员招聘信息查询sql-->
-    <resultMap id="queryRecruit" type="com.goodsoft.yuanlin.entity.Recruit">
+    <resultMap id="queryRecruit" type="com.goodsoft.yuanlin.domain.entity.demand.Recruit">
         <result property="rid" column="rid"/>
         <result property="positions" column="positions"/>
         <result property="companyName" column="companyName"/>
@@ -134,6 +143,9 @@
             <if test="keyWord !=null and keyWord !=''">
                 and positions like '%${keyWord}%'
             </if>
+            <if test="compId !=null and compId !=''">
+                and compId=#{compId}
+            </if>
             <if test="uid !=null and uid !=''">
                 and uid=#{uid}
             </if>
@@ -153,38 +165,38 @@
     </select>
 
     <!--设备租赁数据录入sql-->
-    <insert id="saveEquipmentDao" parameterType="com.goodsoft.yuanlin.entity.Equipment">
+    <insert id="saveEquipmentDao" parameterType="com.goodsoft.yuanlin.domain.entity.demand.Equipment">
        INSERT INTO
        equipment
-       (titleName, contact, tel, date, time, content, filesId, uid)
+       (titleName, contact, tel, date, time, content, filesId, uid,compId)
        VALUES
-       (#{titleName}, #{contact}, #{tel}, #{date}, #{time}, #{content}, #{filesId}, #{uid})
+       (#{titleName}, #{contact}, #{tel}, #{date}, #{time}, #{content}, #{filesId}, #{uid},#{compId})
     </insert>
     <!--招标数据录入sql-->
-    <insert id="saveBidDao" parameterType="com.goodsoft.yuanlin.entity.Bid">
+    <insert id="saveBidDao" parameterType="com.goodsoft.yuanlin.domain.entity.demand.Bid">
         INSERT INTO
         bids
-        (titleName, contact, tel, date, time, content, uid)
+        (titleName, contact, tel, date, time, content, uid,compId)
          VALUES
-         (#{titleName}, #{contact}, #{tel}, #{date}, #{time}, #{content}, #{uid})
+         (#{titleName}, #{contact}, #{tel}, #{date}, #{time}, #{content}, #{uid},#{compId})
     </insert>
     <!--苗木信息数据录入sql-->
-    <insert id="saveSeedlingDao" parameterType="com.goodsoft.yuanlin.entity.Seedling">
+    <insert id="saveSeedlingDao" parameterType="com.goodsoft.yuanlin.domain.entity.demand.Seedling">
         INSERT INTO seedling
-        (titleName, contact, tel, date, time,address, content, supplier, breed, sub, filesId, uid)
+        (titleName, contact, tel, date, time,address, content, supplier, breed, sub, filesId, uid,compId)
         VALUES
         (#{titleName}, #{contact}, #{tel}, #{date}, #{time},#{address}, #{content},
-        #{supplier}, #{breed}, #{sub}, #{filesId}, #{uid})
+        #{supplier}, #{breed}, #{sub}, #{filesId}, #{uid},#{compId})
     </insert>
     <!--人员招聘数据录入sql-->
-    <insert id="saveRecruitDao" parameterType="com.goodsoft.yuanlin.entity.Recruit">
+    <insert id="saveRecruitDao" parameterType="com.goodsoft.yuanlin.domain.entity.demand.Recruit">
        INSERT INTO
        recruit
        (contact,tel, date, time, money, companyName, companyIntro,companyAdress,
-       workAdress, positions, experience, content, tp, characters, email, evaluate, uid)
+       workAdress, positions, experience, content, tp, characters, email, evaluate, uid,compId)
        VALUES
        (#{contact},#{tel},#{date},#{time},#{money},#{companyName},#{companyIntro},#{companyAdress},
-       #{workAdress},#{positions},#{experience},#{content},#{tp},#{characters},#{email},#{evaluate},#{uid})
+       #{workAdress},#{positions},#{experience},#{content},#{tp},#{characters},#{email},#{evaluate},#{uid},#{compId})
     </insert>
     <!--更新设备数据状态(isNo=1表示数据已删除)-->
     <update id="updateEquipmentDao" parameterType="java.util.Arrays">

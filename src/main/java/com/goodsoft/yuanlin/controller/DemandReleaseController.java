@@ -1,9 +1,9 @@
 package com.goodsoft.yuanlin.controller;
 
-import com.goodsoft.yuanlin.entity.Bid;
-import com.goodsoft.yuanlin.entity.Equipment;
-import com.goodsoft.yuanlin.entity.Recruit;
-import com.goodsoft.yuanlin.entity.Seedling;
+import com.goodsoft.yuanlin.domain.entity.demand.Bid;
+import com.goodsoft.yuanlin.domain.entity.demand.Equipment;
+import com.goodsoft.yuanlin.domain.entity.demand.Recruit;
+import com.goodsoft.yuanlin.domain.entity.demand.Seedling;
 import com.goodsoft.yuanlin.service.DemandReleaseService;
 import com.goodsoft.yuanlin.util.resultentity.Status;
 import org.springframework.web.bind.annotation.*;
@@ -37,9 +37,10 @@ public class DemandReleaseController {
      *             page 页码。
      * @return 查询结果
      */
+    @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.GET)
     @RequestMapping("/find/{type}")
-    public Object queryDemandReleaseController(@PathVariable("type") String type, String uid, HttpServletRequest request, String keyWord, String date, String breed, String tp, String cts, String sub, int page) {
-        return this.service.queryReleaseData(keyWord, uid, type, request, date, breed, tp, cts, sub, page);
+    public Object queryDemandReleaseController(@PathVariable("type") String type, String uid, String compId, HttpServletRequest request, String keyWord, String date, String breed, String tp, String cts, String sub, int page) {
+        return this.service.queryReleaseData(keyWord, compId, uid, type, request, date, breed, tp, cts, sub, page);
     }
 
     /**

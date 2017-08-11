@@ -1,9 +1,9 @@
-package com.goodsoft.yuanlin.dao;
+package com.goodsoft.yuanlin.domain.dao;
 
-import com.goodsoft.yuanlin.entity.Bid;
-import com.goodsoft.yuanlin.entity.Equipment;
-import com.goodsoft.yuanlin.entity.Recruit;
-import com.goodsoft.yuanlin.entity.Seedling;
+import com.goodsoft.yuanlin.domain.entity.demand.Bid;
+import com.goodsoft.yuanlin.domain.entity.demand.Equipment;
+import com.goodsoft.yuanlin.domain.entity.demand.Recruit;
+import com.goodsoft.yuanlin.domain.entity.demand.Seedling;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -16,16 +16,16 @@ import java.util.List;
 @Repository
 public interface DemandReleaseDao {
     // 查询设备租赁信息数据dao接口
-    public List<Equipment> queryEquipmentDao(@Param("keyWord") String keyWord, @Param("uid") String uid, @Param("date") String date, @Param("page") int page);
+    public List<Equipment> queryEquipmentDao(@Param("keyWord") String keyWord, @Param("compId") String compId, @Param("uid") String uid, @Param("date") String date, @Param("page") int page);
 
     // 查询苗木信息数据dao接口
-    public List<Seedling> querySeedlingDao(@Param("keyWord") String keyWord, @Param("uid") String uid, @Param("breed") String breed, @Param("sub") String sub, @Param("date") String date, @Param("page") int page);
+    public List<Seedling> querySeedlingDao(@Param("keyWord") String keyWord, @Param("compId") String compId, @Param("uid") String uid, @Param("breed") String breed, @Param("sub") String sub, @Param("date") String date, @Param("page") int page);
 
     // 查询招标信息数据数据dao接口
-    public List<Bid> queryBidDao(@Param("keyWord") String keyWord, @Param("uid") String uid, @Param("date") String date, @Param("page") int page);
+    public List<Bid> queryBidDao(@Param("keyWord") String keyWord, @Param("compId") String compId, @Param("uid") String uid, @Param("date") String date, @Param("page") int page);
 
     // 查询人才招聘信息数据dao接口
-    public List<Recruit> queryRecruitDao(@Param("keyWord") String keyWord, @Param("uid") String uid, @Param("tp") String tp, @Param("characters") String characters, @Param("date") String date, @Param("page") int page);
+    public List<Recruit> queryRecruitDao(@Param("keyWord") String keyWord, @Param("compId") String compId, @Param("uid") String uid, @Param("tp") String tp, @Param("characters") String characters, @Param("date") String date, @Param("page") int page);
 
     // 设备租赁信息数据发布dao接口
     public void saveEquipmentDao(Equipment msg) throws Exception;

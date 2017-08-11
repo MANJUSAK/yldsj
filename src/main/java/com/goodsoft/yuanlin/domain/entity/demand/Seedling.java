@@ -1,10 +1,12 @@
-package com.goodsoft.yuanlin.entity;
+package com.goodsoft.yuanlin.domain.entity.demand;
+
+import com.goodsoft.yuanlin.domain.entity.file.FileData;
 
 import java.beans.Transient;
 import java.util.List;
 
 /**
- * Seedling entity. 苗木信息表实体
+ * Seedling domain. 苗木信息表实体
  *
  * @author 严彬荣
  */
@@ -35,6 +37,8 @@ public class Seedling implements java.io.Serializable {
     private String filesId;
     // 文件路径
     private List<FileData> picture;
+    //企业编号
+    private String compId;
     // 用户编号
     private String uid;
     // 状态参数
@@ -142,6 +146,15 @@ public class Seedling implements java.io.Serializable {
 
     public void setPicture(List<FileData> picture) {
         this.picture = picture;
+    }
+
+    @Transient
+    public String getCompId() {
+        return compId;
+    }
+
+    public void setCompId(String compId) {
+        this.compId = compId;
     }
 
     @Transient

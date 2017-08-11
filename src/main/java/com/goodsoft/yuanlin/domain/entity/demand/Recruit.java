@@ -1,9 +1,9 @@
-package com.goodsoft.yuanlin.entity;
+package com.goodsoft.yuanlin.domain.entity.demand;
 
 import java.beans.Transient;
 
 /**
- * Blueprint entity. 人员招聘表实体
+ * Blueprint domain. 人员招聘表实体
  *
  * @author 严彬荣
  */
@@ -39,10 +39,12 @@ public class Recruit implements java.io.Serializable {
     private String date;
     // 发布时间
     private String time;
-    //发布类型（招聘 1/求职 2）
+    //招聘类型（招聘 1/求职 2）
     private int tp;
-    //发布性质(全职 1/兼职 2)
+    //工作性质(全职 1/兼职 2)
     private int characters;
+    //企业编号
+    private String compId;
     // 用户编号
     private String uid;
     // 状态参数
@@ -185,6 +187,15 @@ public class Recruit implements java.io.Serializable {
 
     public void setCharacters(int characters) {
         this.characters = characters;
+    }
+
+    @Transient
+    public String getCompId() {
+        return compId;
+    }
+
+    public void setCompId(String compId) {
+        this.compId = compId;
     }
 
     @Transient

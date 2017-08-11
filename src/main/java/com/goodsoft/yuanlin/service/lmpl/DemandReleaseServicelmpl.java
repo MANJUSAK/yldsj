@@ -1,8 +1,12 @@
 package com.goodsoft.yuanlin.service.lmpl;
 
-import com.goodsoft.yuanlin.dao.DemandReleaseDao;
-import com.goodsoft.yuanlin.dao.FileDao;
-import com.goodsoft.yuanlin.entity.*;
+import com.goodsoft.yuanlin.domain.dao.DemandReleaseDao;
+import com.goodsoft.yuanlin.domain.dao.FileDao;
+import com.goodsoft.yuanlin.domain.entity.demand.Bid;
+import com.goodsoft.yuanlin.domain.entity.demand.Equipment;
+import com.goodsoft.yuanlin.domain.entity.demand.Recruit;
+import com.goodsoft.yuanlin.domain.entity.demand.Seedling;
+import com.goodsoft.yuanlin.domain.entity.file.FileData;
 import com.goodsoft.yuanlin.service.DemandReleaseService;
 import com.goodsoft.yuanlin.service.FileService;
 import com.goodsoft.yuanlin.util.DomainNameUtil;
@@ -12,6 +16,7 @@ import com.goodsoft.yuanlin.util.resultentity.Status;
 import com.goodsoft.yuanlin.util.resultentity.StatusEnum;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -56,13 +61,13 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
      * @return 查询结果
      */
     @Override
-    public <T> T queryReleaseData(String keyWord, String uid, String type, HttpServletRequest request, String date, String breed, String tp, String characters, String sub, int page) {
+    public <T> T queryReleaseData(String keyWord, String compId, String uid, String type, HttpServletRequest request, String date, String breed, String tp, String characters, String sub, int page) {
         page *= 20;
         switch (type) {
             case "bid":
                 List<Bid> data = null;
                 try {
-                    data = this.dao.queryBidDao(keyWord, uid, date, page);
+                    data = this.dao.queryBidDao(keyWord, compId, uid, date, page);
                 } catch (Exception e) {
                     System.out.println(e.toString());
                     this.logger.error(e);
@@ -76,7 +81,7 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
             case "recruit":
                 List<Recruit> data1 = null;
                 try {
-                    data1 = this.dao.queryRecruitDao(keyWord, uid, tp, characters, date, page);
+                    data1 = this.dao.queryRecruitDao(keyWord, compId, uid, tp, characters, date, page);
                 } catch (Exception e) {
                     System.out.println(e.toString());
                     this.logger.error(e);
@@ -90,7 +95,7 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
             case "equipment":
                 List<Equipment> data2 = null;
                 try {
-                    data2 = this.dao.queryEquipmentDao(keyWord, uid, date, page);
+                    data2 = this.dao.queryEquipmentDao(keyWord, compId, uid, date, page);
                 } catch (Exception e) {
                     System.out.println(e.toString());
                     this.logger.error(e);
@@ -130,7 +135,7 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
             case "seedling":
                 List<Seedling> data3 = null;
                 try {
-                    data3 = this.dao.querySeedlingDao(keyWord, uid, breed, sub, date, page);
+                    data3 = this.dao.querySeedlingDao(keyWord, compId, uid, breed, sub, date, page);
                 } catch (Exception e) {
                     System.out.println(e.toString());
                     this.logger.error(e);
@@ -184,20 +189,22 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
      * @return 录入结果
      */
     @Override
+    @Transactional
     public Status releaseDataService(MultipartFile[] files, HttpServletRequest request, Object msg, String type) {
         switch (type) {
             case "seedling":
                 Seedling var = (Seedling) msg;
                 var.setFilesId(this.uuid.getUUID().toString());
                 int arg = this.fileService.fileUploadService(files, request, type, var.getFilesId());
-                if (arg == 604) {
-                    return new Status(StatusEnum.NO_FILE.getCODE(), StatusEnum.NO_FILE.getEXPLAIN());
-                } else if (arg == 603) {
-                    return new Status(StatusEnum.FILE_FORMAT.getCODE(), StatusEnum.FILE_FORMAT.getEXPLAIN());
-                } else if (arg == 601) {
-                    return new Status(StatusEnum.FILE_SIZE.getCODE(), StatusEnum.FILE_SIZE.getEXPLAIN());
-                } else if (arg == 600) {
-                    return new Status(StatusEnum.FILE_UPLOAD.getCODE(), StatusEnum.FILE_UPLOAD.getEXPLAIN());
+                switch (arg) {
+                    case 604:
+                        return new Status(StatusEnum.NO_FILE.getCODE(), StatusEnum.NO_FILE.getEXPLAIN());
+                    case 603:
+                        return new Status(StatusEnum.FILE_FORMAT.getCODE(), StatusEnum.FILE_FORMAT.getEXPLAIN());
+                    case 601:
+                        return new Status(StatusEnum.FILE_SIZE.getCODE(), StatusEnum.FILE_SIZE.getEXPLAIN());
+                    case 600:
+                        return new Status(StatusEnum.FILE_UPLOAD.getCODE(), StatusEnum.FILE_UPLOAD.getEXPLAIN());
                 }
                 Date date = new Date();
                 var.setDate(new SimpleDateFormat("yyyy-MM-dd").format(date));
@@ -213,14 +220,15 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
                 Equipment var1 = (Equipment) msg;
                 var1.setFilesId(this.uuid.getUUID().toString());
                 int arg1 = this.fileService.fileUploadService(files, request, type, var1.getFilesId());
-                if (arg1 == 604) {
-                    return new Status(StatusEnum.NO_FILE.getCODE(), StatusEnum.NO_FILE.getEXPLAIN());
-                } else if (arg1 == 603) {
-                    return new Status(StatusEnum.FILE_FORMAT.getCODE(), StatusEnum.FILE_FORMAT.getEXPLAIN());
-                } else if (arg1 == 601) {
-                    return new Status(StatusEnum.FILE_SIZE.getCODE(), StatusEnum.FILE_SIZE.getEXPLAIN());
-                } else if (arg1 == 600) {
-                    return new Status(StatusEnum.FILE_UPLOAD.getCODE(), StatusEnum.FILE_UPLOAD.getEXPLAIN());
+                switch (arg1) {
+                    case 604:
+                        return new Status(StatusEnum.NO_FILE.getCODE(), StatusEnum.NO_FILE.getEXPLAIN());
+                    case 603:
+                        return new Status(StatusEnum.FILE_FORMAT.getCODE(), StatusEnum.FILE_FORMAT.getEXPLAIN());
+                    case 601:
+                        return new Status(StatusEnum.FILE_SIZE.getCODE(), StatusEnum.FILE_SIZE.getEXPLAIN());
+                    case 600:
+                        return new Status(StatusEnum.FILE_UPLOAD.getCODE(), StatusEnum.FILE_UPLOAD.getEXPLAIN());
                 }
                 Date date1 = new Date();
                 var1.setDate(new SimpleDateFormat("yyyy-MM-dd").format(date1));
@@ -245,6 +253,7 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
      * @return 录入结果
      */
     @Override
+    @Transactional
     public Status releaseDataService(Object msg, String type) {
         switch (type) {
             case "bid":
@@ -284,6 +293,7 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
      * @return 删除结果
      */
     @Override
+    @Transactional
     public Status deleteReleaseDataService(int[] id, String type) {
         switch (type) {
             case "equipment":

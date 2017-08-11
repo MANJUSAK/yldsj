@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--suppress ALL -->
-<mapper namespace="com.goodsoft.yuanlin.dao.FileDao">
-    <resultMap id="fileData" type="com.goodsoft.yuanlin.entity.FileData">
+<mapper namespace="com.goodsoft.yuanlin.domain.dao.FileDao">
+    <resultMap id="fileData" type="com.goodsoft.yuanlin.domain.entity.file.FileData">
         <result property="path" column="path"/>
     </resultMap>
     <select id="queryFileDao" parameterType="java.lang.String" resultMap="fileData">
         SELECT path FROM fileData WHERE fileId=#{fileId}
     </select>
-    <insert id="saveFileDao" parameterType="com.goodsoft.yuanlin.entity.FileData">
+    <insert id="saveFileDao" parameterType="com.goodsoft.yuanlin.domain.entity.file.FileData">
         insert into fileData (fileId,path,bases,sort)
         values
         (#{fileId},#{path},#{bases},#{sort})

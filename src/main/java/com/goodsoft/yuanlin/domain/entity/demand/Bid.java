@@ -1,9 +1,9 @@
-package com.goodsoft.yuanlin.entity;
+package com.goodsoft.yuanlin.domain.entity.demand;
 
 import java.beans.Transient;
 
 /**
- * Bid entity. 招标信息表实体
+ * Bid domain. 招标信息表实体
  *
  * @author 严彬荣
  */
@@ -23,6 +23,8 @@ public class Bid implements java.io.Serializable {
     private String date;
     // 发布时间
     private String time;
+    //企业编号
+    private String compId;
     // 用户ID
     private String uid;
     // 状态参数（删除状态不给用户查询信息）
@@ -82,6 +84,15 @@ public class Bid implements java.io.Serializable {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    @Transient
+    public String getCompId() {
+        return compId;
+    }
+
+    public void setCompId(String compId) {
+        this.compId = compId;
     }
 
     @Transient

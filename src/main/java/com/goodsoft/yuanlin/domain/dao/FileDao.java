@@ -1,6 +1,7 @@
-package com.goodsoft.yuanlin.dao;
+package com.goodsoft.yuanlin.domain.dao;
 
-import com.goodsoft.yuanlin.entity.FileData;
+import com.goodsoft.yuanlin.domain.entity.file.FileData;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 public interface FileDao {
 
     //文件查询
-    public List<FileData> queryFileDao(String fileId);
+    public List<FileData> queryFileDao(@Param("fileId") String fileId);
 
     //文件保存
     public void saveFileDao(FileData msg);

@@ -1,4 +1,4 @@
-package com.goodsoft.yuanlin.entity;
+package com.goodsoft.yuanlin.domain.entity.file;
 
 import java.beans.Transient;
 

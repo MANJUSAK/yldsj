@@ -24,12 +24,31 @@ public class MybatisConfig {
     @Bean(name = "sqlSessionFactory")
     public SqlSessionFactoryBean sqlSessionFactory(ApplicationContext applicationContext) throws Exception {
         org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
-        configuration.setMapUnderscoreToCamelCase(true);
-        configuration.setJdbcTypeForNull(JdbcType.NULL);
-        configuration.setLogImpl(org.apache.ibatis.logging.slf4j.Slf4jImpl.class);//use slf4j log
+        //使用缓存
+        configuration.setCacheEnabled(true);
+        //懒加载
+        configuration.setLazyLoadingEnabled(true);
+        configuration.setAggressiveLazyLoading(true);
+        //单一语句返回多结果集
+        configuration.setMultipleResultSetsEnabled(true);
+        //列标签代替列名
         configuration.setUseColumnLabel(true);
-        configuration.setUseGeneratedKeys(true);
+        //设置数据库响应超时时间为180秒
+        configuration.setDefaultStatementTimeout(180);
+        //允许嵌套语句中使用分页
+        configuration.setSafeRowBoundsEnabled(true);
+        //开启驼峰命名
         configuration.setMapUnderscoreToCamelCase(true);
+        //设置参数为jdbc类型
+        configuration.setJdbcTypeForNull(JdbcType.NULL);
+        //日志管理（使用slf4j）
+        configuration.setLogImpl(org.apache.ibatis.logging.slf4j.Slf4jImpl.class);
+        //支持自动生成主键
+        configuration.setUseGeneratedKeys(true);
+        //mybatis日志前缀
+        configuration.setLogPrefix("园林");
+        //设置返回数据默认大小（可重写）
+        configuration.setDefaultFetchSize(100);
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
         sqlSessionFactory.setDataSource(druidDataSource);
         sqlSessionFactory.setConfiguration(configuration);

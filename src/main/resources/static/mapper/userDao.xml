@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--suppress ALL -->
+<mapper namespace="com.goodsoft.yuanlin.domain.dao.UserDao">
+    <!--用户登录结果映射-->
+    <resultMap id="userInfo" type="com.goodsoft.yuanlin.domain.entity.user.User">
+        <result property="uid" column="ID"/>
+        <result property="name" column="NAME"/>
+        <result property="userName" column="LOGIN_NAME"/>
+        <result property="email" column="EMAIL"/>
+        <result property="date" column="REGISTER_TIME"/>
+        <result property="sex" column="SEX"/>
+        <result property="tel" column="CELLPHONE"/>
+        <result property="filesId" column="F1"/>
+        <result property="idCard" column="CERT_NO"/>
+        <result property="deptId" column="F2"/>
+    </resultMap>
+    <!--用户登录sql-->
+    <select id="queryUserDao" parameterType="java.lang.String" resultMap="userInfo">
+    SELECT
+    ID,
+    NAME,
+    LOGIN_NAME,
+    EMAIL,
+    REGISTER_TIME,
+    SEX,
+    CELLPHONE,
+    CERT_NO,
+    F1,
+    F2
+    FROM
+    hz7.to_horizon_user
+    WHERE
+    LOGIN_NAME=#{userName} AND PASSWORD=#{passWord} AND ACTIVE='1'
+    </select>
+    <!--检索用户名是否存在-->
+    <select id="queryUserByNameDao" parameterType="java.lang.String" resultType="int">
+        SELECT count(*) FROM hz7.to_horizon_user where LOGIN_NAME=#{userName}
+    </select>
+    <!--获取部门id-->
+    <select id="queryDeptByIdDao" parameterType="java.lang.String" resultType="java.lang.String">
+    SELECT ID FROM hz7.to_horizon_dept WHERE
+    PARENT_ID IN (SELECT id FROM hz7.to_horizon_dept
+    WHERE
+    DEPT_LEVEL = 0) and DEPT_NAME= #{dept}
+    </select>
+    <!--添加用户信息-->
+    <insert id="addUserDao" parameterType="com.goodsoft.yuanlin.domain.entity.user.User">
+        INSERT INTO hz7.to_horizon_user 
+        (ID, NAME, LOGIN_NAME, EMAIL, REGISTER_TIME,PASSWORD, SEX,
+         CELLPHONE, CERT_TYPE, CERT_NO, F1, F2,ACTIVE,CERTIFICATE)
+         VALUES 
+         (#{uid}, #{name}, #{userName}, #{email}, #{date},#{passWord},
+          #{sex}, #{tel}, 0, #{idCard}, #{filesId}, #{deptId},'1','password')
+    </insert>
+    <!--将用户添加到部门-->
+    <insert id="addDeptDao" parameterType="java.lang.String">
+    INSERT INTO
+    hz7.tor_horizon_user_dept 
+    (ID, USER_ID, DEPT_ID, JOIN_TIME, ACTIVE, ORDER_NO, ISDEFAULT)
+    VALUES
+    (#{id}, #{uid}, #{deptId}, #{time},'1', '0', '1')
+    </insert>
+</mapper>

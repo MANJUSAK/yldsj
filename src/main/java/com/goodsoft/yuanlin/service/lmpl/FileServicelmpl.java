@@ -1,10 +1,11 @@
 package com.goodsoft.yuanlin.service.lmpl;
 
-import com.goodsoft.yuanlin.dao.FileDao;
-import com.goodsoft.yuanlin.entity.FileData;
+import com.goodsoft.yuanlin.domain.dao.FileDao;
+import com.goodsoft.yuanlin.domain.entity.file.FileData;
 import com.goodsoft.yuanlin.service.FileService;
 import com.goodsoft.yuanlin.util.FileUpload;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -34,6 +35,7 @@ public class FileServicelmpl implements FileService {
      * @return int 文件上传处理状态（0为成功，其余都失败）
      */
     @Override
+    @Transactional
     public int fileUploadService(MultipartFile[] files, HttpServletRequest request, String fileType, String fileId) {
         for (int i = 0, length = files.length; i < length; ++i) {
             //判断文件是否为空
@@ -70,7 +72,17 @@ public class FileServicelmpl implements FileService {
                 case "equipment":
                     file.setSort("设备租赁");
                     break;
+                case "user":
+                    file.setSort("用户");
+                    break;
+                case "project":
+                    file.setSort("项目");
+                    break;
+                case "compact":
+                    file.setSort("合同");
+                    break;
                 default:
+                    file.setSort("无分类");
                     break;
             }
 

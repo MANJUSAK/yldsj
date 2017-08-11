@@ -33,7 +33,7 @@ public class FileUpload {
         StringBuilder sb = new StringBuilder();
         sb.append(savePath);
         //自定义文件保存路径
-        String str = "/ylfile/demand/";
+        String str = "/ylfile/";
         sb.append(str);
         sb.append(fileType);
         sb.append("/");
