@@ -12,7 +12,7 @@ public class RecomComp implements java.io.Serializable {
     private String registFund;//注册资金
     private String registAdress;//注册地址
     private String detailAdress;//详细地址
-    private String property;//经营性质
+    private String nature;//经营性质
     private String companyProfile;// 企业简介
     private String registeredId;//营业执照编号
     private String qualificationId;//资质证书编号
@@ -58,12 +58,12 @@ public class RecomComp implements java.io.Serializable {
         this.detailAdress = detailAdress;
     }
 
-    public String getProperty() {
-        return property;
+    public String getNature() {
+        return nature;
     }
 
-    public void setProperty(String property) {
-        this.property = property;
+    public void setNature(String nature) {
+        this.nature = nature;
     }
 
     public String getCompanyProfile() {

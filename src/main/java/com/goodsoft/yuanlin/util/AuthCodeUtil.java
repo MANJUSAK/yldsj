@@ -7,8 +7,8 @@ import javax.servlet.http.HttpSession;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -40,7 +40,9 @@ public class AuthCodeUtil {
     }
 
     //实例化公共集合存放多用户验证码
-    private static List<String> pcCode = new ArrayList<>();
+    public Map<String, String> map = new HashMap<String, String>();
+    //实例化获取用户ip工具类
+    private GetIP getIP = GetIP.getInstance();
 
     public void getAuthCode(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
         int width = 63;
@@ -76,15 +78,17 @@ public class AuthCodeUtil {
             String rand = String.valueOf(random.nextInt(10));
             code += rand;
             // 设置随机字符颜色
-            g.setColor(new Color(20 + random.nextInt(110), 20 + random
-                    .nextInt(110), 20 + random.nextInt(110)));
+            g.setColor(new Color(20 + random.nextInt(110), 20 + random.nextInt(110), 20 + random.nextInt(110)));
             // 绘制字符
             g.drawString(rand, 13 * i + 6, 28);
         }
-
-        pcCode.add(code);
+        //获取用户ip确保每个用户只能拥有一个验证码
+        String ip = this.getIP.getIP(request);
+        Map<String, String> arg = (Map<String, String>) request.getSession().getAttribute("pcCode");
+        map.remove(ip);
+        map.put(ip, code);
         // 将字符保存到session中用于前端的验证
-        session.setAttribute("pcCode", pcCode);
+        session.setAttribute("pcCode", map);
         g.dispose();
         // 返回验证码图片
         ImageIO.write(image, "JPEG", response.getOutputStream());

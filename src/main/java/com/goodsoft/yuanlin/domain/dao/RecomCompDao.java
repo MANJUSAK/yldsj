@@ -1,6 +1,7 @@
 package com.goodsoft.yuanlin.domain.dao;
 
 import com.goodsoft.yuanlin.domain.entity.recommend.RecomComp;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,5 +13,7 @@ import java.util.List;
 @Repository
 public interface RecomCompDao {
 
-    public List<RecomComp> queryRecomCompDao();
+    public List<RecomComp> queryRecomCompDao(@Param("page") int page);
+
+    public List<String> queryRecomCompFileDao(@Param("id") String id);
 }

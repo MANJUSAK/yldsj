@@ -2,4 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--suppress ALL -->
 <mapper namespace="com.goodsoft.yuanlin.domain.dao.RecomCompDao">
+    <!--查询企业推荐sql-->
+    <resultMap id="recomCompInfo" type="com.goodsoft.yuanlin.domain.entity.recommend.RecomComp">
+        <result property="id" column="ID"/>
+        <result property="nature" column="CP_NATURE"/>
+        <result property="registFund" column="CP_CAPITAL"/>
+        <result property="companyName" column="CP_MYNAME"/>
+        <result property="registAdress" column="CP_REGISTERED_ADDRESS"/>
+        <result property="detailAdress" column="CP_DETAILED_ADDRESS"/>
+        <result property="registeredId" column="CP_REGISTRATION_NUMBER"/>
+        <result property="qualificationId" column="CP_ORIGINAL_NUMBER"/>
+        <result property="companyProfile" column="CP_PROFILE"/>
+    </resultMap>
+    <select id="queryRecomCompDao" parameterType="int" resultMap="recomCompInfo">
+   SELECT
+    ID,
+    CP_PROFILE,
+    CP_CAPITAL,
+    CP_MYNAME,
+    CP_REGISTERED_ADDRESS,
+    CP_DETAILED_ADDRESS,
+    CP_NATURE,
+    CP_REGISTRATION_NUMBER,
+    CP_ORIGINAL_NUMBER
+    FROM
+    hz7.gs_corporate_pool limit #{page},20;
+    </select>
+    <!--查询企业推荐文件sql-->
+    <select id="queryRecomCompFileDao" resultType="java.lang.String">
+        SELECT ID FROM hz7.ta_horizon_info WHERE OBJECT_ID=#{id}
+    </select>
 </mapper>

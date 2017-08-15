@@ -35,7 +35,6 @@
             AND ISNO=0
             order by eid desc
             limit #{page},20
-
         </where>
     </select>
     <!--招标信息查询sql-->

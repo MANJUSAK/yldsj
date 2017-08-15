@@ -52,6 +52,7 @@ public class DemandReleaseController {
      *              type 发布类型（苗木、设备租赁等），
      * @return 发布结果
      */
+    @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)
     @RequestMapping(value = "/release/equipment", method = RequestMethod.POST)
     public Status saveEquipmentController(@RequestParam("files") MultipartFile[] files, Equipment msg, HttpServletRequest request) {
         return this.service.releaseDataService(files, request, msg, "equipment");
@@ -66,6 +67,7 @@ public class DemandReleaseController {
      *              type 发布类型（苗木、设备租赁等），
      * @return 发布结果
      */
+    @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)
     @RequestMapping(value = "/release/seedling", method = RequestMethod.POST)
     public Status saveSeedlingController(@RequestParam("files") MultipartFile[] files, Seedling msg, HttpServletRequest request) {
         return this.service.releaseDataService(files, request, msg, "seedling");
@@ -79,6 +81,7 @@ public class DemandReleaseController {
      *            type 发布类型（苗木、设备租赁等），
      * @return 发布结果
      */
+    @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)
     @RequestMapping(value = "/release/bid", method = RequestMethod.POST)
     public Status saveBidController(Bid msg) {
         return this.service.releaseDataService(msg, "bid");
@@ -91,6 +94,7 @@ public class DemandReleaseController {
      *            type 发布类型（苗木、设备租赁等），
      * @return 发布结果
      */
+    @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)
     @RequestMapping(value = "/release/recruit", method = RequestMethod.POST)
     public Status saveRecruitController(Recruit msg) {
         return this.service.releaseDataService(msg, "recruit");
@@ -104,6 +108,7 @@ public class DemandReleaseController {
      *           type 删除类型（苗木、设备租赁等），
      * @return 删除结果
      */
+    @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)
     @RequestMapping(value = "/delete/{type}", method = RequestMethod.POST)
     public Status deleteDemandReleaseController(@PathVariable("type") String type, int[] id) {
         return this.service.deleteReleaseDataService(id, type);

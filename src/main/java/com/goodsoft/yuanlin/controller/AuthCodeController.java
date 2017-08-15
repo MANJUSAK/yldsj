@@ -3,7 +3,9 @@ package com.goodsoft.yuanlin.controller;
 
 import com.goodsoft.yuanlin.util.AuthCodeUtil;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +30,7 @@ public class AuthCodeController {
     private AuthCodeUtil authCode = AuthCodeUtil.getInstance();
 
     // 验证码接口
+    @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.GET)
     @RequestMapping("/authCode")
     public void AuthCode(HttpServletResponse response) {
         try {

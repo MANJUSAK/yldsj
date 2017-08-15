@@ -16,7 +16,7 @@ public class User implements java.io.Serializable {
     private String tel;//联系方式
     private String email;//邮箱
     private int sex;//性别（0为男/1为女）
-    private String date;
+    private String date;//注册时间
     private String idCard;//身份证号
     private String filesId;//身份证件照id
     private List<String> picture;//身份证件照

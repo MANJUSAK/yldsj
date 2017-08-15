@@ -1,5 +1,6 @@
 package com.goodsoft.yuanlin.service;
 
+import com.goodsoft.yuanlin.domain.entity.user.SignIn;
 import com.goodsoft.yuanlin.domain.entity.user.User;
 import com.goodsoft.yuanlin.util.resultentity.Status;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,6 +15,12 @@ public interface UserService {
 
     //用户登录
     public <T> T queryUserService(HttpServletRequest request, String userName, String passWord, String userCode);
+
+    //用户签到
+    public Status signInService(SignIn msg);
+
+    //用户签到数据
+    public <T> T querySignInService(String uid, String deptId, int page);
 
     //添加用户信息
     public Status addUserService(MultipartFile[] files, HttpServletRequest request, User msg, String userCode);
