@@ -1,43 +1,59 @@
 package com.goodsoft.yuanlin.domain.entity.project;
 
-import com.goodsoft.yuanlin.domain.entity.file.FileData;
-
 import java.util.List;
 
 /**
- * Prospect entity.现场施工检验表实体
+ * Prospect entity.现场勘察实体
  *
  * @author 严彬荣
  */
 public class Prospect implements java.io.Serializable {
-    // 表ID
-    private Integer rid;
     // 项目名称
     private String name;
-    // 现场检验时间
-    private String time;
-    // 现场检验地址
+    // 现场勘察时间
+    private String date;
+    // 现场勘察地址
     private String address;
-    // 现场检验人员
+    // 现场勘察人员
     private String person;
-    // 现场检验情况图片编号
+    // 现场勘察情况图片编号
     private String filesId;
     // 用户id
     private String uid;
-    // 项目编号
-    private Integer pid;
     //部门编号
     private String deptId;
+    // 表ID
+    private String id;
+    //项目信息编号
+    private String pid;
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public List<String> getPicture() {
+        return picture;
+    }
+
+    public void setPicture(List<String> picture) {
+        this.picture = picture;
+    }
+
     // 图片路径
-    private List<FileData> picture;
+    private List<String> picture;
 
-    public Integer getRid() {
-        return rid;
-    }
-
-    public void setRid(Integer rid) {
-        this.rid = rid;
-    }
 
     public String getName() {
         return name;
@@ -47,12 +63,12 @@ public class Prospect implements java.io.Serializable {
         this.name = name;
     }
 
-    public String getTime() {
-        return time;
+    public String getDate() {
+        return date;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getAddress() {
@@ -87,14 +103,6 @@ public class Prospect implements java.io.Serializable {
         this.uid = uid;
     }
 
-    public Integer getPid() {
-        return pid;
-    }
-
-    public void setPid(Integer pid) {
-        this.pid = pid;
-    }
-
     public String getDeptId() {
         return deptId;
     }
@@ -103,11 +111,4 @@ public class Prospect implements java.io.Serializable {
         this.deptId = deptId;
     }
 
-    public List<FileData> getPicture() {
-        return picture;
-    }
-
-    public void setPicture(List<FileData> picture) {
-        this.picture = picture;
-    }
 }

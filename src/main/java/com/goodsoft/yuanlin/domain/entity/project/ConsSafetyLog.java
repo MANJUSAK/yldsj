@@ -1,16 +1,16 @@
 package com.goodsoft.yuanlin.domain.entity.project;
 
 /**
- * ConstructionSafetyLog entity.施工安全日志表实体
+ * ConsSafetyLog entity.施工安全日志表实体
  *
  * @author 严彬荣
  */
-public class ConstructionSafetyLog implements java.io.Serializable {
+public class ConsSafetyLog implements java.io.Serializable {
 
-    // 表ID
-    private Integer cid;
+    //项目名称
+    private String name;
     // 日期
-    private String dates;
+    private String date;
     // 施工部位
     private String constLocation;
     // 施工工序动态
@@ -20,28 +20,46 @@ public class ConstructionSafetyLog implements java.io.Serializable {
     // 安全问题的处理
     private String sftProblems;
     // 填写人
-    private String fillPeople;
+    private String fillPle;
     // 用户ID
     private String uid;
-    // 项目编号
-    private Integer pid;
     //部门编号
     private String deptId;
+    // 表ID
+    private String id;
+    //项目信息编号
+    private String pid;
 
-    public Integer getCid() {
-        return cid;
+    public String getName() {
+        return name;
     }
 
-    public void setCid(Integer cid) {
-        this.cid = cid;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDates() {
-        return dates;
+    public String getPid() {
+        return pid;
     }
 
-    public void setDates(String dates) {
-        this.dates = dates;
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getConstLocation() {
@@ -76,12 +94,12 @@ public class ConstructionSafetyLog implements java.io.Serializable {
         this.sftProblems = sftProblems;
     }
 
-    public String getFillPeople() {
-        return fillPeople;
+    public String getFillPle() {
+        return fillPle;
     }
 
-    public void setFillPeople(String fillPeople) {
-        this.fillPeople = fillPeople;
+    public void setFillPle(String fillPle) {
+        this.fillPle = fillPle;
     }
 
     public String getUid() {
@@ -90,14 +108,6 @@ public class ConstructionSafetyLog implements java.io.Serializable {
 
     public void setUid(String uid) {
         this.uid = uid;
-    }
-
-    public Integer getPid() {
-        return pid;
-    }
-
-    public void setPid(Integer pid) {
-        this.pid = pid;
     }
 
     public String getDeptId() {

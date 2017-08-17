@@ -61,13 +61,26 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
      * @return 查询结果
      */
     @Override
-    public <T> T queryReleaseData(String keyWord, String compId, String uid, String type, HttpServletRequest request, String date, String breed, String tp, String characters, String sub, int page) {
-        page *= 20;
+    public <T> T queryReleaseData(String keyWord, String compId, String uid, String type, HttpServletRequest request, String date, String breed, String tp, String characters, String sub, String page) {
+        if (page == null) {
+            return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
+        }
+        int arg = 0;
+        try {
+            arg = Integer.parseInt(page);
+        } catch (NumberFormatException e) {
+            this.logger.error(e);
+            return (T) new Status(StatusEnum.NO_PRAM.getCODE(), StatusEnum.NO_PRAM.getEXPLAIN());
+        }
+        if (arg < 0) {
+            arg = 0;
+        }
+        arg *= 20;
         switch (type) {
             case "bid":
                 List<Bid> data = null;
                 try {
-                    data = this.dao.queryBidDao(keyWord, compId, uid, date, page);
+                    data = this.dao.queryBidDao(keyWord, compId, uid, date, arg);
                 } catch (Exception e) {
                     System.out.println(e.toString());
                     this.logger.error(e);
@@ -81,7 +94,7 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
             case "recruit":
                 List<Recruit> data1 = null;
                 try {
-                    data1 = this.dao.queryRecruitDao(keyWord, compId, uid, tp, characters, date, page);
+                    data1 = this.dao.queryRecruitDao(keyWord, compId, uid, tp, characters, date, arg);
                 } catch (Exception e) {
                     System.out.println(e.toString());
                     this.logger.error(e);
@@ -95,7 +108,7 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
             case "equipment":
                 List<Equipment> data2 = null;
                 try {
-                    data2 = this.dao.queryEquipmentDao(keyWord, compId, uid, date, page);
+                    data2 = this.dao.queryEquipmentDao(keyWord, compId, uid, date, arg);
                 } catch (Exception e) {
                     System.out.println(e.toString());
                     this.logger.error(e);
@@ -135,7 +148,7 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
             case "seedling":
                 List<Seedling> data3 = null;
                 try {
-                    data3 = this.dao.querySeedlingDao(keyWord, compId, uid, breed, sub, date, page);
+                    data3 = this.dao.querySeedlingDao(keyWord, compId, uid, breed, sub, date, arg);
                 } catch (Exception e) {
                     System.out.println(e.toString());
                     this.logger.error(e);

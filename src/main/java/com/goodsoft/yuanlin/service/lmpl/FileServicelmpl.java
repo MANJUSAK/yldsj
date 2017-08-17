@@ -37,22 +37,43 @@ public class FileServicelmpl implements FileService {
     @Override
     @Transactional
     public int fileUploadService(MultipartFile[] files, HttpServletRequest request, String fileType, String fileId) {
-        for (int i = 0, length = files.length; i < length; ++i) {
-            //判断文件是否为空
-            if (!files[i].isEmpty()) {
-                //判断文件大小是否小于1.5M
-                if (files[i].getSize() > 1500000) {
-                    return 601;
+        switch (fileType) {
+            case "document":
+                //判断文件是否为空
+                if (!files[0].isEmpty()) {
+                    //判断文件大小是否小于30M
+                    if (files[0].getSize() > 30000000) {
+                        return 601;
+                    }
+                    // 获取文件名
+                    String fileName = files[0].getOriginalFilename().toLowerCase();
+                    // 判断文件格式是否正确
+                    if (!(fileName.endsWith("doc") || fileName.endsWith("docx") || fileName.endsWith("xls") || fileName.endsWith("xlsx") || fileName.endsWith("pdf"))) {
+                        return 603;
+                    }
+                } else {
+                    return 604;
                 }
-                // 获取文件名
-                String fileName = files[i].getOriginalFilename().toLowerCase();
-                // 判断文件格式是否正确
-                if (!(fileName.endsWith("jpg") || fileName.endsWith("jpeg") || fileName.endsWith("png") || fileName.endsWith("gif"))) {
-                    return 603;
+                break;
+            default:
+                for (int i = 0, length = files.length; i < length; ++i) {
+                    //判断文件是否为空
+                    if (!files[i].isEmpty()) {
+                        //判断文件大小是否小于1.5M
+                        if (files[i].getSize() > 1500000) {
+                            return 601;
+                        }
+                        // 获取文件名
+                        String fileName = files[i].getOriginalFilename().toLowerCase();
+                        // 判断文件格式是否正确
+                        if (!(fileName.endsWith("jpg") || fileName.endsWith("jpeg") || fileName.endsWith("png") || fileName.endsWith("gif"))) {
+                            return 603;
+                        }
+                    } else {
+                        return 604;
+                    }
                 }
-            } else {
-                return 604;
-            }
+                break;
         }
         //获取服务器项目根目录
         String var = request.getSession().getServletContext().getRealPath("");
@@ -78,6 +99,9 @@ public class FileServicelmpl implements FileService {
                 case "project":
                     file.setSort("项目");
                     break;
+                case "document":
+                    file.setSort("文档文件");
+                    break;
                 case "compact":
                     file.setSort("合同");
                     break;
@@ -85,7 +109,6 @@ public class FileServicelmpl implements FileService {
                     file.setSort("无分类");
                     break;
             }
-
             for (int i = 0, length = fileList.size(); i < length; ++i) {
                 //设置文件路径
                 file.setPath(fileList.get(i));
@@ -94,7 +117,7 @@ public class FileServicelmpl implements FileService {
             //清除集合里的内容  避免数据混乱
             fileList.clear();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
             return 600;
         }
         return 0;

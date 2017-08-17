@@ -16,16 +16,16 @@ import java.util.List;
 @Repository
 public interface DemandReleaseDao {
     // 查询设备租赁信息数据dao接口
-    public List<Equipment> queryEquipmentDao(@Param("keyWord") String keyWord, @Param("compId") String compId, @Param("uid") String uid, @Param("date") String date, @Param("page") int page);
+    public List<Equipment> queryEquipmentDao(@Param("keyWord") String keyWord, @Param("compId") String compId, @Param("uid") String uid, @Param("date") String date, @Param("page") int page) throws Exception;
 
     // 查询苗木信息数据dao接口
-    public List<Seedling> querySeedlingDao(@Param("keyWord") String keyWord, @Param("compId") String compId, @Param("uid") String uid, @Param("breed") String breed, @Param("sub") String sub, @Param("date") String date, @Param("page") int page);
+    public List<Seedling> querySeedlingDao(@Param("keyWord") String keyWord, @Param("compId") String compId, @Param("uid") String uid, @Param("breed") String breed, @Param("sub") String sub, @Param("date") String date, @Param("page") int page) throws Exception;
 
     // 查询招标信息数据数据dao接口
-    public List<Bid> queryBidDao(@Param("keyWord") String keyWord, @Param("compId") String compId, @Param("uid") String uid, @Param("date") String date, @Param("page") int page);
+    public List<Bid> queryBidDao(@Param("keyWord") String keyWord, @Param("compId") String compId, @Param("uid") String uid, @Param("date") String date, @Param("page") int page) throws Exception;
 
     // 查询人才招聘信息数据dao接口
-    public List<Recruit> queryRecruitDao(@Param("keyWord") String keyWord, @Param("compId") String compId, @Param("uid") String uid, @Param("tp") String tp, @Param("characters") String characters, @Param("date") String date, @Param("page") int page);
+    public List<Recruit> queryRecruitDao(@Param("keyWord") String keyWord, @Param("compId") String compId, @Param("uid") String uid, @Param("tp") String tp, @Param("characters") String characters, @Param("date") String date, @Param("page") int page) throws Exception;
 
     // 设备租赁信息数据发布dao接口
     public void saveEquipmentDao(Equipment msg) throws Exception;

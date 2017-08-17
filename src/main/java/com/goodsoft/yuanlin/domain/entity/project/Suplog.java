@@ -1,13 +1,11 @@
 package com.goodsoft.yuanlin.domain.entity.project;
 
 /**
- * Supervisionlog entity.监理日志表实体
+ * Suplog entity.监理日志表实体
  *
  * @author 严彬荣
  */
-public class Supervisionlog implements java.io.Serializable {
-    // 表ID
-    private Integer sid;
+public class Suplog implements java.io.Serializable {
     // 工程名称
     private String name;
     // 监理部位
@@ -28,17 +26,27 @@ public class Supervisionlog implements java.io.Serializable {
     private String other;
     // 用户编号
     private String uid;
-    // 项目编号
-    private Integer pid;
     //部门编号
     private String deptId;
+    //项目信息编号
+    private String pid;
 
-    public Integer getSid() {
-        return sid;
+    public String getPid() {
+        return pid;
     }
 
-    public void setSid(Integer sid) {
-        this.sid = sid;
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+    // 表ID
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -119,14 +127,6 @@ public class Supervisionlog implements java.io.Serializable {
 
     public void setUid(String uid) {
         this.uid = uid;
-    }
-
-    public Integer getPid() {
-        return pid;
-    }
-
-    public void setPid(Integer pid) {
-        this.pid = pid;
     }
 
     public String getDeptId() {

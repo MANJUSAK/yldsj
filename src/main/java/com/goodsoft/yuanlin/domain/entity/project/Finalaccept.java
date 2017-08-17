@@ -1,17 +1,13 @@
 package com.goodsoft.yuanlin.domain.entity.project;
 
-import com.goodsoft.yuanlin.domain.entity.file.FileData;
-
 import java.util.List;
 
 /**
- * Finalacceptance entity.竣工验收表实体
+ * Finalaccept entity.竣工验收表实体
  *
  * @author 严彬荣
  */
-public class Finalacceptance implements java.io.Serializable {
-    // 表ID
-    private Integer fid;
+public class Finalaccept implements java.io.Serializable {
     // 工程名称
     private String name;
     // 竣工时间
@@ -24,18 +20,37 @@ public class Finalacceptance implements java.io.Serializable {
     private String deptId;
     // 用户编号
     private String uid;
-    // 项目编号
-    private Integer pid;
+    // 表ID
+    private String id;
+    //项目信息编号
+    private String pid;
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public List<String> getPicture() {
+        return picture;
+    }
+
+    public void setPicture(List<String> picture) {
+        this.picture = picture;
+    }
+
     // 文件路径
-    private List<FileData> picture;
-
-    public Integer getFid() {
-        return fid;
-    }
-
-    public void setFid(Integer fid) {
-        this.fid = fid;
-    }
+    private List<String> picture;
 
     public String getName() {
         return name;
@@ -85,19 +100,5 @@ public class Finalacceptance implements java.io.Serializable {
         this.uid = uid;
     }
 
-    public Integer getPid() {
-        return pid;
-    }
 
-    public void setPid(Integer pid) {
-        this.pid = pid;
-    }
-
-    public List<FileData> getPicture() {
-        return picture;
-    }
-
-    public void setPicture(List<FileData> picture) {
-        this.picture = picture;
-    }
 }

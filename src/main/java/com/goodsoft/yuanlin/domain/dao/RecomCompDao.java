@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface RecomCompDao {
 
-    public List<RecomComp> queryRecomCompDao(@Param("page") int page);
+    public List<RecomComp> queryRecomCompDao(@Param("page") int page) throws Exception;
 
-    public List<String> queryRecomCompFileDao(@Param("id") String id);
+    public List<String> queryRecomCompFileDao(@Param("id") String id) throws Exception;
 }

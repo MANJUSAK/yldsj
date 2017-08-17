@@ -6,9 +6,6 @@ package com.goodsoft.yuanlin.domain.entity.project;
  * @author 严彬荣
  */
 public class Equipment implements java.io.Serializable {
-
-    // 表id
-    private Integer eid;
     // 项目名称
     private String name;
     // 设备名称
@@ -25,16 +22,25 @@ public class Equipment implements java.io.Serializable {
     private String deptId;
     // 用户id
     private String uid;
-    // 项目编号
-    private Integer pid;
+    // 表ID
+    private String id;
+    //项目信息编号
+    private String pid;
 
-
-    public Integer getEid() {
-        return eid;
+    public String getPid() {
+        return pid;
     }
 
-    public void setEid(Integer eid) {
-        this.eid = eid;
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -101,11 +107,4 @@ public class Equipment implements java.io.Serializable {
         this.uid = uid;
     }
 
-    public Integer getPid() {
-        return pid;
-    }
-
-    public void setPid(Integer pid) {
-        this.pid = pid;
-    }
 }

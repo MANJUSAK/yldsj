@@ -1,7 +1,5 @@
 package com.goodsoft.yuanlin.domain.entity.project;
 
-import com.goodsoft.yuanlin.domain.entity.file.FileData;
-
 import java.util.List;
 
 /**
@@ -11,30 +9,47 @@ import java.util.List;
  */
 public class Declaration implements java.io.Serializable {
 
-    // 表ID
-    private Integer did;
     // 项目名称
     private String name;
     // 申报日期
-    private String dates;
+    private String date;
     // 申报图片编号
     private String filesId;
     // 用户ID
     private String uid;
-    // 项目编号
-    private Integer pid;
     //部门编号
     private String deptId;
+    // 表ID
+    private String id;
+    //项目信息编号
+    private String pid;
+
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public List<String> getPicture() {
+        return picture;
+    }
+
+    public void setPicture(List<String> picture) {
+        this.picture = picture;
+    }
+
     // 图片路径
-    private List<FileData> picture;
-
-    public Integer getDid() {
-        return did;
-    }
-
-    public void setDid(Integer did) {
-        this.did = did;
-    }
+    private List<String> picture;
 
     public String getName() {
         return name;
@@ -44,12 +59,12 @@ public class Declaration implements java.io.Serializable {
         this.name = name;
     }
 
-    public String getDates() {
-        return dates;
+    public String getDate() {
+        return date;
     }
 
-    public void setDates(String dates) {
-        this.dates = dates;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getFilesId() {
@@ -68,13 +83,6 @@ public class Declaration implements java.io.Serializable {
         this.uid = uid;
     }
 
-    public Integer getPid() {
-        return pid;
-    }
-
-    public void setPid(Integer pid) {
-        this.pid = pid;
-    }
 
     public String getDeptId() {
         return deptId;
@@ -82,13 +90,5 @@ public class Declaration implements java.io.Serializable {
 
     public void setDeptId(String deptId) {
         this.deptId = deptId;
-    }
-
-    public List<FileData> getPicture() {
-        return picture;
-    }
-
-    public void setPicture(List<FileData> picture) {
-        this.picture = picture;
     }
 }

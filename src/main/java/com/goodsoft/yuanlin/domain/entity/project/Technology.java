@@ -1,7 +1,5 @@
 package com.goodsoft.yuanlin.domain.entity.project;
 
-import com.goodsoft.yuanlin.domain.entity.file.FileData;
-
 import java.util.List;
 
 /**
@@ -10,8 +8,6 @@ import java.util.List;
  * @author 严彬荣
  */
 public class Technology implements java.io.Serializable {
-    // 表ID
-    private Integer tid;
     // 项目名称
     private String name;
     // 时间
@@ -24,19 +20,37 @@ public class Technology implements java.io.Serializable {
     private String filesId;
     // 用户ID
     private String uid;
-    // 项目编号
-    private Integer pid;
     //部门编号
     private String deptId;
     // 图片路径
-    private List<FileData> picture;
+    private List<String> picture;
+    // 表ID
+    private String id;
+    //项目信息编号
+    private String pid;
 
-    public Integer getTid() {
-        return tid;
+    public String getPid() {
+        return pid;
     }
 
-    public void setTid(Integer tid) {
-        this.tid = tid;
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public List<String> getPicture() {
+        return picture;
+    }
+
+    public void setPicture(List<String> picture) {
+        this.picture = picture;
     }
 
     public String getName() {
@@ -87,14 +101,6 @@ public class Technology implements java.io.Serializable {
         this.uid = uid;
     }
 
-    public Integer getPid() {
-        return pid;
-    }
-
-    public void setPid(Integer pid) {
-        this.pid = pid;
-    }
-
     public String getDeptId() {
         return deptId;
     }
@@ -103,11 +109,4 @@ public class Technology implements java.io.Serializable {
         this.deptId = deptId;
     }
 
-    public List<FileData> getPicture() {
-        return picture;
-    }
-
-    public void setPicture(List<FileData> picture) {
-        this.picture = picture;
-    }
 }

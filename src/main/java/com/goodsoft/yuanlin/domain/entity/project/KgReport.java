@@ -6,29 +6,37 @@ package com.goodsoft.yuanlin.domain.entity.project;
  * @author 严彬荣
  */
 public class KgReport implements java.io.Serializable {
-    // 表ID
-    private Integer kid;
     // 项目名称
     private String name;
     // 开工日期
-    private String time;
+    private String date;
     //文件编号
     private String filesId;
     // 用户ID
     private String uid;
-    // 项目编号
-    private Integer pid;
     //部门编号
     private String deptId;
     //确认文件
     private String document;
+    // 表ID
+    private String id;
+    //项目信息编号
+    private String pid;
 
-    public Integer getKid() {
-        return kid;
+    public String getPid() {
+        return pid;
     }
 
-    public void setKid(Integer kid) {
-        this.kid = kid;
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -39,12 +47,12 @@ public class KgReport implements java.io.Serializable {
         this.name = name;
     }
 
-    public String getTime() {
-        return time;
+    public String getDate() {
+        return date;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getFilesId() {
@@ -61,14 +69,6 @@ public class KgReport implements java.io.Serializable {
 
     public void setUid(String uid) {
         this.uid = uid;
-    }
-
-    public Integer getPid() {
-        return pid;
-    }
-
-    public void setPid(Integer pid) {
-        this.pid = pid;
     }
 
     public String getDeptId() {

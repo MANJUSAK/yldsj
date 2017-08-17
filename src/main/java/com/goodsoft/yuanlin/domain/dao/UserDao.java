@@ -16,29 +16,29 @@ import java.util.List;
 public interface UserDao {
 
     //用户登录
-    public User queryUserDao(@Param("userName") String userName, @Param("passWord") String passWord);
+    public User queryUserDao(@Param("userName") String userName, @Param("passWord") String passWord) throws Exception;
 
     //用户签到
     public void signInDao(SignIn msg) throws Exception;
 
     //用户签到信息
-    public List<SignIn> querySignInDao(@Param("uid") String uid, @Param("deptId") String deptId, @Param("page") int page);
+    public List<SignIn> querySignInDao(@Param("uid") String uid, @Param("deptId") String deptId, @Param("page") int page) throws Exception;
 
     //检索用户名是否存在
-    public int queryUserByNameDao(@Param("userName") String userName);
+    public int queryUserByNameDao(@Param("userName") String userName) throws Exception;
 
     //获取部门id
-    public String queryDeptByNameDao(@Param("dept") String dept);
+    public String queryDeptByNameDao(@Param("dept") String dept) throws Exception;
 
     //获取部门权限等级
-    public String queryDeptLevelByIdDao(@Param("deptId") String deptId);
+    public String queryDeptLevelByIdDao(@Param("deptId") String deptId) throws Exception;
 
     //获取用户所在部门id
-    public String queryDeptIdByUidDao(@Param("uid") String uid);
+    public String queryDeptIdByUidDao(@Param("uid") String uid) throws Exception;
 
     //添加用户信息
     public void addUserDao(User user) throws Exception;
 
     //添加用户到部门
-    public void addDeptDao(@Param("id") String id, @Param("uid") String uid, @Param("deptId") String deptId, @Param("time") String time);
+    public void addDeptDao(@Param("id") String id, @Param("uid") String uid, @Param("deptId") String deptId, @Param("time") String time) throws Exception;
 }

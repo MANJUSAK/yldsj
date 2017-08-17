@@ -6,8 +6,6 @@ package com.goodsoft.yuanlin.domain.entity.project;
  * @author 严彬荣
  */
 public class Mylocus implements java.io.Serializable {
-    // 表id
-    private Integer mid;
     // 人员
     private String contact;
     // 工作内容
@@ -20,15 +18,26 @@ public class Mylocus implements java.io.Serializable {
     private String uid;
     //部门编号
     private String deptId;
+    // 表ID
+    private String id;
+    //项目信息编号
+    private String pid;
 
-    public Integer getMid() {
-        return mid;
+    public String getPid() {
+        return pid;
     }
 
-    public void setMid(Integer mid) {
-        this.mid = mid;
+    public void setPid(String pid) {
+        this.pid = pid;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getDetails() {
         return details;

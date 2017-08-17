@@ -6,8 +6,6 @@ package com.goodsoft.yuanlin.domain.entity.project;
  * @author 严彬荣
  */
 public class SgPersonnel implements java.io.Serializable {
-    // 表ID
-    private Integer sid;
     // 项目名称
     private String name;
     // 姓名
@@ -22,17 +20,26 @@ public class SgPersonnel implements java.io.Serializable {
     private String workPost;
     // 用户id
     private String uid;
-    // 项目编号
-    private Integer pid;
     //部门编号
     private String deptId;
+    // 表ID
+    private String id;
+    //项目信息编号
+    private String pid;
 
-    public Integer getSid() {
-        return sid;
+    public String getPid() {
+        return pid;
     }
 
-    public void setSid(Integer sid) {
-        this.sid = sid;
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -89,14 +96,6 @@ public class SgPersonnel implements java.io.Serializable {
 
     public void setUid(String uid) {
         this.uid = uid;
-    }
-
-    public Integer getPid() {
-        return pid;
-    }
-
-    public void setPid(Integer pid) {
-        this.pid = pid;
     }
 
     public String getDeptId() {

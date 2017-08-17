@@ -1,13 +1,11 @@
 package com.goodsoft.yuanlin.domain.entity.project;
 
 /**
- * ConstructionLog entity.施工日志表实体
+ * ConsLog entity.施工日志表实体
  *
  * @author 严彬荣
  */
-public class ConstructionLog implements java.io.Serializable {
-    // 表ID
-    private Integer cid;
+public class ConsLog implements java.io.Serializable {
     // 项目名称
     private String name;
     // 施工日期
@@ -26,16 +24,25 @@ public class ConstructionLog implements java.io.Serializable {
     private String deptId;
     // 用户编号
     private String uid;
-    // 项目编号
-    private Integer pid;
+    // 表ID
+    private String id;
+    //项目信息编号
+    private String pid;
 
-
-    public Integer getCid() {
-        return cid;
+    public String getPid() {
+        return pid;
     }
 
-    public void setCid(Integer cid) {
-        this.cid = cid;
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -110,11 +117,4 @@ public class ConstructionLog implements java.io.Serializable {
         this.uid = uid;
     }
 
-    public Integer getPid() {
-        return pid;
-    }
-
-    public void setPid(Integer pid) {
-        this.pid = pid;
-    }
 }

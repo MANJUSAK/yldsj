@@ -1,19 +1,19 @@
 package com.goodsoft.yuanlin.domain.entity.project;
 
+import java.beans.Transient;
+
 /**
  * Project entity.项目信息报实体
  *
  * @author 严彬荣
  */
 public class Project implements java.io.Serializable {
-    // 表id
-    private Integer pid;
     // 项目名称
     private String name;
     // 项目负责人
     private String principal;
     // 联系方式
-    private String contact;
+    private String tel;
     // 项目人数
     private Integer personNum;
     // 项目地点
@@ -28,13 +28,15 @@ public class Project implements java.io.Serializable {
     private String uid;
     //部门编号
     private String deptId;
+    // 表ID
+    private String id;
 
-    public Integer getPid() {
-        return pid;
+    public String getId() {
+        return id;
     }
 
-    public void setPid(Integer pid) {
-        this.pid = pid;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -53,12 +55,12 @@ public class Project implements java.io.Serializable {
         this.principal = principal;
     }
 
-    public String getContact() {
-        return contact;
+    public String getTel() {
+        return tel;
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setTel(String tel) {
+        this.tel = tel;
     }
 
     public Integer getPersonNum() {
@@ -101,6 +103,7 @@ public class Project implements java.io.Serializable {
         this.endTime = endTime;
     }
 
+    @Transient
     public String getUid() {
         return uid;
     }
@@ -109,6 +112,7 @@ public class Project implements java.io.Serializable {
         this.uid = uid;
     }
 
+    @Transient
     public String getDeptId() {
         return deptId;
     }

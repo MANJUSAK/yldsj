@@ -44,7 +44,7 @@ public class UserController {
      */
     @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.GET)
     @RequestMapping(value = "/find/signIn")
-    public Object querySignInController(String uid, String deptId, int page) {
+    public Object querySignInController(String uid, String deptId, String page) {
         return this.service.querySignInService(uid, deptId, page);
     }
 

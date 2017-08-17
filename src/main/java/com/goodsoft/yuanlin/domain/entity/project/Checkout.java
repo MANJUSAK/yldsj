@@ -1,7 +1,5 @@
 package com.goodsoft.yuanlin.domain.entity.project;
 
-import com.goodsoft.yuanlin.domain.entity.file.FileData;
-
 import java.util.List;
 
 /**
@@ -11,46 +9,55 @@ import java.util.List;
  */
 
 public class Checkout implements java.io.Serializable {
-    // 表id
-    private Integer cid;
     // 工程名称
-    private String gxName;
+    private String name;
     // 工序名称
     private String gxProcedure;
     // 人员类型
-    private String personnelType;
+    private String persType;
     // 交接者
     private String receiver;
     // 工作岗位
     private String workPost;
     // 施工日期
-    private String gxTime;
+    private String date;
     // 影像资料图编号
     private String filesId;
-    // 项目信息编号pid
-    private Integer pid;
     // 用户ID
     private String uid;
-    // 用户ID
-    private String deptId;
     // 图片路径
-    private List<FileData> picture;
+    private List<String> picture;
+    // 表ID
+    private String id;
+    //项目信息编号
+    private String pid;
+    //部门编号
+    private String deptId;
 
-    public Integer getCid() {
-        return cid;
+    public String getPid() {
+        return pid;
     }
 
-    public void setCid(Integer cid) {
-        this.cid = cid;
+    public void setPid(String pid) {
+        this.pid = pid;
     }
 
-    public String getGxName() {
-        return gxName;
+    public String getId() {
+        return id;
     }
 
-    public void setGxName(String gxName) {
-        this.gxName = gxName;
+    public void setId(String id) {
+        this.id = id;
     }
+
+    public List<String> getPicture() {
+        return picture;
+    }
+
+    public void setPicture(List<String> picture) {
+        this.picture = picture;
+    }
+
 
     public String getGxProcedure() {
         return gxProcedure;
@@ -68,13 +75,6 @@ public class Checkout implements java.io.Serializable {
         this.deptId = deptId;
     }
 
-    public String getPersonnelType() {
-        return personnelType;
-    }
-
-    public void setPersonnelType(String personnelType) {
-        this.personnelType = personnelType;
-    }
 
     public String getReceiver() {
         return receiver;
@@ -92,13 +92,6 @@ public class Checkout implements java.io.Serializable {
         this.workPost = workPost;
     }
 
-    public String getGxTime() {
-        return gxTime;
-    }
-
-    public void setGxTime(String gxTime) {
-        this.gxTime = gxTime;
-    }
 
     public String getFilesId() {
         return filesId;
@@ -108,13 +101,6 @@ public class Checkout implements java.io.Serializable {
         this.filesId = filesId;
     }
 
-    public Integer getPid() {
-        return pid;
-    }
-
-    public void setPid(Integer pid) {
-        this.pid = pid;
-    }
 
     public String getUid() {
         return uid;
@@ -124,11 +110,27 @@ public class Checkout implements java.io.Serializable {
         this.uid = uid;
     }
 
-    public List<FileData> getPicture() {
-        return picture;
+    public String getName() {
+        return name;
     }
 
-    public void setPicture(List<FileData> picture) {
-        this.picture = picture;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPersType() {
+        return persType;
+    }
+
+    public void setPersType(String persType) {
+        this.persType = persType;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

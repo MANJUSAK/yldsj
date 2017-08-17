@@ -1,5 +1,741 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--suppress ALL -->
-<mapper namespace="com.goodsoft.yuanlin.domain.dao.ProjectDao">
+<mapper namespace="com.goodsoft.yuanlin.domain.dao.ProjectManageDao">
+    <!--查询-->
+    <!--变更管理结果映射-->
+    <resultMap id="alterationInfo" type="com.goodsoft.yuanlin.domain.entity.project.Alteration">
+        <result property="name" column="PROJECT_NAME"/>
+        <result property="id" column="ID"/>
+        <result property="confParty" column="CONFIRMATION_PARTY"/>
+        <result property="time" column="CHANGE_DATE"/>
+        <result property="filesId" column="CHANGE_BASIS"/>
+    </resultMap>
+    <!--变更管理sql-->
+    <select id="queryAlterationDao" parameterType="java.lang.String" resultMap="alterationInfo">
+        SELECT
+        A.ID AS PID,
+        A.PROJECT_NAME,
+        B.ID,
+        B.CONFIRMATION_PARTY,
+        B.CHANGE_DATE,
+        B.CHANGE_BASIS,
+        B.UIDS,
+        B.DEPTID
+        FROM
+        hz7.gs_project_information A
+        LEFT OUTER JOIN
+        hz7.gs_change_management B ON A.ID = B.PID
+        <where>
+            <if test="deptId !=null and deptId !=''">
+                and B.DEPTID=#{deptId}
+            </if>
+            <if test="uid !=null and uid !=''">
+                and B.UIDS=#{uid}
+            </if>
+        </where>
+        order by B.CHANGE_DATE limit #{page},20
+    </select>
+    <!--工序报验结果映射-->
+    <resultMap id="checkoutInfo" type="com.goodsoft.yuanlin.domain.entity.project.Checkout">
+        <result property="pid" column="PID"/>
+        <result property="name" column="PROJECT_NAME"/>
+        <result property="id" column="ID"/>
+        <result property="gxProcedure" column="WORKING_NAME"/>
+        <result property="persType" column="PERSON_TYPE"/>
+        <result property="receiver" column="TRANSFER_PERSON"/>
+        <result property="workPost" column="POST"/>
+        <result property="date" column="CONSTRUCTION_DATE"/>
+        <result property="filesId" column="IMAGE_PICTURE"/>
+    </resultMap>
+    <!--工序报验sql-->
+    <select id="queryCheckoutDao" parameterType="java.lang.String" resultMap="checkoutInfo">
+        SELECT
+        A.ID AS PID,
+        A.PROJECT_NAME,
+        B.ID,
+        B.WORKING_NAME,
+        B.PERSON_TYPE,
+        B.TRANSFER_PERSON,
+        B.POST,
+        B.CONSTRUCTION_DATE,
+        B.IMAGE_PICTURE
+        FROM
+        hz7.gs_project_information A
+        LEFT OUTER JOIN
+        hz7.gs_process_inspection B ON A.ID = B.PID
+        <where>
+            <if test="deptId !=null and deptId !=''">
+                and B.DEPTID=#{deptId}
+            </if>
+            <if test="uid !=null and uid !=''">
+                and B.UIDS=#{uid}
+            </if>
+        </where>
+        order by B.CONSTRUCTION_DATE limit #{page},20
+    </select>
+    <!--施工日志结果映射-->
+    <resultMap id="consLogInfo" type="com.goodsoft.yuanlin.domain.entity.project.ConsLog">
+        <result property="pid" column="PID"/>
+        <result property="name" column="PROJECT_NAME"/>
+        <result property="id" column="ID"/>
+        <result property="date" column="CONSTRUCTION_DATE"/>
+        <result property="proContent" column="PRODUCTION_CONTENT"/>
+        <result property="tecIndex" column="TECHNICAL_INDEX"/>
+        <result property="workCondition" column="COMPLETE_STATUS"/>
+        <result property="principal" column="PROJECT_LEADER"/>
+        <result property="builder" column="BUILDER"/>
+    </resultMap>
+    <!--施工日志sql-->
+    <select id="queryConsLogDao" parameterType="java.lang.String" resultMap="consLogInfo">
+        SELECT
+        A.ID AS PID,
+        A.PROJECT_NAME,
+        B.ID,
+        B.CONSTRUCTION_DATE,
+        B.PRODUCTION_CONTENT,
+        B.TECHNICAL_INDEX,
+        B.COMPLETE_STATUS,
+        B.PROJECT_LEADER,
+        B.BUILDER
+        FROM
+        hz7.gs_project_information A
+        LEFT OUTER JOIN
+        hz7.gs_construction_log B ON A.ID = B.PID
+        <where>
+            <if test="deptId !=null and deptId !=''">
+                and B.DEPTID=#{deptId}
+            </if>
+            <if test="uid !=null and uid !=''">
+                and B.UIDS=#{uid}
+            </if>
+        </where>
+        order by B.CONSTRUCTION_DATE limit #{page},20
+    </select>
+    <!--施工安全日志结果映射-->
+    <resultMap id="consSafetyLogInfo" type="com.goodsoft.yuanlin.domain.entity.project.ConsSafetyLog">
+        <result property="pid" column="PID"/>
+        <result property="name" column="PROJECT_NAME"/>
+        <result property="id" column="ID"/>
+        <result property="date" column="CONSTRUCTION_DATE"/>
+        <result property="constLocation" column="CONSTRUCTION_POSITION"/>
+        <result property="constDynamic" column="PROCESS_DYNAMICS"/>
+        <result property="sftSituation" column="SAFETY_STATUS"/>
+        <result property="sftProblems" column="PROBLEM_PROCESSING"/>
+        <result property="fillPle" column="FILL"/>
+    </resultMap>
+    <!--施工安全日志sql-->
+    <select id="queryConsSafetyLogDao" parameterType="java.lang.String" resultMap="consSafetyLogInfo">
+        SELECT
+        A.ID AS PID,
+        A.PROJECT_NAME,
+        B.ID,
+        B.CONSTRUCTION_DATE,
+        B.CONSTRUCTION_POSITION,
+        B.PROCESS_DYNAMICS,
+        B.SAFETY_STATUS,
+        B.PROBLEM_PROCESSING,
+        B.FILL
+        FROM
+        hz7.gs_project_information A
+        LEFT OUTER JOIN
+        hz7.gs_security_log B ON A.ID = B.PID
+        <where>
+            <if test="deptId !=null and deptId !=''">
+                and B.DEPTID=#{deptId}
+            </if>
+            <if test="uid !=null and uid !=''">
+                and B.UIDS=#{uid}
+            </if>
+        </where>
+        order by B.CONSTRUCTION_DATE limit #{page},20
+    </select>
+    <!--进度申报结果映射-->
+    <resultMap id="declarationInfo" type="com.goodsoft.yuanlin.domain.entity.project.Declaration">
+        <result property="pid" column="PID"/>
+        <result property="name" column="PROJECT_NAME"/>
+        <result property="id" column="ID"/>
+        <result property="date" column="PR_DATE"/>
+        <result property="filesId" column="PR_FILE"/>
+    </resultMap>
+    <!--进度申报sql-->
+    <select id="queryDeclarationDao" parameterType="java.lang.String" resultMap="declarationInfo">
+        SELECT
+        A.ID AS PID,
+        A.PROJECT_NAME,
+        B.ID,
+        B.PR_DATE,
+        B.PR_FILE
+        FROM
+        hz7.gs_project_information A
+        LEFT OUTER JOIN
+        hz7.GS_PROGRESS_REPORTING B ON A.ID = B.PID
+        <where>
+            <if test="deptId !=null and deptId !=''">
+                and B.DEPTID=#{deptId}
+            </if>
+            <if test="uid !=null and uid !=''">
+                and B.UIDS=#{uid}
+            </if>
+        </where>
+        order by B.PR_DATE limit #{page},20
+    </select>
+    <!--设备信息结果映射-->
+    <resultMap id="equipmentInfo" type="com.goodsoft.yuanlin.domain.entity.project.Equipment">
+        <result property="pid" column="PID"/>
+        <result property="name" column="PROJECT_NAME"/>
+        <result property="id" column="ID"/>
+        <result property="sbName" column="DEVICE_NAME"/>
+        <result property="sbSpec" column="DEVICE_TYPE"/>
+        <result property="sbNum" column="DEVICE_NUMBERS"/>
+        <result property="sbPurpose" column="DEVICE_PURPOSE"/>
+        <result property="sbSource" column="DEVICE_SOURCE"/>
+    </resultMap>
+    <!--设备信息sql-->
+    <select id="queryEquipmentDao" parameterType="java.lang.String" resultMap="equipmentInfo">
+        SELECT
+        A.ID AS PID,
+        A.PROJECT_NAME,
+        B.ID,
+        B.DEVICE_NAME,
+        B.DEVICE_TYPE,
+        B.DEVICE_NUMBERS,
+        B.DEVICE_PURPOSE,
+        B.DEVICE_SOURCE
+        FROM
+        hz7.gs_project_information A
+        LEFT OUTER JOIN
+        hz7.gs_device_information B ON A.ID = B.PID
+        <where>
+            <if test="deptId !=null and deptId !=''">
+                and B.DEPTID=#{deptId}
+            </if>
+            <if test="uid !=null and uid !=''">
+                and B.UIDS=#{uid}
+            </if>
+        </where>
+        limit #{page},20
+    </select>
+    <!--竣工验收结果映射-->
+    <resultMap id="finalacceptInfo" type="com.goodsoft.yuanlin.domain.entity.project.Finalaccept">
+        <result property="pid" column="PID"/>
+        <result property="name" column="PROJECT_NAME"/>
+        <result property="id" column="ID"/>
+        <result property="date" column="FINAL_TIME"/>
+        <result property="insPersonnel" column="ACCEPTANCE_PERSON"/>
+        <result property="filesId" column="FINAL_PICTURE"/>
+    </resultMap>
+    <!--竣工验收sql-->
+    <select id="queryFinalacceptDao" parameterType="java.lang.String" resultMap="finalacceptInfo">
+        SELECT
+        A.ID AS PID,
+        A.PROJECT_NAME,
+        B.ID,
+        B.FINAL_TIME,
+        B.ACCEPTANCE_PERSON,
+        B.FINAL_PICTURE
+        FROM
+        hz7.gs_project_information A
+        LEFT OUTER JOIN
+        hz7.gs_final_acceptance B ON A.ID = B.PID
+        <where>
+            <if test="deptId !=null and deptId !=''">
+                and B.DEPTID=#{deptId}
+            </if>
+            <if test="uid !=null and uid !=''">
+                and B.UIDS=#{uid}
+            </if>
+        </where>
+        order by B.FINAL_TIME limit #{page},20
+    </select>
+    <!--会审结果结果映射-->
+    <resultMap id="hsResultInfo" type="com.goodsoft.yuanlin.domain.entity.project.HsResult">
+        <result property="pid" column="PID"/>
+        <result property="name" column="PROJECT_NAME"/>
+        <result property="id" column="ID"/>
+        <result property="company" column="ROR_COMPANY"/>
+        <result property="filesId" column="ROR_PICTURE"/>
+    </resultMap>
+    <!--会审结果sql-->
+    <select id="queryHsResultDao" parameterType="java.lang.String" resultMap="hsResultInfo">
+        SELECT
+        A.ID AS PID,
+        A.PROJECT_NAME,
+        B.ID,
+        B.ROR_COMPANY,
+        B.ROR_PICTURE
+        FROM
+        hz7.gs_project_information A
+        LEFT OUTER JOIN
+        hz7.gs_review_of_results B ON A.ID = B.PID
+        <where>
+            <if test="deptId !=null and deptId !=''">
+                and B.DEPTID=#{deptId}
+            </if>
+            <if test="uid !=null and uid !=''">
+                and B.UIDS=#{uid}
+            </if>
+        </where>
+        limit #{page},20
+    </select>
+    <!--开工报告结果映射-->
+    <resultMap id="kgReportInfo" type="com.goodsoft.yuanlin.domain.entity.project.KgReport">
+        <result property="pid" column="PID"/>
+        <result property="name" column="PROJECT_NAME"/>
+        <result property="id" column="ID"/>
+        <result property="date" column="COMMENCEMENT_TIME"/>
+        <result property="filesId" column="FILE_VALIDATION"/>
+    </resultMap>
+    <!--开工报告sql-->
+    <select id="queryKgReportDao" parameterType="java.lang.String" resultMap="kgReportInfo">
+        SELECT
+        A.ID AS PID,
+        A.PROJECT_NAME,
+        B.ID,
+        B.COMMENCEMENT_TIME,
+        B.FILE_VALIDATION
+        FROM
+        hz7.gs_project_information A
+        LEFT OUTER JOIN
+        hz7.gs_commencement_report B ON A.ID = B.PID
+        <where>
+            <if test="deptId !=null and deptId !=''">
+                and B.DEPTID=#{deptId}
+            </if>
+            <if test="uid !=null and uid !=''">
+                and B.UIDS=#{uid}
+            </if>
+        </where>
+        ORDER BY B.COMMENCEMENT_TIME limit #{page},20
+    </select>
+    <!--我的轨迹结果映射-->
+    <resultMap id="mylocusInfo" type="com.goodsoft.yuanlin.domain.entity.project.Mylocus">
+        <result property="" column=""/>
+    </resultMap>
+    <!--我的轨迹sql-->
+    <select id="queryMylocusDao" parameterType="java.lang.String" resultMap="mylocusInfo">
+        <where>
+            <if test="deptId !=null and deptId !=''">
+                and DEPTID=#{deptId}
+            </if>
+            <if test="uid !=null and uid !=''">
+                and UIDS=#{uid}
+            </if>
+        </where>
+        limit #{page},20 ORDER BY
+    </select>
+    <!--项目信息结果映射-->
+    <resultMap id="projectInfo" type="com.goodsoft.yuanlin.domain.entity.project.Project">
+        <result property="id" column="ID"/>
+        <result property="name" column="PROJECT_NAME"/>
+        <result property="company" column="CONSTRUCTION_UNIT"/>
+        <result property="startTime" column="START_TIME"/>
+        <result property="endTime" column="COMPLETION_TIME"/>
+        <result property="principal" column="PROJECT_LEADER"/>
+        <result property="tel" column="CONTACT_TEL"/>
+        <result property="personNum" column="PROJECT_NUMBERS"/>
+        <result property="address" column="PROJECT_ADDRESS"/>
+    </resultMap>
+    <!--项目信息sql-->
+    <select id="queryProjectDao" parameterType="java.lang.String" resultMap="projectInfo">
+        SELECT
+        ID,
+        PROJECT_NAME,
+        CONSTRUCTION_UNIT,
+        START_TIME,
+        COMPLETION_TIME,
+        PROJECT_LEADER,
+        CONTACT_TEL,
+        PROJECT_NUMBERS,
+        PROJECT_ADDRESS
+        FROM
+        hz7.gs_project_information
+        <where>
+            <if test="deptId !=null and deptId !=''">
+                and DEPTID=#{deptId}
+            </if>
+            <if test="uid !=null and uid !=''">
+                and UIDS=#{uid}
+            </if>
+        </where>
+        ORDER BY START_TIME limit #{page},20
+    </select>
+    <!--现场施工结果映射-->
+    <resultMap id="prospectInfo" type="com.goodsoft.yuanlin.domain.entity.project.Prospect">
+        <result property="pid" column="PID"/>
+        <result property="name" column="PROJECT_NAME"/>
+        <result property="id" column="ID"/>
+        <result property="date" column="SITEINVE_TIME"/>
+        <result property="address" column="SITEINVE_PLACE"/>
+        <result property="person" column="SITEINVE_PERSON"/>
+        <result property="filesId" column="STIGATION_SITUATION"/>
+    </resultMap>
+    <!--现场施工sql-->
+    <select id="queryProspectDao" parameterType="java.lang.String" resultMap="prospectInfo">
+        SELECT
+        A.ID AS PID,
+        A.PROJECT_NAME,
+        B.ID,
+        B.SITEINVE_TIME,
+        B.SITEINVE_PLACE,
+        B.SITEINVE_PERSON,
+        B.STIGATION_SITUATION
+        FROM
+        hz7.gs_project_information A
+        LEFT OUTER JOIN
+        hz7.gs_siteinve_stigation B ON A.ID = B.PID
+        <where>
+            <if test="deptId !=null and deptId !=''">
+                and B.DEPTID=#{deptId}
+            </if>
+            <if test="uid !=null and uid !=''">
+                and B.UIDS=#{uid}
+            </if>
+        </where>
+        ORDER BY B.SITEINVE_TIME limit #{page},20
+    </select>
+    <!--施工人员结果映射-->
+    <resultMap id="sgPersonnelInfo" type="com.goodsoft.yuanlin.domain.entity.project.SgPersonnel">
+        <result property="pid" column="PID"/>
+        <result property="name" column="PROJECT_NAME"/>
+        <result property="id" column="ID"/>
+        <result property="persType" column="PERSONAL_TYPE"/>
+        <result property="workPost" column="POST"/>
+        <result property="contact" column="USER_NAME"/>
+        <result property="idCard" column="CARD"/>
+        <result property="tel" column="CONTACT_TEL"/>
+    </resultMap>
+    <!--施工人员sql-->
+    <select id="querySgPersonnelDao" parameterType="java.lang.String" resultMap="sgPersonnelInfo">
+        SELECT
+        A.ID AS PID,
+        A.PROJECT_NAME,
+        B.ID,
+        B.PERSONAL_TYPE,
+        B.POST,
+        B.USER_NAME,
+        B.CARD,
+        B.CONTACT_TEL
+        FROM
+        hz7.gs_project_information A
+        LEFT OUTER JOIN
+        hz7.gs_construction_personnel B ON A.ID = B.PID
+        <where>
+            <if test="deptId !=null and deptId !=''">
+                and B.DEPTID=#{deptId}
+            </if>
+            <if test="uid !=null and uid !=''">
+                and B.UIDS=#{uid}
+            </if>
+        </where>
+        limit #{page},20
+    </select>
+    <!--项目结算结果映射-->
+    <resultMap id="settlementInfo" type="com.goodsoft.yuanlin.domain.entity.project.Settlement">
+        <result property="pid" column="PID"/>
+        <result property="name" column="PROJECT_NAME"/>
+        <result property="id" column="ID"/>
+        <result property="date" column="SETTLEMENT_TIME"/>
+        <result property="filesId" column="SETTLEMENT_BOOK"/>
+    </resultMap>
+    <!--项目结算sql-->
+    <select id="querySettlementDao" parameterType="java.lang.String" resultMap="settlementInfo">
+        SELECT
+        A.ID AS PID,
+        A.PROJECT_NAME,
+        B.ID,
+        B.SETTLEMENT_TIME,
+        B.SETTLEMENT_BOOK
+        FROM
+        hz7.gs_project_information A
+        LEFT OUTER JOIN
+        hz7.gs_project_settlement B ON A.ID = B.PID
+        <where>
+            <if test="deptId !=null and deptId !=''">
+                and B.DEPTID=#{deptId}
+            </if>
+            <if test="uid !=null and uid !=''">
+                and B.UIDS=#{uid}
+            </if>
+        </where>
+        ORDER BY B.SETTLEMENT_TIME limit #{page},20
+    </select>
+    <!--监理日志结果映射-->
+    <resultMap id="suplogInfo" type="com.goodsoft.yuanlin.domain.entity.project.Suplog">
+        <result property="pid" column="PID"/>
+        <result property="name" column="PROJECT_NAME"/>
+        <result property="id" column="ID"/>
+        <result property="date" column="DATES"/>
+        <result property="proSituation" column="PROGRESS_STATUS"/>
+        <result property="supLocation" column="SUPERVITION_POSITION"/>
+        <result property="workSitustion" column="SUPERVITION_STATUS"/>
+        <result property="question" column="EXISTENCE_STATUS"/>
+        <result property="other" column="SOMETHING"/>
+        <result property="noteTaker" column="NATE_TAKER"/>
+        <result property="engineer" column="SUPERVITON_ENGINEER"/>
+    </resultMap>
+    <!--监理日志sql-->
+    <select id="querySuplogDao" parameterType="java.lang.String" resultMap="suplogInfo">
+        SELECT
+        A.ID AS PID,
+        A.PROJECT_NAME,
+        B.ID,
+        B.DATES,
+        B.SUPERVITION_POSITION,
+        B.PROGRESS_STATUS,
+        B.SUPERVITION_STATUS,
+        B.EXISTENCE_STATUS,
+        B.SOMETHING,
+        B.NATE_TAKER,
+        B.SUPERVITON_ENGINEER
+        FROM
+        hz7.gs_project_information A
+        LEFT OUTER JOIN
+        hz7.gs_supervision_log B ON A.ID = B.PID
+        <where>
+            <if test="deptId !=null and deptId !=''">
+                and B.DEPTID=#{deptId}
+            </if>
+            <if test="uid !=null and uid !=''">
+                and B.UIDS=#{uid}
+            </if>
+        </where>
+        ORDER BY B.DATES limit #{page},20
+    </select>
+    <!--供货商结果映射-->
+    <resultMap id="supplierInfo" type="com.goodsoft.yuanlin.domain.entity.project.Supplier">
+        <result property="pid" column="PID"/>
+        <result property="name" column="PROJECT_NAME"/>
+        <result property="id" column="ID"/>
+        <result property="company" column="COMPANY_NAME"/>
+        <result property="address" column="COMPANY_ADDRESS"/>
+        <result property="date" column="SUPPLIER_DATE"/>
+        <result property="tel" column="CONTACT_INFORMATION"/>
+        <result property="filesId" column="SUPPLIER_PINCTURE"/>
+    </resultMap>
+    <!--供货商sql-->
+    <select id="querySupplierDao" parameterType="java.lang.String" resultMap="supplierInfo">
+        SELECT
+        A.ID AS PID,
+        A.PROJECT_NAME,
+        B.ID,
+        B.COMPANY_NAME,
+        B.COMPANY_ADDRESS,
+        B.SUPPLIER_DATE,
+        B.CONTACT_INFORMATION,
+        B.SUPPLIER_PINCTURE
+        FROM
+        hz7.gs_project_information A
+        LEFT OUTER JOIN
+        hz7.gs_supplier_information B ON A.ID = B.PID
+        <where>
+            <if test="deptId !=null and deptId !=''">
+                and B.DEPTID=#{deptId}
+            </if>
+            <if test="uid !=null and uid !=''">
+                and B.UIDS=#{uid}
+            </if>
+        </where>
+        ORDER BY B.SUPPLIER_DATE limit #{page},20
+    </select>
+    <!--技术交底结果映射-->
+    <resultMap id="technologyInfo" type="com.goodsoft.yuanlin.domain.entity.project.Technology">
+        <result property="pid" column="PID"/>
+        <result property="name" column="PROJECT_NAME"/>
+        <result property="id" column="ID"/>
+        <result property="date" column="TELHNICAL_DATE"/>
+        <result property="address" column="TELHNICAL_ADDRESS"/>
+        <result property="content" column="TELHNICAL_TEXT"/>
+        <result property="filesId" column="FILESID"/>
+    </resultMap>
+    <!--技术交底sql-->
+    <select id="queryTechnologyDao" parameterType="java.lang.String" resultMap="technologyInfo">
+        SELECT
+        A.ID AS PID,
+        A.PROJECT_NAME,
+        B.ID,
+        B.TELHNICAL_DATE,
+        B.TELHNICAL_ADDRESS,
+        B.TELHNICAL_TEXT,
+        B.FILESID
+        FROM
+        hz7.gs_project_information A
+        LEFT OUTER JOIN
+        hz7.gs_technical_disclosure B ON A.ID = B.PID
+        <where>
+            <if test="deptId !=null and deptId !=''">
+                and B.DEPTID=#{deptId}
+            </if>
+            <if test="uid !=null and uid !=''">
+                and B.UIDS=#{uid}
+            </if>
+        </where>
+        ORDER BY B.TELHNICAL_DATE limit #{page},20
+    </select>
+    <!--施工钱包结果映射-->
+    <resultMap id="sgWalletInfo" type="com.goodsoft.yuanlin.domain.entity.project.SgWallet">
+        <result property="pid" column="PID"/>
+        <result property="id" column="ID"/>
+        <result property="name" column="PROJECT_NAME"/>
+        <result property="company" column="CONSTRUCTION_UNIT"/>
+        <result property="type" column="TYPE"/>
+        <result property="money" column="MONEY"/>
+        <result property="contact" column="CONTACT"/>
+        <result property="comment" column="COMMENTS"/>
+        <result property="date" column="DATES"/>
+    </resultMap>
+    <!--施工钱包sql-->
+    <select id="querySgWalletDao" parameterType="java.lang.String" resultMap="sgWalletInfo">
+        SELECT
+        A.ID AS PID,
+        A.PROJECT_NAME,
+        A.CONSTRUCTION_UNIT,
+        B.ID,
+        B.TYPE,
+        B.MONEY,
+        B.CONTACT,
+        B.COMMENTS,
+        B.DATES
+        FROM
+        hz7.gs_project_information A
+        LEFT OUTER JOIN
+        hz7.gs_sgwallet B ON A.ID = B.PID
+        <where>
+            <if test="deptId !=null and deptId !=''">
+                and B.DEPTID=#{deptId}
+            </if>
+            <if test="uid !=null and uid !=''">
+                and B.UIDS=#{uid}
+            </if>
+        </where>
+        ORDER BY B.DATES limit #{page},20
+    </select>
+    <!--添加-->
+    <!--变更管理sql-->
+    <insert id="addAlterationDao" parameterType="com.goodsoft.yuanlin.domain.entity.project.Alteration">
+    INSERT INTO hz7.gs_change_management
+    (PID,ID,UIDS,DEPTID,CONFIRMATION_PARTY,CHANGE_DATE,CHANGE_BASIS)
+    VALUES (#{pid},#{id},#{uid},#{deptId},#{confParty},#{time},#{filesId})
+    </insert>
+    <!--工序报验sql-->
+    <insert id="addCheckoutDao" parameterType="com.goodsoft.yuanlin.domain.entity.project.Checkout">
+    INSERT INTO hz7.gs_process_inspection
+    (PID,ID,UIDS,DEPTID,WORKING_NAME,PERSON_TYPE,TRANSFER_PERSON,POST,CONSTRUCTION_DATE,IMAGE_PICTURE)
+    VALUES
+    (#{pid},#{id},#{uid},#{deptId},#{gxProcedure},#{persType},#{receiver},#{workPost},#{date},#{filesId})
+    </insert>
+    <!--施工日志sql-->
+    <insert id="addConsLogDao" parameterType="com.goodsoft.yuanlin.domain.entity.project.ConsLog">
+    INSERT INTO hz7.gs_construction_log
+    (PID,ID,UIDS,DEPTID,CONSTRUCTION_DATE,PRODUCTION_CONTENT,TECHNICAL_INDEX,COMPLETE_STATUS,PROJECT_LEADER,BUILDER)
+    VALUES
+    (#{pid},#{id},#{uid},#{deptId},#{date},#{proContent},#{tecIndex},#{workCondition},#{principal},#{builder})
+    </insert>
+    <!--施工安全日志sql-->
+    <insert id="addConsSafetyLogDao" parameterType="com.goodsoft.yuanlin.domain.entity.project.ConsSafetyLog">
+    INSERT INTO hz7.gs_security_log
+    (PID,ID,UIDS,DEPTID,CONSTRUCTION_DATE,CONSTRUCTION_POSITION,PROCESS_DYNAMICS,SAFETY_STATUS,PROBLEM_PROCESSING,FILL)
+    VALUES
+    (#{pid},#{id},#{uid},#{deptId},#{date},#{constLocation},#{constDynamic},#{sftSituation},#{sftProblems},#{fillPle})
+    </insert>
+    <!--进度申报sql-->
+    <insert id="addDeclarationDao" parameterType="com.goodsoft.yuanlin.domain.entity.project.Declaration">
+    INSERT INTO hz7.gs_progress_reporting(UIDS,PID,ID,DEPTID,PR_DATE,PR_FILE)
+    VALUES (#{uid},#{pid},#{id},#{deptId},#{date},#{filesId})
+    </insert>
+    <!--设备信息sql-->
+    <insert id="addEquipmentDao" parameterType="com.goodsoft.yuanlin.domain.entity.project.Equipment">
+    INSERT INTO hz7.gs_device_information
+    (PID,ID,UIDS,DEPTID,DEVICE_NAME,DEVICE_TYPE,DEVICE_NUMBERS,DEVICE_PURPOSE,DEVICE_SOURCE)
+    VALUES
+    (#{pid},#{id},#{uid},#{deptId},#{sbName},#{sbSpec},#{sbNum},#{sbPurpose},#{sbSource})
+    </insert>
+    <!--竣工验收-->
+    <insert id="addFinalacceptDao" parameterType="com.goodsoft.yuanlin.domain.entity.project.Finalaccept">
+    INSERT INTO hz7.gs_final_acceptance
+    (PID,ID,UIDS,DEPTID,ENGINEERING_NAME,FINAL_TIME,ACCEPTANCE_PERSON,FINAL_PICTURE)
+    VALUES (#{pid},#{id},#{uid},#{deptId},#{name},#{date},#{insPersonnel},#{filesId})
+    </insert>
+    <!--会审结果sql-->
+    <insert id="addHsResultDao" parameterType="com.goodsoft.yuanlin.domain.entity.project.HsResult">
+    INSERT INTO hz7.gs_review_of_results
+    (PID,ID,UIDS,DEPTID,ROR_COMPANY,ROR_PICTURE)
+    VALUES
+    (#{pid},#{id},#{uid},#{deptId},#{company},#{filesId})
+    </insert>
+    <!--开工报告sql-->
+    <insert id="addKgReportDao" parameterType="com.goodsoft.yuanlin.domain.entity.project.KgReport">
+    INSERT INTO hz7.gs_commencement_report
+    (PID,ID,UIDS,DEPTID,COMMENCEMENT_TIME,FILE_VALIDATION)
+    VALUES
+    (#{pid},#{id},#{uid},#{deptId},#{date},#{filesId})
+    </insert>
+    <!--我的轨迹sql-->
+    <insert id="addMylocusDao" parameterType="com.goodsoft.yuanlin.domain.entity.project.Mylocus">
+
+    </insert>
+    <!--项目信息sql-->
+    <insert id="addProjectDao" parameterType="com.goodsoft.yuanlin.domain.entity.project.Prospect">
+    INSERT INTO hz7.gs_project_information
+    (ID,PROJECT_NAME,CONSTRUCTION_UNIT,START_TIME,COMPLETION_TIME,PROJECT_LEADER,
+    CONTACT_TEL,PROJECT_NUMBERS,PROJECT_ADDRESS,UIDS,DEPTID)
+    VALUES
+    (#{id},#{name},#{company},#{startTime},#{endTime},#{principal},#{tel},
+    #{personNum},#{address},#{uid},#{deptId})
+    </insert>
+    <!--现场勘察sql-->
+    <insert id="addProspectDao" parameterType="com.goodsoft.yuanlin.domain.entity.project.Prospect">
+    INSERT INTO hz7.gs_siteinve_stigation
+    (PID,ID,UIDS,DEPTID,SITEINVE_TIME,SITEINVE_PLACE,SITEINVE_PERSON,STIGATION_SITUATION)
+    VALUES
+    (#{pid},#{id},#{uid},#{deptId},#{date},#{address},#{person},#{filesId})
+    </insert>
+    <!--项目结算sql-->
+    <insert id="addSettlementDao" parameterType="com.goodsoft.yuanlin.domain.entity.project.Settlement">
+    INSERT INTO hz7.gs_project_settlement
+    (PID,ID,UIDS,DEPTID,SETTLEMENT_TIME,SETTLEMENT_BOOK)
+    VALUES
+    (#{pid},#{id},#{uid},#{deptId},#{date},#{filesId})
+    </insert>
+    <!--施工人员sql-->
+    <insert id="addSgPersonnelDao" parameterType="com.goodsoft.yuanlin.domain.entity.project.SgPersonnel">
+    INSERT INTO hz7.gs_construction_personnel
+    (PID,ID,UIDS,DEPTID,PERSONAL_TYPE,POST,USER_NAME,CARD,CONTACT_TEL)
+    VALUES
+    (#{pid},#{id},#{uid},#{deptId},#{persType},#{workPost},#{contact},#{idCard},#{tel})
+    </insert>
+    <!--监理日志sql-->
+    <insert id="addSuplogDao" parameterType="com.goodsoft.yuanlin.domain.entity.project.Suplog">
+    INSERT INTO hz7.gs_supervision_log 
+    (PID,ID,UIDS,DEPTID,DATES,SUPERVITION_POSITION,PROGRESS_STATUS,
+    SUPERVITION_STATUS,EXISTENCE_STATUS,SOMETHING,NATE_TAKER,
+    SUPERVITON_ENGINEER) 
+    VALUES 
+   (#{pid},#{id},#{uid},#{deptId},#{date},#{supLocation},#{proSituation},
+   #{workSitustion},#{question},#{other},#{noteTaker},#{engineer})
+    </insert>
+    <!--供货商sql-->
+    <insert id="addSupplierDao" parameterType="com.goodsoft.yuanlin.domain.entity.project.Supplier">
+    INSERT INTO hz7.gs_supplier_information
+   (PID,ID,UIDS,DEPTID,COMPANY_NAME,COMPANY_ADDRESS,
+   SUPPLIER_DATE,CONTACT_INFORMATION,SUPPLIER_PINCTURE) 
+   VALUES 
+   (#{pid},#{id},#{uid},#{deptId},#{company},
+   #{address},#{date},#{tel},#{filesId})
+    </insert>
+    <!--技术交底sql-->
+    <insert id="addTechnologyDao" parameterType="com.goodsoft.yuanlin.domain.entity.project.Technology">
+    INSERT INTO
+    hz7.gs_technical_disclosure
+    (PID,ID,UIDS,DEPTID,TELHNICAL_DATE,TELHNICAL_ADDRESS,
+    TELHNICAL_TEXT,FILESID)
+    VALUES
+    (#{pid},#{id},#{uid},#{deptId},#{date},#{address},#{content},#{filesId})
+    </insert>
+    <!--施工钱包sql-->
+    <insert id="addSgWalletDao" parameterType="com.goodsoft.yuanlin.domain.entity.project.SgWallet">
+    INSERT INTO hz7.gs_sgwallet
+    (PID,ID,UIDS,DEPTID,DATES,TYPE,MONEY,COMMENTS,CONTACT)
+    VALUES (#{pid},#{id},#{uid},#{deptId},#{date},#{type},#{money},#{comment},#{contact})
+    </insert>
 </mapper>
