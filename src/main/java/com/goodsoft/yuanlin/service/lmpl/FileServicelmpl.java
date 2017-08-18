@@ -102,7 +102,7 @@ public class FileServicelmpl implements FileService {
                 case "document":
                     file.setSort("文档文件");
                     break;
-                case "compact":
+                case "carousel":
                     file.setSort("合同");
                     break;
                 default:

@@ -7,8 +7,6 @@ import javax.servlet.http.HttpSession;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 /**
@@ -39,13 +37,9 @@ public class AuthCodeUtil {
         return instance;
     }
 
-    //实例化公共集合存放多用户验证码
-    public Map<String, String> map = new HashMap<String, String>();
-    //实例化获取用户ip工具类
-    private GetIP getIP = GetIP.getInstance();
-    //实例化UUID工具类
-    private UUIDUtil uuid = UUIDUtil.getInstance();
-
+    /**
+     * 绘制验证码
+     */
     public void getAuthCode(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
         int width = 63;
         int height = 37;
@@ -84,12 +78,9 @@ public class AuthCodeUtil {
             // 绘制字符
             g.drawString(rand, 13 * i + 6, 28);
         }
-        //获取用户ip确保每个用户只能拥有一个验证码(尽管获取多次)
-        String ip = this.getIP.getIP(request);
-        map.remove(ip);
-        map.put(ip, code);
         // 将字符保存到session中用于前端的验证
-        /*session.setAttribute("pcCode", code);*/
+        session.setAttribute("pcCode", code);
+        session.setMaxInactiveInterval(180);
         g.dispose();
         // 返回验证码图片
         ImageIO.write(image, "jpeg", response.getOutputStream());

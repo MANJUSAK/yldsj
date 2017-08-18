@@ -14,17 +14,7 @@
         <result property="filesId" column="F1"/>
         <result property="idCard" column="CERT_NO"/>
         <result property="deptId" column="F2"/>
-    </resultMap>
-    <!--用户签到结果映射-->
-    <resultMap id="SignInInfo" type="com.goodsoft.yuanlin.domain.entity.user.SignIn">
-        <result property="sid" column="sid"/>
-        <result property="adress" column="adress"/>
-        <result property="latitude" column="latitude"/>
-        <result property="longitude" column="longitude"/>
-        <result property="time" column="time"/>
-        <result property="name" column="name"/>
-        <result property="company" column="company"/>
-        <result property="comments" column="comments"/>
+        <result property="member" column="ENGNAME"/>
     </resultMap>
     <!--用户登录sql-->
     <select id="queryUserDao" parameterType="java.lang.String" resultMap="userInfo">
@@ -37,6 +27,7 @@
     SEX,
     CELLPHONE,
     CERT_NO,
+    ENGNAME,
     F1,
     F2
     FROM
@@ -44,6 +35,17 @@
     WHERE
     LOGIN_NAME=#{userName} AND PASSWORD=#{passWord} AND ACTIVE='1'
     </select>
+    <!--用户签到结果映射-->
+    <resultMap id="SignInInfo" type="com.goodsoft.yuanlin.domain.entity.user.SignIn">
+        <result property="sid" column="sid"/>
+        <result property="adress" column="adress"/>
+        <result property="latitude" column="latitude"/>
+        <result property="longitude" column="longitude"/>
+        <result property="time" column="time"/>
+        <result property="name" column="name"/>
+        <result property="company" column="company"/>
+        <result property="comments" column="comments"/>
+    </resultMap>
     <!--用户签到信息sql-->
     <select id="querySignInDao" parameterType="java.lang.String" resultMap="SignInInfo">
         SELECT sid,address,latitude,longitude,time,name,company,comments FROM signin

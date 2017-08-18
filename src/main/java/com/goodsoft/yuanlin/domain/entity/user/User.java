@@ -14,6 +14,7 @@ public class User implements java.io.Serializable {
     private String userName;//用户名
     private String passWord;//密码
     private String tel;//联系方式
+    private String member;//是否为会员（0为是/1为否）
     private String email;//邮箱
     private int sex;//性别（0为男/1为女）
     private String date;//注册时间
@@ -119,6 +120,14 @@ public class User implements java.io.Serializable {
 
     public void setPicture(List<String> picture) {
         this.picture = picture;
+    }
+
+    public String getMember() {
+        return member;
+    }
+
+    public void setMember(String member) {
+        this.member = member;
     }
 
     public String getDeptId() {

@@ -30,7 +30,7 @@ public class RecomCompServicelmpl implements RecomCompService {
     private Logger logger = Logger.getLogger(RecomCompServicelmpl.class);
 
     @Override
-    public <T> T queryRecomService(HttpServletRequest request, String page) {
+    public <T> T queryRecomService(HttpServletRequest request, String page, String var) {
         if (page == null) {
             return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
@@ -47,7 +47,9 @@ public class RecomCompServicelmpl implements RecomCompService {
             if (data.size() > 0) {
                 List<String> path = new ArrayList<String>();
                 StringBuilder sb = new StringBuilder(this.domainName.getServerDomainName(request).toString());
-                sb.append("/hz7/download.do?id=");
+                sb.append("/");
+                sb.append(var);
+                sb.append("/download.do?id=");
                 for (int i = 0, length = data.size(); i < length; ++i) {
                     List<String> url = this.dao.queryRecomCompFileDao(data.get(i).getId());
                     if (url.size() > 0) {
