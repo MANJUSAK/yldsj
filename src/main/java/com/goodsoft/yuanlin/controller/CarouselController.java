@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
  * Created by 严彬荣 on 2017/8/18.
  */
 @RestController
+@RequestMapping("/carousel")
 public class CarouselController {
     @Resource
     private CarouselService service;

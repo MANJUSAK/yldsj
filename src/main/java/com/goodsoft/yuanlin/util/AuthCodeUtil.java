@@ -80,7 +80,7 @@ public class AuthCodeUtil {
         }
         // 将字符保存到session中用于前端的验证
         session.setAttribute("pcCode", code);
-        session.setMaxInactiveInterval(180);
+        session.setMaxInactiveInterval(60);
         g.dispose();
         // 返回验证码图片
         ImageIO.write(image, "jpeg", response.getOutputStream());

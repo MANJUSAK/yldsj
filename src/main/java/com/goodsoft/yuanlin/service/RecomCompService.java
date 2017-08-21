@@ -10,4 +10,5 @@ public interface RecomCompService {
 
     //企业推荐数据
     public <T> T queryRecomService(HttpServletRequest request, String page, String var);
+
 }
