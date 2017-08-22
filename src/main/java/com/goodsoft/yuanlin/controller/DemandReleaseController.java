@@ -39,8 +39,8 @@ public class DemandReleaseController {
      */
     @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.GET)
     @RequestMapping("/find/{type}")
-    public Object queryDemandReleaseController(@PathVariable("type") String type, String uid, String compId, HttpServletRequest request, String keyWord, String date, String breed, String tp, String cts, String sub, String page) {
-        return this.service.queryReleaseData(keyWord, compId, uid, type, request, date, breed, tp, cts, sub, page);
+    public Object queryDemandReleaseController(@PathVariable("type") String type, String uid, String comp, HttpServletRequest request, String keyWord, String date, String breed, String tp, String cts, String sub, String page) {
+        return this.service.queryReleaseData(keyWord, comp, uid, type, request, date, breed, tp, cts, sub, page);
     }
 
     /**

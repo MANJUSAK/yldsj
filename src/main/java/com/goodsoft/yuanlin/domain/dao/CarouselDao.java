@@ -1,10 +1,7 @@
 package com.goodsoft.yuanlin.domain.dao;
 
 import com.goodsoft.yuanlin.domain.entity.carousel.Carousel;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
  * function 轮播图数据dao层
@@ -12,9 +9,10 @@ import java.util.List;
  */
 @Repository
 public interface CarouselDao {
-    //查询轮播图dao方法
-    public List<String> queryCarouselByIdDao(@Param("id") String id);
 
     //获取轮播图id
-    public Carousel queryCarouselDao();
+    public Carousel queryCarouselDao() throws Exception;
+
+    //添加轮播图
+    public void addCarouselDao(Carousel msg) throws Exception;
 }

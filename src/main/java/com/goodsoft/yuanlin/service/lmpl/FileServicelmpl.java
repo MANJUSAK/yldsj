@@ -37,6 +37,7 @@ public class FileServicelmpl implements FileService {
     @Override
     @Transactional
     public int fileUploadService(MultipartFile[] files, HttpServletRequest request, String fileType, String fileId) {
+        //判断文件是图片还是文档
         switch (fileType) {
             case "document":
                 //判断文件是否为空
@@ -103,7 +104,10 @@ public class FileServicelmpl implements FileService {
                     file.setSort("文档文件");
                     break;
                 case "carousel":
-                    file.setSort("合同");
+                    file.setSort("轮播图");
+                    break;
+                case "trade":
+                    file.setSort("行业协会");
                     break;
                 default:
                     file.setSort("无分类");

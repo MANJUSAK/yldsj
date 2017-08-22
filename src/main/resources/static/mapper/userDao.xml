@@ -48,7 +48,7 @@
     </resultMap>
     <!--用户签到信息sql-->
     <select id="querySignInDao" parameterType="java.lang.String" resultMap="SignInInfo">
-        SELECT sid,address,latitude,longitude,time,name,company,comments FROM signin
+        SELECT sid,address,latitude,longitude,time,name,company,comments FROM gs_signin
         <where>
             <if test="uid !=null and uid !=''">
                 and uid=#{uid}
@@ -100,7 +100,7 @@
     </insert>
     <!--用户签到sql-->
     <insert id="signInDao" parameterType="com.goodsoft.yuanlin.domain.entity.user.SignIn">
-        INSERT INTO signin
+        INSERT INTO gs_signin
         (address, latitude, longitude, time,name, company, compId, uid, comments)
         VALUES
         (#{address}, #{latitude}, #{longitude}, #{time},#{name}, #{company}, #{compId}, #{uid}, #{comments});

@@ -7,6 +7,7 @@ import java.util.List;
  * Created by 严彬荣 on 2017/8/18.
  */
 public class Carousel implements java.io.Serializable {
+
     private String id;//图片id
     private List<String> picture;//图片
     private String picName;//图片名称
@@ -14,6 +15,15 @@ public class Carousel implements java.io.Serializable {
     private String effect;//图片作用
     private String urlAddress;//图片跳转地址
     private String date;//时间
+    private String filesId;//图片编号
+
+    public String getFilesId() {
+        return filesId;
+    }
+
+    public void setFilesId(String filesId) {
+        this.filesId = filesId;
+    }
 
     public String getId() {
         return id;

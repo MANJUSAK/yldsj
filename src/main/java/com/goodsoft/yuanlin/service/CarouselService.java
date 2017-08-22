@@ -1,5 +1,9 @@
 package com.goodsoft.yuanlin.service;
 
+import com.goodsoft.yuanlin.domain.entity.carousel.Carousel;
+import com.goodsoft.yuanlin.util.resultentity.Status;
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -8,5 +12,8 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface CarouselService {
     //查询轮播图
-    public <T> T queryCarouselService(HttpServletRequest request, String var);
+    public <T> T queryCarouselService(HttpServletRequest request);
+
+    //查询轮播图
+    public Status addCarouselService(HttpServletRequest request, MultipartFile[] files, Carousel msg);
 }

@@ -61,8 +61,8 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
      * @return 查询结果
      */
     @Override
-    public <T> T queryReleaseData(String keyWord, String compId, String uid, String type, HttpServletRequest request, String date, String breed, String tp, String characters, String sub, String page) {
-        if (page == null) {
+    public <T> T queryReleaseData(String keyWord, String comp, String uid, String type, HttpServletRequest request, String date, String breed, String tp, String characters, String sub, String page) {
+        if (page == null || page == "") {
             return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
         int arg = 0;
@@ -78,112 +78,110 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
         arg *= 20;
         switch (type) {
             case "bid":
-                List<Bid> data = null;
+                List<Bid> bid = null;
                 try {
-                    data = this.dao.queryBidDao(keyWord, compId, uid, date, arg);
+                    bid = this.dao.queryBidDao(keyWord, comp, uid, date, arg);
                 } catch (Exception e) {
                     System.out.println(e.toString());
                     this.logger.error(e);
                     return (T) new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
                 }
-                if (data.size() > 0) {
-                    return (T) new Result(0, data);
+                if (bid.size() > 0) {
+                    return (T) new Result(0, bid);
                 } else {
                     return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
                 }
             case "recruit":
-                List<Recruit> data1 = null;
+                List<Recruit> rec = null;
                 try {
-                    data1 = this.dao.queryRecruitDao(keyWord, compId, uid, tp, characters, date, arg);
+                    rec = this.dao.queryRecruitDao(keyWord, comp, uid, tp, characters, date, arg);
                 } catch (Exception e) {
                     System.out.println(e.toString());
                     this.logger.error(e);
                     return (T) new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
                 }
-                if (data1.size() > 0) {
-                    return (T) new Result(0, data1);
+                if (rec.size() > 0) {
+                    return (T) new Result(0, rec);
                 } else {
                     return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
                 }
             case "equipment":
-                List<Equipment> data2 = null;
+                List<Equipment> equ = null;
                 try {
-                    data2 = this.dao.queryEquipmentDao(keyWord, compId, uid, date, arg);
+                    equ = this.dao.queryEquipmentDao(keyWord, comp, uid, date, arg);
                 } catch (Exception e) {
                     System.out.println(e.toString());
                     this.logger.error(e);
                     return (T) new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
                 }
-                int i = data2.size();
-                if (i > 0) {
+                int eu = equ.size();
+                if (eu > 0) {
                     //获取服务器域名地址
                     String var = this.domainName.getServerDomainName(request).toString();
+                    StringBuilder sb = new StringBuilder();
                     try {
-                        for (int j = 0; j < i; ++j) {
+                        for (int i = 0; i < eu; ++i) {
                             //查询数据对应的图片信息
-                            List<FileData> path = this.fileDao.queryFileDao(data2.get(j).getFilesId());
-                            int k = path.size();
-                            if (k > 0) {
+                            List<FileData> path = this.fileDao.queryFileDao(equ.get(i).getFilesId());
+                            int p = path.size();
+                            if (p > 0) {
                                 //封装域名地址以及图片相对路径
                                 List url = new ArrayList();
-                                //初始化时不清除集合减少不必要的性能消耗
-                                if (j > 0) {
-                                    url.clear();
-                                }
-                                for (int g = 0; g < k; ++g) {
-                                    url.add(var + path.get(g).getPath());
+                                for (int j = 0; j < p; ++j) {
+                                    sb.append(var);
+                                    sb.append(path.get(j).getPath());
+                                    url.add(sb.toString());
+                                    sb.delete(0, sb.length());
                                 }
                                 //将图片完整地址封装到数据中
-                                data2.get(j).setPicture(url);
+                                equ.get(i).setPicture(url);
                             }
                         }
                     } catch (Exception e) {
                         System.out.println(e.toString());
                         this.logger.error(e);
                     }
-                    return (T) new Result(0, data2);
+                    return (T) new Result(0, equ);
                 } else {
                     return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
                 }
             case "seedling":
-                List<Seedling> data3 = null;
+                List<Seedling> seed = null;
                 try {
-                    data3 = this.dao.querySeedlingDao(keyWord, compId, uid, breed, sub, date, arg);
+                    seed = this.dao.querySeedlingDao(keyWord, comp, uid, breed, sub, date, arg);
                 } catch (Exception e) {
                     System.out.println(e.toString());
                     this.logger.error(e);
                     return (T) new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
                 }
-                if (data3.size() > 0) {
-                    int s = data3.size();
-                    if (s > 0) {
-                        //获取服务器域名地址
-                        String var = this.domainName.getServerDomainName(request).toString();
-                        try {
-                            for (int j = 0; j < s; ++j) {
-                                //查询数据对应的图片信息
-                                List<FileData> path = this.fileDao.queryFileDao(data3.get(j).getFilesId());
-                                int k = path.size();
-                                if (k > 0) {
-                                    //封装域名地址以及图片相对路径
-                                    List url = new ArrayList();
-                                    //初始化时不清除集合减少不必要的性能消耗
-                                    if (j > 0) {
-                                        url.clear();
-                                    }
-                                    for (int g = 0; g < k; ++g) {
-                                        url.add(var + path.get(g).getPath());
-                                    }
-                                    //将图片完整地址封装到数据中
-                                    data3.get(j).setPicture(url);
+                int s = seed.size();
+                if (s > 0) {
+                    //获取服务器域名地址
+                    String var = this.domainName.getServerDomainName(request).toString();
+                    StringBuilder sb = new StringBuilder();
+                    try {
+                        for (int i = 0; i < s; ++i) {
+                            //查询数据对应的图片信息
+                            List<FileData> path = this.fileDao.queryFileDao(seed.get(i).getFilesId());
+                            int p = path.size();
+                            if (p > 0) {
+                                //封装域名地址以及图片相对路径
+                                List url = new ArrayList();
+                                for (int j = 0; j < p; ++j) {
+                                    sb.append(var);
+                                    sb.append(path.get(j).getPath());
+                                    url.add(sb.toString());
+                                    sb.delete(0, sb.length());
                                 }
+                                //将图片完整地址封装到数据中
+                                seed.get(i).setPicture(url);
                             }
-                        } catch (Exception e) {
-                            System.out.println(e.toString());
-                            this.logger.error(e);
                         }
-                        return (T) new Result(0, data3);
+                    } catch (Exception e) {
+                        System.out.println(e.toString());
+                        this.logger.error(e);
                     }
+                    return (T) new Result(0, seed);
                 } else {
                     return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
                 }

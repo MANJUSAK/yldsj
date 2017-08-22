@@ -44,7 +44,7 @@ public class Recruit implements java.io.Serializable {
     //工作性质(全职 1/兼职 2)
     private int characters;
     //企业编号
-    private String compId;
+    private String comp;
     // 用户编号
     private String uid;
     // 状态参数
@@ -189,13 +189,12 @@ public class Recruit implements java.io.Serializable {
         this.characters = characters;
     }
 
-    @Transient
-    public String getCompId() {
-        return compId;
+    public String getComp() {
+        return comp;
     }
 
-    public void setCompId(String compId) {
-        this.compId = compId;
+    public void setComp(String comp) {
+        this.comp = comp;
     }
 
     @Transient

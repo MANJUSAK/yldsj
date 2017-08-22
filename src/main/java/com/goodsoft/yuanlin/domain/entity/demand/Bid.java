@@ -23,8 +23,8 @@ public class Bid implements java.io.Serializable {
     private String date;
     // 发布时间
     private String time;
-    //企业编号
-    private String compId;
+    //企业
+    private String comp;
     // 用户ID
     private String uid;
     // 状态参数（删除状态不给用户查询信息）
@@ -86,13 +86,12 @@ public class Bid implements java.io.Serializable {
         this.time = time;
     }
 
-    @Transient
-    public String getCompId() {
-        return compId;
+    public String getComp() {
+        return comp;
     }
 
-    public void setCompId(String compId) {
-        this.compId = compId;
+    public void setComp(String comp) {
+        this.comp = comp;
     }
 
     @Transient

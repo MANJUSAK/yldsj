@@ -31,7 +31,7 @@ public class RecomCompServicelmpl implements RecomCompService {
 
     @Override
     public <T> T queryRecomService(HttpServletRequest request, String page, String var) {
-        if (page == null) {
+        if (page == null || "".equals(page)) {
             return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
         int arg = 0;
@@ -46,15 +46,19 @@ public class RecomCompServicelmpl implements RecomCompService {
             List<RecomComp> data = this.dao.queryRecomCompDao(arg);
             if (data.size() > 0) {
                 List<String> path = new ArrayList<String>();
-                StringBuilder sb = new StringBuilder(this.domainName.getServerDomainName(request).toString());
-                sb.append("/");
-                sb.append(var);
-                sb.append("/download.do?id=");
+                String http = this.domainName.getServerDomainName(request).toString();
+                StringBuilder sb = new StringBuilder();
                 for (int i = 0, length = data.size(); i < length; ++i) {
                     List<String> url = this.dao.queryRecomCompFileDao(data.get(i).getId());
                     if (url.size() > 0) {
                         for (int j = 0, lth = url.size(); j < lth; ++j) {
-                            path.add(sb.toString() + url.get(j));
+                            sb.append(http);
+                            sb.append("/");
+                            sb.append(var);
+                            sb.append("/download.do?id=");
+                            sb.append(url.get(j));
+                            path.add(sb.toString());
+                            sb.delete(0, sb.length());
                         }
                     }
                     data.get(i).setPicture(path);

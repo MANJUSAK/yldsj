@@ -4,23 +4,26 @@
 <mapper namespace="com.goodsoft.yuanlin.domain.dao.CarouselDao">
     <!--轮播图数据映射-->
     <resultMap id="carouselInfo" type="com.goodsoft.yuanlin.domain.entity.carousel.Carousel">
-        <result property="id" column="ID"/>
-        <result property="urlAddress" column="GS_URL"/>
-        <result property="description" column="DESCRIPTION"/>
-        <result property="effect" column="EFFECT"/>
-        <result property="picName" column="PICNAME"/>
-        <result property="date" column="DATES"/>
+        <result property="id" column="cid"/>
+        <result property="urlAddress" column="urlAddress"/>
+        <result property="description" column="description"/>
+        <result property="effect" column="effect"/>
+        <result property="picName" column="picName"/>
+        <result property="date" column="dates"/>
+        <result property="filesId" column="filesId"/>
     </resultMap>
     <!--获取轮播图数据sql-->
     <select id="queryCarouselDao" resultMap="carouselInfo">
     SELECT
-    ID, GS_URL, DESCRIPTION, EFFECT, PICNAME, DATES
+    cid, picName, description, effect, urlAddress, dates,filesId
     FROM
-    hz7.gs_carousel
+    gs_carousel
     ORDER BY DATES desc limit 0,1
     </select>
-    <!--查询轮播图文件sql-->
-    <select id="queryCarouselByIdDao" resultType="java.lang.String">
-        SELECT ID FROM hz7.ta_horizon_info WHERE OBJECT_ID=#{id}
-    </select>
+    <!--添加轮播图sql-->
+    <insert id="addCarouselDao" parameterType="com.goodsoft.yuanlin.domain.entity.carousel.Carousel">
+    INSERT INTO gs_carousel (picName, description, effect, urlAddress, dates,filesId)
+    VALUES
+    (#{picName}, #{description}, #{effect}, #{urlAddress}, #{date}, #{filesId});
+    </insert>
 </mapper>

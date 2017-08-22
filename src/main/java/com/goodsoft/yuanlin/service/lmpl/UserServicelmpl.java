@@ -90,15 +90,20 @@ public class UserServicelmpl implements UserService {
             List<FileData> path = null;
             try {
                 path = this.fileDao.queryFileDao(userInfo.getFilesId());
-                if (path.size() > 0) {
+                int p = path.size();
+                if (p > 0) {
                     //获取服务器域名
-                    String url = this.domainName.getServerDomainName(request).toString();
-                    List<String> var = new ArrayList<String>();
-                    for (int i = 0, length = path.size(); i < length; ++i) {
-                        var.add(url + path.get(i).getPath());
+                    String http = this.domainName.getServerDomainName(request).toString();
+                    List<String> url = new ArrayList<String>();
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 0; i < p; ++i) {
+                        sb.append(http);
+                        sb.append(path.get(i).getPath());
+                        url.add(sb.toString());
+                        sb.delete(0, sb.length());
                     }
                     //封装用户文件到用户信息
-                    userInfo.setPicture(var);
+                    userInfo.setPicture(url);
                 }
                 if ("".equals(userInfo.getDeptId())) {
                     userInfo.setDeptId(this.dao.queryDeptIdByUidDao(userInfo.getUid()));
@@ -109,7 +114,6 @@ public class UserServicelmpl implements UserService {
                 return (T) new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
             }
             //用户登录成功后清除该用户验证码
-            /*this.authCode.map.remove(ip);*/
             request.getSession().removeAttribute("pcCode");
             return (T) new Result(0, userInfo);
         } else {
@@ -127,7 +131,7 @@ public class UserServicelmpl implements UserService {
      */
     @Override
     public <T> T querySignInService(String uid, String deptId, String page) {
-        if (page == null) {
+        if (page == null || "".equals(page)) {
             return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
         if (uid == null || "".equals(uid)) {

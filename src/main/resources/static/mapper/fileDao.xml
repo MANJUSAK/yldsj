@@ -6,10 +6,10 @@
         <result property="path" column="path"/>
     </resultMap>
     <select id="queryFileDao" parameterType="java.lang.String" resultMap="fileData">
-        SELECT path FROM fileData WHERE fileId=#{fileId}
+        SELECT path FROM gs_fileData WHERE fileId=#{fileId}
     </select>
     <insert id="saveFileDao" parameterType="com.goodsoft.yuanlin.domain.entity.file.FileData">
-        insert into fileData (fileId,path,bases,sort)
+        insert into gs_fileData (fileId,path,bases,sort)
         values
         (#{fileId},#{path},#{bases},#{sort})
     </insert>

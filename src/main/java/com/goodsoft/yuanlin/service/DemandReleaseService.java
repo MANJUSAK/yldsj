@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface DemandReleaseService {
     //查询需求发布数据
-    public <T> T queryReleaseData(String keyWord, String compId, String uid, String type, HttpServletRequest request, String date, String breed, String tp, String characters, String sub, String page);
+    public <T> T queryReleaseData(String keyWord, String comp, String uid, String type, HttpServletRequest request, String date, String breed, String tp, String characters, String sub, String page);
 
     //添加需求发布数据（有文件）
     public Status releaseDataService(MultipartFile[] files, HttpServletRequest request, Object msg, String type);

@@ -1,0 +1,295 @@
+package com.goodsoft.yuanlin.service.lmpl;
+
+import com.goodsoft.yuanlin.domain.dao.FileDao;
+import com.goodsoft.yuanlin.domain.dao.TradeManageDao;
+import com.goodsoft.yuanlin.domain.entity.file.FileData;
+import com.goodsoft.yuanlin.domain.entity.trade.*;
+import com.goodsoft.yuanlin.service.FileService;
+import com.goodsoft.yuanlin.service.TradeManageService;
+import com.goodsoft.yuanlin.util.DomainNameUtil;
+import com.goodsoft.yuanlin.util.UUIDUtil;
+import com.goodsoft.yuanlin.util.resultentity.Result;
+import com.goodsoft.yuanlin.util.resultentity.Status;
+import com.goodsoft.yuanlin.util.resultentity.StatusEnum;
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+/**
+ * function 行业协会业务接口实现类
+ * Created by 严彬荣 on 2017/8/21.
+ */
+@SuppressWarnings("ALL")
+@Service
+public class TradeManageServicelmpl implements TradeManageService {
+
+    @Resource
+    private TradeManageDao dao;
+    @Resource
+    private FileService fileService;
+    @Resource
+    private FileDao fileDao;
+    //实例化日志管理工具类
+    private Logger logger = Logger.getLogger(DemandReleaseServicelmpl.class);
+    //实例化UUID工具类
+    private UUIDUtil uuid = UUIDUtil.getInstance();
+    //实例化服务器域名地址工具类
+    private DomainNameUtil domainName = DomainNameUtil.getInstance();
+
+    @Override
+    public <T> T queryTradeService(HttpServletRequest request, String type, String page) {
+        if (page == null || "".equals(page)) {
+            return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
+        }
+        int arg = 0;
+        try {
+            arg = Integer.parseInt(page);
+        } catch (NumberFormatException e) {
+            this.logger.error(e);
+            return (T) new Status(StatusEnum.NO_PRAM.getCODE(), StatusEnum.NO_PRAM.getEXPLAIN());
+        }
+        if (arg < 0) {
+            arg = 0;
+        }
+        arg *= 20;
+        switch (type) {
+            case "xhpx":
+                List<TrainsInfo> data = null;
+                try {
+                    data = this.dao.queryTrainInfoDao(arg);
+                } catch (Exception e) {
+                    this.logger.error(e);
+                    System.out.println(e.toString());
+                    return (T) new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
+                }
+                int t = data.size();
+                if (t > 0) {
+                    String http = this.domainName.getServerDomainName(request).toString();
+                    StringBuilder sb = new StringBuilder();
+                    try {
+                        for (int i = 0; i < t; ++i) {
+                            List<FileData> url = this.fileDao.queryFileDao(data.get(i).getFilesId());
+                            List<String> path = new ArrayList<String>();
+                            int u = url.size();
+                            if (u > 0) {
+                                for (int j = 0; j < u; ++j) {
+                                    sb.append(http);
+                                    sb.append(url.get(j).getPath());
+                                    path.add(sb.toString());
+                                    sb.delete(0, sb.length());
+                                }
+                            }
+                            data.get(i).setTrainFile(path);
+                        }
+                        return (T) new Result(0, data);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
+            default:
+                return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
+        }
+    }
+
+    @Override
+    public <T> T queryTradeService(String type, String page, String member) {
+        if (page == null || "".equals(page)) {
+            return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
+        }
+        int arg = 0;
+        try {
+            arg = Integer.parseInt(page);
+        } catch (NumberFormatException e) {
+            this.logger.error(e);
+            return (T) new Status(StatusEnum.NO_PRAM.getCODE(), StatusEnum.NO_PRAM.getEXPLAIN());
+        }
+        if (arg < 0) {
+            arg = 0;
+        }
+        arg *= 20;
+        switch (type) {
+            //会费数据
+            case "hf":
+                List<Dues> due = null;
+                try {
+                    due = this.dao.queryDuesDao(arg);
+                } catch (Exception e) {
+                    this.logger.error(e);
+                    System.out.println(e.toString());
+                    return (T) new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
+                }
+                if (due.size() > 0) {
+                    return (T) new Result(0, due);
+                }
+                return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
+            //会员会费数据
+            case "hyhf":
+                if (member == null || "".equals(member)) {
+                    return (T) new Status(StatusEnum.NO_PRAM.getCODE(), StatusEnum.NO_PRAM.getEXPLAIN());
+                }
+                int mb = 1;
+                try {
+                    mb = Integer.parseInt(member);
+                } catch (NumberFormatException e) {
+                    this.logger.error(e);
+                    return (T) new Status(StatusEnum.NO_PRAM.getCODE(), StatusEnum.NO_PRAM.getEXPLAIN());
+                }
+                if (mb != 0) {
+                    return (T) new Status(StatusEnum.NO_RIGHTS.getCODE(), StatusEnum.NO_RIGHTS.getEXPLAIN());
+                }
+                List<Dues> mber = null;
+                try {
+                    mber = this.dao.queryMberDuesDao(arg);
+                } catch (Exception e) {
+                    this.logger.error(e);
+                    System.out.println(e.toString());
+                    return (T) new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
+                }
+                if (mber.size() > 0) {
+                    return (T) new Result(0, mber);
+                }
+                return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
+            //动态资讯数据
+            case "dtzx":
+                List<Information> info = null;
+                try {
+                    info = this.dao.queryInformationDao(arg);
+                } catch (Exception e) {
+                    this.logger.error(e);
+                    System.out.println(e.toString());
+                    return (T) new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
+                }
+                if (info.size() > 0) {
+                    return (T) new Result(0, info);
+                }
+                return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
+            //优质工程数据
+            case "yzgc":
+                List<QualEngin> qua = null;
+                try {
+                    qua = this.dao.queryQualEnginDao(arg);
+                } catch (Exception e) {
+                    this.logger.error(e);
+                    System.out.println(e.toString());
+                    return (T) new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
+                }
+                if (qua.size() > 0) {
+                    return (T) new Result(0, qua);
+                }
+                return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
+            //联系协会数据
+            case "lxxh":
+                List<Contact> con = null;
+                try {
+                    con = this.dao.queryContactDao(arg);
+                } catch (Exception e) {
+                    this.logger.error(e);
+                    System.out.println(e.toString());
+                    return (T) new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
+                }
+                if (con.size() > 0) {
+                    return (T) new Result(0, con);
+                }
+                return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
+            default:
+                return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
+        }
+    }
+
+
+    @Override
+    @Transactional
+    public Status addTradeService(HttpServletRequest request, MultipartFile[] files, String fileType, String type, Object msg) {
+        switch (type) {
+            //协会培训添加
+            case "xhpx":
+                TrainsInfo var = (TrainsInfo) msg;
+                var.setFilesId(this.uuid.getUUID().toString());
+                int arg = this.fileService.fileUploadService(files, request, fileType, var.getFilesId());
+                switch (arg) {
+                    case 604:
+                        return new Status(StatusEnum.NO_FILE.getCODE(), StatusEnum.NO_FILE.getEXPLAIN());
+                    case 603:
+                        return new Status(StatusEnum.FILE_FORMAT.getCODE(), StatusEnum.FILE_FORMAT.getEXPLAIN());
+                    case 601:
+                        return new Status(StatusEnum.FILE_SIZE.getCODE(), StatusEnum.FILE_SIZE.getEXPLAIN());
+                    case 600:
+                        return new Status(StatusEnum.FILE_UPLOAD.getCODE(), StatusEnum.FILE_UPLOAD.getEXPLAIN());
+                }
+                try {
+                    this.dao.addTrainInfoDao(var);
+                    return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
+                } catch (Exception e) {
+                    this.logger.error(e);
+                    System.out.println(e.toString());
+                    return new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
+                }
+            default:
+                return new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
+        }
+    }
+
+    @Override
+    @Transactional
+    public Status addTradeService(String type, Object msg) {
+        switch (type) {
+            //会费添加
+            case "hf":
+                Dues due = (Dues) msg;
+                try {
+                    this.dao.addDuesDao(due);
+                    return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
+                } catch (Exception e) {
+                    this.logger.error(e);
+                    System.out.println(e.toString());
+                    return new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
+                }
+                //动态资讯添加
+            case "dtzx":
+                Information info = (Information) msg;
+                info.setDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+                try {
+                    this.dao.addInformationDao(info);
+                    return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
+                } catch (Exception e) {
+                    this.logger.error(e);
+                    System.out.println(e.toString());
+                    return new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
+                }
+                //优质工程添加
+            case "yzgc":
+                QualEngin qua = (QualEngin) msg;
+                try {
+                    this.dao.addQualEngineeringDao(qua);
+                    return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
+                } catch (Exception e) {
+                    this.logger.error(e);
+                    System.out.println(e.toString());
+                    return new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
+                }
+                //联系协会添加
+            case "lxxh":
+                Contact con = (Contact) msg;
+                con.setDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+                try {
+                    this.dao.addContactDao(con);
+                    return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
+                } catch (Exception e) {
+                    this.logger.error(e);
+                    System.out.println(e.toString());
+                    return new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
+                }
+            default:
+                return new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
+        }
+    }
+}

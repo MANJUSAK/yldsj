@@ -28,8 +28,8 @@ public class Equipment implements java.io.Serializable {
     private String tel;
     // 图片文件编号
     private String filesId;
-    //企业编号
-    private String compId;
+    //企业
+    private String comp;
     // 用户编号
     private String uid;
     // 状态参数
@@ -101,13 +101,12 @@ public class Equipment implements java.io.Serializable {
         this.filesId = filesId;
     }
 
-    @Transient
-    public String getCompId() {
-        return compId;
+    public String getComp() {
+        return comp;
     }
 
-    public void setCompId(String compId) {
-        this.compId = compId;
+    public void setComp(String comp) {
+        this.comp = comp;
     }
 
     @Transient

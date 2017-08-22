@@ -1,7 +1,10 @@
 package com.goodsoft.yuanlin.controller;
 
+import com.goodsoft.yuanlin.domain.entity.carousel.Carousel;
 import com.goodsoft.yuanlin.service.CarouselService;
+import com.goodsoft.yuanlin.util.resultentity.Status;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -11,16 +14,20 @@ import javax.servlet.http.HttpServletRequest;
  * Created by 严彬荣 on 2017/8/18.
  */
 @RestController
-@RequestMapping("/carousel")
 public class CarouselController {
     @Resource
     private CarouselService service;
 
     @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.GET)
-    @RequestMapping("/{type}")
-    public Object queryCarouselController(HttpServletRequest request, @PathVariable("type") String type) {
-        System.out.println(1);
-        return this.service.queryCarouselService(request, type);
+    @RequestMapping("/carousel")
+    public Object queryCarouselController(HttpServletRequest request) {
+        return this.service.queryCarouselService(request);
+    }
+
+    @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)
+    @RequestMapping("/add/carousel")
+    public Status addCarouselController(HttpServletRequest request, @RequestParam("files") MultipartFile[] files, Carousel msg) {
+        return this.service.addCarouselService(request, files, msg);
     }
 
 }

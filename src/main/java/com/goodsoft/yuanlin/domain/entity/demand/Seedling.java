@@ -38,7 +38,7 @@ public class Seedling implements java.io.Serializable {
     // 文件路径
     private List<FileData> picture;
     //企业编号
-    private String compId;
+    private String comp;
     // 用户编号
     private String uid;
     // 状态参数
@@ -148,13 +148,12 @@ public class Seedling implements java.io.Serializable {
         this.picture = picture;
     }
 
-    @Transient
-    public String getCompId() {
-        return compId;
+    public String getComp() {
+        return comp;
     }
 
-    public void setCompId(String compId) {
-        this.compId = compId;
+    public void setComp(String comp) {
+        this.comp = comp;
     }
 
     @Transient

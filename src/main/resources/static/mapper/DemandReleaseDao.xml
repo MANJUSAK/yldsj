@@ -12,13 +12,14 @@
         <result property="time" column="time"/>
         <result property="contact" column="contact"/>
         <result property="tel" column="tel"/>
+        <result property="comp" column="comp"/>
         <result property="filesId" column="filesId"/>
     </resultMap>
     <select id="queryEquipmentDao" parameterType="Object" resultMap="queryEquipment">
         SELECT
-        eid,titleName,content,date,time,contact,tel,filesId
+        eid,titleName,content,date,time,contact,tel,comp,filesId
         FROM
-        equipment
+        gs_equipment
         <where>
             <if test="keyWord !=null and keyWord !=''">
                 and titleName like '%${keyWord}%'
@@ -26,8 +27,8 @@
             <if test="uid !=null and uid !=''">
                 and uid=#{uid}
             </if>
-            <if test="compId !=null and compId !=''">
-                and compId=#{compId}
+            <if test="comp !=null and comp !=''">
+                and comp=#{comp}
             </if>
             <if test="date !=null and date !=''">
                 and date like '%${date}%'
@@ -45,19 +46,20 @@
         <result property="contact" column="contact"/>
         <result property="tel" column="tel"/>
         <result property="date" column="date"/>
+        <result property="comp" column="comp"/>
         <result property="time" column="time"/>
     </resultMap>
     <select id="queryBidDao" parameterType="Object" resultMap="queryBid">
         SELECT
-        bid,titleName,content,contact,tel,date,time
+        bid,titleName,content,contact,tel,date,time,comp
         FROM
-        bids
+        gs_bids
         <where>
             <if test="keyWord !=null and keyWord !=''">
                 and titleName like '%${keyWord}%'
             </if>
-            <if test="compId !=null and compId !=''">
-                and compId=#{compId}
+            <if test="comp !=null and comp !=''">
+                and comp=#{comp}
             </if>
             <if test="uid !=null and uid !=''">
                 and uid=#{uid}
@@ -83,19 +85,20 @@
         <result property="sub" column="sub"/>
         <result property="supplier" column="supplier"/>
         <result property="breed" column="breed"/>
+        <result property="comp" column="comp"/>
         <result property="filesId" column="filesId"/>
     </resultMap>
     <select id="querySeedlingDao" parameterType="Object" resultMap="querySeedling">
         SELECT
-        sid,titleName,content,contact,tel,address,supplier,breed,filesId,date,time,sub
+        sid,titleName,content,contact,tel,address,supplier,breed,filesId,comp,date,time,sub
         FROM
-        seedling
+        gs_seedling
         <where>
             <if test="keyWord !=null and keyWord !=''">
                 and titleName like '%${keyWord}%'
             </if>
-            <if test="compId !=null and compId !=''">
-                and compId=#{compId}
+            <if test="comp !=null and comp !=''">
+                and comp=#{comp}
             </if>
             <if test="uid !=null and uid !=''">
                 and uid=#{uid}
@@ -130,19 +133,20 @@
         <result property="email" column="email"/>
         <result property="money" column="money"/>
         <result property="evaluate" column="evaluate"/>
+        <result property="comp" column="comp"/>
         <result property="experience" column="experience"/>
     </resultMap>
     <select id="queryRecruitDao" parameterType="Object" resultMap="queryRecruit">
         SELECT
         rid,positions,companyName,companyAdress,workAdress,companyIntro,content,
-        date,time,contact,tel,email,money,evaluate,experience
+        date,time,contact,tel,email,money,evaluate,experience,comp
         FROM
-        recruit
+        gs_recruit
         <where>
             <if test="keyWord !=null and keyWord !=''">
                 and positions like '%${keyWord}%'
             </if>
-            <if test="compId !=null and compId !=''">
+            <if test="comp !=null and comp !=''">
                 and compId=#{compId}
             </if>
             <if test="uid !=null and uid !=''">
@@ -166,61 +170,61 @@
     <!--设备租赁数据录入sql-->
     <insert id="saveEquipmentDao" parameterType="com.goodsoft.yuanlin.domain.entity.demand.Equipment">
        INSERT INTO
-       equipment
-       (titleName, contact, tel, date, time, content, filesId, uid,compId)
+       gs_equipment
+       (titleName, contact, tel, date, time, content, filesId, uid,comp)
        VALUES
-       (#{titleName}, #{contact}, #{tel}, #{date}, #{time}, #{content}, #{filesId}, #{uid},#{compId})
+       (#{titleName}, #{contact}, #{tel}, #{date}, #{time}, #{content}, #{filesId}, #{uid},#{comp})
     </insert>
     <!--招标数据录入sql-->
     <insert id="saveBidDao" parameterType="com.goodsoft.yuanlin.domain.entity.demand.Bid">
         INSERT INTO
-        bids
-        (titleName, contact, tel, date, time, content, uid,compId)
+        gs_bids
+        (titleName, contact, tel, date, time, content, uid,comp)
          VALUES
-         (#{titleName}, #{contact}, #{tel}, #{date}, #{time}, #{content}, #{uid},#{compId})
+         (#{titleName}, #{contact}, #{tel}, #{date}, #{time}, #{content}, #{uid},#{comp})
     </insert>
     <!--苗木信息数据录入sql-->
     <insert id="saveSeedlingDao" parameterType="com.goodsoft.yuanlin.domain.entity.demand.Seedling">
-        INSERT INTO seedling
-        (titleName, contact, tel, date, time,address, content, supplier, breed, sub, filesId, uid,compId)
+        INSERT INTO gs_seedling
+        (titleName, contact, tel, date, time,address, content, supplier, breed, sub, filesId, uid,comp)
         VALUES
         (#{titleName}, #{contact}, #{tel}, #{date}, #{time},#{address}, #{content},
-        #{supplier}, #{breed}, #{sub}, #{filesId}, #{uid},#{compId})
+        #{supplier}, #{breed}, #{sub}, #{filesId}, #{uid},#{comp})
     </insert>
     <!--人员招聘数据录入sql-->
     <insert id="saveRecruitDao" parameterType="com.goodsoft.yuanlin.domain.entity.demand.Recruit">
        INSERT INTO
-       recruit
+       gs_recruit
        (contact,tel, date, time, money, companyName, companyIntro,companyAdress,
-       workAdress, positions, experience, content, tp, characters, email, evaluate, uid,compId)
+       workAdress, positions, experience, content, tp, characters, email, evaluate, uid,comp)
        VALUES
        (#{contact},#{tel},#{date},#{time},#{money},#{companyName},#{companyIntro},#{companyAdress},
-       #{workAdress},#{positions},#{experience},#{content},#{tp},#{characters},#{email},#{evaluate},#{uid},#{compId})
+       #{workAdress},#{positions},#{experience},#{content},#{tp},#{characters},#{email},#{evaluate},#{uid},#{comp})
     </insert>
     <!--更新设备数据状态(isNo=1表示数据已删除)-->
     <update id="updateEquipmentDao" parameterType="java.util.Arrays">
-        UPDATE equipment SET isNo='1' WHERE eid IN
+        UPDATE gs_equipment SET isNo='1' WHERE eid IN
         <foreach collection="id" item="item" open="(" separator="," close=")">
             #{item}
         </foreach>
     </update>
     <!--更新苗木数据状态(isNo=1表示数据已删除)-->
     <update id="updateSeedlingDao" parameterType="java.util.Arrays">
-        UPDATE seedling SET isNo='1' WHERE sid IN
+        UPDATE gs_seedling SET isNo='1' WHERE sid IN
         <foreach collection="id" item="item" open="(" separator="," close=")">
             #{item}
         </foreach>
     </update>
     <!--更新招标数据状态(isNo=1表示数据已删除)-->
     <update id="updateBidDao" parameterType="java.util.Arrays">
-        UPDATE bids SET isNo=1 WHERE bid IN
+        UPDATE gs_bids SET isNo=1 WHERE bid IN
         <foreach collection="id" item="item" open="(" separator="," close=")">
             #{item}
         </foreach>
     </update>
     <!--更新人员招聘数据状态(isNo=1表示数据已删除)-->
     <update id="updateRecruitDao" parameterType="java.util.Arrays">
-        UPDATE recruit SET isNo='1' WHERE rid IN
+        UPDATE gs_recruit SET isNo='1' WHERE rid IN
         <foreach collection="id" item="item" open="(" separator="," close=")">
             #{item}
         </foreach>
