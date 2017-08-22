@@ -21,7 +21,7 @@ public class RecomCompController {
 
     @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.GET)
     @RequestMapping("/company")
-    public Object recomCompController(HttpServletRequest request, int page) {
-        return this.service.queryRecomService(request, page);
+    public Object recomCompController(HttpServletRequest request, String page, String var) {
+        return this.service.queryRecomService(request, page, var);
     }
 }

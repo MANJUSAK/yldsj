@@ -20,7 +20,7 @@ public class UserController {
     private UserService service;
 
     /**
-     * 用户授权接口
+     * pc端用户授权接口
      *
      * @param request http请求,
      *                userName 用户名
@@ -30,6 +30,21 @@ public class UserController {
      */
     @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)
     @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public Object queryUserController(HttpServletRequest request, String userName, String passWord) {
+        return this.service.queryUserService(request, userName, passWord, "noUserCode");
+    }
+
+    /**
+     * app端用户授权接口
+     *
+     * @param request http请求,
+     *                userName 用户名
+     *                passWord 密码
+     *                userCode 用户验证码
+     * @return 用户登录结果
+     */
+    @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)
+    @RequestMapping(value = "/app/login", method = RequestMethod.POST)
     public Object queryUserController(HttpServletRequest request, String userName, String passWord, String userCode) {
         return this.service.queryUserService(request, userName, passWord, userCode);
     }
@@ -44,7 +59,7 @@ public class UserController {
      */
     @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.GET)
     @RequestMapping(value = "/find/signIn")
-    public Object querySignInController(String uid, String deptId, int page) {
+    public Object querySignInController(String uid, String deptId, String page) {
         return this.service.querySignInService(uid, deptId, page);
     }
 

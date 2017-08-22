@@ -14,8 +14,8 @@ import java.util.List;
 public interface FileDao {
 
     //文件查询
-    public List<FileData> queryFileDao(@Param("fileId") String fileId);
+    public List<FileData> queryFileDao(@Param("fileId") String fileId) throws Exception;
 
     //文件保存
-    public void saveFileDao(FileData msg);
+    public void saveFileDao(FileData msg) throws Exception;
 }

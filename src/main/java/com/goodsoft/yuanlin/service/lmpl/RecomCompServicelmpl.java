@@ -30,14 +30,26 @@ public class RecomCompServicelmpl implements RecomCompService {
     private Logger logger = Logger.getLogger(RecomCompServicelmpl.class);
 
     @Override
-    public <T> T queryRecomService(HttpServletRequest request, int page) {
-        page *= 20;
+    public <T> T queryRecomService(HttpServletRequest request, String page, String var) {
+        if (page == null) {
+            return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
+        }
+        int arg = 0;
         try {
-            List<RecomComp> data = this.dao.queryRecomCompDao(page);
+            arg = Integer.parseInt(page);
+        } catch (NumberFormatException e) {
+            this.logger.error(e);
+            return (T) new Status(StatusEnum.NO_PRAM.getCODE(), StatusEnum.NO_PRAM.getEXPLAIN());
+        }
+        arg *= 20;
+        try {
+            List<RecomComp> data = this.dao.queryRecomCompDao(arg);
             if (data.size() > 0) {
                 List<String> path = new ArrayList<String>();
                 StringBuilder sb = new StringBuilder(this.domainName.getServerDomainName(request).toString());
-                sb.append("/hz7/download.do?id=");
+                sb.append("/");
+                sb.append(var);
+                sb.append("/download.do?id=");
                 for (int i = 0, length = data.size(); i < length; ++i) {
                     List<String> url = this.dao.queryRecomCompFileDao(data.get(i).getId());
                     if (url.size() > 0) {

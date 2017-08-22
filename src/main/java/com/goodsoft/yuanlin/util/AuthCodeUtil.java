@@ -7,8 +7,6 @@ import javax.servlet.http.HttpSession;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 /**
@@ -39,11 +37,9 @@ public class AuthCodeUtil {
         return instance;
     }
 
-    //实例化公共集合存放多用户验证码
-    public Map<String, String> map = new HashMap<String, String>();
-    //实例化获取用户ip工具类
-    private GetIP getIP = GetIP.getInstance();
-
+    /**
+     * 绘制验证码
+     */
     public void getAuthCode(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
         int width = 63;
         int height = 37;
@@ -53,18 +49,18 @@ public class AuthCodeUtil {
         response.setHeader("Pragma", "No-cache");
         response.setHeader("Cache-Control", "no-cache");
         response.setDateHeader("Expires", 0);
-
+        response.setContentType("image/jpeg");
         // 生成缓冲区image类
         BufferedImage image = new BufferedImage(width, height, 1);
         // 产生image类的Graphics用于绘制操作
         Graphics g = image.getGraphics();
         // Graphics类的样式
-        g.setColor(this.getRandColor(200, 250));
-        g.setFont(new Font("Times New Roman", 0, 28));
+        g.setColor(this.getRandColor(200, 255));
+        g.setFont(new Font("Times New Roman", 1, 28));
         g.fillRect(0, 0, width, height);
         // 绘制干扰线
         for (int i = 0; i < 40; i++) {
-            g.setColor(this.getRandColor(130, 200));
+            g.setColor(this.getRandColor(100, 200));
             int x = random.nextInt(width);
             int y = random.nextInt(height);
             int x1 = random.nextInt(12);
@@ -78,21 +74,17 @@ public class AuthCodeUtil {
             String rand = String.valueOf(random.nextInt(10));
             code += rand;
             // 设置随机字符颜色
-            g.setColor(new Color(20 + random.nextInt(110), 20 + random.nextInt(110), 20 + random.nextInt(110)));
+            g.setColor(new Color(20 + random.nextInt(200), 20 + random.nextInt(200), 20 + random.nextInt(200)));
             // 绘制字符
             g.drawString(rand, 13 * i + 6, 28);
         }
-        //获取用户ip确保每个用户只能拥有一个验证码
-        String ip = this.getIP.getIP(request);
-        Map<String, String> arg = (Map<String, String>) request.getSession().getAttribute("pcCode");
-        map.remove(ip);
-        map.put(ip, code);
         // 将字符保存到session中用于前端的验证
-        session.setAttribute("pcCode", map);
+        session.setAttribute("pcCode", code);
+        session.setMaxInactiveInterval(60);
         g.dispose();
         // 返回验证码图片
-        ImageIO.write(image, "JPEG", response.getOutputStream());
-        response.getOutputStream().flush();
+        ImageIO.write(image, "jpeg", response.getOutputStream());
+        response.getOutputStream().close();
     }
 
     // 创建颜色

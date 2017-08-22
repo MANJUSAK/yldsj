@@ -20,7 +20,7 @@ public interface UserService {
     public Status signInService(SignIn msg);
 
     //用户签到数据
-    public <T> T querySignInService(String uid, String deptId, int page);
+    public <T> T querySignInService(String uid, String deptId, String page);
 
     //添加用户信息
     public Status addUserService(MultipartFile[] files, HttpServletRequest request, User msg, String userCode);

@@ -14,16 +14,7 @@
         <result property="filesId" column="F1"/>
         <result property="idCard" column="CERT_NO"/>
         <result property="deptId" column="F2"/>
-    </resultMap>
-    <!--用户签到结果映射-->
-    <resultMap id="SignInInfo" type="com.goodsoft.yuanlin.domain.entity.user.SignIn">
-        <result property="sid" column="sid"/>
-        <result property="adress" column="adress"/>
-        <result property="latitude" column="latitude"/>
-        <result property="longitude" column="longitude"/>
-        <result property="time" column="time"/>
-        <result property="company" column="company"/>
-        <result property="comments" column="comments"/>
+        <result property="member" column="ENGNAME"/>
     </resultMap>
     <!--用户登录sql-->
     <select id="queryUserDao" parameterType="java.lang.String" resultMap="userInfo">
@@ -36,6 +27,7 @@
     SEX,
     CELLPHONE,
     CERT_NO,
+    ENGNAME,
     F1,
     F2
     FROM
@@ -43,9 +35,20 @@
     WHERE
     LOGIN_NAME=#{userName} AND PASSWORD=#{passWord} AND ACTIVE='1'
     </select>
+    <!--用户签到结果映射-->
+    <resultMap id="SignInInfo" type="com.goodsoft.yuanlin.domain.entity.user.SignIn">
+        <result property="sid" column="sid"/>
+        <result property="adress" column="adress"/>
+        <result property="latitude" column="latitude"/>
+        <result property="longitude" column="longitude"/>
+        <result property="time" column="time"/>
+        <result property="name" column="name"/>
+        <result property="company" column="company"/>
+        <result property="comments" column="comments"/>
+    </resultMap>
     <!--用户签到信息sql-->
     <select id="querySignInDao" parameterType="java.lang.String" resultMap="SignInInfo">
-        SELECT sid,adress,latitude,longitude,time,company,comments FROM signin
+        SELECT sid,address,latitude,longitude,time,name,company,comments FROM signin
         <where>
             <if test="uid !=null and uid !=''">
                 and uid=#{uid}
@@ -76,7 +79,7 @@
     </select>
     <!--获取用户所在部门id-->
     <select id="queryDeptIdByUidDao" parameterType="java.lang.String" resultType="java.lang.String">
-        SELECT ID FROM hz7.tor_horizon_user_dept where USER_ID=#{uid}
+        SELECT DEPT_ID FROM hz7.tor_horizon_user_dept where USER_ID=#{uid}
     </select>
     <!--添加用户信息-->
     <insert id="addUserDao" parameterType="com.goodsoft.yuanlin.domain.entity.user.User">
@@ -98,8 +101,8 @@
     <!--用户签到sql-->
     <insert id="signInDao" parameterType="com.goodsoft.yuanlin.domain.entity.user.SignIn">
         INSERT INTO signin
-        (adress, latitude, longitude, time, company, compId, uid, comments)
+        (address, latitude, longitude, time,name, company, compId, uid, comments)
         VALUES
-        (#{adress}, #{latitude}, #{longitude}, #{time}, #{company}, #{compId}, #{uid}, #{comments});
+        (#{address}, #{latitude}, #{longitude}, #{time},#{name}, #{company}, #{compId}, #{uid}, #{comments});
     </insert>
 </mapper>

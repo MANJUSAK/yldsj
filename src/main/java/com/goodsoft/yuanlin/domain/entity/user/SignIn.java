@@ -8,7 +8,8 @@ import java.beans.Transient;
  */
 public class SignIn implements java.io.Serializable {
     private Integer sid;//表id
-    private String adress;//签到地址
+    private String address;//签到地址
+    private String name;//用户姓名
     private String time;//签到时间
     private String compId;//企业id
     private String uid;//用户id
@@ -25,12 +26,20 @@ public class SignIn implements java.io.Serializable {
         this.sid = sid;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getTime() {

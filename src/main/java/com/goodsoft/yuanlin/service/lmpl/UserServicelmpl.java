@@ -26,7 +26,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 /**
  * function 用户管理业务接口实现类
@@ -63,12 +62,17 @@ public class UserServicelmpl implements UserService {
      */
     @Override
     public <T> T queryUserService(HttpServletRequest request, String userName, String passWord, String userCode) {
-        //获取系统验证码
-        Map<String, String> pcCode = (Map<String, String>) request.getSession().getAttribute("pcCode");
-        String ip = this.getIP.getIP(request);
-        //匹配用户验证码
-        if (pcCode == null || !pcCode.get(ip).equals(userCode)) {
-            return (T) new Status(StatusEnum.CHECKCODE.getCODE(), StatusEnum.CHECKCODE.getEXPLAIN());
+        switch (userCode) {
+            case "noUserCode":
+                break;
+            default:
+                //获取系统验证码
+                String pcCode = (String) request.getSession().getAttribute("pcCode");
+                //匹配用户验证码
+                if (pcCode == null || !pcCode.equals(userCode)) {
+                    return (T) new Status(StatusEnum.CHECKCODE.getCODE(), StatusEnum.CHECKCODE.getEXPLAIN());
+                }
+                break;
         }
         //密码解密
         String pwd = DESEDE.encryptIt(passWord);
@@ -79,7 +83,7 @@ public class UserServicelmpl implements UserService {
         } catch (Exception e) {
             System.out.println(e.toString());
             this.logger.error(e);
-
+            return (T) new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
         }
         if (userInfo != null) {
             //获取用户文件
@@ -96,7 +100,6 @@ public class UserServicelmpl implements UserService {
                     //封装用户文件到用户信息
                     userInfo.setPicture(var);
                 }
-                System.out.println(userInfo.getDeptId());
                 if ("".equals(userInfo.getDeptId())) {
                     userInfo.setDeptId(this.dao.queryDeptIdByUidDao(userInfo.getUid()));
                 }
@@ -106,7 +109,8 @@ public class UserServicelmpl implements UserService {
                 return (T) new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
             }
             //用户登录成功后清除该用户验证码
-            this.authCode.map.remove(ip);
+            /*this.authCode.map.remove(ip);*/
+            request.getSession().removeAttribute("pcCode");
             return (T) new Result(0, userInfo);
         } else {
             return (T) new Status(StatusEnum.CHECKUSER.getCODE(), StatusEnum.CHECKUSER.getEXPLAIN());
@@ -122,22 +126,47 @@ public class UserServicelmpl implements UserService {
      * @return 查询结果
      */
     @Override
-    public <T> T querySignInService(String uid, String deptId, int page) {
-        page *= 20;
-        List<SignIn> data = null;
+    public <T> T querySignInService(String uid, String deptId, String page) {
+        if (page == null) {
+            return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
+        }
+        if (uid == null || "".equals(uid)) {
+            if (deptId == null || "".equals(deptId)) {
+                return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
+            }
+        }
+        int arg = 0;
+        try {
+            arg = Integer.parseInt(page);
+        } catch (NumberFormatException e) {
+            this.logger.error(e);
+            return (T) new Status(StatusEnum.NO_PRAM.getCODE(), StatusEnum.NO_PRAM.getEXPLAIN());
+        }
+        if (arg < 0) {
+            arg = 0;
+        }
+        arg *= 20;
         try {
             //获取用户权限（具有管理员权限查看企业数据）
-            String str = this.dao.queryDeptLevelByIdDao(deptId);
-            if (str == null) {
-                data = this.dao.querySignInDao(uid, null, page);
-            } else {
-                int var = Integer.parseInt(str);
-                if (var > 2) {
-                    data = this.dao.querySignInDao(uid, null, page);
+            if (deptId != null && !("".equals(deptId))) {
+                String str = this.dao.queryDeptLevelByIdDao(deptId);
+                if (str == null) {
+                    return (T) new Status(StatusEnum.NO_RIGHTS.getCODE(), StatusEnum.NO_RIGHTS.getEXPLAIN());
                 } else {
-                    data = this.dao.querySignInDao(null, deptId, page);
+                    int var = Integer.parseInt(str);
+                    if (var > 2) {
+                        return (T) new Status(StatusEnum.NO_RIGHTS.getCODE(), StatusEnum.NO_RIGHTS.getEXPLAIN());
+                    }
                 }
             }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            this.logger.error(e);
+            return (T) new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
+        }
+        List<SignIn> data = null;
+        try {
+            data = this.dao.querySignInDao(uid, deptId, arg);
         } catch (Exception e) {
             System.out.println(e.toString());
             this.logger.error(e);
@@ -182,10 +211,9 @@ public class UserServicelmpl implements UserService {
     @Transactional
     public Status addUserService(MultipartFile[] files, HttpServletRequest request, User msg, String userCode) {
         //获取系统验证码
-        Map<String, String> pcCode = (Map<String, String>) request.getSession().getAttribute("pcCode");
-        String ip = this.getIP.getIP(request);
+        String pcCode = (String) request.getSession().getAttribute("pcCode");
         //匹配用户验证码
-        if (pcCode == null || !pcCode.get(ip).equals(userCode)) {
+        if (pcCode == null || !pcCode.equals(userCode)) {
             return new Status(StatusEnum.CHECKCODE.getCODE(), StatusEnum.CHECKCODE.getEXPLAIN());
         }
         try {
@@ -220,7 +248,7 @@ public class UserServicelmpl implements UserService {
             this.dao.addUserDao(msg);
             this.dao.addDeptDao(this.uuid.getUUID().toString(), msg.getUid(), deptId, date);
             //增加用户成功后清除该用户验证码
-            this.authCode.map.remove(ip);
+            request.getSession().removeAttribute("pcCode");
             return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
         } catch (Exception e) {
             System.out.println(e.toString());
