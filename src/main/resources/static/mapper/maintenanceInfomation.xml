@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--suppress ALL -->
+<mapper namespace="com.goodsoft.yuanlin.domain.dao.MaintenanceInformationDao">
+    <!--app养护前植物信息映射-->
+    <resultMap id="Info" type="com.goodsoft.yuanlin.domain.entity.maintenance.PlantInformation">
+        <result property="id" column="ID"/>
+        <result property="code" column="PI_NUMBER"/>
+        <result property="name" column="PI_NAME"/>
+        <result property="purpose" column="PI_PURPOSE"/>
+        <result property="specifications" column="PI_SPECIFICATIONS"/>
+        <result property="address" column="PI_PLACE"/>
+        <result property="time" column="PI_DATE"/>
+        <result property="deptId" column="DEPTID"/>
+    </resultMap>
+    <!--app管护信息映射-->
+    <resultMap id="mentInfo" type="com.goodsoft.yuanlin.domain.entity.maintenance.Management">
+        <result property="id" column="ID"/>
+        <result property="code" column="PLANT_UMBER"/>
+        <result property="address" column="MAINTENANCE_SITE"/>
+        <result property="time" column="CURING_TIME"/>
+        <result property="personnel" column="MAINTENANCE_PERSONNEL"/>
+        <result property="type" column="MAINTENANCE_TYPE"/>
+        <result property="content" column="MAINTENANCE_CONTENT"/>
+        <result property="frontPhoto" column="BEFORE_CURING"/>
+        <result property="afterPhoto" column="AFTER_MAINTENANCE"/>
+        <result property="problem" column="PROBLEM_DISCOVERY"/>
+        <result property="cleaning" column="CLEANING_SITUATION"/>
+        <result property="plantGrowth" column="PLANT_GROWTH"/>
+        <result property="remarks" column="REMARKS"/>
+        <result property="userId" column="UIDS"/>
+        <result property="maintenanceCode" column="YID"/>
+        <result property="deptId" column="DEPTID"/>
+    </resultMap>
+    <!--app养护信息映射-->
+    <resultMap id="maintenanceInfo" type="com.goodsoft.yuanlin.domain.entity.maintenance.MaintenanceInformation">
+        <result property="id" column="ID"/>
+        <result property="code" column="PLANT_NUMBER"/>
+        <result property="state" column="MAINTENANCE_STATE"/>
+        <result property="time" column="CURING_TIME"/>
+        <result property="address" column="MAINTENANCE_SITE"/>
+        <result property="userId" column="UIDS"/>
+        <result property="deptId" column="DEPTID"/>
+        <result property="status" column="STATUS"/>
+    </resultMap>
+    <!--app养护前植物信息录入-->
+    <insert id="plantInformation" parameterType="com.goodsoft.yuanlin.domain.entity.maintenance.PlantInformation">
+       INSERT INTO hz7.gs_plant_input
+       (ID,PI_NUMBER,PI_NAME,PI_PURPOSE,PI_DATE,PI_PLACE,PI_SPECIFICATIONS,DEPTID)
+       VALUES
+       (#{id},#{code},#{name},#{purpose},#{time},#{address},#{specifications},#{deptId})
+    </insert>
+    <!--app管护信息录入-->
+    <insert id="addmainInformation" parameterType="com.goodsoft.yuanlin.domain.entity.maintenance.Management">
+    insert INTO hz7.gs_management_information
+    (ID,PLANT_UMBER,MAINTENANCE_SITE,CURING_TIME,MAINTENANCE_PERSONNEL,MAINTENANCE_TYPE,MAINTENANCE_CONTENT,BEFORE_CURING,AFTER_MAINTENANCE,PROBLEM_DISCOVERY,CLEANING_SITUATION,PLANT_GROWTH,REMARKS,UIDS,YID,DEPTID)
+    VALUES
+    (#{id},#{code},#{address},#{time},#{personnel},#{type},#{content},#{frontPhoto},#{afterPhoto},#{problem},#{cleaning},#{plantGrowth},#{remarks},#{userId},#{maintenanceCode},#{deptId})
+    </insert>
+    <!--app养护信息录入-->
+    <insert id="addMaintenanceInformation" parameterType="com.goodsoft.yuanlin.domain.entity.maintenance.MaintenanceInformation">
+       INSERT INTO hz7.gs_maintenance_inform(ID,PLANT_NUMBER,MAINTENANCE_STATE,CURING_TIME,MAINTENANCE_SITE,UIDS,DEPTID,STATUS)
+       VALUES(#{id},#{code},#{state},#{time},#{address},#{userId},#{deptId},#{status})
+    </insert>
+    <!-- 更新养护信息-->
+    <update id="updateMainStatus" parameterType="com.goodsoft.yuanlin.domain.entity.maintenance.MaintenanceInformation">
+        UPDATE hz7.gs_maintenance_inform SET `STATUS` = #{status}
+        <where>
+            <if test="id !=null and id !=''">
+                and ID=#{id}
+            </if>
+        </where>
+    </update>
+    <!--app树苗信息-->
+    <select id="findPlantInformation" parameterType="java.lang.String" resultMap="Info">
+        SELECT * FROM hz7.gs_plant_input
+        <where>
+            <if test="code !=null and code !=''">
+                and PI_NUMBER=#{code}
+            </if>
+        </where>
+    </select>
+    <!--app个人管护信息查询-->
+    <select id="findManagementInfo" parameterType="java.lang.String" resultMap="mentInfo">
+        SELECT * FROM hz7.gs_management_information
+        <where>
+            <if test="userId !=null and userId !=''">
+                and UIDS=#{userId}
+            </if>
+            <if test="code !=null and code !=''">
+                and YID=#{code}
+            </if>
+        </where>
+    </select>
+    <!--app个人当日管护信息查询-->
+    <select id="findNowManagementInfo" parameterType="java.lang.String" resultMap="mentInfo">
+        SELECT * FROM hz7.gs_management_information
+        <where>
+            <if test="code !=null and code !=''">
+                and PLANT_UMBER=#{code}
+            </if>
+            <if test="time !=null and time !=''">
+                and CURING_TIME LIKE concat(concat('%',#{time}),'%')
+            </if>
+        </where>
+    </select>
+    <!--app个人养护信息查询-->
+    <select id="findMaintenanceInfo" parameterType="java.lang.String" resultMap="maintenanceInfo">
+        SELECT * from hz7.gs_maintenance_inform
+        <where>
+            <if test="userId !=null and userId !=''">
+                and UIDS=#{userId}
+            </if>
+        </where>
+    </select>
+    <!--app个人当天养护信息查询-->
+    <select id="findNowMaintenanceInfo" parameterType="java.lang.String" resultMap="maintenanceInfo">
+        SELECT * from hz7.gs_maintenance_inform
+        <where>
+            <if test="code !=null and code !=''">
+                and PLANT_NUMBER=#{code}
+            </if>
+            <if test="time !=null and time !=''">
+                and CURING_TIME LIKE concat(concat('%',#{time}),'%')
+            </if>
+        </where>
+    </select>
+</mapper>

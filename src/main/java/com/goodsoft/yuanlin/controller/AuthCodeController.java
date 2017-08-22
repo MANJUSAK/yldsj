@@ -34,6 +34,7 @@ public class AuthCodeController {
             this.authCode.getAuthCode(request, response, session);
         } catch (IOException e) {
             System.out.println(e.toString());
+
         }
     }
 }

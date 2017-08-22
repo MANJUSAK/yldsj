@@ -14,6 +14,9 @@ public enum StatusEnum implements java.io.Serializable {
     NO_DATA(404, "无数据"),
     NO_URL(404, "无效请求"),
     NO_RIGHTS(401, "该用户无法操作此功能"),
+    NO_ADD(401, "信息不能重复录入"),
+    NO_ADDMAINANCE(405, "本植株已经养护过，请明天再来吧！"),
+    NO_ADDMABAGEMENT(405, "本植株已经管护过，请明天再来吧！"),
     CHECKUSER(404, "用户名与密码不匹配或已被禁用"),
     USERNAME(402, "用户名已被注册"),
     CHECK_DATA(407, "请正确填写信息后重试"),
@@ -23,6 +26,7 @@ public enum StatusEnum implements java.io.Serializable {
     NO_FILE(604, "文件不能为空"),
     CHECKCODE(402, "验证码不正确"),
     NO_PRAM(400, "参数错误");
+
 
     private final int CODE;
     private final String EXPLAIN;

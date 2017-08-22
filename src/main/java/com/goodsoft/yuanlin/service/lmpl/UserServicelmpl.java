@@ -34,7 +34,6 @@ import java.util.List;
 @SuppressWarnings("ALL")
 @Service
 public class UserServicelmpl implements UserService {
-
     @Resource
     private UserDao dao;
     @Resource
