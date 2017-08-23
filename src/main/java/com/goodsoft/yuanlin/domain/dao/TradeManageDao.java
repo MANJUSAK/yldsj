@@ -17,19 +17,19 @@ public interface TradeManageDao {
     public List<Dues> queryDuesDao(@Param("page") int page) throws Exception;
 
     //会员查询会费信息
-    public List<Dues> queryMberDuesDao(@Param("page") int page) throws Exception;
+    public List<Dues> queryMberDuesDao(@Param("date") String date, @Param("keyWord") String keyWord, @Param("page") int page) throws Exception;
 
     //查询培训信息
-    public List<TrainsInfo> queryTrainInfoDao(@Param("page") int page) throws Exception;
+    public List<TrainsInfo> queryTrainInfoDao(@Param("date") String date, @Param("tp") String tp, @Param("keyWord") String keyWord, @Param("page") int page) throws Exception;
 
     //查询优质工程信息
-    public List<QualEngin> queryQualEnginDao(@Param("page") int page) throws Exception;
+    public List<QualEngin> queryQualEnginDao(@Param("date") String date, @Param("comp") String comp, @Param("year") String year, @Param("keyWord") String keyWord, @Param("page") int page) throws Exception;
 
     //查询联系协会数据
-    public List<Contact> queryContactDao(@Param("page") int page) throws Exception;
+    public List<Contact> queryContactDao(@Param("date") String date, @Param("page") int page) throws Exception;
 
     //查询动态资讯信息
-    public List<Information> queryInformationDao(@Param("page") int page) throws Exception;
+    public List<Information> queryInformationDao(@Param("date") String date, @Param("tp") String tp, @Param("keyWord") String keyWord, @Param("page") int page) throws Exception;
 
     //增加会费信息
     public void addDuesDao(Dues msg) throws Exception;

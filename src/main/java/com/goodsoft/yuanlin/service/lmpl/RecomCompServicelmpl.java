@@ -29,6 +29,16 @@ public class RecomCompServicelmpl implements RecomCompService {
     //实例化日志管理工具类
     private Logger logger = Logger.getLogger(RecomCompServicelmpl.class);
 
+    /**
+     * 查询企业推荐业务接口方法
+     *
+     * @param request http请求
+     * @param page    页码
+     * @param var     工作流项目名
+     * @param <T>     泛型
+     * @return 查询结果
+     * @throws Exception
+     */
     @Override
     public <T> T queryRecomService(HttpServletRequest request, String page, String var) {
         if (page == null || "".equals(page)) {

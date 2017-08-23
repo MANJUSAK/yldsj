@@ -43,12 +43,10 @@ public class Recruit implements java.io.Serializable {
     private int tp;
     //工作性质(全职 1/兼职 2)
     private int characters;
-    //企业编号
+    //企业
     private String comp;
     // 用户编号
     private String uid;
-    // 状态参数
-    private Integer isNo;
 
 
     public Integer getRid() {
@@ -170,8 +168,7 @@ public class Recruit implements java.io.Serializable {
     public void setTime(String time) {
         this.time = time;
     }
-
-    @Transient
+    
     public int getTp() {
         return tp;
     }
@@ -180,7 +177,6 @@ public class Recruit implements java.io.Serializable {
         this.tp = tp;
     }
 
-    @Transient
     public int getCharacters() {
         return characters;
     }
@@ -204,14 +200,5 @@ public class Recruit implements java.io.Serializable {
 
     public void setUid(String uid) {
         this.uid = uid;
-    }
-
-    @Transient
-    public Integer getIsNo() {
-        return isNo;
-    }
-
-    public void setIsNo(Integer isNo) {
-        this.isNo = isNo;
     }
 }

@@ -4,14 +4,14 @@ package com.goodsoft.yuanlin.domain.entity.maintenance;
  * 养护信息
  * Created by 龙宏 on 2017/8/17.
  */
-public class MaintenanceInformation {
+public class Maintain {
     private String id; //表ID
     private String code; //植物编号
     private String state; // 养护状态
     private String time;  //养护时间
     private String address;  // 养护地点
     private String userId;   //用户ID
-    private String deptId;  //部门ID
+    private String dept;  //部门ID
     private String status; //管护状态
 
     public String getStatus() {
@@ -70,11 +70,11 @@ public class MaintenanceInformation {
         this.userId = userId;
     }
 
-    public String getDeptId() {
-        return deptId;
+    public String getDept() {
+        return dept;
     }
 
-    public void setDeptId(String deptId) {
-        this.deptId = deptId;
+    public void setDept(String dept) {
+        this.dept = dept;
     }
 }

@@ -1,7 +1,8 @@
 package com.goodsoft.yuanlin.service;
 
-import com.goodsoft.yuanlin.domain.entity.maintenance.MaintenanceInformation;
+import com.goodsoft.yuanlin.domain.entity.maintenance.Maintain;
 import com.goodsoft.yuanlin.domain.entity.maintenance.Management;
+import com.goodsoft.yuanlin.domain.entity.maintenance.PlantInformation;
 import com.goodsoft.yuanlin.util.resultentity.Status;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,31 +15,35 @@ import java.util.List;
  * 植株养护信息录入
  * Created by 龙宏 on 2017/8/16.
  */
-public interface MaintenanceInformationService {
+public interface MaintainService {
     /**
      * app园林养护前植物信息录入
+     *
      * @return
      */
-    public Status addPlantInformation(String code, String name, String purpose, String specifications, String address, String time, String deptId);
+    public Status addPlantInformation(PlantInformation msg);
 
     /**
      * app园林管护信息录入
-     * @param files  图片
+     *
+     * @param files      图片
      * @param request
-     * @param management  管护信息
+     * @param management 管护信息
      * @return
      */
     public Status addInformation(@RequestParam(value = "file", required = false) List<MultipartFile> files, HttpServletRequest request, ModelMap model, Management management);
 
     /**
      * 养护信息录入
-     * @param maintenanceInformation
+     *
+     * @param maintain
      * @return
      */
-    public Status addMaintenanceInformation(MaintenanceInformation maintenanceInformation);
+    public Status addMaintenanceInformation(Maintain maintain);
 
     /**
      * 树苗信息查询
+     *
      * @param code
      * @return
      */
@@ -46,14 +51,16 @@ public interface MaintenanceInformationService {
 
     /**
      * 个人管护信息查询
+     *
      * @param userId
      * @param <T>
      * @return
      */
-    public <T> T findManagementInfo(String userId,String code,HttpServletRequest request);
+    public <T> T findManagementInfo(String userId, String code, HttpServletRequest request);
 
     /**
      * 个人养护信息查询
+     *
      * @param userId
      * @param <T>
      * @return

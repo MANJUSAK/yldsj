@@ -1,9 +1,7 @@
 package com.goodsoft.yuanlin.service;
 
 import com.goodsoft.yuanlin.domain.entity.user.SignIn;
-import com.goodsoft.yuanlin.domain.entity.user.User;
 import com.goodsoft.yuanlin.util.resultentity.Status;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,8 +18,11 @@ public interface UserService {
     public Status signInService(SignIn msg);
 
     //用户签到数据
-    public <T> T querySignInService(String uid, String deptId, String page);
+    public <T> T querySignInService(String uid, String dept, String dep, String comp, String page, String lev);
+
+    //查询人才库数据
+    public <T> T queryTalentPoolService(String tp, String page);
 
     //添加用户信息
-    public Status addUserService(MultipartFile[] files, HttpServletRequest request, User msg, String userCode);
+//    public Status addUserService(MultipartFile[] files, HttpServletRequest request, User msg, String userCode);
 }

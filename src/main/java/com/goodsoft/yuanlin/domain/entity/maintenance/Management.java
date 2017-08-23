@@ -20,7 +20,7 @@ public class Management {
     private String userId;     //用户ID
     private String type;       //养护类型
     private String maintenanceCode; //养护编号
-    private String deptId;        //部门ID
+    private String dept;        //部门ID
 
     public String getMaintenanceCode() {
         return maintenanceCode;
@@ -30,12 +30,12 @@ public class Management {
         this.maintenanceCode = maintenanceCode;
     }
 
-    public String getDeptId() {
-        return deptId;
+    public String getDept() {
+        return dept;
     }
 
-    public void setDeptId(String deptId) {
-        this.deptId = deptId;
+    public void setDept(String dept) {
+        this.dept = dept;
     }
 
     public String getType() {

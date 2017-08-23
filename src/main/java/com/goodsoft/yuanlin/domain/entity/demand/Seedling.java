@@ -41,8 +41,6 @@ public class Seedling implements java.io.Serializable {
     private String comp;
     // 用户编号
     private String uid;
-    // 状态参数
-    private Integer isNo;
 
     public Integer getSid() {
         return sid;
@@ -165,12 +163,4 @@ public class Seedling implements java.io.Serializable {
         this.uid = uid;
     }
 
-    @Transient
-    public Integer getIsNo() {
-        return isNo;
-    }
-
-    public void setIsNo(Integer isNo) {
-        this.isNo = isNo;
-    }
 }

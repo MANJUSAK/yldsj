@@ -12,7 +12,8 @@ public class Contact implements java.io.Serializable {
     private String email;//联系邮箱
     private String webSite;//联系网址
     private int postCode;//邮编
-    private String date;//时间
+    private String date;//日期
+    private String time;//时间
 
     public int getId() {
         return id;
@@ -76,5 +77,13 @@ public class Contact implements java.io.Serializable {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

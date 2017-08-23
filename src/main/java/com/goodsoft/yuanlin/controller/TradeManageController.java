@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  * function 行业协会访问入口
  * Created by 严彬荣 on 2017/8/21.
  */
+@CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)
 @RestController
 @RequestMapping("/hyxh")
 public class TradeManageController {
@@ -20,38 +21,94 @@ public class TradeManageController {
     @Resource
     private TradeManageService service;
 
-    @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.GET)
+    /**
+     * 行业协会数据查询接口（含件）
+     *
+     * @param request http请求
+     * @param type    查询类型（协会培训等）
+     * @param date    日期
+     * @param tp      查询数据类型（施工员等）
+     * @param keyWord 关键字
+     * @param page    页码
+     * @return 响应结果
+     */
     @RequestMapping("/find/cont/{type}")
-    public Object queryTradeController(HttpServletRequest request, @PathVariable("type") String type, String page) {
-        return this.service.queryTradeService(request, type, page);
+    public Object queryTradeController(HttpServletRequest request, @PathVariable("type") String type, String date, String tp, String keyWord, String page) {
+        return this.service.queryTradeService(request, type, date, tp, keyWord, page);
     }
 
-    @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.GET)
+    /**
+     * 行业协会数据查询接口（无文件）
+     *
+     * @param type    查询类型（协会培训等）
+     * @param date    日期
+     * @param tp      查询数据类型（施工员等）
+     * @param comp    企业
+     * @param year    年份
+     * @param keyWord 关键字
+     * @param page    页码
+     * @param member  会员属性（0为会员）
+     * @return 响应结果
+     */
     @RequestMapping("/find/{type}")
-    public Object queryTradeController(@PathVariable("type") String type, String member, String page) {
-        return this.service.queryTradeService(type, page, member);
+    public Object queryTradeController(@PathVariable("type") String type, String date, String tp, String comp, String year, String keyWord, String page, String member) {
+        return this.service.queryTradeService(type, date, tp, comp, year, keyWord, page, member);
     }
 
+    /**
+     * 会费数据添加接口
+     *
+     * @param msg 数据
+     * @return 响应结果
+     */
     @RequestMapping(value = "/add/hf", method = RequestMethod.POST)
     public Status addTradeController(Dues msg) {
         return this.service.addTradeService("hf", msg);
     }
 
+    /**
+     * 联系协会数据添加接口
+     *
+     * @param msg 数据
+     * @return 响应结果
+     */
     @RequestMapping(value = "/add/lxxh", method = RequestMethod.POST)
     public Status addTradeController(Contact msg) {
         return this.service.addTradeService("lxxh", msg);
     }
 
+    /**
+     * 动态资讯数据添加接口
+     *
+     * @param msg 数据
+     * @return 响应结果
+     */
     @RequestMapping(value = "/add/dtzx", method = RequestMethod.POST)
     public Status addTradeController(Information msg) {
         return this.service.addTradeService("dtzx", msg);
     }
 
+    /**
+     * 优质工程数据添加接口
+     *
+     * @param msg 数据
+     * @return 响应结果
+     */
     @RequestMapping(value = "/add/yzgc", method = RequestMethod.POST)
     public Status addQualEnginController(QualEngin msg) {
         return this.service.addTradeService("yzgc", msg);
     }
 
+
+    /**
+     * 协会培训数据添加接口
+     *
+     * @param request  http请求
+     * @param files    上传文件
+     * @param fileType 文件类型（文档/图片）
+     * @param msg      数据
+     * @return 响应结果
+     */
     @RequestMapping(value = "/add/xhpx", method = RequestMethod.POST)
     public Status addController(HttpServletRequest request, @RequestParam("files") MultipartFile[] files, String fileType, TrainsInfo msg) {
         return this.service.addTradeService(request, files, fileType, "xhpx", msg);

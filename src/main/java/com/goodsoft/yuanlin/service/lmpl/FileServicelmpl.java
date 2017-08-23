@@ -28,11 +28,12 @@ public class FileServicelmpl implements FileService {
     /**
      * 文件上传业务处理方法
      *
-     * @param files 上传的文件,
-     *              request http请求（用于文件上传），
-     *              fileType 上传文件类型（苗木、设备租赁等），
-     *              fileId 文件编号（用于查询文件）。
+     * @param files    上传的文件,
+     * @param request  http请求（用于文件上传），
+     * @param fileType 上传文件类型（苗木、设备租赁等），
+     * @param fileId   文件编号（用于查询文件）。
      * @return int 文件上传处理状态（0为成功，其余都失败）
+     * @throws Exception
      */
     @Override
     @Transactional

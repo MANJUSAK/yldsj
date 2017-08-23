@@ -46,6 +46,7 @@ public class CarouselServicelmpl implements CarouselService {
      *
      * @param http http请求
      * @return 查询数据
+     * @throws Exception
      */
     @Override
     public <T> T queryCarouselService(HttpServletRequest request) {
@@ -84,10 +85,11 @@ public class CarouselServicelmpl implements CarouselService {
     /**
      * function 添加轮播图业务方法
      *
-     * @param http http请求
-     *             files 上传文件
-     *             msg 数据
+     * @param http  http请求
+     * @param files 上传文件
+     * @param msg   数据
      * @return 添加结果
+     * @throws Exception
      */
     @Override
     @Transactional

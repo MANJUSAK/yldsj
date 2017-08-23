@@ -2,7 +2,8 @@ package com.goodsoft.yuanlin.service.lmpl;
 
 import com.goodsoft.yuanlin.domain.dao.FileDao;
 import com.goodsoft.yuanlin.domain.dao.UserDao;
-import com.goodsoft.yuanlin.domain.entity.file.FileData;
+import com.goodsoft.yuanlin.domain.entity.user.Corporation;
+import com.goodsoft.yuanlin.domain.entity.user.Employees;
 import com.goodsoft.yuanlin.domain.entity.user.SignIn;
 import com.goodsoft.yuanlin.domain.entity.user.User;
 import com.goodsoft.yuanlin.service.FileService;
@@ -17,13 +18,10 @@ import com.goodsoft.yuanlin.util.resultentity.StatusEnum;
 import com.horizon.util.encrypt.DESEDE;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -86,33 +84,6 @@ public class UserServicelmpl implements UserService {
             return (T) new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
         }
         if (userInfo != null) {
-            //获取用户文件
-            List<FileData> path = null;
-            try {
-                path = this.fileDao.queryFileDao(userInfo.getFilesId());
-                int p = path.size();
-                if (p > 0) {
-                    //获取服务器域名
-                    String http = this.domainName.getServerDomainName(request).toString();
-                    List<String> url = new ArrayList<String>();
-                    StringBuilder sb = new StringBuilder();
-                    for (int i = 0; i < p; ++i) {
-                        sb.append(http);
-                        sb.append(path.get(i).getPath());
-                        url.add(sb.toString());
-                        sb.delete(0, sb.length());
-                    }
-                    //封装用户文件到用户信息
-                    userInfo.setPicture(url);
-                }
-                if ("".equals(userInfo.getDeptId())) {
-                    userInfo.setDeptId(this.dao.queryDeptIdByUidDao(userInfo.getUid()));
-                }
-            } catch (Exception e) {
-                System.out.println(e.toString());
-                this.logger.error(e);
-                return (T) new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
-            }
             //用户登录成功后清除该用户验证码
             request.getSession().removeAttribute("pcCode");
             return (T) new Result(0, userInfo);
@@ -124,18 +95,19 @@ public class UserServicelmpl implements UserService {
     /**
      * 查询用户签到数据业务接口方法
      *
-     * @param uid 用户编号，
-     *            deptId 企业id，
-     *            page 页数。
+     * @param uid  用户编号，
+     * @param dept 企业，
+     * @param page 页数。
      * @return 查询结果
+     * @throws Exception
      */
     @Override
-    public <T> T querySignInService(String uid, String deptId, String page) {
+    public <T> T querySignInService(String uid, String dept, String dep, String comp, String page, String lev) {
         if (page == null || "".equals(page)) {
             return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
         if (uid == null || "".equals(uid)) {
-            if (deptId == null || "".equals(deptId)) {
+            if (dept == null || "".equals(dept) || comp == null || "".equals(comp) || lev == null || "".equals(lev)) {
                 return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
             }
         }
@@ -152,15 +124,20 @@ public class UserServicelmpl implements UserService {
         arg *= 20;
         try {
             //获取用户权限（具有管理员权限查看企业数据）
-            if (deptId != null && !("".equals(deptId))) {
-                String str = this.dao.queryDeptLevelByIdDao(deptId);
-                if (str == null) {
-                    return (T) new Status(StatusEnum.NO_RIGHTS.getCODE(), StatusEnum.NO_RIGHTS.getEXPLAIN());
-                } else {
-                    int var = Integer.parseInt(str);
-                    if (var > 2) {
-                        return (T) new Status(StatusEnum.NO_RIGHTS.getCODE(), StatusEnum.NO_RIGHTS.getEXPLAIN());
+            if (dept != null && !("".equals(dept))) {
+                int v = 10;
+                if (lev != null && !("".equals(lev))) {
+                    try {
+                        v = Integer.parseInt(lev);
+                    } catch (NumberFormatException e) {
+                        this.logger.error(e);
+                        return (T) new Status(StatusEnum.NO_PRAM.getCODE(), StatusEnum.NO_PRAM.getEXPLAIN());
                     }
+                } else {
+                    return (T) new Status(StatusEnum.NO_PRAM.getCODE(), StatusEnum.NO_PRAM.getEXPLAIN());
+                }
+                if (!("人事部".equals(dept)) && v > 2) {
+                    return (T) new Status(StatusEnum.NO_RIGHTS.getCODE(), StatusEnum.NO_RIGHTS.getEXPLAIN());
                 }
             }
         } catch (Exception e) {
@@ -170,7 +147,7 @@ public class UserServicelmpl implements UserService {
         }
         List<SignIn> data = null;
         try {
-            data = this.dao.querySignInDao(uid, deptId, arg);
+            data = this.dao.querySignInDao(uid, dep, comp, arg);
         } catch (Exception e) {
             System.out.println(e.toString());
             this.logger.error(e);
@@ -183,10 +160,68 @@ public class UserServicelmpl implements UserService {
     }
 
     /**
+     * 人才库数据查询
+     *
+     * @param tp   查询类型（法人库等）
+     * @param page 页码
+     * @param <T>  泛型
+     * @return 查询结果
+     * @throws Exception
+     */
+    @Override
+    public <T> T queryTalentPoolService(String tp, String page) {
+        if (page == null || "".equals(page)) {
+            return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
+        }
+        int arg = 0;
+        try {
+            arg = Integer.parseInt(page);
+        } catch (NumberFormatException e) {
+            this.logger.error(e);
+            return (T) new Status(StatusEnum.NO_PRAM.getCODE(), StatusEnum.NO_PRAM.getEXPLAIN());
+        }
+        if (arg < 0) {
+            arg = 0;
+        }
+        arg *= 20;
+        switch (tp) {
+            case "frk":
+                List<Corporation> cor = null;
+                try {
+                    cor = this.dao.queryCorporationDao(arg);
+                } catch (Exception e) {
+                    System.out.println(e.toString());
+                    this.logger.error(e);
+                    return (T) new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
+                }
+                if (cor.size() > 0) {
+                    return (T) new Result(0, cor);
+                }
+                return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
+            case "cyrck":
+                List<Employees> emp = null;
+                try {
+                    emp = this.dao.queryEmployeesDao(arg);
+                } catch (Exception e) {
+                    System.out.println(e.toString());
+                    this.logger.error(e);
+                    return (T) new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
+                }
+                if (emp.size() > 0) {
+                    return (T) new Result(0, emp);
+                }
+                return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
+            default:
+                return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
+        }
+    }
+
+    /**
      * 用户签到业务方法
      *
      * @param msg 签到信息
      * @return 签到结果
+     * @throws Exception
      */
     @Override
     public Status signInService(SignIn msg) {
@@ -206,12 +241,12 @@ public class UserServicelmpl implements UserService {
      * 增加用户业务实现方法
      *
      * @param request http请求,
-     *                msg 用户信息
-     *                files 用户文件
-     *                userCode 用户验证码
+     * @param msg     用户信息
+     * @param files   用户文件
+     * @param userCode 用户验证码
      * @return 增加用户结果
      */
-    @Override
+    /*@Override
     @Transactional
     public Status addUserService(MultipartFile[] files, HttpServletRequest request, User msg, String userCode) {
         //获取系统验证码
@@ -259,5 +294,5 @@ public class UserServicelmpl implements UserService {
             this.logger.error(e);
             return new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
         }
-    }
+}*/
 }

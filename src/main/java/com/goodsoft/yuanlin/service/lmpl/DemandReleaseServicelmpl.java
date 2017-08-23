@@ -49,16 +49,17 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
     /**
      * 查询需求发布数据
      *
-     * @param keyWord 标题内容，
-     *                type 查询什么的数据（招标，苗木等），
-     *                request http请求（用以文件展示），
-     *                uid 用户编号，
-     *                date 发布日期，
-     *                breed 苗木品种，
-     *                tp 人员招聘类型（招聘 1/求职 2）
-     *                characters 招聘性质（全职 1/兼职 2）
-     *                sub 苗木品种二级类型
+     * @param keyWord    标题内容，
+     * @param type       查询什么的数据（招标，苗木等），
+     * @param request    http请求（用以文件展示），
+     * @param uid        用户编号，
+     * @param date       发布日期，
+     * @param breed      苗木品种，
+     * @param tp         人员招聘类型（招聘 1/求职 2）
+     * @param characters 招聘性质（全职 1/兼职 2）
+     * @param sub        苗木品种二级类型
      * @return 查询结果
+     * @throws Exception
      */
     @Override
     public <T> T queryReleaseData(String keyWord, String comp, String uid, String type, HttpServletRequest request, String date, String breed, String tp, String characters, String sub, String page) {
@@ -193,11 +194,12 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
     /**
      * 需求发布数据录入（有文件）
      *
-     * @param files 文件，
-     *              request http请求（用以文件上传），
-     *              msg 发布数据，
-     *              type 发布什么的数据（招标、苗木等），
+     * @param files   文件，
+     * @param request http请求（用以文件上传），
+     * @param msg     发布数据，
+     * @param type    发布什么的数据（招标、苗木等），
      * @return 录入结果
+     * @throws Exception
      */
     @Override
     @Transactional
@@ -259,9 +261,10 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
     /**
      * 需求发布数据录入（无文件）
      *
-     * @param msg 发布数据，
-     *            type 发布什么的数据（招标、苗木等），
+     * @param msg  发布数据，
+     * @param type 发布什么的数据（招标、苗木等），
      * @return 录入结果
+     * @throws Exception
      */
     @Override
     @Transactional
@@ -299,9 +302,10 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
     /**
      * 需求发布数据删除业务处理
      *
-     * @param id 删除数据编号，
-     *           type 删除类型（苗木、设备租赁等）。
+     * @param id   删除数据编号，
+     * @param type 删除类型（苗木、设备租赁等）。
      * @return 删除结果
+     * @throws Exception
      */
     @Override
     @Transactional

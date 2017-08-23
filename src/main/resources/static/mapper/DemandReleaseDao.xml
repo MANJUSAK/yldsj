@@ -28,7 +28,7 @@
                 and uid=#{uid}
             </if>
             <if test="comp !=null and comp !=''">
-                and comp=#{comp}
+                and comp like '%${comp}%'
             </if>
             <if test="date !=null and date !=''">
                 and date like '%${date}%'
@@ -59,7 +59,7 @@
                 and titleName like '%${keyWord}%'
             </if>
             <if test="comp !=null and comp !=''">
-                and comp=#{comp}
+                and comp like '%${comp}%'
             </if>
             <if test="uid !=null and uid !=''">
                 and uid=#{uid}
@@ -98,7 +98,7 @@
                 and titleName like '%${keyWord}%'
             </if>
             <if test="comp !=null and comp !=''">
-                and comp=#{comp}
+                and comp like '%${comp}%'
             </if>
             <if test="uid !=null and uid !=''">
                 and uid=#{uid}
@@ -135,11 +135,29 @@
         <result property="evaluate" column="evaluate"/>
         <result property="comp" column="comp"/>
         <result property="experience" column="experience"/>
+        <result property="tp" column="tp"/>
+        <result property="characters" column="characters"/>
     </resultMap>
     <select id="queryRecruitDao" parameterType="Object" resultMap="queryRecruit">
         SELECT
-        rid,positions,companyName,companyAdress,workAdress,companyIntro,content,
-        date,time,contact,tel,email,money,evaluate,experience,comp
+        rid,
+        positions,
+        companyName,
+        companyAdress,
+        workAdress,
+        companyIntro,
+        content,
+        date,
+        time,
+        contact,
+        tel,
+        email,
+        money,
+        evaluate,
+        experience,
+        comp,
+        tp,
+        characters
         FROM
         gs_recruit
         <where>
@@ -147,7 +165,7 @@
                 and positions like '%${keyWord}%'
             </if>
             <if test="comp !=null and comp !=''">
-                and compId=#{compId}
+                and comp like '%${comp}%'
             </if>
             <if test="uid !=null and uid !=''">
                 and uid=#{uid}

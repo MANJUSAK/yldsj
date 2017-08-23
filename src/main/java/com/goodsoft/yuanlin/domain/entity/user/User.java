@@ -1,7 +1,6 @@
 package com.goodsoft.yuanlin.domain.entity.user;
 
 import java.beans.Transient;
-import java.util.List;
 
 /**
  * function：用户实体
@@ -19,10 +18,9 @@ public class User implements java.io.Serializable {
     private int sex;//性别（0为男/1为女）
     private String date;//注册时间
     private String idCard;//身份证号
-    private String filesId;//身份证件照id
-    private List<String> picture;//身份证件照
-    private String companyName;//企业名称
-    private String deptId;//企业编号
+    private String comp;//所属企业
+    private String dept;//企业编号
+    private int lev;//部门等级
 
     public String getUid() {
         return uid;
@@ -81,15 +79,6 @@ public class User implements java.io.Serializable {
         this.tel = tel;
     }
 
-    @Transient
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -106,20 +95,20 @@ public class User implements java.io.Serializable {
         this.idCard = idCard;
     }
 
-    public String getFilesId() {
-        return filesId;
+    public String getComp() {
+        return comp;
     }
 
-    public void setFilesId(String filesId) {
-        this.filesId = filesId;
+    public void setComp(String comp) {
+        this.comp = comp;
     }
 
-    public List<String> getPicture() {
-        return picture;
+    public int getLev() {
+        return lev;
     }
 
-    public void setPicture(List<String> picture) {
-        this.picture = picture;
+    public void setLev(int lev) {
+        this.lev = lev;
     }
 
     public String getMember() {
@@ -130,11 +119,11 @@ public class User implements java.io.Serializable {
         this.member = member;
     }
 
-    public String getDeptId() {
-        return deptId;
+    public String getDept() {
+        return dept;
     }
 
-    public void setDeptId(String deptId) {
-        this.deptId = deptId;
+    public void setDept(String dept) {
+        this.dept = dept;
     }
 }

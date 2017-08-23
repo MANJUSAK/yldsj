@@ -32,8 +32,6 @@ public class Equipment implements java.io.Serializable {
     private String comp;
     // 用户编号
     private String uid;
-    // 状态参数
-    private Integer isNo;
     // 文件路径
     private List<FileData> picture;
 
@@ -116,15 +114,6 @@ public class Equipment implements java.io.Serializable {
 
     public void setUid(String uid) {
         this.uid = uid;
-    }
-
-    @Transient
-    public Integer getIsNo() {
-        return isNo;
-    }
-
-    public void setIsNo(Integer isNo) {
-        this.isNo = isNo;
     }
 
     public List<FileData> getPicture() {

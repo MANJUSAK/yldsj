@@ -4,36 +4,38 @@
 <mapper namespace="com.goodsoft.yuanlin.domain.dao.UserDao">
     <!--用户登录结果映射-->
     <resultMap id="userInfo" type="com.goodsoft.yuanlin.domain.entity.user.User">
-        <result property="uid" column="ID"/>
-        <result property="name" column="NAME"/>
-        <result property="userName" column="LOGIN_NAME"/>
-        <result property="email" column="EMAIL"/>
-        <result property="date" column="REGISTER_TIME"/>
-        <result property="sex" column="SEX"/>
-        <result property="tel" column="CELLPHONE"/>
-        <result property="filesId" column="F1"/>
-        <result property="idCard" column="CERT_NO"/>
-        <result property="deptId" column="F2"/>
-        <result property="member" column="ENGNAME"/>
+        <result property="uid" column="uid"/>
+        <result property="name" column="name"/>
+        <result property="userName" column="userName"/>
+        <result property="email" column="email"/>
+        <result property="date" column="registerTime"/>
+        <result property="sex" column="gender"/>
+        <result property="tel" column="tel"/>
+        <result property="comp" column="comp"/>
+        <result property="idCard" column="idCard"/>
+        <result property="dept" column="dept"/>
+        <result property="member" column="member"/>
+        <result property="lev" column="deptLevel"/>
     </resultMap>
     <!--用户登录sql-->
     <select id="queryUserDao" parameterType="java.lang.String" resultMap="userInfo">
     SELECT
-    ID,
-    NAME,
-    LOGIN_NAME,
-    EMAIL,
-    REGISTER_TIME,
-    SEX,
-    CELLPHONE,
-    CERT_NO,
-    ENGNAME,
-    F1,
-    F2
+    uid,
+    name,
+    userName,
+    email,
+    registerTime,
+    gender,
+    tel,
+    comp,
+    idCard,
+    dept,
+    member,
+    deptLevel
     FROM
-    hz7.to_horizon_user
+    gs_repertory_user
     WHERE
-    LOGIN_NAME=#{userName} AND PASSWORD=#{passWord} AND ACTIVE='1'
+    (userName=#{userName} or tel=#{userName}) AND passWord=#{passWord} AND ACTIVE='1'
     </select>
     <!--用户签到结果映射-->
     <resultMap id="SignInInfo" type="com.goodsoft.yuanlin.domain.entity.user.SignIn">
@@ -44,65 +46,96 @@
         <result property="time" column="time"/>
         <result property="name" column="name"/>
         <result property="company" column="company"/>
+        <result property="dept" column="dept"/>
         <result property="comments" column="comments"/>
     </resultMap>
     <!--用户签到信息sql-->
     <select id="querySignInDao" parameterType="java.lang.String" resultMap="SignInInfo">
-        SELECT sid,address,latitude,longitude,time,name,company,comments FROM gs_signin
+        SELECT sid,address,latitude,longitude,time,name,company,dept,comments FROM gs_signin
         <where>
             <if test="uid !=null and uid !=''">
                 and uid=#{uid}
             </if>
-            <if test="deptId !=null and deptId!=''">
-                and compId=#{deptId}
+            <if test="comp !=null and comp!=''">
+                and comp=#{comp}
+            </if>
+            <if test="dept !=null and dept!=''">
+                and dept=#{dept}
             </if>
             AND isNo=0
             ORDER BY sid DESC
             limit #{page},20
         </where>
-
     </select>
-    <!--检索用户名是否存在-->
-    <select id="queryUserByNameDao" parameterType="java.lang.String" resultType="int">
-        SELECT count(*) FROM hz7.to_horizon_user where LOGIN_NAME=#{userName}
+    <!--法人库结果映射-->
+    <resultMap id="corporationInfo" type="com.goodsoft.yuanlin.domain.entity.user.Corporation">
+        <result property="id" column="id"/>
+        <result property="company" column="company"/>
+        <result property="registerCap" column="registerCap"/>
+        <result property="detailAddress" column="detailAddress"/>
+        <result property="registerAddress" column="registerAddress"/>
+        <result property="nature" column="nature"/>
+    </resultMap>
+    <!--法人库sql-->
+    <select id="queryCorporationDao" parameterType="int" resultMap="corporationInfo">
+    SELECT id,company,registerCap,detailAddress,registerAddress,nature
+    FROM gs_repertory_corporate limit #{page},20
     </select>
-    <!--获取部门id-->
+    <!--从业人员库结果映射-->
+    <resultMap id="employeesInfo" type="com.goodsoft.yuanlin.domain.entity.user.Employees">
+        <result property="id" column="id"/>
+        <result property="company" column="company"/>
+        <result property="name" column="name"/>
+        <result property="gender" column="sex"/>
+        <result property="education" column="education"/>
+        <result property="experience" column="experience"/>
+    </resultMap>
+    <!--从业人员库sql-->
+    <select id="queryEmployeesDao" parameterType="int" resultMap="employeesInfo">
+    SELECT id,company,name,sex,education,experience
+    FROM gs_repertory_employees limit #{page},20
+    </select>
+    <!--  &lt;!&ndash;检索用户名是否存在&ndash;&gt;
+      <select id="queryUserByNameDao" parameterType="java.lang.String" resultType="int">
+          SELECT count(*) FROM hz7.to_horizon_user where LOGIN_NAME=#{userName}
+      </select>-->
+    <!--&lt;!&ndash;获取部门id&ndash;&gt;
     <select id="queryDeptByNameDao" parameterType="java.lang.String" resultType="java.lang.String">
     SELECT ID FROM hz7.to_horizon_dept WHERE
     PARENT_ID IN (SELECT id FROM hz7.to_horizon_dept
     WHERE
     DEPT_LEVEL = 0) and DEPT_NAME= #{dept}
     </select>
-    <!--获取部门权限等级-->
+    &lt;!&ndash;获取部门权限等级&ndash;&gt;
     <select id="queryDeptLevelByIdDao" parameterType="java.lang.String" resultType="java.lang.String">
         SELECT DEPT_LEVEL FROM hz7.to_horizon_dept where ID=#{deptId}
     </select>
-    <!--获取用户所在部门id-->
+    &lt;!&ndash;获取用户所在部门id&ndash;&gt;
     <select id="queryDeptIdByUidDao" parameterType="java.lang.String" resultType="java.lang.String">
         SELECT DEPT_ID FROM hz7.tor_horizon_user_dept where USER_ID=#{uid}
-    </select>
-    <!--添加用户信息-->
-    <insert id="addUserDao" parameterType="com.goodsoft.yuanlin.domain.entity.user.User">
-        INSERT INTO hz7.to_horizon_user
-        (ID, NAME, LOGIN_NAME, EMAIL, REGISTER_TIME,PASSWORD, SEX,
-         CELLPHONE, CERT_TYPE, CERT_NO, F1, F2,ACTIVE,CERTIFICATE)
-         VALUES
-         (#{uid}, #{name}, #{userName}, #{email}, #{date},#{passWord},
-          #{sex}, #{tel}, '0', #{idCard}, #{filesId}, #{deptId},'1','password')
-    </insert>
-    <!--将用户添加到部门-->
+    </select>-->
+    <!-- &lt;!&ndash;添加用户信息&ndash;&gt;
+     <insert id="addUserDao" parameterType="com.goodsoft.yuanlin.domain.entity.user.User">
+         INSERT INTO hz7.to_horizon_user
+         (ID, NAME, LOGIN_NAME, EMAIL, REGISTER_TIME,PASSWORD, SEX,
+          CELLPHONE, CERT_TYPE, CERT_NO, F1, F2,ACTIVE,CERTIFICATE)
+          VALUES
+          (#{uid}, #{name}, #{userName}, #{email}, #{date},#{passWord},
+           #{sex}, #{tel}, '0', #{idCard}, #{filesId}, #{deptId},'1','password')
+     </insert>-->
+    <!--&lt;!&ndash;将用户添加到部门&ndash;&gt;
     <insert id="addDeptDao" parameterType="java.lang.String">
     INSERT INTO
     hz7.tor_horizon_user_dept
     (ID, USER_ID, DEPT_ID, JOIN_TIME, ACTIVE, ORDER_NO, ISDEFAULT)
     VALUES
     (#{id}, #{uid}, #{deptId}, #{time},'1', '0', '1')
-    </insert>
+    </insert>-->
     <!--用户签到sql-->
     <insert id="signInDao" parameterType="com.goodsoft.yuanlin.domain.entity.user.SignIn">
         INSERT INTO gs_signin
-        (address, latitude, longitude, time,name, company, compId, uid, comments)
+        (address,latitude,longitude,time,name,company,comp,dept,uid,comments)
         VALUES
-        (#{address}, #{latitude}, #{longitude}, #{time},#{name}, #{company}, #{compId}, #{uid}, #{comments});
+        (#{address},#{latitude},#{longitude},#{time},#{name},#{company},#{comp},#{dept},#{uid},#{comments});
     </insert>
 </mapper>

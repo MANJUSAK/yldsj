@@ -1,5 +1,7 @@
 package com.goodsoft.yuanlin.domain.dao;
 
+import com.goodsoft.yuanlin.domain.entity.user.Corporation;
+import com.goodsoft.yuanlin.domain.entity.user.Employees;
 import com.goodsoft.yuanlin.domain.entity.user.SignIn;
 import com.goodsoft.yuanlin.domain.entity.user.User;
 import org.apache.ibatis.annotations.Param;
@@ -22,9 +24,14 @@ public interface UserDao {
     public void signInDao(SignIn msg) throws Exception;
 
     //用户签到信息
-    public List<SignIn> querySignInDao(@Param("uid") String uid, @Param("deptId") String deptId, @Param("page") int page) throws Exception;
+    public List<SignIn> querySignInDao(@Param("uid") String uid, @Param("dept") String dept, @Param("comp") String comp, @Param("page") int page) throws Exception;
 
-    //检索用户名是否存在
+    //法人库数据
+    public List<Corporation> queryCorporationDao(@Param("page") int page) throws Exception;
+
+    //从业人员库数据
+    public List<Employees> queryEmployeesDao(@Param("page") int page) throws Exception;
+    /*//检索用户名是否存在
     public int queryUserByNameDao(@Param("userName") String userName) throws Exception;
 
     //获取部门id
@@ -40,5 +47,5 @@ public interface UserDao {
     public void addUserDao(User user) throws Exception;
 
     //添加用户到部门
-    public void addDeptDao(@Param("id") String id, @Param("uid") String uid, @Param("deptId") String deptId, @Param("time") String time) throws Exception;
+    public void addDeptDao(@Param("id") String id, @Param("uid") String uid, @Param("deptId") String deptId, @Param("time") String time) throws Exception;*/
 }

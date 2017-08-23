@@ -25,19 +25,28 @@
         <result property="registerCapital" column="registerCapital"/>
     </resultMap>
     <!--会费详细数据sql-->
-    <select id="queryMberDuesDao" parameterType="int" resultMap="mberDuesInfo">
-    SELECT
-    did,
-    name,
-    dates,
-    address,
-    project,
-    compScale,
-    compType,
-    qlifLevel,
-    registerCapital
-    FROM
-    gs_dues ORDER BY dates desc limit #{page},20
+    <select id="queryMberDuesDao" parameterType="java.lang.Object" resultMap="mberDuesInfo">
+        SELECT
+        did,
+        name,
+        dates,
+        address,
+        project,
+        compScale,
+        compType,
+        qlifLevel,
+        registerCapital
+        FROM
+        gs_dues
+        <where>
+            <if test="keyWord !=null and keyWord!=''">
+                and name=#{keyWord}
+            </if>
+            <if test="date !=null and date !=''">
+                and dates like '%${date}%'
+            </if>
+        </where>
+        ORDER BY dates desc limit #{page},20
     </select>
     <!--动态资讯数据结果映射-->
     <resultMap id="information" type="com.goodsoft.yuanlin.domain.entity.trade.Information">
@@ -48,8 +57,20 @@
         <result property="infoType" column="infoType"/>
     </resultMap>
     <!--动态资讯数据sql-->
-    <select id="queryInformationDao" parameterType="int" resultMap="information">
-    SELECT id,title,content,dates,infoType FROM gs_information ORDER BY dates desc limit #{page},20
+    <select id="queryInformationDao" parameterType="java.lang.Object" resultMap="information">
+        SELECT id,title,content,dates,infoType FROM gs_information
+        <where>
+            <if test="date !=null and date !=''">
+                and dates like '%${date}%'
+            </if>
+            <if test="keyWord !=null and keyWord !=''">
+                and title like '%${keyWord}%'
+            </if>
+            <if test="tp !=null and tp !=''">
+                and infoType=#{tp}
+            </if>
+        </where>
+        ORDER BY dates desc limit #{page},20
     </select>
     <!--优质工程数据结果映射-->
     <resultMap id="qualEnginInfo" type="com.goodsoft.yuanlin.domain.entity.trade.QualEngin">
@@ -60,8 +81,23 @@
         <result property="company" column="company"/>
     </resultMap>
     <!--优质工程数据sql-->
-    <select id="queryQualEnginDao" parameterType="int" resultMap="qualEnginInfo">
-    SELECT qid,engName,dates,selectYear,company FROM gs_qualengineering ORDER BY dates desc limit #{page},20
+    <select id="queryQualEnginDao" parameterType="java.lang.Object" resultMap="qualEnginInfo">
+        SELECT qid,engName,dates,selectYear,company FROM gs_qualengineering
+        <where>
+            <if test="date !=null and date !=''">
+                and dates LIKE '%${date}%'
+            </if>
+            <if test="keyWord !=null and keyWord !=''">
+                and engName LIKE '%${keyWord}%'
+            </if>
+            <if test="year !=null and year !=''">
+                and selectYear LIKE '%${year}%'
+            </if>
+            <if test="comp !=null and comp !=''">
+                and company LIKE '%${comp}%'
+            </if>
+        </where>
+        ORDER BY dates desc limit #{page},20
     </select>
     <!--培训信息数据结果映射-->
     <resultMap id="trainInfo" type="com.goodsoft.yuanlin.domain.entity.trade.TrainsInfo">
@@ -73,11 +109,23 @@
         <result property="filesId" column="filesId"/>
     </resultMap>
     <!--培训信息数据sql-->
-    <select id="queryTrainInfoDao" parameterType="int" resultMap="trainInfo">
-    SELECT
-    tid, traType, traName, dates, content, filesId
-    FROM
-    gs_traininfo ORDER  BY dates desc limit #{page},20
+    <select id="queryTrainInfoDao" parameterType="java.lang.Object" resultMap="trainInfo">
+        SELECT
+        tid, traType, traName, dates, content, filesId
+        FROM
+        gs_traininfo
+        <where>
+            <if test="tp !=null and tp !=''">
+                and traType=#{tp}
+            </if>
+            <if test="keyWord !=null and keyWord !=''">
+                and traName LIKE '%${keyWord}%'
+            </if>
+            <if test="date !=null and date !=''">
+                and dates LIKE '%${date}%'
+            </if>
+        </where>
+        ORDER BY dates desc limit #{page},20
     </select>
     <!--联系协会数据结果映射-->
     <resultMap id="contactInfo" type="com.goodsoft.yuanlin.domain.entity.trade.Contact">
@@ -86,13 +134,20 @@
         <result property="tel" column="tel"/>
         <result property="address" column="address"/>
         <result property="date" column="dates"/>
+        <result property="time" column="times"/>
         <result property="email" column="email"/>
         <result property="webSite" column="webSite"/>
         <result property="postCode" column="postCode"/>
     </resultMap>
     <!--联系协会数据sql-->
-    <select id="queryContactDao" parameterType="int" resultMap="contactInfo">
-    SELECT cid,name,tel,address,dates,email,webSite,postCode FROM gs_contact ORDER  BY dates desc limit #{page},20;
+    <select id="queryContactDao" parameterType="java.lang.Object" resultMap="contactInfo">
+        SELECT cid,name,tel,address,dates,times,email,webSite,postCode FROM gs_contact
+        <where>
+            <if test="date !=null and date !=''">
+                and dates LIKE '%${date}%'
+            </if>
+        </where>
+        ORDER BY dates desc limit #{page},20
     </select>
     <!--行业协会数据添加-->
     <!--添加会费数据sql-->
@@ -122,7 +177,7 @@
     </insert>
     <!--添加联系协会数据sql-->
     <insert id="addContactDao" parameterType="com.goodsoft.yuanlin.domain.entity.trade.Contact">
-    INSERT INTO gs_contact (name, tel, dates, address, email, webSite, postCode)
-    VALUES (#{name}, #{tel}, #{date}, #{address}, #{email}, #{webSite}, #{postCode});
+    INSERT INTO gs_contact (name, tel, dates,times, address, email, webSite, postCode)
+    VALUES (#{name}, #{tel}, #{date},#{time}, #{address}, #{email}, #{webSite}, #{postCode});
     </insert>
 </mapper>

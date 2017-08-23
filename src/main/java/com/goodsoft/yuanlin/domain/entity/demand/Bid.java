@@ -27,8 +27,6 @@ public class Bid implements java.io.Serializable {
     private String comp;
     // 用户ID
     private String uid;
-    // 状态参数（删除状态不给用户查询信息）
-    private Integer isNo;
 
     public Integer getBid() {
         return bid;
@@ -103,12 +101,4 @@ public class Bid implements java.io.Serializable {
         this.uid = uid;
     }
 
-    @Transient
-    public Integer getIsNo() {
-        return isNo;
-    }
-
-    public void setIsNo(Integer isNo) {
-        this.isNo = isNo;
-    }
 }

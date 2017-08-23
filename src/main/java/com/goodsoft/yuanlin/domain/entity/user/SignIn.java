@@ -11,11 +11,12 @@ public class SignIn implements java.io.Serializable {
     private String address;//签到地址
     private String name;//用户姓名
     private String time;//签到时间
-    private String compId;//企业id
+    private String comp;//所在企业
     private String uid;//用户id
     private double latitude;//纬度
     private double longitude;//经度
     private String company;//企业
+    private String dept;//部门
     private String comments;//备注
 
     public Integer getSid() {
@@ -51,12 +52,20 @@ public class SignIn implements java.io.Serializable {
     }
 
     @Transient
-    public String getCompId() {
-        return compId;
+    public String getComp() {
+        return comp;
     }
 
-    public void setCompId(String compId) {
-        this.compId = compId;
+    public void setComp(String comp) {
+        this.comp = comp;
+    }
+
+    public String getDept() {
+        return dept;
+    }
+
+    public void setDept(String dept) {
+        this.dept = dept;
     }
 
     @Transient

@@ -25,16 +25,16 @@ public class DemandReleaseController {
     /**
      * 查询需求发布数据接口
      *
-     * @param type 查询什么的数据（招标，苗木等），
-     *             request http请求（用以文件展示），
-     *             uid 用户编号，
-     *             keyWord 标题名称
-     *             date 发布日期，
-     *             breed 苗木品种，
-     *             tp 人员招聘类型（招聘 1/求职 2），
-     *             cts 招聘性质（全职 1/兼职 2），
-     *             sub 苗木品种二级类型,
-     *             page 页码。
+     * @param type    查询什么的数据（招标，苗木等），
+     * @param request http请求（用以文件展示），
+     * @param uid     用户编号，
+     * @param keyWord 标题名称
+     * @param date    发布日期，
+     * @param breed   苗木品种，
+     * @param tp      人员招聘类型（招聘 1/求职 2），
+     * @param cts     招聘性质（全职 1/兼职 2），
+     * @param sub     苗木品种二级类型,
+     * @param page    页码。
      * @return 查询结果
      */
     @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.GET)
@@ -46,11 +46,10 @@ public class DemandReleaseController {
     /**
      * 发布设备租赁数据入口
      *
-     * @param files 查询什么的数据（招标，苗木等），
-     *              request http请求（用以文件保存），
-     *              msg 设备租赁数据，
-     *              type 发布类型（苗木、设备租赁等），
-     * @return 发布结果
+     * @param files   查询什么的数据（招标，苗木等），
+     * @param request http请求（用以文件保存），
+     * @param msg     设备租赁数据，
+     * @return 响应结果
      */
     @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)
     @RequestMapping(value = "/release/equipment", method = RequestMethod.POST)
@@ -61,11 +60,10 @@ public class DemandReleaseController {
     /**
      * 发布苗木数据入口
      *
-     * @param files 查询什么的数据（招标，苗木等），
-     *              request http请求（用以文件保存），
-     *              msg 设备租赁数据，
-     *              type 发布类型（苗木、设备租赁等），
-     * @return 发布结果
+     * @param files   查询什么的数据（招标，苗木等），
+     * @param request http请求（用以文件保存），
+     * @param msg     设备租赁数据，
+     * @return 响应结果
      */
     @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)
     @RequestMapping(value = "/release/seedling", method = RequestMethod.POST)
@@ -78,8 +76,7 @@ public class DemandReleaseController {
      * 发布招标数据接口
      *
      * @param msg 设备租赁数据，
-     *            type 发布类型（苗木、设备租赁等），
-     * @return 发布结果
+     * @return 响应结果
      */
     @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)
     @RequestMapping(value = "/release/bid", method = RequestMethod.POST)
@@ -91,8 +88,7 @@ public class DemandReleaseController {
      * 发布人员招聘数据入口
      *
      * @param msg 设备租赁数据，
-     *            type 发布类型（苗木、设备租赁等），
-     * @return 发布结果
+     * @return 响应结果
      */
     @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)
     @RequestMapping(value = "/release/recruit", method = RequestMethod.POST)
@@ -104,8 +100,8 @@ public class DemandReleaseController {
     /**
      * 删除需求发布数据访问入口
      *
-     * @param id 数据id，
-     *           type 删除类型（苗木、设备租赁等），
+     * @param id   数据id，
+     * @param type 删除类型（苗木、设备租赁等），
      * @return 删除结果
      */
     @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)

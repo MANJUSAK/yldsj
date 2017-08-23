@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 public interface TradeManageService {
 
     //查询行业协会数据（有文件）
-    public <T> T queryTradeService(HttpServletRequest request, String type, String page);
+    public <T> T queryTradeService(HttpServletRequest request, String type, String date, String tp, String keyWord, String page);
 
     //查询行业协会数据（无文件）
-    public <T> T queryTradeService(String type, String page, String member);
+    public <T> T queryTradeService(String type, String page, String date, String tp, String comp, String year, String keyWord, String member);
 
     //增加行业协会数据(有文件)
     public Status addTradeService(HttpServletRequest request, MultipartFile[] files, String fileType, String type, Object msg);

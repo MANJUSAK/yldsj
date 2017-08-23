@@ -44,8 +44,20 @@ public class TradeManageServicelmpl implements TradeManageService {
     //实例化服务器域名地址工具类
     private DomainNameUtil domainName = DomainNameUtil.getInstance();
 
+    /**
+     * 行业协会数据查询（含文件）
+     *
+     * @param request http请求，
+     * @param type    查询类型（协会培训等），
+     * @param date    日期，
+     * @param tp      查询数据类型（施工员等），
+     * @param keyWord 关键字，
+     * @param page    页码。
+     * @return 查询结果
+     * @throws Exception
+     */
     @Override
-    public <T> T queryTradeService(HttpServletRequest request, String type, String page) {
+    public <T> T queryTradeService(HttpServletRequest request, String type, String date, String tp, String keyWord, String page) {
         if (page == null || "".equals(page)) {
             return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
@@ -61,10 +73,11 @@ public class TradeManageServicelmpl implements TradeManageService {
         }
         arg *= 20;
         switch (type) {
+            //协会培训
             case "xhpx":
                 List<TrainsInfo> data = null;
                 try {
-                    data = this.dao.queryTrainInfoDao(arg);
+                    data = this.dao.queryTrainInfoDao(date, tp, keyWord, arg);
                 } catch (Exception e) {
                     this.logger.error(e);
                     System.out.println(e.toString());
@@ -100,8 +113,23 @@ public class TradeManageServicelmpl implements TradeManageService {
         }
     }
 
+    /**
+     * 行业协会数据查询（无文件）
+     *
+     * @param request http请求，
+     * @param type    查询类型（协会培训等），
+     * @param date    日期，
+     * @param tp      查询数据类型（施工员等），
+     * @param keyWord 关键字，
+     * @param year    年份，
+     * @param comp    企业，
+     * @param member  会员属性（0为会员），
+     * @param page    页码。
+     * @return 查询结果
+     * @throws Exception
+     */
     @Override
-    public <T> T queryTradeService(String type, String page, String member) {
+    public <T> T queryTradeService(String type, String date, String tp, String comp, String year, String keyWord, String page, String member) {
         if (page == null || "".equals(page)) {
             return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
@@ -148,7 +176,7 @@ public class TradeManageServicelmpl implements TradeManageService {
                 }
                 List<Dues> mber = null;
                 try {
-                    mber = this.dao.queryMberDuesDao(arg);
+                    mber = this.dao.queryMberDuesDao(date, keyWord, arg);
                 } catch (Exception e) {
                     this.logger.error(e);
                     System.out.println(e.toString());
@@ -162,7 +190,7 @@ public class TradeManageServicelmpl implements TradeManageService {
             case "dtzx":
                 List<Information> info = null;
                 try {
-                    info = this.dao.queryInformationDao(arg);
+                    info = this.dao.queryInformationDao(date, tp, keyWord, arg);
                 } catch (Exception e) {
                     this.logger.error(e);
                     System.out.println(e.toString());
@@ -176,7 +204,7 @@ public class TradeManageServicelmpl implements TradeManageService {
             case "yzgc":
                 List<QualEngin> qua = null;
                 try {
-                    qua = this.dao.queryQualEnginDao(arg);
+                    qua = this.dao.queryQualEnginDao(date, comp, year, keyWord, arg);
                 } catch (Exception e) {
                     this.logger.error(e);
                     System.out.println(e.toString());
@@ -190,7 +218,7 @@ public class TradeManageServicelmpl implements TradeManageService {
             case "lxxh":
                 List<Contact> con = null;
                 try {
-                    con = this.dao.queryContactDao(arg);
+                    con = this.dao.queryContactDao(date, arg);
                 } catch (Exception e) {
                     this.logger.error(e);
                     System.out.println(e.toString());
@@ -206,6 +234,17 @@ public class TradeManageServicelmpl implements TradeManageService {
     }
 
 
+    /**
+     * 行业协会数据添加（含文件）
+     *
+     * @param request  http请求，
+     * @param files    文件，
+     * @param fileType 文件类型（文档/图片），
+     * @param type     添加数据类型（协会培训等），
+     * @param msg      添加数据
+     * @return 添加结果
+     * @throws Exception
+     */
     @Override
     @Transactional
     public Status addTradeService(HttpServletRequest request, MultipartFile[] files, String fileType, String type, Object msg) {
@@ -238,6 +277,14 @@ public class TradeManageServicelmpl implements TradeManageService {
         }
     }
 
+    /**
+     * 行业协会数据添加（无文件）
+     *
+     * @param type 添加数据类型（协会培训等），
+     * @param msg  添加数据
+     * @return 添加结果
+     * @throws Exception
+     */
     @Override
     @Transactional
     public Status addTradeService(String type, Object msg) {
@@ -279,7 +326,9 @@ public class TradeManageServicelmpl implements TradeManageService {
                 //联系协会添加
             case "lxxh":
                 Contact con = (Contact) msg;
-                con.setDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+                Date date = new Date();
+                con.setDate(new SimpleDateFormat("yyyy-MM-dd").format(date));
+                con.setTime(new SimpleDateFormat("HH:mm:ss").format(date));
                 try {
                     this.dao.addContactDao(con);
                     return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());

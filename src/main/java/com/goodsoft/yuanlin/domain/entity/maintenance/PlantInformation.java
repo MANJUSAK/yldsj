@@ -1,6 +1,7 @@
 package com.goodsoft.yuanlin.domain.entity.maintenance;
 
-/**园林管护信息
+/**
+ * 园林管护信息
  * Created by 龙宏 on 2017/8/16.
  */
 public class PlantInformation {
@@ -36,16 +37,17 @@ public class PlantInformation {
 
     /**
      * 部门ID
+     *
      * @return
      */
-    private String deptId;
+    private String dept;
 
-    public String getDeptId() {
-        return deptId;
+    public String getDept() {
+        return dept;
     }
 
-    public void setDeptId(String deptId) {
-        this.deptId = deptId;
+    public void setDept(String dept) {
+        this.dept = dept;
     }
 
     public String getId() {
@@ -55,6 +57,7 @@ public class PlantInformation {
     public void setId(String id) {
         this.id = id;
     }
+
     public String getTime() {
         return time;
     }
