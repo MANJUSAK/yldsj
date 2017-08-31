@@ -35,6 +35,8 @@ public class MaintainServicelmpl implements MaintainService {
     private FileService fileService;
     //实例化UUID工具类
     private UUIDUtil uuid = UUIDUtil.getInstance();
+    //实例化日期工具类
+    private DateUtils dateUtils = DateUtils.getInstance();
 
     /**
      * app植株养护信息录入
@@ -87,7 +89,7 @@ public class MaintainServicelmpl implements MaintainService {
                     // 获取文件类型
                     String extensionName = fileName.substring(fileName.lastIndexOf(".") + 1);
                     // 文件重命名
-                    String file_ture_name = DateUtils.getCurrentDate("yyyyMMddHHmmssms" + i + ".") + extensionName;
+                    String file_ture_name = this.dateUtils.getCurrentDate("yyyyMMddHHmmssms" + i + ".") + extensionName;
                     //访问路径
                     String filepath = "ylfile" + "/" + file_ture_name;
                     File targetFile = new File(path, file_ture_name);

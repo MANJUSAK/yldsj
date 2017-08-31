@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>公告通知-详情页面</title>
+		<link rel="stylesheet" href="../css/association_subpage_details.css" />
+		<link rel="stylesheet" href="../vendor/font-awesome-4.6.3/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../vendor/font-awesome-4.6.3/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="../vendor/font-awesome-4.6.3/css/font-awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../vendor/font-awesome-4.6.3/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="shortcut icon" type="text/css" href="../img/log_2.ico" />
+	</head>
+	<!--
+		描述：该页面为  公告通知  的详情页（inform_details.html）
+		简称为：TD；
+		引用的是  培训信息 的详情页（training_details.html）    的页面；
+	-->
+
+	<body>
+		<!-- 头部（包括导航） -->
+		<header id="header"></header>
+		<!--头部结束-->
+		<div class="TD_content">
+			<div class="TD_center">
+				<!---->
+				<div class="TD_one">
+					<span class="TD_one_span" id="show_title"></span>
+				</div>
+				<!--面包屑导航-->
+				<div class="TD_subNav">
+				</div>
+				<!--面包屑导航之下的内容-->
+				<div class="TD_container">
+					<div class="TDc_title">
+						<span id="title"></span>
+					</div>
+					<!--培训时间-->
+					<div class="TD_date">
+						<span>通知时间：<span id="date">2017-07-07</span></span>
+					</div>
+					<!--培训类型-->
+					<div class="TDc_two"></div>
+					<!--文字内容-->
+					<div class="TDc_text">
+						<span class="TDc_text_span" id="content"></span>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+		<!--网页底部-->
+		<footer id="footer"></footer>
+		<!--网页底部  结束-->
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/hosts.js" ></script>
+		<script type="text/javascript" src="../js/jquerySession.js"></script>
+		<script type="text/javascript" src="../js/dues-show/guild_detail.js"></script>
+		<script>
+			$(function() {
+				$.session.remove('header_num');
+				$.session.set('header_num', 4);
+
+				$('#header').load('../public/header.html');
+				$('#footer').load('../public/footer.html');
+			})
+		</script>
+	</body>
+
+</html>

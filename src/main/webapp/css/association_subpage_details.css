@@ -1,0 +1,212 @@
+/*
+ * 描述：行业协会的详情页样式（只是部分详情页的样式）
+ * */
+
+input {
+	padding: 0;
+	margin: 0;
+	outline: none;
+}
+
+img {
+	border: none;
+	background: none;
+	vertical-align: middle;
+}
+
+ul,
+ol,
+li {
+	list-style-type: none;
+}
+
+a,
+span,
+p {
+	font-size: 16px;
+	color: #000;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #000;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #000;
+}
+
+a:active {
+	text-decoration: none;
+	color: #000;
+}
+
+img {
+	border: none;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	background-color: #FAFAFA;
+}
+
+
+/*------------------- 培训信息-详情页面 ---------------------*/
+.TD_content{
+	width: 100%;
+	height: auto;
+	min-height: 770px;
+}
+.TD_center{
+	width: 80%;
+	height: auto;
+	margin: 0 auto;
+	min-width: 560px;
+}
+.TD_one{
+	height: 32px;
+    border-left: 4px solid #0196fd;
+    margin: 20px 0;
+}
+.TD_one_span{
+	    line-height: 30px;
+    margin-left: 15px;
+}
+/*面包屑导航*/
+.TD_subNav{
+	width: 100%;
+    height: 50px;
+    background-color: #0196fd;
+    color: white;
+    line-height: 50px;
+    padding-left: 14px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.TD_subNav span{
+	color: white;
+}
+.TD_subNav a {
+    color: white;
+}
+/*中间内容*/
+.TD_container{
+	width: 100%;
+	height: auto;
+	background-color: white;
+	min-height: 600px;
+}
+.TDc_title{
+	width: 80%;
+	height: auto;
+	margin: 0 auto;
+	text-align: center;
+	padding: 20px 0;
+}
+.TDc_title span{
+	font-size: 22px;
+}
+.TD_date{
+	width: 80%;
+	height: auto;
+	padding: 10px 0 20px 0;
+	margin: 0 auto;
+	text-align: center;
+}
+.TD_date span{
+	color: #6A6A6A;
+}
+.TDc_two{
+	width: 90%;
+	height: auto;
+	margin: 0 auto;
+	border-bottom: 1px solid #999999;
+	padding: 0px 0 15px 3%;
+	box-sizing: border-box;
+	font-size: 17px;
+}
+.TDc_two span{
+	font-size: 17px;
+}
+
+.TDc_text{
+	width: 84%;
+	height: auto;
+	margin: 0 auto;
+	padding: 30px 0 50px 0;
+	text-indent: 34px;
+}
+.TDc_text_span{
+	line-height: 28px;
+}
+
+/*------------------- 培训信息-详情页面  结束 ---------------------*/
+
+/*------------------- 会员展示-详情页面（页面中有部分内容样式是使用  培训信息里的样式） ---------------------*/
+.MSD_container{
+	width: 90%;
+	height:  auto;
+	margin: 0 auto;
+	padding: 30px 5% 20px 5%;
+	background-color: white;
+}
+.MSDc_line{
+	width: 100%;
+	height: auto;
+	border: 1px solid #cae8ff;
+	clear: both;
+	background-color: #cae8ff;
+	margin-bottom: 20px;
+}
+.MSDc_line_L{
+	display: inline-block;
+	width: 21%;
+	float: left;
+	padding: 12px 0 12px 9%;
+	
+}
+.MSDc_line_R{
+	display: inline-block;
+	width: 70%;
+	text-align: center;
+	float: left;
+	height: auto;
+	background-color: #ebf5fe;
+}
+.MSDc_line_R_content{
+	width: 96%;
+	padding: 12px 2%;
+	min-height: 21px;
+}
+
+.MSDc_line_R_content span{
+	line-height: 26px;
+}
+
+
+
+/*------------------- 会员展示-详情页面  结束 ---------------------*/
+
+
+
+.clearBoth{
+	clear: both;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1024px) {
+	.TD_center{
+		width: 94% !important;
+	}
+}
+
+

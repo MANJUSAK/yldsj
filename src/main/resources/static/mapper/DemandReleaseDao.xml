@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--suppress ALL -->
-
-<!--设备租赁查询sql-->
+<!--@author 严彬荣-->
+<!--需求发布mapper start-->
 <mapper namespace="com.goodsoft.yuanlin.domain.dao.DemandReleaseDao">
+    <!--设备租赁结果映射 start-->
     <resultMap id="queryEquipment" type="com.goodsoft.yuanlin.domain.entity.demand.Equipment">
         <result property="eid" column="eid"/>
         <result property="titleName" column="titleName"/>
@@ -15,6 +16,8 @@
         <result property="comp" column="comp"/>
         <result property="filesId" column="filesId"/>
     </resultMap>
+    <!--需求发布结果映射 end-->
+    <!--设备租赁sql start-->
     <select id="queryEquipmentDao" parameterType="Object" resultMap="queryEquipment">
         SELECT
         eid,titleName,content,date,time,contact,tel,comp,filesId
@@ -38,7 +41,8 @@
             limit #{page},20
         </where>
     </select>
-    <!--招标信息查询sql-->
+    <!--设备租赁sql end-->
+    <!--招标信息查询结果映射 start-->
     <resultMap id="queryBid" type="com.goodsoft.yuanlin.domain.entity.demand.Bid">
         <result property="bid" column="bid"/>
         <result property="titleName" column="titleName"/>
@@ -49,6 +53,8 @@
         <result property="comp" column="comp"/>
         <result property="time" column="time"/>
     </resultMap>
+    <!--招标信息查询结果映射 end-->
+    <!--招标信息查询sql start-->
     <select id="queryBidDao" parameterType="Object" resultMap="queryBid">
         SELECT
         bid,titleName,content,contact,tel,date,time,comp
@@ -72,7 +78,8 @@
             limit #{page},20
         </where>
     </select>
-    <!--苗木信息查询sql-->
+    <!--招标信息查询sql end-->
+    <!--苗木信息查询sql start-->
     <resultMap id="querySeedling" type="com.goodsoft.yuanlin.domain.entity.demand.Seedling">
         <result property="sid" column="sid"/>
         <result property="titleName" column="titleName"/>
@@ -117,7 +124,8 @@
             limit #{page},20
         </where>
     </select>
-    <!--人员招聘信息查询sql-->
+    <!--苗木信息查询sql end-->
+    <!--人员招聘信息查询映射 start-->
     <resultMap id="queryRecruit" type="com.goodsoft.yuanlin.domain.entity.demand.Recruit">
         <result property="rid" column="rid"/>
         <result property="positions" column="positions"/>
@@ -138,6 +146,8 @@
         <result property="tp" column="tp"/>
         <result property="characters" column="characters"/>
     </resultMap>
+    <!--人员招聘信息查询映射 end-->
+    <!--人员招聘信息查询sql start-->
     <select id="queryRecruitDao" parameterType="Object" resultMap="queryRecruit">
         SELECT
         rid,
@@ -184,8 +194,8 @@
             limit #{page},20
         </where>
     </select>
-
-    <!--设备租赁数据录入sql-->
+    <!--人员招聘信息查询sql end-->
+    <!--设备租赁数据录入sql start-->
     <insert id="saveEquipmentDao" parameterType="com.goodsoft.yuanlin.domain.entity.demand.Equipment">
        INSERT INTO
        gs_equipment
@@ -193,7 +203,8 @@
        VALUES
        (#{titleName}, #{contact}, #{tel}, #{date}, #{time}, #{content}, #{filesId}, #{uid},#{comp})
     </insert>
-    <!--招标数据录入sql-->
+    <!--设备租赁数据录入sql end-->
+    <!--招标数据录入sql start-->
     <insert id="saveBidDao" parameterType="com.goodsoft.yuanlin.domain.entity.demand.Bid">
         INSERT INTO
         gs_bids
@@ -201,7 +212,8 @@
          VALUES
          (#{titleName}, #{contact}, #{tel}, #{date}, #{time}, #{content}, #{uid},#{comp})
     </insert>
-    <!--苗木信息数据录入sql-->
+    <!--招标数据录入sql end-->
+    <!--苗木信息数据录入sql start-->
     <insert id="saveSeedlingDao" parameterType="com.goodsoft.yuanlin.domain.entity.demand.Seedling">
         INSERT INTO gs_seedling
         (titleName, contact, tel, date, time,address, content, supplier, breed, sub, filesId, uid,comp)
@@ -209,7 +221,8 @@
         (#{titleName}, #{contact}, #{tel}, #{date}, #{time},#{address}, #{content},
         #{supplier}, #{breed}, #{sub}, #{filesId}, #{uid},#{comp})
     </insert>
-    <!--人员招聘数据录入sql-->
+    <!--苗木信息数据录入sql end-->
+    <!--人员招聘数据录入sql start-->
     <insert id="saveRecruitDao" parameterType="com.goodsoft.yuanlin.domain.entity.demand.Recruit">
        INSERT INTO
        gs_recruit
@@ -219,32 +232,38 @@
        (#{contact},#{tel},#{date},#{time},#{money},#{companyName},#{companyIntro},#{companyAdress},
        #{workAdress},#{positions},#{experience},#{content},#{tp},#{characters},#{email},#{evaluate},#{uid},#{comp})
     </insert>
-    <!--更新设备数据状态(isNo=1表示数据已删除)-->
+    <!--人员招聘数据录入sql end-->
+    <!--更新设备数据状态(isNo=1表示数据已删除) start-->
     <update id="updateEquipmentDao" parameterType="java.util.Arrays">
         UPDATE gs_equipment SET isNo='1' WHERE eid IN
         <foreach collection="id" item="item" open="(" separator="," close=")">
             #{item}
         </foreach>
     </update>
-    <!--更新苗木数据状态(isNo=1表示数据已删除)-->
+    <!--更新设备数据状态(isNo=1表示数据已删除) end-->
+    <!--更新苗木数据状态(isNo=1表示数据已删除) start-->
     <update id="updateSeedlingDao" parameterType="java.util.Arrays">
         UPDATE gs_seedling SET isNo='1' WHERE sid IN
         <foreach collection="id" item="item" open="(" separator="," close=")">
             #{item}
         </foreach>
     </update>
-    <!--更新招标数据状态(isNo=1表示数据已删除)-->
+    <!--更新苗木数据状态(isNo=1表示数据已删除) end-->
+    <!--更新招标数据状态(isNo=1表示数据已删除) start-->
     <update id="updateBidDao" parameterType="java.util.Arrays">
         UPDATE gs_bids SET isNo=1 WHERE bid IN
         <foreach collection="id" item="item" open="(" separator="," close=")">
             #{item}
         </foreach>
     </update>
-    <!--更新人员招聘数据状态(isNo=1表示数据已删除)-->
+    <!--更新招标数据状态(isNo=1表示数据已删除) end-->
+    <!--更新人员招聘数据状态(isNo=1表示数据已删除) start-->
     <update id="updateRecruitDao" parameterType="java.util.Arrays">
         UPDATE gs_recruit SET isNo='1' WHERE rid IN
         <foreach collection="id" item="item" open="(" separator="," close=")">
             #{item}
         </foreach>
     </update>
+    <!--更新人员招聘数据状态(isNo=1表示数据已删除) end-->
 </mapper>
+        <!--需求发布mapper start-->

@@ -46,29 +46,27 @@ public class DemandReleaseController {
     /**
      * 发布设备租赁数据入口
      *
-     * @param files   查询什么的数据（招标，苗木等），
-     * @param request http请求（用以文件保存），
-     * @param msg     设备租赁数据，
+     * @param files 查询什么的数据（招标，苗木等），
+     * @param msg   设备租赁数据，
      * @return 响应结果
      */
     @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)
     @RequestMapping(value = "/release/equipment", method = RequestMethod.POST)
-    public Status saveEquipmentController(@RequestParam("files") MultipartFile[] files, Equipment msg, HttpServletRequest request) {
-        return this.service.releaseDataService(files, request, msg, "equipment");
+    public Status saveEquipmentController(@RequestParam("files") MultipartFile[] files, Equipment msg) {
+        return this.service.releaseDataService(files, msg, "equipment");
     }
 
     /**
      * 发布苗木数据入口
      *
-     * @param files   查询什么的数据（招标，苗木等），
-     * @param request http请求（用以文件保存），
-     * @param msg     设备租赁数据，
+     * @param files 查询什么的数据（招标，苗木等），
+     * @param msg   设备租赁数据，
      * @return 响应结果
      */
     @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)
     @RequestMapping(value = "/release/seedling", method = RequestMethod.POST)
-    public Status saveSeedlingController(@RequestParam("files") MultipartFile[] files, Seedling msg, HttpServletRequest request) {
-        return this.service.releaseDataService(files, request, msg, "seedling");
+    public Status saveSeedlingController(@RequestParam("files") MultipartFile[] files, Seedling msg) {
+        return this.service.releaseDataService(files, msg, "seedling");
     }
 
 

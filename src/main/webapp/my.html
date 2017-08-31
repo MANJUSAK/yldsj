@@ -1,0 +1,167 @@
+<!-- HTML5文档头 -->
+<!DOCTYPE html>
+<!-- lang="zh-cn"，此网页基本是中文内容 -->
+<html lang="zh-cn" style="font-size: 16px;">
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!-- 使用最新的IE兼容模式渲染此网页 -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<!-- 在双核浏览器下，默认使用webkit内核，由360浏览器提出 -->
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>园林大数据平台</title>
+		<!--<link rel="shortcut icon" href="#0"/>-->
+		<link rel="stylesheet" type="text/css" href="vendor/font-awesome-4.6.3/css/font-awesome.css" />
+		<link rel="stylesheet" type="text/css" href="vendor/font-awesome-4.6.3/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="shortcut icon" type="text/css" href="img/log_2.ico" />
+		<link rel="stylesheet" type="text/css" href="css/my.css" />
+		<!-- 让IE9以下的浏览器支持HTML5标签 -->
+		<!--[if lt IE 9]>
+        	<script src="http://cdn.bootcss.com/html5shiv/r29/html5.js"></script>
+        	<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+	</head>
+
+	<body>
+		<header id="header"></header>
+		<section class="my-section">
+			<div class="ms-box">
+				<div class="mb-topbar">
+					<div class="mb-topbar-content">
+						<div class="mb-tc-left">
+							<div class="tc-left-img">
+								<img src="img/log_2.png" />
+							</div>
+							<div class="tc-left-text">
+								<span>
+									<i class="fa fa-edit"></i>
+									<a id="myRedactx" href="javascript:void(0);">编辑个人资料</a>
+								</span>
+							</div>
+						</div>
+						<div class="mb-tc-right">
+							<div class="tc-right-title">
+								<div class="tc-rt-box">
+									<div id="userNamex" class="tc-rt-left">
+
+									</div>
+
+									<!--新增添加的内容-->
+									<div class="tc-rt-left tc-rt-right">
+										<input type="button" class="tc-rtl_manage1" id="tc-rtl_manage1" value="个人管理" />
+										<input type="button" class="tc-rtl_manage2" id="tc-rtl_manage2" value="合同管理" />
+										<!--<input class="tc-rtl_manage2" type="submit" value="导出我的钱包">-->
+										<!--<form class="tc-rtl_manage3_L">
+											<input name="uid" hidden="hidden">
+											<input class="tc-rtl_manage3" type="submit" value="导出我的钱包">
+										</form>-->
+
+									</div>
+									<!--新增添加的内容 结束-->
+								</div>
+							</div>
+							<div id="user_info" class="tc-right-inner">
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
+		<!--网页底部-->
+		<footer id="footer"></footer>
+		<!--------------- 蒙层  --------------->
+		<div class="masking">
+			<div class="masking_center">
+				<span class="masking_title">编辑个人资料</span>
+				<div class="masking_line">
+					<span class="masking_line_name">姓名：</span><input type="text" class="masking_line_input" />
+				</div>
+				<div class="masking_line">
+					<span class="masking_line_name">员工编号：</span><input type="text" class="masking_line_input" />
+				</div>
+				<div class="masking_line">
+					<span class="masking_line_name">手机号：</span><input type="text" class="masking_line_input" />
+				</div>
+				<div class="masking_line">
+					<span class="masking_line_name">邮箱：</span><input type="text" class="masking_line_input" />
+				</div>
+				<div class="masking_submit">
+					<input type="button" class="masking_submit1" value="提交" />
+					<input type="button" class="masking_submit2" value="取消" />
+				</div>
+			</div>
+		</div>
+		<!--------------- 蒙层 结束  --------------->
+		<!--网页底部  结束-->
+		<div class="return-top" id="myp">
+			<span><i class="fa fa-question" title="问题咨询"></i></span>
+			<span><i class="fa fa-chevron-up" id="goTop" title="回到顶部"></i></span>
+		</div>
+
+		<script src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/hosts.js" ></script>
+		<script src="js/common.js"></script>
+		<script type="text/javascript" src="js/jquerySession.js"></script>
+
+		<script>
+			$(function() {
+				if($.session.get('uid')) {
+					var user_info = '';
+					user_info += '<ul>' +
+						'<li><span>姓名：</span>' + $.session.get('name') + '</li>' +
+						'<li><span>性别：</span>' + $.session.get('usex') + '</li>' +
+						'<li><span>手机号：</span>' + $.session.get('utel') + '</li>' +
+						'<li><span>邮箱：</span>' + $.session.get('uemail') + '</li>' +
+						'</ul>';
+					$('#user_info').html(user_info);
+					$('#userNamex').html('<span>用户账号：' + $.session.get('uname') + '</span>')
+				}else{
+					window.location.href="login/login.html";
+				}
+
+			})
+			//跳转慧正
+			$('#tc-rtl_manage1,#tc-rtl_manage2').click(function() {
+				if($.session.get('ucomp')) {
+					window.location.href = window.sessionStorage.getItem('Host1') + $.session.get('ucomp') + '/horizon/basics/getBasics.wf?loginName=' + $.session.get('uname');
+				} else {
+					alert('获取用户信息失败~！')
+				}
+			})
+		</script>
+		<!--当没有图片时就加一个高度-->
+		<script>
+			var heights = $("#mb-footer_pact").height();
+			if(heights < 100) {
+				$("#mb-footer_pact").css("margin-bottom", "200px");
+			}
+		</script>
+		<script>
+			$(function() {
+				$('#header').load('header.html');
+				$('#footer').load('footer.html');
+			})
+		</script>
+
+		<!--点击编辑个人信息-->
+		<script>
+			$("#myRedact").click(function() {
+				$(".masking").show();
+			});
+			$(".masking_submit2").click(function() {
+				$(".masking").hide();
+			});
+		</script>
+		<!--获取高度-->
+		<script>
+			
+		</script>
+	</body>
+
+</html>

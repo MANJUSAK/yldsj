@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CarouselDao {
 
-    //获取轮播图id
+    //获取轮播图
     public Carousel queryCarouselDao() throws Exception;
 
     //添加轮播图

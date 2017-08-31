@@ -1,6 +1,7 @@
 package com.goodsoft.yuanlin.config.datasource;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,8 +21,10 @@ import java.sql.SQLException;
  *         jdbc.url=@jdbc.url@
  * @primary 表示这里定义的DataSource将覆盖其他来源的DataSource。
  */
+@SuppressWarnings("ALL")
 @Configuration
 public class DruidDBConfig {
+    private Logger logger = Logger.getLogger(DruidDBConfig.class);
     @Value("${spring.datasource.url}")
     private String dbUrl;
     @Value("${spring.datasource.username}")
@@ -94,6 +97,7 @@ public class DruidDBConfig {
             datasource.setFilters(filters);
         } catch (SQLException e) {
             System.out.println(e.toString());
+            this.logger.error(e);
         }
         return datasource;
     }

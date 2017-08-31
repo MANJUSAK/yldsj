@@ -46,8 +46,7 @@ public class MaintainController {
      */
     @ResponseBody
     @RequestMapping("/addInformation")
-    public Status addInformation(@RequestParam(value = "files", required = false) List<MultipartFile> files,
-                                 HttpServletRequest request, ModelMap model, Management management) throws Exception {
+    public Status addInformation(@RequestParam(value = "files", required = false) List<MultipartFile> files, HttpServletRequest request, ModelMap model, Management management) throws Exception {
         return maintainService.addInformation(files, request, model, management);
     }
 

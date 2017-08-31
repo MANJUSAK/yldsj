@@ -44,6 +44,7 @@ public class RecomCompServicelmpl implements RecomCompService {
         if (page == null || "".equals(page)) {
             return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
+        //将page转换为int start
         int arg = 0;
         try {
             arg = Integer.parseInt(page);
@@ -52,6 +53,7 @@ public class RecomCompServicelmpl implements RecomCompService {
             return (T) new Status(StatusEnum.NO_PRAM.getCODE(), StatusEnum.NO_PRAM.getEXPLAIN());
         }
         arg *= 20;
+        //将page转换为int start
         try {
             List<RecomComp> data = this.dao.queryRecomCompDao(arg);
             if (data.size() > 0) {

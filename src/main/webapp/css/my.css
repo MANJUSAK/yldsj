@@ -1,0 +1,733 @@
+body {
+	background: #F0F0F0;
+}
+
+.my-section {
+	width: 100%;
+	height: auto;
+	background: #F0F0F0;
+	margin-top: 80px;
+}
+
+.my-section .ms-box {
+	width: 80%;
+	height: auto;
+	margin: 30px auto 100px;
+}
+
+.my-section .ms-box .mb-topbar {
+	width: 100%;
+	height: 320px;
+	background: white;
+	position: relative;
+}
+
+.my-section .ms-box .mb-topbar .mb-topbar-content {
+	width: 95%;
+	height: 200px;
+	position: absolute;
+	top: 20px;
+	left: 2.5%;
+}
+
+.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-left {
+	width: 158px;
+	height: 158px;
+	float: left;
+}
+
+.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-left .tc-left-img {
+	width: 100%;
+	height: 158px;
+	border-radius: 100%;
+	border: 2px solid #E6E6E8;
+}
+
+.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-left .tc-left-img img {
+	width: 100%;
+	height: 158px;
+	border-radius: 100%;
+}
+
+.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-left .tc-left-text {
+	width: 100%;
+	height: 40px;
+}
+
+.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-left .tc-left-text span {
+	color: #989898;
+	line-height: 40px;
+	display: block;
+	text-align: center;
+	font-size: 14px;
+}
+
+.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-left .tc-left-text span a {
+	color: #989898;
+}
+
+.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right {
+	width: 79%;
+	height: 200px;
+	float: right;
+}
+
+.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-title {
+	width: 100%;
+	height: 80px;
+	border-bottom: 1px solid #E8E8E8;
+	position: relative;
+}
+
+.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-title .tc-rt-box {
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	position: absolute;
+}
+
+.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-title .tc-rt-box .tc-rt-left {
+	width: 31%;
+	height: 40px;
+	float: left;
+}
+.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-title .tc-rt-box .tc-rt-right {
+	float: right;
+}
+.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-title .tc-rt-box .tc-rt-left span {
+	line-height: 40px;
+	color: #070707;
+	padding: 0 10px;
+	float: left;
+}
+
+.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-title .tc-rt-box .tc-rt-left span i {
+	color: #F97D00;
+}
+
+.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-title .tc-rt-box .tc-rt-left .tc-left-first {
+	width: 20px;
+	height: 40px;
+	line-height: 44px;
+	vertical-align: middle;
+	float: left;
+}
+
+.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-title .tc-rt-box .tc-rt-left .tc-left-first img {
+	width: 100%;
+	height: 17px;
+}
+
+.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-title .tc-rt-box .tc-rt-left .tc-left-last {
+	width: 17px;
+	height: 17px;
+	background: #FF9E9E;
+	border-radius: 100%;
+	float: left;
+	border: 12px solid #FFFFFF;
+}
+
+.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-title .tc-rt-box .tc-rt-left .tc-left-last i {
+	color: white;
+	display: block;
+	text-align: center;
+	line-height: 17px;
+	font-size: 14px;
+}
+
+
+/*个人管理  和  项目管理的样式*/
+
+.tc-rtl_manage1,
+.tc-rtl_manage2 {
+	padding: 6px 10px;
+	color: #FFFFFF;
+	background-color: #0096FD;
+	border: 1px solid #34ADFF;
+	border-radius: 2px;
+	cursor: pointer;
+	outline: none;
+}
+
+.tc-rtl_manage2 {
+	background-color: #67BCFA;
+}
+.tc-rtl_manage3_L{
+	width: auto;
+	height: auto;
+	line-height: 40px;
+}
+.tc-rtl_manage3{
+	padding: 6px 10px;
+	border-radius: 2px;
+	cursor: pointer;
+	outline: none;
+	border: none;
+	background-color: #0ECD95;
+	color: white;
+}
+/*个人管理  和  项目管理的样式*/
+
+.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-inner {
+	width: 100%;
+	height: 140px;
+}
+
+.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-inner ul {
+	float: left;
+	padding: 20px;
+}
+
+.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-inner ul li {
+	font-size: 14px;
+	line-height: 35px;
+	color: #343434;
+}
+
+.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-inner ul li span {
+	color: #8A8A8A;
+}
+
+.my-section .ms-box .mb-footer {
+	width: 100%;
+	height: auto;
+	background: white;
+	margin-top: 30px;
+	padding-bottom: 20px;
+	position: relative;
+}
+
+.my-section .ms-box .mb-footer .mb2-box {
+	width: 95%;
+	height: 200px;
+	position: static;
+	margin: 0 auto;
+}
+
+.my-section .ms-box .mb-footer .mb2-box .mb2-li1 {
+	width: 100%;
+	height: 90px;
+}
+
+.my-section .ms-box .mb-footer .mb2-box .mb2-li1 ul li {
+	float: left;
+	width: 11%;
+	height: 90px;
+}
+
+.my-section .ms-box .mb-footer .mb2-box .mb2-li1 ul li .mb2-content {
+	width: 100%;
+	height: 60px;
+	margin: 0 auto;
+}
+
+.my-section .ms-box .mb-footer .mb2-box .mb2-li1 ul li .mb2-content .mb2-img {
+	width: 60px;
+	height: 60px;
+	margin: 0 auto;
+}
+
+.my-section .ms-box .mb-footer .mb2-box .mb2-li1 ul li .mb2-text {
+	width: 100%;
+	height: 30px;
+}
+
+.my-section .ms-box .mb-footer .mb2-box .mb2-li1 ul li .mb2-text span {
+	display: block;
+	text-align: center;
+	line-height: 30px;
+	font-size: 14px;
+	color: #9C9C9C;
+}
+
+.my-section .ms-box .mb-footer .mb2-box .mb2-li1:last-child {
+	margin-top: 20px;
+}
+
+.mb-title {
+	width: 100%;
+	height: auto;
+	padding: 10px 0;
+}
+
+.styled-select {
+	margin-left: 30px;
+}
+
+.styled-select select {
+	background: white;
+	width: 268px;
+	padding: 5px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	height: 34px;
+	outline: none;
+}
+
+
+/****** 项目管理 ******/
+
+.mb-footer_center {
+	width: 95%;
+	height: auto;
+	margin: 0 auto;
+}
+
+.mb-footer_C_title {
+	width: 100%;
+	height: 54px;
+	line-height: 58px;
+}
+
+.mb-footer_C_title2 {
+	width: 100%;
+	height: 34px;
+	line-height: 34px;
+	border-top: 20px solid #FFFFFF;
+}
+
+.footer_C_content {
+	width: 95%;
+	height: auto;
+	margin: 0 auto;
+}
+
+.footer_CC_one {
+	width: 100%;
+	height: auto;
+}
+
+.mb-footer_CCo_ul {
+	width: auto;
+	height: auto;
+}
+
+.mb-footer_CCo_li {
+	width: 31.8%;
+	height: 300px;
+	padding: 1px;
+	border: 1px solid #DDDDDD;
+	margin: 0.5%;
+	float: left;
+	display: block;
+	text-align: -webkit-center;
+	text-align: -moz-center;
+	position: relative;
+	overflow: hidden;
+	white-space: nowrap;
+	white-space: normal;
+}
+
+.mb-footer_CCo_li_tu {
+	width: 100%;
+	height: 300px;
+	text-align: -webkit-center;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.mb-footer_CCo_li img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+
+/*合同管理-相关文件*/
+
+#mb-footer_pact {
+	display: none;
+}
+
+.mb-footer_CC_two {
+	width: 100%;
+	height: auto;
+}
+
+.mb-footer_CC_two_li {
+	width: 32%;
+	padding: 0 0.5%;
+	float: left;
+}
+
+.mb-footer_CC_two_li a {
+	width: 100%;
+	height: auto;
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	/*color: #353334;*/
+	font-size: 0.95em;
+	line-height: 24px;
+}
+
+
+/* 鼠标移入时有窗帘效果 */
+
+.mb-footer_CCo_li_curtain {
+	width: 100%;
+	height: 0px;
+	bottom: 0px;
+	line-height: 30px;
+	left: 0px;
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.3);
+	color: white;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	transition: 0.3s;
+	-moz-transition: 0.3s;
+	-webkit-transition: 0.3s;
+	-ms-transition: 0.3s;
+}
+
+.mb-footer_CCo_li:hover .mb-footer_CCo_li_curtain {
+	height: 30px;
+}
+
+
+/* 鼠标移入时有窗帘效果 结束 */
+
+/********** 合同管理，点击出现蒙层、显示图片 **********/
+/*html{
+	background-color: #909090;
+}*/
+.my_img{
+	display: none;
+}
+.my_img img{
+	width: 10px;
+	height: 10px;
+}
+.mymc_content{
+	position: absolute;
+	width: 100%;
+	height: auto;
+	top: 0;
+	left: 0;
+	display: none;
+}
+
+.mymc_center{
+	width: 70%;
+	height: auto;
+	padding: 0px 15%;
+	text-align: center;
+	padding-top: 10px;
+	position: static;
+	background-color: rgba(0,0,0,0.4);
+}
+.mymc_center img{
+	width: 100%;
+	height: auto;
+	padding: 15px 0;
+}
+
+
+/*取消按钮*/
+.mymc_err{
+	position: absolute;
+	top: 20px;
+	right: 15%;
+	margin-right: -18px;
+	margin-top: -10px;
+	cursor: pointer;
+}
+/********** 合同管理，点击出现蒙层、显示图片 结束 **********/
+
+/*合同管理-相关文件 结束*/
+
+
+/****** 项目管理 结束 ******/
+
+@media only screen and (min-width: 100px) and (max-width: 1024px) {
+	.ms-box {
+		width: 100% !important;
+		margin: 0 !important;
+	}
+	.mb-topbar {
+		height: auto !important;
+	}
+	.mb-topbar-content {
+		position: static !important;
+		height: auto !important;
+		top: 0 !important;
+		width: 100% !important;
+		left: 0 !important;
+		padding-top: 20px;
+	}
+	.mb-tc-left {
+		float: none !important;
+		margin: 0 auto;
+		height: auto !important;
+	}
+	.mb-tc-right {
+		float: none !important;
+		height: auto !important;
+		width: 100% !important;
+	}
+	.tc-right-title {
+		width: 100% !important;
+		height: auto !important;
+	}
+	.tc-rt-box {
+		position: static !important;
+		height: auto !important;
+		width: 100% !important;
+		top: 0 !important;
+	}
+	.tc-rt-left {
+		float: none !important;
+		width: 100% !important;
+		height: auto !important;
+		text-align: center;
+	}
+	
+	.tc-rt-left> span,
+	.tc-left-last {
+		float: none !important;
+	}
+	.tc-left-last {
+		display: inline-block !important;
+	}
+	.tc-left-first {
+		float: none !important;
+		display: inline-block;
+		margin: 5px 0;
+	}
+	.tc-right-inner {
+		width: 100% !important;
+		height: auto !important;
+	}
+	.tc-right-inner> ul {
+		float: none !important;
+	}
+	/*//*/
+	.mb-footer {
+		width: 100% !important;
+		height: auto !important;
+	}
+	.mb2-box {
+		position: static !important;
+		top: 0 !important;
+		padding: 20px 0 !important;
+		left: 0 !important;
+		width: 100% !important;
+		height: auto !important;
+	}
+	.mb2-li1 {
+		width: 100% !important;
+		height: auto !important;
+	}
+	.mb2-li1> ul {
+		width: 100%;
+		height: auto;
+		text-align: center;
+	}
+	.mb2-li1> ul> li {
+		float: none !important;
+		display: inline-block;
+		width: 103px !important;
+		height: auto !important;
+	}
+	.mb2-li1> ul> li> a {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+	.mb2-text> span {
+		width: 100% !important;
+		line-height: 22px !important;
+	}
+	/*设置行高 居中*/
+	.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-title .tc-rt-box .tc-rt-left {
+		height: 30px !important;
+	}
+	.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-title .tc-rt-box .tc-rt-left span {
+		line-height: 30px !important;
+	}
+	.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-title .tc-rt-box .tc-rt-left .tc-left-first {
+		height: 30px !important;
+		line-height: 30px !important;
+	}
+	.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-title .tc-rt-box .tc-rt-left .tc-left-first img {
+		width: 100%;
+		height: 17px;
+	}
+	.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-title .tc-rt-box .tc-rt-left .tc-left-last {
+		border: 10px solid #FFFFFF !important;
+	}
+	.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-title .tc-rt-box .tc-rt-left .tc-left-last i {
+		line-height: 17px;
+	}
+	/*设置行高 居中 结束*/
+	.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-title .tc-rt-box {
+		padding-bottom: 51px !important;
+	}
+	.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-inner ul {
+		padding-top: 0px !important;
+		padding-bottom: 0px !important;
+	}
+	.my-section .ms-box .mb-topbar .mb-topbar-content .mb-tc-right .tc-right-inner {
+		padding-bottom: 15px;
+		padding-top: 15px;
+	}
+	.mb-footer_CCo_li {
+		width: 31%;
+		height: 180px !important;
+		margin: 0.5%;
+	}
+	.mb-footer_CCo_li_tu {
+		width: 100% !important;
+		height: 180px !important;
+	}
+	.mb-footer_CCo_li img {
+		max-width: 100% !important;
+		max-height: 180px !important;
+	}
+	.mb-footer_CCo_li_curtain {
+		font-size: 0.875em !important;
+		height: 30px !important;
+		text-overflow: inherit;
+		overflow-x: auto;
+	}
+	/**********************/
+	.mymc_err{
+		width: 32px;
+		height: 32px;
+	}
+
+}
+
+@media only screen and (max-width: 500px) {
+	.mb-footer_CC_two {
+		width: 100%;
+		height: auto;
+	}
+	.mb-footer_CC_two_li {
+		width: 48% !important;
+		padding: 0 1% !important;
+	}
+	.mb-footer_CC_two_li a {
+		width: 100%;
+	}
+	.mymc_err{
+		width: 26px;
+		height: 26px;
+	}
+}
+
+
+/***************************** 点击个人编辑 弹出来的蒙层 可以编辑  *****************************/
+input{
+	outline: none;
+}
+.masking{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(214,214,214,0.4);
+	position: fixed;
+	top: 0;
+	right: 0;
+	display: none;
+}
+.masking_title{
+	display: inline-block;
+	padding: 40px 0 20px 0;
+	font-size: 24px;
+	text-align: center;
+	width: 100%;
+}
+.masking_center{
+	width: 600px;
+	height: 450px;
+	margin: 0 auto;
+	background-color: white;
+	border-radius: 4px;
+	position: fixed;
+	top: 50%;
+	margin-top: -225px;
+	right: 50%;
+	margin-right: -300px;
+	
+}
+
+.masking_line{
+	width: 100%;
+	height: 40px;
+	padding: 10px 0;
+}
+.masking_line_name{
+	width: 25%;
+	height: 100%;
+	display: inline-block;
+	text-align: right;
+	padding-right: 2%;
+	line-height: 40px;
+}
+
+.masking_line_input{
+	width: 60%;
+	height: 30px;
+	margin-top: 10px;
+	border: 1px solid #C8C8C8;
+	cursor: pointer;
+	border-radius: 2px;
+	padding-left: 2px;
+}
+
+.masking_submit{
+	width: 100%;
+	height: 40px;
+	padding: 20px 0;
+	text-align: center;
+}
+.masking_submit1{
+	padding: 8px 33px;
+	font-size: 16px;
+	border: none;
+	background-color: #0196FD;
+	border-radius: 3px;
+	color: white;
+	cursor: pointer;
+}
+.masking_submit2{
+	padding: 8px 33px;
+	font-size: 16px;
+	border: none;
+	background-color: #CDCDCD;
+	border-radius: 3px;
+	color: white;
+	cursor: pointer;
+}
+.masking_submit1{
+	margin-right: 10px;
+}
+@media only screen and (min-width: 100px) and (max-width: 1024px) {
+	.masking_center{
+		width: 90% !important;
+		right: 5% !important;
+		margin-right: 0 !important;
+	}
+	.masking_line_name{
+		width: 30%;
+	}
+	
+	.masking_line_input{
+		width: 55%;
+	}
+}
+@media only screen and (min-width: 1367px) and (max-width: 1920px) {
+	.my-section{
+		margin-top: 145px;
+		margin-bottom: 155px;
+	}
+	
+}
+
+
+
+/***************************** 点击个人编辑 弹出来的蒙层 可以编辑  结束  *****************************/

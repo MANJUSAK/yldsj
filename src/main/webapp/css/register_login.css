@@ -1,0 +1,495 @@
+/*
+ *描述：该样式为注册页面的引用样式（register_login.php） 
+ * */
+/********************************** 注册页面的相关样式 *********************************/
+
+body,
+html {
+	margin: 0;
+	padding: 0;
+}
+
+
+/******** 注册页面的中间内容部分 *********/
+
+.RU_content {
+	width: 100%;
+	height: auto;
+	font-size: 0.875em;
+	font-family: "黑体";
+	padding: 70px 0px 60px 0px;
+	background-image: url(../img/bg_user1.jpg);
+	background-position: center center;
+	background-size: 100% 100%;
+	background-attachment: scroll;
+}
+
+.RU_content .RU_center {
+	width: 600px;
+	height: auto;
+	margin: auto;
+	background-color: white;
+	/*** 切换卡 ***/
+	/*** 切换卡 结束 ***/
+	/*** 企业注册 ***/
+	/*** 企业注册 结束 ***/
+	/*** 个人注册 ***/
+	/*** 个人注册 结束 ***/
+}
+
+.RU_content .RU_center .RU_center_switch {
+	width: 600px;
+	height: 40px;
+	background-color: #0196fd;
+}
+
+.RU_content .RU_center .RU_center_switch .RU_center_switch_public {
+	width: 300px;
+	height: 40px;
+	line-height: 40px;
+	float: left;
+	text-align: center;
+	color: #FFFFFF;
+	display: block;
+}
+
+.RU_content .RU_center .RU_center_switch .RU_center_switch_L {
+	width: 300px;
+	height: 40px;
+	line-height: 40px;
+	float: left;
+	text-align: center;
+	color: #FFFFFF;
+	display: block;
+	background-image: url("../img/register_tab.png");
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	background-color: #0080d8;
+	font-size: 1.125em;
+}
+
+.RU_content .RU_center .RU_center_switch .RU_center_switch_L:hover {
+	cursor: pointer;
+}
+
+.RU_content .RU_center .RU_center_switch .RU_center_switch_R {
+	width: 300px;
+	height: 40px;
+	line-height: 40px;
+	float: left;
+	text-align: center;
+	color: #FFFFFF;
+	display: block;
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	font-size: 1.125em;
+}
+
+.RU_content .RU_center .RU_center_switch .RU_center_switch_R:hover {
+	cursor: pointer;
+}
+
+.RU_content .RU_center .RU_center_public {
+	width: 598px;
+	height: auto;
+	border: 1px solid #e3e5e4;
+	border-top: 1px solid #FFFFFF;
+	padding-top: 15px;
+}
+
+.RU_content .RU_center .RU_center_firm {
+	width: 598px;
+	height: auto;
+	border: 1px solid #e3e5e4;
+	border-top: 1px solid #FFFFFF;
+	padding-top: 15px;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_center_public {
+	width: 300px;
+	height: 40px;
+	margin: 4px auto;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_input_public {
+	width: 287px;
+	height: 38px;
+	outline: none;
+	padding-left: 8px;
+	padding-right: 3px;
+	border: 1px solid #e6e6e6;
+	border-radius: 3px;
+	font-size: 1.125em;
+}
+/*RU_center_firm_one为通用的一行，如用户名、联系电话等*/
+.RU_content .RU_center .RU_center_firm .RU_center_firm_one {
+	width: 300px;
+	height: 40px;
+	margin: 4px auto;
+	display: flex;
+}
+
+
+/*获取手机验证码*/
+
+
+/*获取手机验证码 结束*/
+
+
+/** 为了获得焦点，使用两个不同的class **/
+
+
+/*获取手机验证码*/
+
+
+/*获取手机验证码 结束*/
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_one .RU_center_firm_one_input {
+	width: 287px;
+	height: 38px;
+	outline: none;
+	padding-left: 8px;
+	padding-right: 3px;
+	border: 1px solid #e6e6e6;
+	border-radius: 3px;
+	font-size: 1.125em;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_one .RU_center_firm_one_input_verify {
+	width: 177px;
+	height: 38px;
+	outline: none;
+	padding-left: 8px;
+	padding-right: 3px;
+	border: 1px solid #e6e6e6;
+	border-radius: 3px;
+	font-size: 1.125em;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_one .RU_center_firm_one_input_getVerify {
+	width: 92px;
+	font-size: 1.05em;
+	font-family: "黑体";
+	color: #666666;
+	height: 32px;
+	margin-top: 4px;
+	outline: none;
+	background-color: #e3e3e3;
+	border: 1px solid #d9d9d9;
+	cursor: pointer;
+	border-radius: 3px;
+	margin-left: 18px;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_one .RU_center_firm_one_input_verify2 {
+	width: 160px;
+	height: 38px;
+	outline: none;
+	padding-left: 8px;
+	padding-right: 3px;
+	border: 1px solid #e6e6e6;
+	border-radius: 3px;
+	font-size: 1.125em;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_one .RU_center_firm_one_input_getVerify2 {
+	width: 92px;
+	font-size: 1.05em;
+	font-family: "黑体";
+	color: #666666;
+	height: 32px;
+	margin-top: 6px;
+	outline: none;
+	background-color: #e3e3e3;
+	border: 1px solid #d9d9d9;
+	cursor: pointer;
+	border-radius: 3px;
+	margin-left: 16px;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_one .RU_center_firm_one_input_register {
+	width: 298px;
+	height: 44px;
+	outline: none;
+	background-color: #0096fe;
+	border: 1px solid #e6e6e6;
+	border-radius: 5px;
+	font-size: 1.125em;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_one_register {
+	margin-top: 30px;
+	margin-bottom: 0;
+}
+/*已有账号，立即登录*/
+.RU_content .RU_center .RU_center_firm .RU_center_firm_one_login {
+	margin-top: 0;
+	padding-top: 12px;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_one_login a {
+	text-decoration: none;
+	color: #007FDA;
+}
+/*RU_center_firm_two RU_center_firm_five为身份证样式*/
+.RU_content .RU_center .RU_center_firm .RU_center_firm_two {
+	width: 300px;
+	height: 108px;
+	margin: 15px auto 12px auto;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_two .RU_center_firm_two_L {
+	width: 137px;
+	height: auto;
+	float: left;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_two .RU_center_firm_two_L .RU_center_firm_two_L_top {
+	width: 137px;
+	height: 32px;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_two .RU_center_firm_two_L .RU_center_firm_two_L_top span {
+	text-align: center;
+	display: block;
+	height: 32px;
+	line-height: 32px;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_two .RU_center_firm_two_L .RU_center_firm_two_L_bottom {
+	width: 135px;
+	height: 76px;
+	border: 1px dashed #c7c7c7;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+	background-color: #fcfcfc;
+	overflow: hidden;
+	position: relative;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_two .RU_center_firm_two_L .RU_center_firm_two_L_bottom img {
+	max-width: 135px;
+	padding-top: 3px;
+	max-height: 76px;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_two .RU_center_firm_two_L .RU_center_firm_two_L_bottom .RU_center_firm_two_L_bottom_position {
+	position: absolute;
+	bottom: 5px;
+	left: 33px;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_two .RU_center_firm_two_L .RU_center_firm_two_L_bottom .RU_center_firm_two_L_bottom_position .d_file {
+	position: relative;
+	display: inline-block;
+	background: rgba(255, 255, 255, 0.5);
+	font-family: "新宋体";
+	border: 1px solid #007fda;
+	padding: 0 10px;
+	overflow: hidden;
+	text-decoration: none;
+	text-indent: 0;
+	height: 18px;
+	line-height: 18px;
+	color: #007fda;
+	font-size: 0.875em;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_two .RU_center_firm_two_L .RU_center_firm_two_L_bottom .RU_center_firm_two_L_bottom_position .d_file input {
+	position: absolute;
+	/*font-size: 10px;*/
+	right: 0;
+	top: 0;
+	opacity: 0;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_two .RU_center_firm_two_L .RU_center_firm_two_L_bottom .RU_center_firm_two_L_bottom_position .d_file:hover {
+	color: #FFFFFF;
+	background-color: #007fda;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_two .RU_center_firm_two_R {
+	width: 137px;
+	float: left;
+	height: auto;
+	padding-left: 26px;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_two .RU_center_firm_two_R .RU_center_firm_two_R_top {
+	width: 137px;
+	height: 32px;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_two .RU_center_firm_two_R .RU_center_firm_two_R_top span {
+	text-align: center;
+	display: block;
+	height: 32px;
+	line-height: 32px;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_two .RU_center_firm_two_R .RU_center_firm_two_R_bottom {
+	width: 135px;
+	height: 79px;
+	max-height: 79px;
+	border: 1px dashed #c7c7c7;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+	background-color: #fcfcfc;
+	position: relative;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_two .RU_center_firm_two_R .RU_center_firm_two_R_bottom img {
+	max-width: 135px;
+	padding-top: 3px;
+	max-height: 76px !important;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_two .RU_center_firm_two_R .RU_center_firm_two_R_bottom .RU_center_firm_two_L_bottom_position {
+	position: absolute;
+	bottom: 5px;
+	left: 31px;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_two .RU_center_firm_two_R .RU_center_firm_two_R_bottom .RU_center_firm_two_L_bottom_position .d_file {
+	position: relative;
+	display: inline-block;
+	background: rgba(255, 255, 255, 0.5);
+	font-family: "新宋体";
+	border: 1px solid #007fda;
+	padding: 0 10px;
+	overflow: hidden;
+	text-decoration: none;
+	text-indent: 0;
+	height: 18px;
+	line-height: 18px;
+	color: #007fda;
+	font-size: 0.875em;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_two .RU_center_firm_two_R .RU_center_firm_two_R_bottom .RU_center_firm_two_L_bottom_position .d_file input {
+	position: absolute;
+	/*font-size: 10px;*/
+	right: 0;
+	top: 0;
+	opacity: 0;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_two .RU_center_firm_two_R .RU_center_firm_two_R_bottom .RU_center_firm_two_L_bottom_position .d_file:hover {
+	color: #FFFFFF;
+	background-color: #007fda;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_three {
+	width: 300px;
+	height: 40px;
+	margin: 4px auto;
+	line-height: 40px;
+	padding-left: 15px;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_five .RU_center_firm_two_L_bottom {
+	border: 1px solid #e6e6e6 !important;
+	border-radius: 3px;
+}
+
+.RU_content .RU_center .RU_center_firm .RU_center_firm_five .RU_center_firm_two_R_bottom {
+	border: 1px solid #e6e6e6 !important;
+	border-radius: 3px;
+}
+
+.RU_content .RU_center .RU_center_nom {
+	width: 598px;
+	height: auto;
+	border: 1px solid #e3e5e4;
+	border-top: 1px solid #FFFFFF;
+	padding-top: 15px;
+}
+
+
+/******** 注册页面的中间内容部分 结束 *********/
+
+
+/***** 正则表达式显示的样式控制 *****/
+/*RU_center_firm_errOk 为提示信息*/
+.RU_center_firm_errOk {
+	width: 300px;
+	height: 20px;
+	display: block;
+	/*padding-left: 150px;*/
+	margin: 0 auto;
+}
+
+.RU_center_firm_errOk img {
+	width: 12px;
+	height: 12px;
+	vertical-align: middle;
+	margin-top: -3px;
+	padding-right: 3px;
+}
+
+
+/*欢迎注册  标题样式*/
+.RUc_firm_greet{
+	width: auto;
+	height: 80px;
+	display: block;
+	text-align: center;
+	line-height: 70px;
+	font-size: 2.0em;	
+}
+/*欢迎注册  标题样式 结束*/
+
+/***** 正则表达式显示的样式控制 结束 *****/
+/********************************************  页面的媒体查询  **********************************************/
+
+/****-------------------------  register_login.css  注册页面   媒体查询  ---------------------------****/
+
+@media only screen and (min-width: 100px) and (max-width: 1024px) {
+	.RU_content {
+		padding: 15px 0 10px 0 !important;
+	}
+	/*改变中间的宽度*/
+	.RU_center {
+		width: 98% !important;
+	}
+	.RU_center_switch {
+		width: 100% !important;
+	}
+	.RU_center_switch_L {
+		width: 50% !important;
+	}
+	.RU_center_switch_R {
+		width: 50% !important;
+	}
+	.RU_center_firm {
+		width: 100% !important;
+	}
+	.RU_center_firm_errOk {
+		height: 10px !important;
+	}
+	/*RU_center_firm_one为通用的一行，如用户名、联系电话等*/
+	.RU_center_firm_one {
+		margin: 1px auto !important;
+		margin-top: 10px !important;
+	}
+	.RU_center_firm_one {
+		display: block !important;
+	}
+	.RU_center_firm_one_input_verify {
+		width: 155px !important;
+	}
+	.RUc_firm_greet{
+		height: 60px !important;
+		line-height: 60px !important;
+	}
+}
+
+
+/****-------------------------  register_login.css  注册页面   媒体查询  结束  ---------------------------****/
+
+
+/********************************************  页面的媒体查询   结束  **********************************************/

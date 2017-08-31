@@ -18,16 +18,29 @@ public class CarouselController {
     @Resource
     private CarouselService service;
 
+    /**
+     * 查询轮播图接口
+     *
+     * @param request http请求
+     * @return 响应结果
+     */
     @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.GET)
     @RequestMapping("/carousel")
     public Object queryCarouselController(HttpServletRequest request) {
         return this.service.queryCarouselService(request);
     }
 
+    /**
+     * 添加轮播图接口
+     *
+     * @param files 文件
+     * @param msg   数据
+     * @return 响应结果
+     */
     @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)
     @RequestMapping("/add/carousel")
-    public Status addCarouselController(HttpServletRequest request, @RequestParam("files") MultipartFile[] files, Carousel msg) {
-        return this.service.addCarouselService(request, files, msg);
+    public Status addCarouselController(@RequestParam("files") MultipartFile[] files, Carousel msg) {
+        return this.service.addCarouselService(files, msg);
     }
 
 }

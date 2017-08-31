@@ -1,0 +1,173 @@
+.personal-section {
+    width: 100%;
+    height: auto;
+    background: #F0F0F0;
+    .ps-banner {
+        width: 100%;
+        height: 280px;
+        background: url(../img/guild-banner.jpg);
+        background-size: 100% 280px;
+        position: relative;
+        .gb-inner {
+            width: 220px;
+            height: 80px;
+            background: rgba(255,255,255,0.3);
+            position: absolute;
+            top: 100px;
+            left: 280px;
+            .gb-topbar {
+                width: 100%;
+                height: 50px;
+                h3 {
+                    color: white;
+                    line-height: 50px;
+                    padding: 0 20px;
+                }
+            }
+            .gb-footer {
+                width: 100%;
+                height: 30px;
+                span {
+                    font-size: 14px;
+                    color: rgba(255,255,255,0.6);
+                    line-height: 30px;
+                    padding: 0 20px;
+                }
+            }
+        }
+    }
+    .ps-box {
+        width: 100%;
+        height: auto; 
+        .ps-container {
+            width: 80%;
+            height: auto;
+            margin: 0 auto;
+            .ps-container-item {
+                width: 100%;
+                height: 280px;
+                background: white;
+                margin-top: 30px;
+                position: relative;
+                .ps-ci-content {
+                    width: 98%;
+                    height: 260px;
+                    position: absolute;
+                    top: 10px;
+                    left: 1%;
+                    .ps-ci-left {
+                        width: 20%;
+                        height: 260px;
+                        float: left;
+                        .ci-left-center {
+                            width: 90%;
+                            height: 260px;
+                            margin: 0 auto;
+                            .ci-lc-img {
+                                width: 100%;
+                                height: 180px;
+                                border-radius: 5px;
+                                img {
+                                    width: 100%;
+                                    height: 180px;
+                                }
+                            }
+                            .ci-lc-name {
+                                width: 100%;
+                                height: 40px;
+                                ul {
+                                    text-align: center;
+                                    li {
+                                        width: 28%;
+                                        height: 40px;
+                                        display: inline-block;
+                                        span {
+                                            font-size: 12px;
+                                            line-height: 40px;
+                                        }
+                                        i {
+                                            font-size: 12px;
+                                            color: #DE73A5;
+                                            line-height: 40px;
+                                        }
+                                    }
+                                }
+                            }
+                            .ci-lc-inner {
+                                width: 100%;
+                                height: 40px;
+                                .lc-inner-center {
+                                    width: 60%;
+                                    height: 40px;
+                                    margin: 0 auto;
+                                    border-radius: 4px;
+                                    background: #0196FD;
+                                    a {
+                                        display: block;
+                                        text-align: center;
+                                        line-height: 40px;
+                                        font-size: 14px;
+                                        color: white;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .ps-ci-right {
+                        width: 80%;
+                        height: 260px;
+                        float: left;
+                        ul {
+                            width: 100%;
+                            height: 250px;
+                            li {
+                                width: 100%;
+                                height: 37px;
+                                span {
+                                    line-height: 37px;
+                                    font-size: 12px;
+                                    padding: 0 10px;
+                                }
+                            }
+                            .ps-cr-one {
+                                background: #F2F9FF;
+                            }
+                        }
+                    }
+                }
+            }
+            .ps-container-item:first-child {
+                margin-top: 50px;
+            }
+            .ps-container-pages {
+                width: 100%;
+                height: 70px;
+                margin-top: 30px;
+                ul {
+                    text-align: center;
+                    li {
+                        display: inline-block;
+                        a {
+                            font-size: 14px;
+                            padding: 4px 15px;
+                            border: 1px solid #E0DDD6;
+                            color: #666666;
+                            background: white;
+                            border-radius: 2px;
+                            &:hover {
+                                background: #0096FF;
+                                color: white;
+                                border-color: #0096FF;
+                            }
+                        }
+                        .ps-cp-active {
+                            background: #0096FF;
+                            color: white;
+                            border-color: #0096FF;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

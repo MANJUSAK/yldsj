@@ -1,0 +1,179 @@
+<div style="height: 10px; background-color: white;">
+</div>
+<div class="header-topbar">
+	<div class="ht-box">
+		<div class="logo">
+			<div class="logo-img">
+				<a href=""><img id='header_login' src="../img/log_2.png" /></a>
+			</div>
+			<div class="logo-text">
+				<div class="lt-content">
+					<div class="lt-topbar">
+						<h2>园林诚信平台</h2>
+					</div>
+					<div class="lt-inner">
+						<p>Landscape Sincerity platform</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ht-right">
+			<div class="right-box">
+				<div class="rb-search">
+					<div class="search-content">
+						<div class="sc-input">
+							<input title="该功能暂未开放" type="text" disabled="disabled" placeholder="请输入内容" />
+						</div>
+						<div class="sc-icon">
+							<a href="javascript:void(0)">搜索</a>
+						</div>
+					</div>
+				</div>
+				<div id="rb_login" class="rb-login">
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div style="height: 10px; background-color: white;"></div>
+<div class="header-navs">
+	<div class="hn-box">
+		<ul>
+			<li>
+				<a href="../index.html">首页</a>
+			</li>
+			<li>
+				<a href="../demandRelease/nursery-information.html">需求发布</a>
+				<div class="hn-nav2">
+					<div class="hn-nav2-item ">
+						<a href="../demandRelease/nursery-information.html">苗木信息</a>
+					</div>
+					<div class="hn-nav2-item">
+						<a href="../demandRelease/personal-information.html">人才招聘</a>
+					</div>
+					<div class="hn-nav2-item">
+						<a href="../demandRelease/demand-release.html">设备租赁</a>
+					</div>
+					<div class="hn-nav2-item">
+						<a href="../demandRelease/biddingl_information.html">招标信息</a>
+					</div>
+				</div>
+			</li>
+			<li>
+				<a href="../qiyetuijian/mm-firm.html">企业推荐</a>
+			</li>
+			<li>
+				<a href="../laws.html">法律法规</a>
+			</li>
+			<li>
+				<a href="../dues-show/guild.html">行业协会</a>
+			</li>
+			<li>
+				<a href="../employees/worker.html">从业人员库</a>
+			</li>
+			<li>
+				<a href="../legal_person/talents.html">法人库</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/hosts.js" ></script>
+<script type="text/javascript" src="../js/jquerySession.js"></script>
+<script type="text/javascript" src="../js/public.js"></script>
+
+<script>
+	/***************************** 导航做判断 点击时出现背景色 ********************************/
+
+	$(function() {
+		var cc = 0;
+		var ss = 1;
+		/*获取导航下标*/
+		if($.session.get('header_num')) {
+			cc = $.session.get('header_num');
+		} else {
+			cc = 0;
+		}
+		/*获取需求下标*/
+		if($.session.get('num_')) {
+			ss = $.session.get('num_');
+		} else {
+			ss = 0;
+		}
+		/*设置导航标题背景*/
+		for(var i = 0; i < 7; i++) {
+			$('ul > li:eq(' + i + ') a').removeClass('hn-active');
+
+		}
+		$('ul > li:eq(' + cc + ') a:eq(0)').addClass('hn-active');
+		/*判断是否为需求发布*/
+		if(cc == 1) {
+			//设置需求下标 标题属性
+
+			$('.hn-nav2-item:eq(0)').addClass('hni_active');
+			for(var j = 0; j < $(".hn-nav2-item").length; j++) {
+				$(".hn-nav2 div:eq(" + j + ")").removeClass("hni_active")
+			}
+			$('.hn-nav2 div:eq(' + ss + ')').addClass('hni_active');
+
+		}
+
+		$('.hn-nav2 .hn-nav2-item').click(function() {
+			$.session.set('xq_num', $(this).index());
+			$.session.get('xq_num');
+		})
+		if($.session.get('header_num') == 1) {
+			//$.session.set('xq_num', 0);
+			$('.hn-nav2 .hn-nav2-item').removeClass("hni_active");
+			$('.hn-nav2 .hn-nav2-item').eq($.session.get('xq_num')).addClass("hni_active");
+		} else {
+			$.session.set('xq_num', 0);
+			//alert($.session.get('xq_num'))
+			$('.hn-nav2 .hn-nav2-item').removeClass("hni_active");
+			$('.hn-nav2 .hn-nav2-item').eq(0).addClass("hni_active");
+		}
+
+	})
+	$(function() {
+		var login_ = '';
+		/*用户登录信息替换*/
+		if($.session.get('uname') && $.session.get('uid')) {
+			login_ += '<div class="rl-box2" style="display:block">' +
+				'<div class="box2-left">欢迎您：' +
+				'<span id="show_uname">' + $.session.get('uname') + '&nbsp;&nbsp;</span>' +
+				'' +
+				'</div>' +
+				'<div class="box2-right">|' +
+				'<span id="login_out">&nbsp;退出</span>' +
+				'</div>' +
+				'</div>';
+			$('#rb_login').html(login_);
+			$('#login_out').click(function out_login() {
+				$.session.remove('uname');
+				$.session.remove('uid');
+				$.session.clear();
+				window.location.href = '../login/login.html';
+			})
+			$('#show_uname').click(function() {
+				window.location.href = '../my.html';
+			})
+
+		} else {
+			login_ += '<div class="rl-box">' +
+				'<div class="rl-left">' +
+				'<a href="../login/login.html">' +
+				'<i class="fa fa-user"></i> <span style="border-right:none;">登录&nbsp;&nbsp;&nbsp;</span>' +
+				'</a>' +
+				'</div>' +
+				/*'<div class="rl-right">' +
+				'<a href="../login/register.html">' +
+				'&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil-square-o"></i> <span>注册</span>' +
+				'</a>' +
+				'</div>' +*/
+				'</div>';
+			$('#rb_login').html(login_);
+		}
+	})
+</script>

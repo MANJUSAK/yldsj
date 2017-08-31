@@ -12,10 +12,11 @@ public class Corporation implements java.io.Serializable {
 
     private String id; // 表id
     private String company;//企业名称
-    private double registerCap;// 注册资金
+    private String registerCap;// 注册资金
     private String detailAddress;// 详细地址
     private String nature;// 经营性质
     private String registerAddress;//注册地址
+    private String companyIntro;//企业简介
 
     public String getId() {
         return id;
@@ -33,11 +34,11 @@ public class Corporation implements java.io.Serializable {
         this.company = company;
     }
 
-    public double getRegisterCap() {
+    public String getRegisterCap() {
         return registerCap;
     }
 
-    public void setRegisterCap(double registerCap) {
+    public void setRegisterCap(String registerCap) {
         this.registerCap = registerCap;
     }
 
@@ -63,5 +64,13 @@ public class Corporation implements java.io.Serializable {
 
     public void setRegisterAddress(String registerAddress) {
         this.registerAddress = registerAddress;
+    }
+
+    public String getCompanyIntro() {
+        return companyIntro;
+    }
+
+    public void setCompanyIntro(String companyIntro) {
+        this.companyIntro = companyIntro;
     }
 }

@@ -28,7 +28,7 @@ public class Recruit implements java.io.Serializable {
     //email邮箱
     private String email;
     //月薪
-    private Double money;
+    private String money;
     //工作经历
     private String experience;
     // 联系电话
@@ -121,11 +121,11 @@ public class Recruit implements java.io.Serializable {
         this.email = email;
     }
 
-    public Double getMoney() {
+    public String getMoney() {
         return money;
     }
 
-    public void setMoney(Double money) {
+    public void setMoney(String money) {
         this.money = money;
     }
 
@@ -168,7 +168,7 @@ public class Recruit implements java.io.Serializable {
     public void setTime(String time) {
         this.time = time;
     }
-    
+
     public int getTp() {
         return tp;
     }

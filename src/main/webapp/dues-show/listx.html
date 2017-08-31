@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>动态资讯</title>
+		<link rel="stylesheet" href="../css/association_subpage.css" />
+		<link rel="stylesheet" href="../vendor/font-awesome-4.6.3/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="../vendor/font-awesome-4.6.3/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="shortcut icon" type="text/css" href="../img/log_2.ico" />
+		<link rel="stylesheet" type="text/css" href="../css/guild.css" />
+	</head>
+	<!--
+		描述：该页面为  动态资讯  的更多页面（点击更多时进入该页面 quality_engineering.html）
+		简称为：QE；
+		其它页面引用该页面的样式；
+	-->
+
+	<body>
+		<header id="header"></header>
+		<!--除头部和底部中间内容部分-->
+		<div class="QE_content">
+			<div class="QE_center">
+				<div class="QE_one">
+					<span class="QE_one_span">动态资讯</span>
+				</div>
+				<!--面包屑导航-->
+				<div class="QE_subNav">
+					<!--
+                    	作者：mjcs_r@163.com
+                    	时间：2017-08-24
+                    	描述：动态导航
+                    -->
+				</div>
+				<div class="QE_notice"><span>项目公告</span></div>
+				<!--容器（一行一行的数据）-->
+				<div class="QE_container">
+					<ul id="show_list" class="QEc_ul">
+						<li class="QEc_li">
+							<i class="fa fa-square"></i>
+							<a target="_blank" href="#" class="QEc_li_content">暂时没有此类数据</a>
+							<span class="QEc_li_date">0000-00-00</span>
+						</li>
+					</ul>
+
+					<!--点击加载更多-->
+					<div class="more_whole">
+						<div class="more_L"></div>
+						<div class="more" id="more">加载更多</div>
+						<div class="more_R"></div>
+					</div>
+					<!--点击加载更多  结束-->
+
+				</div>
+
+			</div>
+		</div>
+		<script src="../js/jquery.min.js"></script>
+		<!--<script src="../js/guild.js"></script>-->
+		<script src="../js/common.js"></script>
+		<script type="text/javascript" src="../js/jquerySession.js"></script>
+		<!--<script type="text/javascript" src="../js/dues-show/guild.js"></script>-->
+		<script type="text/javascript" src="../js/dues-show/guild_list.js" ></script>
+		<script>
+			$(function() {
+				$.session.remove('header_num');
+				$.session.set('header_num', 4);
+				$('#header').load('../public/header.html');
+				$('#footer').load('../public/footer.html');
+			})
+		</script>
+	</body>
+
+</html>

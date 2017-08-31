@@ -1,0 +1,228 @@
+body {
+	background: #F0F0F0;
+}
+.G-box {
+	width: 76%;
+	height: auto;
+	margin: 0 auto;
+	padding-top: 30px;
+}
+.Gb-title {
+	width: 100%;
+	height: 40px;
+	background: #0196FD;
+}
+.Gt-ul {
+	width: 90%;
+	height: 50px;
+	margin: 0 auto;
+}
+.Gt-ul .Gt-li {
+	float: left;
+	width: 11.1%;
+	height: 40px;
+	font-size: 14px;
+	color: white;
+	text-align: center;
+	line-height: 40px;
+	cursor: pointer;
+}
+.Gt-ul .Gt-li:hover {
+	background: #0080D9;
+}
+.Gt-li-active {
+	background: #0080D9;
+}
+.Ga-ul {
+	width: 100%;
+	height: auto;
+	background: rgba(0,0,0,0.35);
+	display: none;
+	position: relative;
+	z-index: 999;
+}
+.Ga-li:not(:first-child) {
+	width: 100%;
+	height: 40px;
+	font-size: 12px;
+	line-height: 40px;
+	text-align: center;
+	color: white;
+	margin-top: 5px;
+}
+.Ga-li:hover {
+	background: rgba(0,128,217,0.5);
+}
+.Ga-li-active {
+	background: rgba(0,128,217,0.5);
+	margin-top: 0;
+}
+.Gb-container {
+	width: 100%;
+	height: auto;
+	margin-top: 10px;
+}
+.Gb-content {
+	width: 100%;
+	height: 400px;
+	background: white;
+	overflow: auto;
+	border-top: 20px solid #FFFFFF;
+    border-bottom: 20px solid #FFF;
+    border-left: 20px solid #FFF;
+    box-sizing: border-box;
+}
+.Gc-item {
+	width: 100%;
+	height: auto;
+	float: left;
+	display: none;
+}
+.Gc-item ul li {
+	width: 99%;
+	height: 46px;
+	border-bottom: 1px dashed #ACACAC;
+	cursor: pointer;
+}
+.Gc-item ul li:hover a span {
+	color: red;
+}
+.Gc-item ul li span {
+	line-height: 46px;
+	font-size: 14px;
+	padding-left: 20px;
+}
+.Gc-item:first-child {
+	display: block;
+	position: relative;
+}
+.Ga-container {
+	width: 95%;
+	height: auto;
+	position: absolute;
+	left: 2.5%;
+	top: 20px;
+}
+
+
+.Ga-item_flex{
+	position: relative;
+}
+.Ga-left {
+	width: 334px;
+	height: auto;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.Ga-img{
+	width: auto;
+	height: auto;
+}
+.Ga-img img{
+	width: 100%;
+	height: auto;
+}
+.Ga-right {
+	height: auto;
+	/*float: left;*/
+	margin-left: 380px;
+}
+
+
+@media only screen and (min-width: 100px) and (max-width: 720px) {
+	.Ga-left{
+		position: relative !important;
+		margin: 0 auto;
+	}
+	.Ga-right {
+		margin-left: 0 !important;
+	}
+	
+}
+
+
+
+
+.Ga-right p {
+	font-size: 14px;
+	color: #555553;
+	line-height: 30px;
+	text-indent: 28px;
+} 
+.Ga-item {
+	width: 100%;
+	height: auto;
+	display: none;
+}
+.Ga-item:first-child {
+	display: block;
+}
+.Gb-inner {
+	width: 100%;
+	height: 240px;
+	margin-top: 20px;
+	padding-bottom: 15px;
+}
+.Gi-title {
+	width: 100%;
+	height: 40px;
+	background: #0196FD;
+}
+.Gi-title span {
+	line-height: 40px;
+	font-size: 14px;
+	color: white;
+	padding-left: 40px;
+}
+.Gi-content {
+	width: 100%;
+	height: 200px;
+	margin-top: 10px;
+	background: white;
+}
+.Gi-content ul {
+	width: 50%;
+	height: auto;
+	float: left;
+}
+.Gi-content ul li {
+	padding-left: 80px;
+	padding-top: 20px;
+	font-size: 14px;
+	line-height: 30px;
+}
+.more-left {
+	width: 25%;
+	height: 19px;
+	border-bottom: 1px solid white;
+	float: left;
+}
+.more-left:last-child {
+	margin-left: 5%;
+}
+.more-item {
+	width: 40%;
+	height: 40px;
+	float: left;
+	background: white;
+	border-radius: 2px;
+	margin-left: 5%;
+	color: #999999;
+	text-align: center;
+	line-height: 40px;
+}
+.more {
+	width: 100%;
+	height: 40px;
+	margin-top: 20px;
+	cursor: pointer;
+	padding-bottom: 10px;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 1024px) {
+	.G-box{
+		width: 96% !important;
+	}
+}
+

@@ -1,0 +1,10 @@
+/*benner开始*/
+.four_benner{ width:100%; height:500px; background-color:#9C6; margin:auto; margin-top:10px; position:relative;}
+.four_benner_ul{ width:150px; height:20px; position:absolute; left:50%;margin-left: -75px; bottom:10px; z-index:100; list-style:none;}
+.button{width:20px; height:20px; float:left; margin-left:10px; text-align:center;line-height:20px; color:#FFF;
+ font-size:10px; background:rgba(255,108,108,0.7); border:none;}
+.four_benner_ul_a{ width:20px; height:20px; float:left; margin-left:10px; text-align:center; line-height:20px; color:#FFF;
+ font-size:10px; background:rgba(255,108,108,0.7); border:none; text-decoration:none; cursor: pointer;}
+.ahover{ background:rgba(112,197,112,0.8);}
+#four_benner #benner_img{ width:900px; height:430px;}
+/*benner结束*/

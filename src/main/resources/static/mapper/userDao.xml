@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--suppress ALL -->
+<!--@author 严彬荣-->
+<!--用户管理mapper start-->
 <mapper namespace="com.goodsoft.yuanlin.domain.dao.UserDao">
-    <!--用户登录结果映射-->
+    <!--用户登录结果映射 start-->
     <resultMap id="userInfo" type="com.goodsoft.yuanlin.domain.entity.user.User">
         <result property="uid" column="uid"/>
         <result property="name" column="name"/>
@@ -17,7 +19,8 @@
         <result property="member" column="member"/>
         <result property="lev" column="deptLevel"/>
     </resultMap>
-    <!--用户登录sql-->
+    <!--用户登录结果映射 end-->
+    <!--用户登录sql start-->
     <select id="queryUserDao" parameterType="java.lang.String" resultMap="userInfo">
     SELECT
     uid,
@@ -37,7 +40,8 @@
     WHERE
     (userName=#{userName} or tel=#{userName}) AND passWord=#{passWord} AND ACTIVE='1'
     </select>
-    <!--用户签到结果映射-->
+    <!--用户登录sql end-->
+    <!--用户签到结果映射 start-->
     <resultMap id="SignInInfo" type="com.goodsoft.yuanlin.domain.entity.user.SignIn">
         <result property="sid" column="sid"/>
         <result property="adress" column="adress"/>
@@ -49,7 +53,8 @@
         <result property="dept" column="dept"/>
         <result property="comments" column="comments"/>
     </resultMap>
-    <!--用户签到信息sql-->
+    <!--用户签到结果映射 end-->
+    <!--用户签到信息sql start-->
     <select id="querySignInDao" parameterType="java.lang.String" resultMap="SignInInfo">
         SELECT sid,address,latitude,longitude,time,name,company,dept,comments FROM gs_signin
         <where>
@@ -67,7 +72,8 @@
             limit #{page},20
         </where>
     </select>
-    <!--法人库结果映射-->
+    <!--用户签到信息sql end-->
+    <!--法人库结果映射 start-->
     <resultMap id="corporationInfo" type="com.goodsoft.yuanlin.domain.entity.user.Corporation">
         <result property="id" column="id"/>
         <result property="company" column="company"/>
@@ -75,13 +81,16 @@
         <result property="detailAddress" column="detailAddress"/>
         <result property="registerAddress" column="registerAddress"/>
         <result property="nature" column="nature"/>
+        <result property="companyIntro" column="companyIntro"/>
     </resultMap>
-    <!--法人库sql-->
+    <!--法人库结果映射 end-->
+    <!--法人库sql start-->
     <select id="queryCorporationDao" parameterType="int" resultMap="corporationInfo">
-    SELECT id,company,registerCap,detailAddress,registerAddress,nature
+    SELECT id,company,registerCap,detailAddress,registerAddress,nature,companyIntro
     FROM gs_repertory_corporate limit #{page},20
     </select>
-    <!--从业人员库结果映射-->
+    <!--法人库sql end-->
+    <!--从业人员库结果映射 start-->
     <resultMap id="employeesInfo" type="com.goodsoft.yuanlin.domain.entity.user.Employees">
         <result property="id" column="id"/>
         <result property="company" column="company"/>
@@ -90,11 +99,13 @@
         <result property="education" column="education"/>
         <result property="experience" column="experience"/>
     </resultMap>
-    <!--从业人员库sql-->
+    <!--从业人员库结果映射 end-->
+    <!--从业人员库sql start-->
     <select id="queryEmployeesDao" parameterType="int" resultMap="employeesInfo">
     SELECT id,company,name,sex,education,experience
     FROM gs_repertory_employees limit #{page},20
     </select>
+    <!--从业人员库sql end-->
     <!--  &lt;!&ndash;检索用户名是否存在&ndash;&gt;
       <select id="queryUserByNameDao" parameterType="java.lang.String" resultType="int">
           SELECT count(*) FROM hz7.to_horizon_user where LOGIN_NAME=#{userName}
@@ -131,11 +142,13 @@
     VALUES
     (#{id}, #{uid}, #{deptId}, #{time},'1', '0', '1')
     </insert>-->
-    <!--用户签到sql-->
+    <!--用户签到sql start-->
     <insert id="signInDao" parameterType="com.goodsoft.yuanlin.domain.entity.user.SignIn">
         INSERT INTO gs_signin
         (address,latitude,longitude,time,name,company,comp,dept,uid,comments)
         VALUES
         (#{address},#{latitude},#{longitude},#{time},#{name},#{company},#{comp},#{dept},#{uid},#{comments});
     </insert>
+    <!--用户签到sql end-->
 </mapper>
+        <!--用户管理mapper end-->

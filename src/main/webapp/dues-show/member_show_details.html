@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>会员展示-详情页面</title>
+		<link rel="stylesheet" href="../css/association_subpage_details.css" />
+		<link rel="stylesheet" href="../vendor/font-awesome-4.6.3/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../vendor/font-awesome-4.6.3/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="../vendor/font-awesome-4.6.3/css/font-awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../vendor/font-awesome-4.6.3/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="shortcut icon" type="text/css" href="../img/log_2.ico" />
+	</head>
+	<!--
+		描述：该页面为  会员展示的详情页（member_show_details.html）
+		简称为：MSD；
+		面包屑导航引用的是  培训信息的详情页（training_details.html）的样式
+	-->
+	<style>
+		#footer{
+			border-top: 20px solid white;
+		}
+	</style>
+
+	<body>
+		<!-- 头部（包括导航） -->
+		<header id="header"></header>
+		<!--头部结束-->
+		<div class="TD_content">
+			<div class="TD_center">
+				<!---->
+				<div class="TD_one">
+					<span class="TD_one_span">会员展示</span>
+				</div>
+				<!--面包屑导航-->
+				<div class="TD_subNav">
+					<span>当前位置：</span>
+					<a href="#">行业协会</a>&nbsp;&gt;&nbsp;
+					<a href="#">会员展示</a>&nbsp;&gt;&nbsp;
+					<a>这里是标题</a>
+				</div>
+				<!--中间的内容部分-->
+				<div class="MSD_container">
+					<!--可循环-->
+					<div class="MSDc_line">
+						<div class="MSDc_line_L"><span>会员名称：</span></div>
+						<div class="MSDc_line_R">
+							<div class="MSDc_line_R_content"><span id="name"></span></div>
+						</div>
+						<div class="clearBoth"></div>
+					</div>
+					<!--可循环  结束-->
+					<!--可循环-->
+					<div class="MSDc_line">
+						<div class="MSDc_line_L"><span>成立时间：</span></div>
+						<div class="MSDc_line_R">
+							<div class="MSDc_line_R_content"><span id="date"></span></div>
+						</div>
+						<div class="clearBoth"></div>
+					</div>
+					<!--可循环  结束-->
+					<!--可循环-->
+					<div class="MSDc_line">
+						<div class="MSDc_line_L"><span>所在地：</span></div>
+						<div class="MSDc_line_R">
+							<div class="MSDc_line_R_content"><span id="address"></span></div>
+						</div>
+						<div class="clearBoth"></div>
+					</div>
+					<!--可循环  结束-->
+					<!--可循环-->
+					<div class="MSDc_line">
+						<div class="MSDc_line_L"><span>主营发项目：</span></div>
+						<div class="MSDc_line_R">
+							<div class="MSDc_line_R_content"><span id="project"></span></div>
+						</div>
+						<div class="clearBoth"></div>
+					</div>
+					<!--可循环  结束-->
+					<!--可循环-->
+					<div class="MSDc_line">
+						<div class="MSDc_line_L"><span>企业规模：</span></div>
+						<div class="MSDc_line_R">
+							<div class="MSDc_line_R_content"><span id="compScale"></span></div>
+						</div>
+						<div class="clearBoth"></div>
+					</div>
+					<!--可循环  结束-->
+					<!--可循环-->
+					<div class="MSDc_line">
+						<div class="MSDc_line_L"><span>企业类型：</span></div>
+						<div class="MSDc_line_R">
+							<div class="MSDc_line_R_content"><span id="compType"></span></div>
+						</div>
+						<div class="clearBoth"></div>
+					</div>
+					<!--可循环  结束-->
+					<!--可循环-->
+					<div class="MSDc_line">
+						<div class="MSDc_line_L"><span>资质等级：</span></div>
+						<div class="MSDc_line_R">
+							<div class="MSDc_line_R_content"><span id="qlifLevel"></span></div>
+						</div>
+						<div class="clearBoth"></div>
+					</div>
+					<!--可循环  结束-->
+					<!--可循环-->
+					<div class="MSDc_line">
+						<div class="MSDc_line_L"><span>注册资金：</span></div>
+						<div class="MSDc_line_R">
+							<div class="MSDc_line_R_content"><span id="registerCapital"></span></div>
+						</div>
+						<div class="clearBoth"></div>
+					</div>
+					<!--可循环  结束-->
+
+				</div>
+
+			</div>
+		</div>
+		<!--网页底部-->
+		<footer id="footer"></footer>
+		<!--网页底部  结束-->
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/hosts.js" ></script>
+		<script type="text/javascript" src="../js/jquerySession.js"></script>
+		<script type="text/javascript" src="../js/dues-show/guild_detail.js"></script>
+		<script>
+			$(function() {
+				$.session.remove('header_num');
+				$.session.set('header_num', 4);
+
+				$('#header').load('../public/header.html');
+				$('#footer').load('../public/footer.html');
+			})
+		</script>
+	</body>
+
+</html>

@@ -103,14 +103,13 @@ public class TradeManageController {
     /**
      * 协会培训数据添加接口
      *
-     * @param request  http请求
      * @param files    上传文件
      * @param fileType 文件类型（文档/图片）
      * @param msg      数据
      * @return 响应结果
      */
     @RequestMapping(value = "/add/xhpx", method = RequestMethod.POST)
-    public Status addController(HttpServletRequest request, @RequestParam("files") MultipartFile[] files, String fileType, TrainsInfo msg) {
-        return this.service.addTradeService(request, files, fileType, "xhpx", msg);
+    public Status addController(@RequestParam("files") MultipartFile[] files, String fileType, TrainsInfo msg) {
+        return this.service.addTradeService(files, fileType, "xhpx", msg);
     }
 }

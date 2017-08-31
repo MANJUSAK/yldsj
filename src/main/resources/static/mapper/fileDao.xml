@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--suppress ALL -->
+<!--@author 严彬荣-->
+<!--文件管理mapper start-->
 <mapper namespace="com.goodsoft.yuanlin.domain.dao.FileDao">
+    <!--文件查询结果映射 start-->
     <resultMap id="fileData" type="com.goodsoft.yuanlin.domain.entity.file.FileData">
         <result property="path" column="path"/>
     </resultMap>
+    <!--文件查询结果映射 end-->
+    <!--文件查询sql start-->
     <select id="queryFileDao" parameterType="java.lang.String" resultMap="fileData">
         SELECT path FROM gs_fileData WHERE fileId=#{fileId}
     </select>
+    <!--文件查询sql end-->
+    <!--文件信息保存sql start-->
     <insert id="saveFileDao" parameterType="com.goodsoft.yuanlin.domain.entity.file.FileData">
         insert into gs_fileData (fileId,path,bases,sort)
         values
         (#{fileId},#{path},#{bases},#{sort})
     </insert>
+    <!--文件信息保存sql end-->
 </mapper>
+        <!--文件管理mapper end-->

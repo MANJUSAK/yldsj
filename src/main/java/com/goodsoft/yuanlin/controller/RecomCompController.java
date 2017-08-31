@@ -14,13 +14,21 @@ import javax.servlet.http.HttpServletRequest;
  * Created by 严彬荣 on 2017/8/14.
  */
 @RestController
-@RequestMapping("/recommend")
+@RequestMapping("/qytj")
 public class RecomCompController {
     @Resource
     private RecomCompService service;
 
+    /**
+     * 查询企业推荐接口
+     *
+     * @param request http请求
+     * @param page    页数
+     * @param var     类型
+     * @return 响应结果
+     */
     @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.GET)
-    @RequestMapping("/company")
+    @RequestMapping("/find/tj")
     public Object recomCompController(HttpServletRequest request, String page, String var) {
         return this.service.queryRecomService(request, page, var);
     }

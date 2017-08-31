@@ -1,0 +1,300 @@
+<!-- HTML5文档头 -->
+<!DOCTYPE html>
+<!-- lang="zh-cn"，此网页基本是中文内容 -->
+<html lang="zh-cn" style="font-size: 16px;">
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!-- 使用最新的IE兼容模式渲染此网页 -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<!-- 在双核浏览器下，默认使用webkit内核，由360浏览器提出 -->
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>园林诚信平台</title>
+		<!--<link rel="shortcut icon" href=""/>-->
+		<link rel="stylesheet" type="text/css" href="../vendor/font-awesome-4.6.3/css/font-awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../vendor/font-awesome-4.6.3/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/nursery-information.css" />
+		<link rel="shortcut icon" type="text/css" href="../img/log_2.ico" />
+		<link rel="stylesheet" href="../css/pubulic_header.css" />
+		<!-- 让IE9以下的浏览器支持HTML5标签 -->
+		<!--[if lt IE 9]>
+        	<script src="http://cdn.bootcss.com/html5shiv/r29/html5.js"></script>
+        	<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/jquerySession.js"></script>
+	</head>
+
+	<body>
+
+		<!-- 头部（包括导航） -->
+		<header id="header_"></header>
+		<!--头部结束-->
+		<section class="ni-section">
+			<div class="ni-banner">
+				<div class="ni-banner-inner">
+					<h2>需求发布</h2>
+					<p>DEMAND PLATFORM</p>
+				</div>
+			</div>
+			<div class="ni-box">
+				<div class="xqfb-mnav">
+					<ul>
+
+						<li class="xqgbm-acive">
+							<a href="nursery-information.html">苗木信息</a>
+						</li>
+						<li>
+							<a href="personal-information.html">人才招聘</a>
+						</li>
+						<li>
+							<a href="demand-release.html">设备租赁</a>
+						</li>
+						<li>
+							<a href="biddingl_information.html">招标信息</a>
+						</li>
+					</ul>
+				</div>
+				<div class="ni-container">
+					<div class="ni-lis">
+						<div class="ni-lis-content">
+							<div class="ni-lc-topbar">
+								<div class="ni-lc-left">
+									<ul>
+										<li>种类筛选：</li>
+										<li>
+											<a onclick="gettype(0)" class="ni-lis-a">乔木信息</a>
+											<div class="ni-li2">
+												<div class="ni-li2-item">
+													<a onclick="gettype(1)">普通乔木</a>
+													<a onclick="gettype(2)">造型乔木</a>
+												</div>
+											</div>
+										</li>
+										<li>
+											<a onclick="gettype(3)">地载灌木</a>
+										</li>
+										<li>
+											<a onclick="gettype(4)">藤</a>
+										</li>
+										<li>
+											<a onclick="gettype(5)">草本植物</a>
+											<div class="ni-li2 ni-li2_2">
+												<div class="ni-li2-item ni-li2-item_2">
+													<a onclick="gettype(6)">花卉</a>
+													<a onclick="gettype(7)">地被</a>
+													<a onclick="gettype(8)">袋袋草本</a>
+												</div>
+											</div>
+										</li>
+										<li>
+											<a onclick="gettype(9)">竹</a>
+										</li>
+										<li>
+											<a onclick="gettype(10)">棕榈植物</a>
+										</li>
+										<li>
+											<a onclick="gettype(11)">水生植物</a>
+										</li>
+									</ul>
+								</div>
+								<div class="ni-lc-right">
+									<div class="ni-c-right-aim" id="aFirst">
+										<span><i class="fa fa-pencil-square-o"></i> 我要发布</span>
+									</div>
+									<div class="ni-c-right-aim">
+										<span onclick="gettype(12)"><i class="fa fa-tv"></i> 我已发布</span>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div id="mycontent">
+						<!--
+                        	作者：mjcs_r@163.com
+                        	时间：2017-07-17
+                        	描述：此处用于填充数据
+                        -->
+						暂时还没有数据
+					</div>
+
+					<div class="ni-pages">
+						<!--
+                        	作者：mjcs_r@163.com
+                        	时间：2017-07-26
+                        	描述：分页显示
+                        -->
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="ni-yaler" id="niYaler">
+			<div class="ny-close" id="niClose">
+				<i class="fa fa-times"></i>
+			</div>
+			<div class="ny-box">
+				<div class="ny-box-topbar" id="nyBt">
+					<div class="ny-bt-content">
+						<div class="bt-item">
+							<div class="bt-item-inner" id="itemInner">
+								<i class="fa fa-times"></i>
+							</div>
+						</div>
+						<div class="bt-center1">
+							<span>您还没有登录，请立即登录。</span>
+						</div>
+						<div class="bt-footer">
+							<div class="bt-footer-content">
+								<div class="bt-fc-aim" id="fcAim">
+									<a>取消</a>
+								</div>
+								<div class="bt-fc-aim" id="nyLogin">
+									<a href="../login/login.html">立即登录</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ny-box-footer" id="nyBox">
+					<div class="ny-bf-title">
+						<span>信息发布</span>
+						<i class="fa fa-times" id="faTimes2"></i>
+					</div>
+					<form id="myform">
+						<!--title之下的内容-->
+						<div class="ny-bf-content">
+							<div class="bf-content-container">
+								<div class="bf-input">
+									<span>标题名称：</span><input name="TitleName" class="bf-input_input" type="text" required="required" />
+								</div>
+								<!--bf-input_nextSpan提示内容 点击按钮 判断为显示或隐藏-->
+								<span class="bf-input_nextSpan"><img src="../img/err.png" />标题名称不能为空</span>
+								<div class="bf-input">
+									<span>分类名称：</span>
+									<select id="select_one" name="breed" class="bf-input_select">
+										<option value="" class="bf-input_sOption">请选择</option>
+									</select>
+								</div>
+								<div class="bf-input">
+									<span>二级分类&nbsp;: &nbsp;</span>
+									<select id="select_two" name="sub" class="bf-input_select">
+										<option value="" class="bf-input_sOption">--无--</option>
+									</select>
+								</div>
+								<div style="width: 100%; height: 1px; clear: both;"></div>
+								<!--bf-input_nextSpan提示内容 点击按钮 判断为显示或隐藏-->
+								<span class="bf-input_nextSpan"><img src="../img/err.png" />分类名称不能为空</span>
+								<br /><br />
+								<div class="bf-input">
+									<span>发布企业：</span><input class="bf-input_input" name="comp" type="text" />
+								</div>
+								<!--bf-input_nextSpan提示内容 点击按钮 判断为显示或隐藏-->
+								<span class="bf-input_nextSpan"><img src="../img/err.png" />发布企业不能为空</span>
+								<input id="uid" name="uid" hidden="hidden" value="">
+								<input id="compId" name="compId" hidden="hidden" value="" />
+								<div class="bf-textarea">
+									<div class="bf-left">
+										<span>内&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;容：</span>
+									</div>
+									<div class="bf-right">
+										<div class="bf-textarea-center">
+											<textarea name="content" required="required" rows="6" cols=""></textarea>
+										</div>
+									</div>
+								</div>
+								<span class="bf-input_nextSpan"><img src="../img/err.png" />内容不能为空</span>
+								<br /><br />
+								<!--上传图片开始-->
+								<div class="bf-img-show">
+									<div class="bf-is">
+										<div class="bf-is-item1">
+											<div class="bfis-item1_center">
+												<img class="bf-is-item1_img" id="bf-is-item1_img" src="../img/thumbnail.jpg" />
+											</div>
+										</div>
+										<div class="bf-is-item2">
+											<div class="bfis-item2_center">
+												<img class="bf-is-item2_img" src="../img/add_img2.png" />
+												<input type="file" required="required" name="files" class="bfisitem2_c_file" onchange="uploadImg(this,'bf-is-item1_img')" />
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--上传图片开始 结束-->
+								<span class="bf-input_nextSpan"><img src="../img/err.png" />上传图片不能为空</span>
+								<div class="bf-input">
+									<span>&nbsp;&nbsp;&nbsp;联系人：</span><input name="contact" class="bf-input_input" type="text" required="required" />
+								</div>
+								<span class="bf-input_nextSpan"><img src="../img/err.png" />联系人不能为空</span>
+								<div class="bf-input">
+									<span>联系方式：</span><input name="tel" class="bf-input_phoneInput bf-input_input" type="telephone" .bf-input_phoneInput onkeyup="this.value=this.value.replace(/\D/g, '')" required="required" />
+								</div>
+								<span class="bf-input_nextSpan"><img src="../img/err.png" />联系方式不能为空</span>
+								<div class="bf-input">
+									<span>供应地址：</span><input name="address" class="bf-input_input" type="text" required="required" />
+								</div>
+								<span class="bf-input_nextSpan"><img src="../img/err.png" />供应地址不能为空</span>
+								<div class="bf-input">
+									<span>供应商家：</span><input name="supplier" type="text" class="bf-input_input" />
+								</div>
+								<span class="bf-input_nextSpan"><img src="../img/err.png" />供应商家不能为空</span>
+								<div class="bf-input" hidden="hidden">
+									<span>发布时间：</span><input name="dates" class="bf-input_input" id="dates" type="text" required="required" />
+								</div>
+								<span id="show_error_" style="color: red;"></span>
+								<div class="bf-submit">
+									<div class="bf-submit-center">
+										<span id="submit_nu" class="RU_center_firm_one_input_register" type="button">发&nbsp;&nbsp;&nbsp;布</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--title之下的内容  结束-->
+					</form>
+				</div>
+			</div>
+		</div>
+		<!--网页底部-->
+		<footer id="footer"></footer>
+		<!--网页底部  结束-->
+
+		<div class="return-top" id="myp">
+			<span><i class="fa fa-question" title="问题咨询"></i></span>
+			<span><i class="fa fa-chevron-up" id="goTop" title="回到顶部"></i></span>
+		</div>
+
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/hosts.js" ></script>
+		<script type="text/javascript" src="../js/forms.js"></script>
+		<script type="text/javascript" src="../js/jquerySession.js"></script>
+		<script src="../js/nursery-information.js"></script>
+		<script type="text/javascript" src="../js/captrue.js"></script>
+		<script type="text/javascript" src="../js/register_login.js"></script>
+		<script type="text/javascript" src="../js/demandRelease/nursery_infomation.js"></script>
+		<script src="../js/common.js"></script>
+
+		<script>
+			$(function() {
+				$.session.remove('header_num');
+				$.session.set('header_num', 1);
+				$('#header_').load('../public/header.html')
+				$('#footer').load('../public/footer.html')
+
+			});
+			$('#go_mys').click(function() {
+				if($.session.get('uid')) {
+					window.location.href = "../my.html";
+				} else {
+					alert('您尚未登录，请登录后再次点击')
+				}
+			})
+		</script>
+
+	</body>
+
+</html>

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--suppress ALL -->
+<!--@author 严彬荣-->
+<!--轮播图mapper start-->
 <mapper namespace="com.goodsoft.yuanlin.domain.dao.CarouselDao">
-    <!--轮播图数据映射-->
+    <!--轮播图数据映射 start-->
     <resultMap id="carouselInfo" type="com.goodsoft.yuanlin.domain.entity.carousel.Carousel">
         <result property="id" column="cid"/>
         <result property="urlAddress" column="urlAddress"/>
@@ -12,7 +14,8 @@
         <result property="date" column="dates"/>
         <result property="filesId" column="filesId"/>
     </resultMap>
-    <!--获取轮播图数据sql-->
+    <!--轮播图数据映射 end-->
+    <!--获取轮播图数据sql start-->
     <select id="queryCarouselDao" resultMap="carouselInfo">
     SELECT
     cid, picName, description, effect, urlAddress, dates,filesId
@@ -20,10 +23,13 @@
     gs_carousel
     ORDER BY DATES desc limit 0,1
     </select>
-    <!--添加轮播图sql-->
+    <!--获取轮播图数据sql end-->
+    <!--添加轮播图sql start-->
     <insert id="addCarouselDao" parameterType="com.goodsoft.yuanlin.domain.entity.carousel.Carousel">
     INSERT INTO gs_carousel (picName, description, effect, urlAddress, dates,filesId)
     VALUES
     (#{picName}, #{description}, #{effect}, #{urlAddress}, #{date}, #{filesId});
     </insert>
+    <!--添加轮播图sql end-->
 </mapper>
+        <!--轮播图mapper end-->

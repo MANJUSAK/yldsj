@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!-- 使用最新的IE兼容模式渲染此网页 -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<!-- 在双核浏览器下，默认使用webkit内核，由360浏览器提出 -->
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>园林大数据</title>
+		<!--<link rel="shortcut icon" href=""/>-->
+		<link rel="stylesheet" type="text/css" href="../css/dues-show.css" />
+		<link rel="stylesheet" type="text/css" href="../vendor/font-awesome-4.6.3/css/font-awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../vendor/font-awesome-4.6.3/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="shortcut icon" type="text/css" href="../img/log_2.ico" />
+		<!--[if lt IE 9]>
+        	<script src="http://cdn.bootcss.com/html5shiv/r29/html5.js"></script>
+        	<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+	</head>
+
+	<body>
+		<!-- 头部（包括导航） -->
+		<header id="header"></header>
+		<!--头部结束-->
+		<div class="Ds-box">
+			<div class="Ds-title">
+				<span>当前位置：</span>
+				<span>行业协会 > </span>
+				<span>会费查询</span>
+			</div>
+			<div class="Ds-container">
+				<form id="myform" onsubmit="return validate();">
+					<div class="Ds-item">
+						<span>会费</span>
+					</div>
+					<div class="Ds-item">
+						<div class="Ds-left">
+							<p>姓名：</p>
+						</div>
+						<div class="Ds-right">
+							<input type="text" id="userName" name="name" placeholder="请输入内容" />
+						</div>
+					</div>
+					<div class="Ds-span" id="userNameTip"></div>
+					<div class="Ds-item">
+						<div class="Ds-left">
+							<p>成立时间：</p>
+						</div>
+						<div class="Ds-right">
+							<input type="date" id="date" name="date" placeholder="请输入内容" />
+						</div>
+					</div>
+					<div class="Ds-span" id="dateTip"></div>
+					<div class="Ds-item">
+						<div class="Ds-left">
+							<p>所在地：</p>
+						</div>
+						<div class="Ds-right">
+							<input type="text" id="address" name="address" placeholder="请输入内容" />
+						</div>
+					</div>
+					<div class="Ds-span" id="addressTip"></div>
+					<div class="Ds-item">
+						<div class="Ds-left">
+							<p>主经营项目：</p>
+						</div>
+						<div class="Ds-right">
+							<input type="text" id="project" name="project" placeholder="请输入内容" />
+						</div>
+					</div>
+					<div class="Ds-span" id="projectTip"></div>
+					<div class="Ds-item">
+						<div class="Ds-left">
+							<p>企业规模：</p>
+						</div>
+						<div class="Ds-right">
+							<input type="text" id="scale" name="compcale" placeholder="请输入内容" />
+						</div>
+					</div>
+					<div class="Ds-span" id="scaleTip"></div>
+					<div class="Ds-item">
+						<div class="Ds-left">
+							<p>资质等级：</p>
+						</div>
+						<div class="Ds-right">
+							<input type="text" id="grade" name="qlifLevel" placeholder="请输入内容" />
+						</div>
+					</div>
+					<div class="Ds-span" id="gradeTip"></div>
+					<div class="Ds-item">
+						<div class="Ds-left">
+							<p>企业类型：</p>
+						</div>
+						<div class="Ds-right">
+							<input type="text" id="type" name="compType" placeholder="请输入内容" />
+						</div>
+					</div>
+					<div class="Ds-span" id="typeTip"></div>
+					<div class="Ds-item">
+						<div class="Ds-left">
+							<p>注册资金：</p>
+						</div>
+						<div class="Ds-right">
+							<input type="text" id="money" name="registerCapital" placeholder="请输入内容" />
+						</div>
+					</div>
+					<div class="Ds-span" id="moneyTip"></div>
+					<div id="show_error_"></div>
+					<div class="Ds-submit">
+						<input id="buttonx" type="button" value="确定" />
+					</div>
+				</form>
+			</div>
+		</div>
+		<!--网页底部-->
+		<footer id="footer"></footer>
+		<!--网页底部  结束-->
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/hosts.js" ></script>
+		<script type="text/javascript" src="../js/jquerySession.js"></script>
+		<script type="text/javascript" src="../js/jquery-form.js"></script>
+		<script type="text/javascript" src="../js/dues-show/dues-show.js" ></script>
+		<script>
+			$(function() {
+				$.session.remove('header_num');
+				$.session.set('header_num', 1);
+				$('#uid').val($.session.get('uid'));
+				$('#header').load('../public/header.html');
+				$('#footer').load('../public/footer.html');
+			})
+	
+		</script>
+	</body>
+
+</html>

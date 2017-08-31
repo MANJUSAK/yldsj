@@ -1,0 +1,517 @@
+<!-- HTML5文档头 -->
+<!DOCTYPE html>
+<!-- lang="zh-cn"，此网页基本是中文内容 -->
+<html lang="zh-cn" style="font-size: 16px;">
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!-- 使用最新的IE兼容模式渲染此网页 -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<!-- 在双核浏览器下，默认使用webkit内核，由360浏览器提出 -->
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>园林诚信平台</title>
+		<!--<link rel="shortcut icon" href=""/>-->
+		<link rel="stylesheet" type="text/css" href="../vendor/font-awesome-4.6.3/css/font-awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../vendor/font-awesome-4.6.3/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../css/demand-release.css" />
+		<link rel="stylesheet" type="text/css" href="../css/personal-information.css" />
+		<link rel="shortcut icon" type="text/css" href="../img/log_2.ico" />
+		<link rel="stylesheet" type="text/css" href="../css/nursery-information.css" />
+		<!-- 让IE9以下的浏览器支持HTML5标签 -->
+		<!--[if lt IE 9]>
+        	<script src="http://cdn.bootcss.com/html5shiv/r29/html5.js"></script>
+        	<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+		<style>
+			@media only screen and (min-width: 100px) and (max-width: 1024px) {
+				.dc-title-right {
+					width: auto !important;
+				}
+			}
+			/**设备租赁的错误提示**/
+			
+			.bf-input_nextSpan {
+				padding-top: 3px;
+				/*line-height: 20px;*/
+				font-size: 13px;
+				color: red;
+				padding-left: 70px;
+				visibility: visible;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 头部（包括导航） -->
+		<header id="header"></header>
+		<!--头部结束-->
+		<section class="demand-release-section">
+			<div class="dr-banner">
+				<div class="mm-inner">
+					<div class="gb-topbar">
+						<h3>需求发布</h3>
+					</div>
+					<div class="gb-footer">
+						<span>DEMAND PLATFORM</span>
+					</div>
+				</div>
+			</div>
+			<div class="dr-box">
+				<div class="xqfb-mnav">
+					<ul>
+						<li>
+							<a href="nursery-information.html">苗木信息</a>
+						</li>
+						<li class="xqgbm-acive">
+							<a href="personal-information.html">人才招聘</a>
+						</li>
+						<li>
+							<a href="demand-release.html">设备租赁</a>
+						</li>
+						<li>
+							<a href="biddingl_information.html">招标信息</a>
+						</li>
+					</ul>
+				</div>
+				<div class="dt-container">
+					<div class="dc-title">
+						<div class="dc-title-left">
+							<a href="">人才招聘</a>
+						</div>
+						<!--	<div class="dc-title-right">
+							<div class="dc-right-aim" id="aFirst">
+								<span><i class="fa fa-pencil-square-o"></i> 我要发布</span>
+							</div>
+							<div onclick="gettype(0)" class="dc-right-aim">
+								<span><i class="fa fa-tv"></i> 我已发布</span>
+							</div>
+						</div>-->
+					</div>
+					<div class="dc-topbar">
+						<span class="dc-span dc-span-active" id="dcSpan1" onclick="gettype(2)">招聘</span> &nbsp;
+						<span class="dc-span" onclick="gettype(4)" id="dcSpan2">求职</span>
+						<div class="dc-title-right">
+							<div class="dc-right-aim" id="aFirst">
+								<span class="fabu"><i class="fa fa-pencil-square-o"></i> 我要发布</span>
+							</div>
+							<div onclick="gettype(0)" class="dc-right-aim">
+								<span class="fabu"><i class="fa fa-tv"></i> 我已发布</span>
+							</div>
+						</div>
+					</div>
+					<div class="dc-content">
+						<div class="pi-box" id="piBox1">
+							<div class="pi-topbar">
+								<span>招聘类型：</span>
+								<span class="pi-span pi-span-active" id="piSpan1" onclick="gettype(2)">全职</span>
+								<span class="pi-span" id="piSpan2" onclick="gettype(3)">兼职</span>
+							</div>
+							<div class="pi-title">
+								<div class="pt-content" id="mycontent0">
+									<div class="pt-item">
+										<a href="" class="a1">企业名称</a>
+									</div>
+									<div class="pt-item pt-second">
+										<a href="">招聘职位</a>
+									</div>
+									<div class="pt-item">
+										<a href="" class="a3">发布时间</a>
+									</div>
+								</div>
+							</div>
+							<div class="pi-container">
+								<div id="mycontent" class="pi-lis">
+
+								</div>
+								<div id="mycontent2" class="pi-lis" style="display: none;">
+
+								</div>
+							</div>
+						</div>
+						<div class="pi-box" id="piBox2" style="display: none;">
+							<div class="pi-topbar">
+								<span>求职类型：</span>
+								<span class="pi-span pi-span-active" id="piSpan3" onclick="gettype(4)">全职</span>
+								<span class="pi-span" id="piSpan4" onclick="gettype(5)">兼职</span>
+							</div>
+							<div class="pi-title">
+								<div class="pt-content" id="mycontent0">
+									<div class="pt-item">
+										<a href="" class="a1">姓名</a>
+									</div>
+									<div class="pt-item pt-second">
+										<a href="">职位</a>
+									</div>
+									<div class="pt-item">
+										<a href="" class="a3">月薪</a>
+									</div>
+								</div>
+							</div>
+							<div class="pi-container">
+								<div id="mycontent3" class="pi-lis">
+
+								</div>
+								<div id="mycontent4" class="pi-lis" style="display: none;">
+
+								</div>
+							</div>
+						</div>
+						<div class="dc-pages">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--网页底部-->
+		<footer id="footer"></footer>
+		<!--网页底部  结束-->
+		<div class="ni-yaler" id="niYaler">
+			<div class="ny-close" id="niClose">
+				<i class="fa fa-times"></i>
+			</div>
+			<div class="ny-box">
+				<div class="ny-box-topbar" id="nyBt">
+					<div class="ny-bt-content">
+						<div class="bt-item">
+							<div class="bt-item-inner" id="itemInner">
+								<i class="fa fa-times"></i>
+							</div>
+						</div>
+						<div class="bt-center1">
+							<span>您还没有登录，请立即登录。</span>
+						</div>
+						<div class="bt-footer">
+							<div class="bt-footer-content">
+								<div class="bt-fc-aim" id="fcAim">
+									<a>取消</a>
+								</div>
+								<div class="bt-fc-aim" id="nyLogin">
+									<a href="../login/login.html">立即登录</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--招聘发布-->
+				<div class="ny-box-footer" id="nyBox1" style="display: none;">
+					<div class="ny-bf-title">
+						<span>招聘信息发布</span>
+						<i class="fa fa-times" id="faTimes2"></i>
+					</div>
+					<div class="ny-bf-content">
+						<form id="myform">
+							<div class="bf-content-container">
+								<div class="bf-input">
+									<span>公司名称：</span><input id="Cname" class="bf-input_input" name="companyName" type="text" />
+								</div>
+								<!--bf-input_nextSpan提示内容 点击按钮 判断为显示或隐藏-->
+								<span class="bf-input_nextSpan" id="CnameTip"></span>
+								<div class="bf-input">
+									<span>招聘职位：</span><input id="job" class="bf-input_input" name="positions" type="text" />
+								</div>
+								<span class="bf-input_nextSpan" id="jobTip"></span>
+								<div class="bf-input1">
+									<span style="font-size: 14px;line-height: 35px;color: #565656;float: left;">职位类型：</span>
+									<span style="line-height: 35px;"><input class="bfinput3" type="radio" name="characters" checked="checked" value="1" /> 全职</span>
+									<span style="line-height: 35px;"><input class="bfinput3" type="radio" name="characters"  value="2"/> 兼职</span>
+								</div>
+								<!--bf-input_nextSpan提示内容 点击按钮 判断为显示或隐藏-->
+								<br /><br />
+								<div class="bf-textarea">
+									<div class="bf-left">
+										<span>工作内容：&nbsp;</span>
+									</div>
+									<div class="bf-right">
+										<div class="bf-textarea-center">
+											<textarea name="content" rows="6" cols="" id="content"></textarea>
+										</div>
+									</div>
+								</div>
+								<span class="bf-input_nextSpan" id="contentTip"></span>
+								<br /><br />
+								<div class="bf-input" style="margin-top: 0px">
+									<span>职位月薪：</span>
+									<!--<input id="money" type="number"  class="bf-input_input" name="money" />-->
+									<select class="bf-input_input" id="money" name="money">
+										<option value="面议">面议</option>
+										<option value="2000以下">2000以下</option>
+										<option value="2000~2999">2000~2999</option>
+										<option value="3000~3999">3000~3999</option>
+										<option value="4000~4999">4000~4999</option>
+										<option value="5000~5999">5000~5999</option>
+										<option value="6000~6999">6000~6999</option>
+										<option value="7000~7999">7000~7999</option>
+										<option value="8000~8999">8000~8999</option>
+										<option value="9000~9999">9000~9999</option>
+										<option value="10000以上">10000以上</option>
+									</select>
+
+								</div>
+								<span class="bf-input_nextSpan" id="moneyTip"></span>
+								<div class="bf-input" style="margin-top: 0px">
+									<span>企业地址：</span><input class="bf-input_input" id="address" name="companyAdress" type="text" />
+								</div>
+								<span class="bf-input_nextSpan" id="addressTip"></span>
+								<div class="bf-input">
+									<span>&nbsp;&nbsp;&nbsp;联系人：</span><input id="telpersonal" class="bf-input_input" name="contact" type="text" />
+								</div>
+								<span class="bf-input_nextSpan" id="telpersonalTip"></span>
+								<!--发布时间 是隐藏的-->
+								<div class="bf-input" hidden="hidden">
+									<!--<span>发布日期：</span>-->
+									<input id="ucomp" name="comp" hidden="hidden" type="text" value="" />
+									<input id="uid" name="uid" hidden="hidden" value="">
+									<input name="tp" hidden="hidden" value="1" />
+								</div>
+								<div class="bf-input">
+									<span>联系电话：</span><input id="tel" class="bf-input_input bf-input_phoneInput" name="tel" type="text" onkeyup="this.value=this.value.replace(/\D/g, '')" />
+								</div>
+								<span class="bf-input_nextSpan" id="telTip"></span>
+
+								<div class="bf-input">
+									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱：</span><input id="enterprise" class="bf-input_input" name="email" type="email" />
+								</div>
+								<!--bf-input_nextSpan提示内容 点击按钮 判断为显示或隐藏-->
+								<span class="bf-input_nextSpan" id="enterpriseTip"></span>
+
+								<div class="bf-input">
+									<span>工作地点：</span><input id="work" class="bf-input_input" name="workAdress" type="text" />
+								</div>
+								<span class="bf-input_nextSpan" id="workTip"></span>
+								<div class="bf-textarea">
+									<div class="bf-left">
+										<span>公司简介：&nbsp;</span>
+									</div>
+									<div class="bf-right">
+										<div class="bf-textarea-center">
+											<textarea name="companyIntro" rows="6" cols="" id="companyIntro"></textarea>
+										</div>
+									</div>
+								</div>
+								<span class="bf-input_nextSpan" id="companyIntroTip"></span>
+								<br /><br />
+								<span id="show_error_" style="color: red;"></span>
+								<div class="bf-submit">
+									<div class="bf-submit-center">
+										<span id="fabu" style="border: none;background:none;font-size: 1.125em; color: white;line-height:40px" type="button">发&nbsp;&nbsp;&nbsp;布</span>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!--招聘发布  结束-->
+
+				<!--求职-->
+				<!--求职-->
+				<div class="ny-box-footer" id="nyBox2" style="display: none;">
+					<div class="ny-bf-title">
+						<span>求职信息发布</span>
+						<i class="fa fa-times" id="faTimes3"></i>
+					</div>
+					<div class="ny-bf-content">
+						<form id="myform0">
+							<div class="bf-content-container">
+								<div class="bf-input">
+									<span>&nbsp;&nbsp;&nbsp;姓名：</span><input id="telpersonal1" class="bf-input_input" name="contact" type="text" />
+								</div>
+								<span class="bf-input_nextSpan" id="telpersonal1Tip"></span>
+								<div class="bf-input">
+									<span>求职职位：</span><input id="Cname1" class="bf-input_input" name="positions" type="text" />
+								</div>
+								<!--bf-input_nextSpan提示内容 点击按钮 判断为显示或隐藏-->
+								<span class="bf-input_nextSpan" id="Cname1Tip"></span>
+
+								<div class="bf-input1">
+									<span style="font-size: 14px;line-height: 35px;color: #565656;float: left;">职位类型：</span>
+									<span style="line-height: 35px;"><input class="bfinput3" type="radio" name="characters" checked="checked" value="1" /> 全职</span>
+									<span style="line-height: 35px;"><input class="bfinput3" type="radio" name="characters"  value="2"/> 兼职</span>
+								</div>
+								<!--bf-input_nextSpan提示内容 点击按钮 判断为显示或隐藏-->
+								<br /><br />
+								<div class="bf-textarea">
+									<div class="bf-left">
+										<span>工作经历：&nbsp;</span>
+									</div>
+									<div class="bf-right">
+										<div class="bf-textarea-center">
+											<textarea name="experience" rows="6" cols="" id="content1"></textarea>
+										</div>
+									</div>
+								</div>
+								<span class="bf-input_nextSpan" id="content1Tip"></span>
+								<br /><br />
+								<div class="bf-input" style="margin-top: 0px">
+									<span>职位月薪：</span>
+									<!--<input id="money1" class="bf-input_input" name="money"  type="number" />-->
+									<select class="bf-input_input" id="money" name="money">
+										<option value="面议">面议</option>
+										<option value="2000以下">2000以下</option>
+										<option value="2000~2999">2000~2999</option>
+										<option value="3000~3999">3000~3999</option>
+										<option value="4000~4999">4000~4999</option>
+										<option value="5000~5999">5000~5999</option>
+										<option value="6000~6999">6000~6999</option>
+										<option value="7000~7999">7000~7999</option>
+										<option value="8000~8999">8000~8999</option>
+										<option value="9000~9999">9000~9999</option>
+										<option value="10000以上">10000以上</option>
+									</select>
+								</div>
+								<span class="bf-input_nextSpan" id="money1Tip"></span>
+
+								<!--发布时间 是隐藏的-->
+								<div class="bf-input" hidden="hidden">
+									<input id="uidx" hidden="hidden" name="uid" value="">
+									<input name="tp" hidden="hidden" value="2" />
+									<input name="comp" id="ucompx" hidden="hidden" value="2" />
+								</div>
+								<div class="bf-input">
+									<span>联系电话：</span><input id="tel1" class="bf-input_input bf-input_phoneInput" name="tel" type="text" onkeyup="this.value=this.value.replace(/\D/g, '')" />
+								</div>
+								<span class="bf-input_nextSpan" id="tel1Tip"></span>
+
+								<div class="bf-input">
+									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱：</span><input id="enterprise1" class="bf-input_input" name="email" type="email" />
+								</div>
+								<!--bf-input_nextSpan提示内容 点击按钮 判断为显示或隐藏-->
+								<span class="bf-input_nextSpan" id="enterprise1Tip"></span>
+
+								<div class="bf-textarea">
+									<div class="bf-left">
+										<span>自我评价：&nbsp;</span>
+									</div>
+									<div class="bf-right">
+										<div class="bf-textarea-center">
+											<textarea name="evaluate" rows="6" cols="" id="companyIntro1"></textarea>
+										</div>
+									</div>
+								</div>
+								<span class="bf-input_nextSpan" id="companyIntro1Tip"></span>
+								<br /><br />
+								<span id="show_error_" style="color: red;"></span>
+								<div class="bf-submit">
+									<div class="bf-submit-center">
+										<span id="qiuzhi" style="border: none;background:none;font-size: 1.125em; color: white;line-height:40px" type="button">发&nbsp;&nbsp;&nbsp;布</span>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!--求职结束-->
+				<!--求职结束-->
+
+			</div>
+		</div>
+
+		<div class="return-top" id="myp">
+			<span><i class="fa fa-question" title="问题咨询"></i></span>
+			<span><i class="fa fa-chevron-up" id="goTop" title="回到顶部"></i></span>
+		</div>
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/hosts.js"></script>
+		<script src="../js/common.js"></script>
+		<script src="../js/nursery-information.js"></script>
+		<script type="text/javascript" src="../js/jquerySession.js"></script>
+		<script type="text/javascript" src="../js/demandRelease/personal_information.js"></script>
+
+		<script>
+			$(function() {
+				window.sessionStorage.setItem("zp_qz", 1);
+				$.session.remove('header_num');
+				$.session.set('header_num', 1);
+				$('#uid').val($.session.get('uid'));
+				$('#uidx').val($.session.get('uid'));
+				$('#ucomp').val($.session.get('ucomp'));
+				$('#ucompx').val($.session.get('ucomp'));
+				//alert($('#uid').val())
+				$('#header').load('../public/header.html');
+				$('#footer').load('../public/footer.html');
+			})
+			$('#go_mys').click(function() {
+				if($.session.get('uid')) {
+					window.location.href = "../my.html";
+				} else {
+					alert('您尚未登录，请登录后再次点击')
+				}
+			})
+			$("#dcSpan1").click(function() {
+				$(this).addClass("dc-span-active");
+				$("#dcSpan2").removeClass("dc-span-active");
+				$("#piSpan1").addClass("pi-span-active");
+				$("#piSpan2").removeClass("pi-span-active");
+				$("#piBox1").show();
+				$("#piBox2").hide();
+			});
+			$("#dcSpan2").click(function() {
+				$(this).addClass("dc-span-active");
+				$("#dcSpan1").removeClass("dc-span-active");
+				$("#piSpan3").addClass("pi-span-active");
+				$("#piSpan4").removeClass("pi-span-active");
+				$("#piBox2").show();
+				$("#piBox1").hide();
+			});
+			$("#piSpan1").click(function() {
+				$(this).addClass("pi-span-active");
+				$("#piSpan2").removeClass("pi-span-active");
+				$("#mycontent").show();
+				$("#mycontent2").hide();
+			});
+			$("#piSpan2").click(function() {
+				$(this).addClass("pi-span-active");
+				$("#piSpan1").removeClass("pi-span-active");
+				$("#mycontent2").show();
+				$("#mycontent").hide();
+			});
+			$("#piSpan3").click(function() {
+				$(this).addClass("pi-span-active");
+				$("#piSpan4").removeClass("pi-span-active");
+				$("#mycontent3").show();
+				$("#mycontent4").hide();
+			});
+			$("#piSpan4").click(function() {
+				$(this).addClass("pi-span-active");
+				$("#piSpan3").removeClass("pi-span-active");
+				$("#mycontent4").show();
+				$("#mycontent3").hide();
+			});
+
+			/*******(招聘发布) *******/
+
+			/*******(求职发布) *******/
+
+			$(function() {
+				if($.session.get('uid')) {
+					$("#dcSpan1").click(function() {
+						if(window.sessionStorage.getItem("zp_qz")) {
+							window.sessionStorage.removeItem("zp_qz");
+						}
+						window.sessionStorage.setItem("zp_qz", 1);
+					})
+					$("#dcSpan2").click(function() {
+						if(window.sessionStorage.getItem("zp_qz")) {
+							window.sessionStorage.removeItem("zp_qz");
+						}
+						window.sessionStorage.setItem("zp_qz", 2);
+					})
+					$('#aFirst > span:first-child').click(function() {
+						if(window.sessionStorage.getItem("zp_qz") == 1) {
+							$("#nyBox1").show();
+							$("#nyBox2").hide();
+						} else {
+							$("#nyBox2").show();
+							$("#nyBox1").hide();
+						}
+					});
+				}
+			})
+		</script>
+
+	</body>
+
+</html>

@@ -24,25 +24,28 @@ public class FileUpload {
     /**
      * 文件上传辅助方法
      *
-     * @param files 上传的文件，
-     *              fileType 上传文件类型（苗木、设备租赁等），
-     *              savePath 文件保存截取服务器根目录。
+     * @param files    上传的文件，
+     * @param fileType 上传文件类型（苗木、设备租赁等），
+     * @param savePath 文件保存截取服务器根目录。
      * @return 文件保存相对路径
      */
     public List fileUpload(MultipartFile[] files, String fileType, String savePath) throws IOException {
         StringBuilder sb = new StringBuilder();
         sb.append(savePath);
-        //自定义文件保存路径
+        //自定义文件保存路径 start
         String str = "/ylfile/";
         sb.append(str);
         sb.append(fileType);
         sb.append("/");
-        //上传文件文件夹路径
+        //自定义文件保存路径 end
+        //上传文件文件夹路径 start
         String str1 = sb.toString();
         File folder = new File(str1);
         if (!folder.exists()) {
             folder.mkdirs();
         }
+        //上传文件文件夹路径 end
+        //文件保存 start
         for (int i = 0, length = files.length; i < length; ++i) {
             //获取文件名
             String fileName = files[i].getOriginalFilename();
@@ -58,8 +61,9 @@ public class FileUpload {
             sb.append(var);
             sb.append(suffix);
             //文件上传到服务器
+            System.out.println(sb.toString());
             files[i].transferTo(new File(sb.toString()));
-            //清空sb内容，重新存放文件相对路径以存放数据库
+            //清空sb内容，重新存放文件相对路径以存放数据库 start
             sb.delete(0, sb.length());
             sb.append(str);
             sb.append(fileType);
@@ -67,7 +71,9 @@ public class FileUpload {
             sb.append(var);
             sb.append(suffix);
             fileList.add(sb.toString());
+            //清空sb内容，重新存放文件相对路径以存放数据库 end
         }
+        //文件保存 start
         return fileList;
     }
 }

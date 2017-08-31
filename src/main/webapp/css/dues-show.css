@@ -1,0 +1,94 @@
+body {
+  background: #F0F0F0;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+.Ds-box {
+  width: 60%;
+  height: auto;
+  margin: 0 auto;
+  background: white;
+  margin-top: 30px;
+}
+.Ds-box .Ds-title {
+  width: 100%;
+  height: 40px;
+  background: #0196FD;
+}
+.Ds-box .Ds-title span {
+  font-size: 14px;
+  color: white;
+  line-height: 40px;
+}
+.Ds-box .Ds-title span:first-child {
+  padding-left: 20px;
+}
+.Ds-box .Ds-container {
+  width: 60%;
+  height: auto;
+  margin: 0 auto;
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+.Ds-box .Ds-container .Ds-item {
+  width: 100%;
+  height: 36px;
+}
+.Ds-box .Ds-container .Ds-item span {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  color: #343434;
+  line-height: 20px;
+}
+.Ds-box .Ds-container .Ds-item .Ds-left {
+  width: 20%;
+  height: auto;
+  float: left;
+}
+.Ds-box .Ds-container .Ds-item .Ds-left p {
+  font-size: 14px;
+  text-align: right;
+  line-height: 34px;
+}
+.Ds-box .Ds-container .Ds-item .Ds-right {
+  width: 79%;
+  height: auto;
+  float: right;
+}
+.Ds-box .Ds-container .Ds-item .Ds-right input {
+  width: 94%;
+  height: 34px;
+  padding-left: 20px;
+  border: none;
+  border: 1px solid #E7E7E7;
+  outline: none;
+  border-radius: 3px;
+}
+.Ds-box .Ds-container .Ds-item:first-child {
+  margin-top: 40px;
+}
+.Ds-box .Ds-container .Ds-submit {
+  width: 30%;
+  height: 40px;
+  margin: 0 auto;
+  margin-top: 50px;
+  border-radius: 4px;
+}
+.Ds-box .Ds-container .Ds-submit input {
+  width: 100%;
+  height: 40px;
+  background: #0096FD;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.Ds-box .Ds-container .Ds-span {
+  width: 79%;
+  height: 30px;
+  margin-left: 21%;
+}

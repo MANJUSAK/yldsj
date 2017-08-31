@@ -1,0 +1,188 @@
+body {
+  font-family: "Microsoft Yahei", "SimSun";
+}
+header {
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px dashed #E2E2E2;
+}
+header h2 {
+  display: block;
+  text-align: center;
+  color: #2679C6;
+}
+section {
+  width: 100%;
+  height: auto;
+  margin-top: 50px;
+}
+section .R-box {
+  width: 40%;
+  height: auto;
+  margin: 0 auto;
+}
+section .R-box .R-group {
+  width: 100%;
+  height: 34px;
+  margin-bottom: 30px;
+  clear: both;
+}
+section .R-box .R-group .Rg-left {
+  width: 30%;
+  height: auto;
+  float: left;
+}
+section .R-box .R-group .Rg-left p {
+  font-size: 14px;
+  color: #393939;
+  text-align: right;
+  padding-right: 10px;
+  line-height: 34px;
+}
+section .R-box .R-group .Rg-right {
+  width: 70%;
+  height: 34px;
+  float: left;
+  position: relative;
+}
+section .R-box .R-group .Rg-right .input {
+  width: 95%;
+  height: 34px;
+  padding-left: 24px;
+  border: 1px solid #D5D5D5;
+  outline: none;
+}
+section .R-box .R-group .Rg-right .input[type=file] {
+  position: relative;
+  z-index: -2;
+  opacity: 0;
+}
+section .R-box .R-group .Rg-right .G-span {
+  border: none;
+}
+section .R-box .R-group .Rg-right .G-span input {
+  margin-left: 20px;
+}
+section .R-box .R-group .Rg-right .G-span input:first-child {
+  margin-left: 0;
+}
+section .R-box .R-group .Rg-right .Rg-i1 {
+  color: #478FCA;
+  position: absolute;
+  left: 5px;
+  top: 9px;
+  font-size: 16px;
+}
+section .R-box .R-group .Rg-right .Rg-i2 {
+  width: 20px;
+  height: 28px;
+  background: #D1D1D1;
+  color: #478FCA;
+  position: absolute;
+  left: 2px;
+  top: 3px;
+  color: white;
+  text-align: center;
+  line-height: 28px;
+  font-size: 12px;
+}
+section .R-box .R-group .Rg-right span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 95%;
+  height: 34px;
+  border: 1px solid #D5D5D5;
+  padding-left: 7%;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 34px;
+  text-overflow: ellipsis;
+}
+section .R-box .R-group .Rg-right span:hover {
+  border-color: #F59942;
+}
+section .R-box .R-group .Rg-right span label {
+  display: block;
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  background: #6FB3E0;
+  width: 40px;
+  height: 28px;
+  font-size: 12px;
+  color: white;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+}
+section .R-box .R-group .Rg-right .RU_center_firm_errOk {
+  position: absolute;
+  left: 0;
+  top: 34px;
+  display: block;
+  width: 100%;
+  height: 30px;
+  border: none;
+}
+section .R-box .R-group .Rg-right .RU_center_firm_errOk img {
+  line-height: 30px;
+}
+section .R-box .R-group:nth-child(11) .Rg-right .input {
+	width: 80%;
+	float: left;
+}
+section .R-box .R-group:nth-child(11) .Rg-right .img-code {
+	width: 15%;
+	float: left;
+	height: 34px;
+}
+section .R-box .R-group:nth-child(11) .Rg-right .img-code img {
+	width: 80%;
+	height: 34px;
+}
+section .R-box .R-group:nth-child(13) {
+  width: 20%;
+  height: 40px;
+  margin: 50px auto 0;
+}
+section .R-box .R-group:nth-child(13) input {
+  width: 100%;
+  height: 40px;
+  border: none;
+  background: #6FB3E0;
+  color: white;
+}
+section .R-box .R-group:last-child span {
+  display: block;
+  text-align: center;
+  line-height: 34px;
+  font-size: 12px;
+}
+@media only screen and (max-width: 1366px) {
+  .R-box {
+    width: 60% !important;
+    height: auto !important;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .R-box {
+    width: 70% !important;
+    height: auto !important;
+  }
+  .R-box .R-group:nth-child(13) {
+    width: 30% !important;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .R-box {
+    width: 98% !important;
+    height: auto !important;
+  }
+  .R-box .R-group:nth-child(13) {
+    width: 40% !important;
+  }
+  .R-box .R-group:nth-child(13) .Rg-left p {
+    font-size: 12px !important;
+  }
+}

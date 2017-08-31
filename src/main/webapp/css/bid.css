@@ -1,0 +1,312 @@
+	/*****------------ publish-information-datails.html 的样式 ---------------****/
+
+body {
+	background-color: #F0F0F0;
+}
+
+p {
+	word-break: break-word;
+}
+
+.PID_content {
+	width: 100%;
+	height: auto;
+	padding: 40px 0 10px 0;
+}
+
+.PID_center {
+	width: 80%;
+	height: auto;
+	margin: 0 auto;
+}
+
+
+/***************************** 内容 *****************************/
+
+.PID_center_L {
+	width: 100%;
+	height: auto;
+}
+
+.PID_cL_title {
+	width: 100%;
+	height: 28px;
+	border-left: 4px solid #0196FD;
+	box-sizing: border-box;
+}
+
+.PID_cL_title span {
+	line-height: 28px;
+	padding-left: 10px;
+}
+
+
+/** 面包屑导航 **/
+
+.PID_cL_navMnen {
+	width: 98%;
+	height: 50px;
+	line-height: 50px;
+	background-color: #E6F4FF;
+	padding-left: 2%;
+	border-top: 20px solid #F0F0F0;
+	border-bottom: 20px solid white;
+}
+
+.PID_cL_navMnen a {
+	color: #3E3D3F;
+	cursor: pointer;
+	font-size: 0.875em;
+}
+
+.PID_cL_navMnen a:hover {
+	color: #0196FD;
+}
+
+.PID_cL_navMnen_hoverNO {
+	font-size: 1em !important;
+}
+
+.PID_cL_navMnen_hoverNO:hover {
+	color: #3E3D3F !important;
+	cursor: auto;
+}
+
+
+/** 面包屑导航 结束 **/
+
+
+/********************* 中间内容部分 *******************/
+
+.bid_content {
+	width: 100%;
+	height: auto;
+	background-color: white;
+	padding-bottom: 20px;
+}
+
+.bid_center {
+	width: 96%;
+	height: auto;
+	margin: 0 auto;
+	box-sizing: border-box;
+	border-right: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
+}
+/**标题**/
+.bid_head{
+	width: 96%;
+	height: auto;
+	padding: 15px 0;
+	text-align: center;
+	padding-left: 2%;
+	padding-right: 2%;
+}
+.bid_head_title{
+	color: #000000;
+	font-size: 20px;
+}
+/**标题 结束**/
+
+.bid_title {
+	width: 96%;
+	height: 40px;
+	margin: 0 auto;
+	box-sizing: border-box;
+	border-right: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	text-align: center;
+}
+
+.bid_title_span {
+	font-size: 18px;
+	line-height: 24px;
+	display: block;
+	padding-top: 12px;
+	color: #999999;
+}
+
+.bid_CC {
+	width: 96%;
+	height: auto;
+	margin: 0 auto;
+	font-family: "新宋体";
+	font-size: 14px;
+	color: #000000;
+	/*text-indent: ;*/
+}
+
+.span_title {
+	font-size: 20px;
+	height: 20px;
+	display: block;
+	font-weight: bold;
+	line-height: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.bid_CC_content {
+	width: 100%;
+	height: 100%;
+	text-indent: 33px;
+}
+
+.bid_CC_content_span {
+	line-height: 26px;
+}
+
+.bid_CC_content_sB {
+	border-bottom: 1px solid #1F4767;
+}
+
+/***联系方式***/
+.bid_CC_phone{
+	width: 100%;
+	height: auto;
+}
+.bid_CC_phone_L{
+	width: 50%;
+	height: auto;
+	float: left;
+	padding-left: 30px;
+	box-sizing: border-box;
+}
+.bid_CC_phone_L span{
+	line-height: 30px;
+}
+.bid_CC_phone_R{
+	width: 50%;
+	height: auto;
+	float: left;
+}
+.bid_CC_phone_R span{
+	line-height: 30px;
+}
+/*日期*/
+.bid_CC_Ndate{
+	width: 100%;
+	height: auto;
+	padding: 30px 0;
+	text-align: right;
+}
+.bid_CC_Ndate span{
+	line-height: 34px;
+}
+/*日期 结束*/
+/***联系方式 结束***/
+
+/***温馨提示***/
+.bid_CC_red{
+	width: 100%;
+	height: auto;
+	color: red;
+}
+.bid_CC_rIt{
+	line-height: 24px;
+}
+.bid_CC_redSize{
+	font-size: 18px;
+	line-height: 30px;
+}
+.bid_CC_rIt{
+	text-indent: 30px;
+}
+/***温馨提示 结束***/
+/**图片**/
+.bid_CC_imgContet{
+	width: 100%;
+	height: auto;
+	padding-top: 20px;
+	padding-bottom: 30px;
+	text-align: center;
+}
+.bid_CC_img{
+	width: 90%;
+	max-width: 600px;
+	max-height: 400px;
+}
+/**图片**/
+/**上一条和下一条**/
+.bid_content_bottom{
+	width: 96%;
+	padding-left: 2%;
+	padding-right: 2%;
+	padding: 10px 0;
+	font-size: 14px;
+}
+.bid_cb_L{
+	float: left;
+	width: 55%;
+	height: auto;
+	padding-left: 50px;
+	box-sizing: border-box;
+	line-height: 30px;
+}
+.bid_cb_L a,.bid_cb_R a{
+	color: #000000;
+}
+.bid_cb_R{
+	float: left;
+	width: 45%;
+	height: auto;
+	line-height: 30px;
+	padding-left: 10px;
+	box-sizing: border-box;
+}
+.bid_CC_rIt a{
+	color: blue;
+	word-wrap: break-word;
+}
+
+/********************* 中间内容部分 结束 *******************/
+
+
+/** 清楚浮动 **/
+.clearBoth {
+	clear: both;
+}
+
+
+/** 清楚浮动 结束 **/
+
+@media only screen and (min-width: 100px) and (max-width: 1024px) {
+	.PID_center_L {
+		width: 100%;
+	}
+	.PID_center {
+		width: 98%;
+	}
+	.PID_content {
+		padding-top: 20px;
+	}
+	.bid_CC_phone_L{
+		width: 100% !important;
+		display: block;
+		float: none !important;
+	}
+	.bid_CC_phone_R{
+		display: block;
+		width: 100% !important;
+		padding-left: 30px !important;
+		box-sizing: border-box;
+		float: none !important;
+	}
+	.bid_cb_L{
+		width: 100%;
+		
+	}
+	.bid_cb_R{
+		width: 100%;
+		padding-left: 50px;
+		box-sizing: border-box;
+		float: none !important;
+	}
+}
+
+	@media only screen and (min-width: 100px) and (max-width: 640px) {
+		.PID_cL_navMnen a {
+			font-size: 0.75em;
+		}
+	}

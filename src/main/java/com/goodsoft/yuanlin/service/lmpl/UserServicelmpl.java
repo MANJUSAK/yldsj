@@ -60,6 +60,7 @@ public class UserServicelmpl implements UserService {
      */
     @Override
     public <T> T queryUserService(HttpServletRequest request, String userName, String passWord, String userCode) {
+        //判断请求为PC端还是app端 start
         switch (userCode) {
             case "noUserCode":
                 break;
@@ -72,6 +73,7 @@ public class UserServicelmpl implements UserService {
                 }
                 break;
         }
+        //判断请求为PC端还是app端 end
         //密码解密
         String pwd = DESEDE.encryptIt(passWord);
         //匹配用户信息
@@ -106,11 +108,15 @@ public class UserServicelmpl implements UserService {
         if (page == null || "".equals(page)) {
             return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
+        //如果未获取到用户则获取部门信息 start
         if (uid == null || "".equals(uid)) {
+            //获取部门信息及部门等级
             if (dept == null || "".equals(dept) || comp == null || "".equals(comp) || lev == null || "".equals(lev)) {
                 return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
             }
         }
+        //如果未获取到用户则获取部门信息 end
+        //将page转换为int start
         int arg = 0;
         try {
             arg = Integer.parseInt(page);
@@ -122,6 +128,7 @@ public class UserServicelmpl implements UserService {
             arg = 0;
         }
         arg *= 20;
+        //将page转换为int start
         try {
             //获取用户权限（具有管理员权限查看企业数据）
             if (dept != null && !("".equals(dept))) {
@@ -136,7 +143,8 @@ public class UserServicelmpl implements UserService {
                 } else {
                     return (T) new Status(StatusEnum.NO_PRAM.getCODE(), StatusEnum.NO_PRAM.getEXPLAIN());
                 }
-                if (!("人事部".equals(dept)) && v > 2) {
+                //人事部可查处数据
+                if (!("人事部".equals(dept)) && v > 2 || v < 2) {
                     return (T) new Status(StatusEnum.NO_RIGHTS.getCODE(), StatusEnum.NO_RIGHTS.getEXPLAIN());
                 }
             }
@@ -173,6 +181,7 @@ public class UserServicelmpl implements UserService {
         if (page == null || "".equals(page)) {
             return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
+        //将page转换为int start
         int arg = 0;
         try {
             arg = Integer.parseInt(page);
@@ -184,7 +193,10 @@ public class UserServicelmpl implements UserService {
             arg = 0;
         }
         arg *= 20;
+        //将page转换为int start
+        //根据类型查询数据 start
         switch (tp) {
+            //查询法人库数据 start
             case "frk":
                 List<Corporation> cor = null;
                 try {
@@ -198,7 +210,9 @@ public class UserServicelmpl implements UserService {
                     return (T) new Result(0, cor);
                 }
                 return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
-            case "cyrck":
+            //查询法人库数据 end
+            //查询从业人员库数据 start
+            case "cyryk":
                 List<Employees> emp = null;
                 try {
                     emp = this.dao.queryEmployeesDao(arg);
@@ -211,9 +225,11 @@ public class UserServicelmpl implements UserService {
                     return (T) new Result(0, emp);
                 }
                 return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
+            //查询从业人员库数据 start
             default:
                 return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
+        //根据类型添加数据 start
     }
 
     /**

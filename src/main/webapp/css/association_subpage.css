@@ -1,0 +1,234 @@
+/*
+ * 描述：为行业协会的点击更多时，进入更多页面的样式（所有的页面）；点击进入详情时的页面样式（）
+ * */
+/*--------------- 点击优质工程的更多，进入的页面（展示更多优质工程的信息） ---------------*/
+
+input {
+	padding: 0;
+	margin: 0;
+	outline: none;
+}
+
+img {
+	border: none;
+	background: none;
+	vertical-align: middle;
+}
+
+ul,
+ol,
+li {
+	list-style-type: none;
+}
+
+a,
+span,
+p {
+	font-size: 16px;
+	color: #000;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #000;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #000;
+}
+
+a:active {
+	text-decoration: none;
+	color: #000;
+}
+
+img {
+	border: none;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	background-color: #FAFAFA;
+}
+
+
+/*优质工程的更多页面（点击更多时进入该页面 quality_engineering.html）简称：QE*/
+.QE_content{
+	width: 100%;
+	height: auto;
+}
+.QE_center{
+	width: 80%;
+	height: auto;
+	margin: 0 auto;
+}
+.QE_one{
+	height: 32px;
+	border-left: 4px solid #0196fd;
+	margin: 20px 0;
+}
+.QE_one_span{
+	line-height: 30px;
+	margin-left: 15px;
+}
+/*面包屑导航*/
+.QE_subNav{
+	width: 100%;
+	height: 50px;
+	background-color: #0196fd;
+	color: white;
+	line-height: 50px;
+	padding-left: 14px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.QE_subNav a{
+	color: white;
+}
+.QE_subNav span{
+	color: white;
+}
+.QE_notice{
+	width: 100%;
+	height: 46px;
+	background-color: #e6f4ff;
+	text-align: center;
+	color: white;
+	line-height: 46px;
+}
+/*一行一行的内容*/
+.QE_container{
+	width: 100%;
+	height: auto;
+	background-color: white;
+}
+.QEc_ul{
+	margin: 0;
+	padding: 0;
+	width: 96%;
+	height:  auto;
+	margin: 0 auto;
+	padding: 40px 0;
+}
+.QEc_li{
+	width: 100%;
+	line-height: 62px;
+	border-bottom: 1px solid #999999;
+	display: flex;
+}
+.QEc_li_content{
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.QEc_li_content:hover{
+	color: red;
+}
+.QEc_li_content:hover + .QEc_li_date{
+	color: red;
+}
+.QEc_li_date{
+	width: 120px;
+	min-width: 110px;
+	float: right;
+	margin-right: 0%;
+}
+
+/*前面的小点*/
+.fa-square{
+	transform: scale(0.3);
+    color: #7d7d7d;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 12px;
+}
+
+
+
+/*--------------- 点击优质工程的更多，进入的页面（展示更多优质工程的信息） 结束  ---------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*------------------- 点击加载更多（通用） --------------------*/
+.more_whole{
+	width: 100%;
+    height: 40px;
+    padding: 10px 0 30px 0;
+    
+}
+.more_L{
+	width: 25%;
+    height: 1px;
+    line-height: 40px;
+    background-color: #f7f7f7;
+    float: left;
+    overflow: hidden;
+    margin-top: 20px;
+}
+.more{
+	width: 40%;
+    height: 40px;
+    float: left;
+    text-align: center;
+    line-height: 40px;
+    background-color: #f7f7f7;
+    margin: 0 5%;
+    color: #999;
+    cursor: pointer;
+    border-radius: 2px;
+}
+.more:hover{
+	background-color: #F2F2F2;
+}
+.more_R{
+	width: 25%;
+    height: 1px;
+    background-color: #f7f7f7;
+    float: left;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+/*------------------- 点击加载更多（通用）结束  --------------------*/
+
+
+
+
+
+@media only screen and (min-width: 100px) and (max-width: 1024px) {
+	.QE_center{
+		width: 96% !important;
+	}
+}
+
+
+
+
+

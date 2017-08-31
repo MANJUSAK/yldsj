@@ -15,7 +15,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class DruidConfiguration {
-
     /**
      * 注册一个StatViewServlet
      *
@@ -24,15 +23,16 @@ public class DruidConfiguration {
     @Bean
     public ServletRegistrationBean DruidStatViewServle() {
         //org.springframework.boot.context.embedded.ServletRegistrationBean提供类的进行注册.
-        ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
+        ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new StatViewServlet(), "/dataMonitoring/*");
         //添加初始化参数：initParams
-        //白名单：
-        servletRegistrationBean.addInitParameter("allow", "127.0.0.1,172.16.0.253");
+        //白名单(允许访问数据监控ip)：
+        servletRegistrationBean.addInitParameter("allow", "222.85.161.225,172.16.0.253,127.0.0.1");
         //IP黑名单 (存在共同时，deny优先于allow) : 如果满足deny的话提示:无权访问.
         //servletRegistrationBean.addInitParameter("deny", "127.0.0.1");
         //登录查看信息的账号密码.
         servletRegistrationBean.addInitParameter("loginUsername", "admin");
         servletRegistrationBean.addInitParameter("loginPassword", "goodsoft");
+        servletRegistrationBean.addUrlMappings("/backups/ylcxpt/*");
         //是否重置数据.
         servletRegistrationBean.addInitParameter("resetEnable", "true");
         return servletRegistrationBean;
@@ -48,10 +48,12 @@ public class DruidConfiguration {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new WebStatFilter());
         //添加过滤规则.
         filterRegistrationBean.addUrlPatterns("/*");
-        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
+        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.jpeg,*.png,*.css,*.ico,/dataMonitoring/*,/backups/ylcxpt/*");
         filterRegistrationBean.addInitParameter("principalSessionName", "USER_SESSION");
         filterRegistrationBean.addInitParameter("principalCookieName", "USER_COOKIE");
         filterRegistrationBean.addInitParameter("profileEnable", "true");
+        filterRegistrationBean.addInitParameter("sessionStatEnable", "true");
+        filterRegistrationBean.addInitParameter("principalCookieName", "");
         return filterRegistrationBean;
     }
 }

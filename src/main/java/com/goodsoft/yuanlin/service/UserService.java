@@ -24,5 +24,5 @@ public interface UserService {
     public <T> T queryTalentPoolService(String tp, String page);
 
     //添加用户信息
-//    public Status addUserService(MultipartFile[] files, HttpServletRequest request, User msg, String userCode);
+//    public Status addUserService(MultipartFile[] files, User msg, String userCode);
 }

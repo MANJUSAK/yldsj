@@ -20,14 +20,15 @@ public class TransactionConfig implements TransactionManagementConfigurer {
     @Resource
     private DruidDataSource druidDataSource;
 
+    @Override
+    public PlatformTransactionManager annotationDrivenTransactionManager() {
+        return new DataSourceTransactionManager(druidDataSource);
+    }
+
     @Bean
     public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 
-    @Bean
-    @Override
-    public PlatformTransactionManager annotationDrivenTransactionManager() {
-        return new DataSourceTransactionManager(druidDataSource);
-    }
+
 }

@@ -20,7 +20,7 @@ import java.util.Random;
 public class AuthCodeUtil {
 
     /**
-     * 创建AuthCodeUtil类的单例
+     * 创建AuthCodeUtil类的单例（详情参见本包下UUIDUtil类） start
      **/
     private volatile static AuthCodeUtil instance;
 
@@ -36,6 +36,7 @@ public class AuthCodeUtil {
         }
         return instance;
     }
+    // 创建AuthCodeUtil类的单例（详情参见本包下UUIDUtil类） end
 
     /**
      * 绘制验证码

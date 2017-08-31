@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--suppress ALL -->
+<!--@author 严彬荣-->
+<!--行业协会mapper start-->
 <mapper namespace="com.goodsoft.yuanlin.domain.dao.TradeManageDao">
-    <!--行业协会数据查询-->
-    <!--会费简略数据结果映射-->
+    <!--行业协会数据查询 start-->
+    <!--会费简略数据结果映射 start-->
     <resultMap id="duesInfo" type="com.goodsoft.yuanlin.domain.entity.trade.Dues">
         <result property="name" column="name"/>
         <result property="date" column="dates"/>
     </resultMap>
-    <!--会费简略数据sql-->
+    <!--会费简略数据结果映射 end-->
+    <!--会费简略数据sql start-->
     <select id="queryDuesDao" parameterType="int" resultMap="duesInfo">
         SELECT name,dates FROM gs_dues gs_dues ORDER BY dates desc limit #{page},20
     </select>
-    <!--会费详细数据结果映射-->
+    <!--会费简略数据sql end-->
+    <!--会费详细数据结果映射 start-->
     <resultMap id="mberDuesInfo" type="com.goodsoft.yuanlin.domain.entity.trade.Dues">
         <result property="id" column="did"/>
         <result property="name" column="name"/>
@@ -24,7 +28,8 @@
         <result property="qlifLevel" column="qlifLevel"/>
         <result property="registerCapital" column="registerCapital"/>
     </resultMap>
-    <!--会费详细数据sql-->
+    <!--会费详细数据结果映射 end-->
+    <!--会费详细数据sql start-->
     <select id="queryMberDuesDao" parameterType="java.lang.Object" resultMap="mberDuesInfo">
         SELECT
         did,
@@ -48,7 +53,8 @@
         </where>
         ORDER BY dates desc limit #{page},20
     </select>
-    <!--动态资讯数据结果映射-->
+    <!--会费详细数据sql end-->
+    <!--动态资讯数据结果映射 start-->
     <resultMap id="information" type="com.goodsoft.yuanlin.domain.entity.trade.Information">
         <result property="id" column="id"/>
         <result property="title" column="title"/>
@@ -56,7 +62,8 @@
         <result property="date" column="dates"/>
         <result property="infoType" column="infoType"/>
     </resultMap>
-    <!--动态资讯数据sql-->
+    <!--动态资讯数据结果映射 end-->
+    <!--动态资讯数据sql start-->
     <select id="queryInformationDao" parameterType="java.lang.Object" resultMap="information">
         SELECT id,title,content,dates,infoType FROM gs_information
         <where>
@@ -72,7 +79,8 @@
         </where>
         ORDER BY dates desc limit #{page},20
     </select>
-    <!--优质工程数据结果映射-->
+    <!--动态资讯数据sql end-->
+    <!--优质工程数据结果映射 start-->
     <resultMap id="qualEnginInfo" type="com.goodsoft.yuanlin.domain.entity.trade.QualEngin">
         <result property="id" column="qid"/>
         <result property="engName" column="engName"/>
@@ -80,7 +88,8 @@
         <result property="selectYear" column="selectYear"/>
         <result property="company" column="company"/>
     </resultMap>
-    <!--优质工程数据sql-->
+    <!--优质工程数据结果映射 end-->
+    <!--优质工程数据sql start-->
     <select id="queryQualEnginDao" parameterType="java.lang.Object" resultMap="qualEnginInfo">
         SELECT qid,engName,dates,selectYear,company FROM gs_qualengineering
         <where>
@@ -99,7 +108,8 @@
         </where>
         ORDER BY dates desc limit #{page},20
     </select>
-    <!--培训信息数据结果映射-->
+    <!--优质工程数据sql end-->
+    <!--培训信息数据结果映射 start-->
     <resultMap id="trainInfo" type="com.goodsoft.yuanlin.domain.entity.trade.TrainsInfo">
         <result property="id" column="tid"/>
         <result property="traType" column="traType"/>
@@ -108,7 +118,8 @@
         <result property="content" column="content"/>
         <result property="filesId" column="filesId"/>
     </resultMap>
-    <!--培训信息数据sql-->
+    <!--培训信息数据结果映射 end-->
+    <!--培训信息数据sql start-->
     <select id="queryTrainInfoDao" parameterType="java.lang.Object" resultMap="trainInfo">
         SELECT
         tid, traType, traName, dates, content, filesId
@@ -127,7 +138,8 @@
         </where>
         ORDER BY dates desc limit #{page},20
     </select>
-    <!--联系协会数据结果映射-->
+    <!--培训信息数据sql end-->
+    <!--联系协会数据结果映射 start-->
     <resultMap id="contactInfo" type="com.goodsoft.yuanlin.domain.entity.trade.Contact">
         <result property="id" column="cid"/>
         <result property="name" column="name"/>
@@ -139,7 +151,8 @@
         <result property="webSite" column="webSite"/>
         <result property="postCode" column="postCode"/>
     </resultMap>
-    <!--联系协会数据sql-->
+    <!--联系协会数据结果映射 end-->
+    <!--联系协会数据sql start-->
     <select id="queryContactDao" parameterType="java.lang.Object" resultMap="contactInfo">
         SELECT cid,name,tel,address,dates,times,email,webSite,postCode FROM gs_contact
         <where>
@@ -149,35 +162,44 @@
         </where>
         ORDER BY dates desc limit #{page},20
     </select>
-    <!--行业协会数据添加-->
-    <!--添加会费数据sql-->
+    <!--联系协会数据sql end-->
+    <!--行业协会数据查询 end-->
+    <!--行业协会数据添加 start-->
+    <!--添加会费数据sql start-->
     <insert id="addDuesDao" parameterType="com.goodsoft.yuanlin.domain.entity.trade.Dues">
     INSERT INTO gs_dues (name, dates, address, project, compScale,
     compType, qlifLevel, registerCapital)
     VALUES (#{name}, #{date}, #{address}, #{project}, #{compScale}, #{compType}, #{qlifLevel}, #{registerCapital})
     </insert>
-    <!--添加动态资讯数据sql-->
+    <!--添加会费数据sql end-->
+    <!--添加动态资讯数据sql start-->
     <insert id="addInformationDao" parameterType="com.goodsoft.yuanlin.domain.entity.trade.Information">
     INSERT INTO gs_information
     (title, content, dates, infoType)
     VALUES (#{title}, #{content}, #{date}, #{infoType});
     </insert>
-    <!--添加优质工程数据sql-->
+    <!--添加动态资讯数据sql end-->
+    <!--添加优质工程数据sql start-->
     <insert id="addQualEngineeringDao" parameterType="com.goodsoft.yuanlin.domain.entity.trade.QualEngin">
     INSERT INTO gs_qualengineering
     (engName, dates, selectYear, company)
     VALUES
     (#{engName}, #{date}, #{selectYear}, #{company});
     </insert>
-    <!--添加培训信息数据sql-->
+    <!--添加优质工程数据sql end-->
+    <!--添加培训信息数据sql start-->
     <insert id="addTrainInfoDao" parameterType="com.goodsoft.yuanlin.domain.entity.trade.TrainsInfo">
-    INSERT INTO yldsj.gs_traininfo 
+    INSERT INTO gs_traininfo
     (traType, traName, dates, content, filesId) 
     VALUES (#{traType}, #{traName}, #{date}, #{content}, #{filesId});
     </insert>
-    <!--添加联系协会数据sql-->
+    <!--添加培训信息数据sql end-->
+    <!--添加联系协会数据sql start-->
     <insert id="addContactDao" parameterType="com.goodsoft.yuanlin.domain.entity.trade.Contact">
     INSERT INTO gs_contact (name, tel, dates,times, address, email, webSite, postCode)
     VALUES (#{name}, #{tel}, #{date},#{time}, #{address}, #{email}, #{webSite}, #{postCode});
     </insert>
+    <!--添加联系协会数据sql end-->
+    <!--行业协会数据添加 end-->
 </mapper>
+        <!--行业协会mapper start-->

@@ -1,0 +1,351 @@
+body {
+  background: #F0F0F0;
+}
+.demand-release-section {
+  width: 100%;
+  height: auto;
+}
+.demand-release-section .dr-banner {
+  width: 100%;
+  height: 280px;
+  background: url("../img/guild-banner.jpg");
+  background-size: 100% 280px;
+  position: relative;
+}
+.demand-release-section .dr-banner .mm-inner {
+  width: 220px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.3);
+  position: absolute;
+  top: 100px;
+  left: 280px;
+}
+.demand-release-section .dr-banner .mm-inner .gb-topbar {
+  width: 100%;
+  height: 50px;
+}
+.demand-release-section .dr-banner .mm-inner .gb-topbar h3 {
+  color: white;
+  line-height: 50px;
+  padding: 0 20px;
+}
+.demand-release-section .dr-banner .mm-inner .gb-footer {
+  width: 100%;
+  height: 30px;
+}
+.demand-release-section .dr-banner .mm-inner .gb-footer span {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 30px;
+  padding: 0 20px;
+}
+.demand-release-section .dr-box {
+  width: 100%;
+  height: auto;
+}
+.demand-release-section .dr-box .db-topbar {
+  width: 100%;
+  height: 50px;
+  background: white;
+}
+.demand-release-section .dr-box .db-topbar ul {
+  width: 80%;
+  height: 50px;
+  margin: 0 auto;
+}
+.demand-release-section .dr-box .db-topbar ul li {
+  float: left;
+}
+.demand-release-section .dr-box .db-topbar ul li:hover {
+  background: #0096FD;
+}
+.demand-release-section .dr-box .db-topbar ul li:hover a {
+  color: white;
+}
+.demand-release-section .dr-box .db-topbar ul li a {
+  line-height: 50px;
+  padding: 0 25px;
+  font-size: 14px;
+  color: #323232;
+  display: block;
+}
+.demand-release-section .dr-box .db-topbar ul .dt-active {
+  background: #0096FD;
+}
+.demand-release-section .dr-box .db-topbar ul .dt-active a {
+  color: white;
+  display: block;
+}
+.demand-release-section .dr-box .dt-container {
+  width: 80%;
+  height: auto;
+  margin: 20px auto 0;
+  min-height: 320px;
+}
+.demand-release-section .dr-box .dt-container .dc-title {
+  width: 100%;
+  height: 40px;
+}
+.demand-release-section .dr-box .dt-container .dc-title .dc-title-left {
+  width: 10%;
+  height: 40px;
+  float: left;
+}
+.demand-release-section .dr-box .dt-container .dc-title .dc-title-left a {
+  line-height: 40px;
+  color: #353535;
+  padding: 0 10px;
+  border-left: 3px solid #0196FD;
+}
+.demand-release-section .dr-box .dt-container .dc-title .dc-title-right {
+  width: 20%;
+  height: 40px;
+  float: right;
+}
+.demand-release-section .dr-box .dt-container .dc-title .dc-title-right .dc-right-aim {
+  width: 48%;
+  height: 40px;
+  float: left;
+  background: #81C451;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.demand-release-section .dr-box .dt-container .dc-title .dc-title-right .dc-right-aim span {
+  display: block;
+  text-align: center;
+  line-height: 40px;
+  font-size: 14px;
+  color: white;
+}
+.demand-release-section .dr-box .dt-container .dc-title .dc-title-right .dc-right-aim:last-child {
+  margin-left: 4%;
+}
+.demand-release-section .dr-box .dt-container .dc-topbar {
+	width: 100%;
+	height: 50px;
+}
+.dc-span {
+	padding: 7px 40px;
+	line-height: 50px;
+	font-size: 14px;
+	border: 1px solid #81C451;
+	color: #397C08;
+	border-radius: 20px;
+	cursor: pointer;
+}
+.dc-span-active {
+	background: #81C451;
+	color: white;
+}
+.demand-release-section .dr-box .dt-container .dc-topbar .fabu {
+	padding: 10px 25px;
+	line-height: 50px;
+	color: white;
+	background: #81C451;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.demand-release-section .dr-box .dt-container .dc-topbar span:last-child {
+	margin-left: 20px;
+}
+.demand-release-section .dr-box .dt-container .dc-content {
+  width: 100%;
+  height: auto;
+  margin: 10px auto 0;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item {
+  width: 100%;
+  height: 180px;
+  margin: 0 auto;
+  border: 1px solid transparent;
+  background: white;
+  position: relative;
+  margin-top: 15px;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item:hover {
+  border-color: #86C8F6;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item:hover .dc-item-center .dc-ti-right .dc-right-title .dc-rt-left .p1 a {
+  color: #0A99FF;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item:hover .dc-item-center .dc-ti-right .dc-right-title .dc-rt-right .dc-rt-right-center {
+  border-color: #3CAFFD;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item:hover .dc-item-center .dc-ti-right .dc-right-title .dc-rt-right .dc-rt-right-center span {
+  color: #3CAFFD;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item:hover .dc-item-center .dc-ti-right .dc-right-title .dc-rt-right .dc-rt-right-center span a {
+  color: #3CAFFD;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item:hover .dc-item-center .dc-ti-right .dc-right-inner .dc-inner-content {
+  border-color: #3CAFFD;
+  background: #3CAFFD;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item:hover .dc-item-center .dc-ti-right .dc-right-inner .dc-inner-content a {
+  color: white;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center {
+  width: 98%;
+  height: 160px;
+  position: absolute;
+  top: 10px;
+  left: 1%;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center .dc-ic-left {
+  width: 20%;
+  height: 160px;
+  float: left;
+  border: 1px solid #CCCCCC;
+  padding: 1px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+	overflow: hidden;
+	border-radius: 1px;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center .dc-ic-left .dc-ic-left_center {
+  width: 10%;
+  height: 156px;
+  display: table-cell;
+  vertical-align: middle;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center .dc-ic-left .dc-ic-left_center img {
+  width: 100%;
+  height: auto;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center .dc-ti-right {
+  width: 79%;
+  height: 160px;
+  float: right;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center .dc-ti-right .dc-right-title {
+  width: 100%;
+  height: 60px;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center .dc-ti-right .dc-right-title .dc-rt-left {
+  width: 80%;
+  height: 60px;
+  float: left;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center .dc-ti-right .dc-right-title .dc-rt-left .p1 a {
+  color: #464646;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center .dc-ti-right .dc-right-title .dc-rt-left .p2 {
+  font-size: 14px;
+  line-height: 40px;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center .dc-ti-right .dc-right-title .dc-rt-left .p2 span i {
+  color: #999999;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center .dc-ti-right .dc-right-title .dc-rt-left .p2 span a {
+  color: #999999;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center .dc-ti-right .dc-right-title .dc-rt-left .p2 span:last-child {
+  margin-left: 10px;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center .dc-ti-right .dc-right-title .dc-rt-right {
+  width: 15%;
+  height: 60px;
+  float: right;
+  position: relative;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center .dc-ti-right .dc-right-title .dc-rt-right .dc-rt-right-center {
+  width: 100%;
+  height: 30px;
+  position: absolute;
+  top: 14px;
+  border: 1px solid #A0A0A0;
+  cursor: default;
+  border-radius: 4px;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center .dc-ti-right .dc-right-title .dc-rt-right .dc-rt-right-center span {
+  display: block;
+  text-align: center;
+  line-height: 30px;
+  font-size: 14px;
+  color: #A0A0A0;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center .dc-ti-right .dc-right-title .dc-rt-right .dc-rt-right-center span a {
+  color: #A0A0A0;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center .dc-ti-right .dc-right-content {
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center .dc-ti-right .dc-right-content p {
+  font-size: 14px;
+  color: #676767;
+  line-height: 20px;
+  font-family: "新宋体";
+  height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center .dc-ti-right .dc-right-inner {
+  width: 100%;
+  height: 50px;
+  position: relative;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center .dc-ti-right .dc-right-inner .dc-inner-content {
+  width: 15%;
+  height: 40px;
+  position: absolute;
+  top: 4px;
+  border: 1px solid #A0A0A0;
+  border-radius: 4px;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center .dc-ti-right .dc-right-inner .dc-inner-content a {
+  display: block;
+  text-align: center;
+  line-height: 40px;
+  color: #A0A0A0;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-item .dc-item-center .dc-ti-right .dc-right-inner .dc-inner-content a:hover {
+   cursor: pointer;
+}
+
+.demand-release-section .dr-box .dt-container .dc-content .dc-item:first-child {
+  margin-top: 0;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-pages {
+  width: 100%;
+  height: 40px;
+  margin-top: 30px;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-pages ul {
+  text-align: center;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-pages ul li {
+  display: inline-block;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-pages ul li a {
+  color: #666666;
+  padding: 4px 15px;
+  background: white;
+  font-size: 14px;
+  border: 1px solid #E0DDD4;
+  border-radius: 2px;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-pages ul li a:hover {
+  background: #0096FD;
+  color: white;
+  border: 1px solid transparent;
+}
+.demand-release-section .dr-box .dt-container .dc-content .dc-pages ul li .pages-active {
+  background: #0096FD;
+  color: white;
+  border: 1px solid transparent;
+}
+
+.dc-title-right{
+	float: right;
+}
+.dc-title-right div{
+	float: left;
+}
+
+

@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #F0F0F0;
+}
+.Gd-box {
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.Gd-box .Gd-title {
+  width: 100%;
+  height: 60px;
+}
+.Gd-box .Gd-title span {
+  line-height: 60px;
+  color: #0C0C0C;
+  padding-left: 20px;
+  border-left: 4px solid #0196FD;
+}
+.Gd-box .Gd-container {
+  width: 100%;
+  height: auto;
+  background: white;
+  padding-bottom: 30px;
+  min-height: 680px;
+}
+.Gd-box .Gd-container .Gd-topbar {
+  width: 100%;
+  height: 40px;
+  background: #0196FD;
+  color: white;
+  padding-left: 3%;
+  box-sizing: border-box;
+}
+.Gd-box .Gd-container .Gd-topbar span {
+	color: white;
+}
+.Gd-box .Gd-container .Gd-topbar a {
+  line-height: 40px;
+  color: white;
+  font-size: 14px;
+  text-decoration: none;
+}
+.Gd-box .Gd-container .Gd-topbar a:first-child {
+  padding-left: 20px;
+}
+.Gd-box .Gd-container .Gd-content {
+  width: 100%;
+  height: auto;
+}
+.Gd-box .Gd-container .Gd-content .Gd-inner {
+  width: 100%;
+  height: 100px;
+}
+.Gd-box .Gd-container .Gd-content .Gd-inner span {
+  display: block;
+  font-size: 20px;
+  text-align: center;
+  color: #1F1F1F;
+  line-height: 80px;
+}
+.Gd-box .Gd-container .Gd-content .Gd-inner p {
+  font-size: 12px;
+  text-align: center;
+  color: #BDBDBD;
+}
+.Gd-box .Gd-container .Gd-content .Gd-ptext {
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+}
+.Gd-box .Gd-container .Gd-content .Gd-ptext p {
+  font-size: 14px;
+  text-indent: 28px;
+  line-height: 30px;
+  color: #353535;
+  padding: 0 15px;
+}
+.Gd-box .Gd-container .Gd-content .Gd-footer {
+  width: 100%;
+  height: auto;
+  background: #E6F4FF;
+  margin-top: 60px;
+}
+.Gd-box .Gd-container .Gd-content .Gd-footer p {
+  font-size: 12px;
+  color: #393D3F;
+  text-align: center;
+  padding: 10px 0;
+  line-height: 22px;
+}
+.Gd-box .Gd-container .Gd-content .Gd-footer p span {
+  padding: 0 20px;
+}
+.Gd-box .Gd-container .Gd-content .Gd-footer p span a {
+  color: #393D3F;
+  text-decoration: none;
+}
+
+
+
+@media only screen and (min-width: 100px) and (max-width: 1024px) {
+	.Gd-box {
+	  width: 96% !important;
+	}
+}

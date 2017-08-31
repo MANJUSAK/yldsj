@@ -63,9 +63,13 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
      */
     @Override
     public <T> T queryReleaseData(String keyWord, String comp, String uid, String type, HttpServletRequest request, String date, String breed, String tp, String characters, String sub, String page) {
+        //判断page start
         if (page == null || page == "") {
             return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
+        //end
+
+        //将page转化为数字 start
         int arg = 0;
         try {
             arg = Integer.parseInt(page);
@@ -77,7 +81,10 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
             arg = 0;
         }
         arg *= 20;
+        //end
+        //根据类型查询相关数据 start
         switch (type) {
+            //查询招标数据 start
             case "bid":
                 List<Bid> bid = null;
                 try {
@@ -92,6 +99,8 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
                 } else {
                     return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
                 }
+                //查询招标数据 end
+                //查询人才招聘数据 start
             case "recruit":
                 List<Recruit> rec = null;
                 try {
@@ -106,6 +115,8 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
                 } else {
                     return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
                 }
+                //查询人才招聘数据 end
+                //查询设备租赁数据 start
             case "equipment":
                 List<Equipment> equ = null;
                 try {
@@ -146,6 +157,8 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
                 } else {
                     return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
                 }
+                //查询设备租赁数据 end
+                //查询苗木信息数据 start
             case "seedling":
                 List<Seedling> seed = null;
                 try {
@@ -186,29 +199,32 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
                 } else {
                     return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
                 }
+                //查询苗木信息数据 end
             default:
                 return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
+        //根据类型查询相关数据 end
     }
 
     /**
      * 需求发布数据录入（有文件）
      *
-     * @param files   文件，
-     * @param request http请求（用以文件上传），
-     * @param msg     发布数据，
-     * @param type    发布什么的数据（招标、苗木等），
+     * @param files 文件，
+     * @param msg   发布数据，
+     * @param type  发布什么的数据（招标、苗木等），
      * @return 录入结果
      * @throws Exception
      */
     @Override
     @Transactional
-    public Status releaseDataService(MultipartFile[] files, HttpServletRequest request, Object msg, String type) {
+    public Status releaseDataService(MultipartFile[] files, Object msg, String type) {
+        //根据类型添加数据 start
         switch (type) {
+            //添加苗木信息 start
             case "seedling":
                 Seedling var = (Seedling) msg;
                 var.setFilesId(this.uuid.getUUID().toString());
-                int arg = this.fileService.fileUploadService(files, request, type, var.getFilesId());
+                int arg = this.fileService.fileUploadService(files, type, var.getFilesId());
                 switch (arg) {
                     case 604:
                         return new Status(StatusEnum.NO_FILE.getCODE(), StatusEnum.NO_FILE.getEXPLAIN());
@@ -229,10 +245,12 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
                     e.printStackTrace();
                     return new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
                 }
+                //添加苗木信息 end
+                //添加设备租赁 start
             case "equipment":
                 Equipment var1 = (Equipment) msg;
                 var1.setFilesId(this.uuid.getUUID().toString());
-                int arg1 = this.fileService.fileUploadService(files, request, type, var1.getFilesId());
+                int arg1 = this.fileService.fileUploadService(files, type, var1.getFilesId());
                 switch (arg1) {
                     case 604:
                         return new Status(StatusEnum.NO_FILE.getCODE(), StatusEnum.NO_FILE.getEXPLAIN());
@@ -253,9 +271,11 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
                     e.printStackTrace();
                     return new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
                 }
+                //添加设备租赁 end
             default:
                 return new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
+        //根据类型添加数据 start
     }
 
     /**
@@ -269,7 +289,9 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
     @Override
     @Transactional
     public Status releaseDataService(Object msg, String type) {
+        //根据类型添加数据 start
         switch (type) {
+            //添加招标信息 start
             case "bid":
                 Bid var = (Bid) msg;
                 Date date = new Date();
@@ -282,6 +304,8 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
                     e.printStackTrace();
                     return new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
                 }
+                //添加招标信息 end
+                //添加人才招聘 start
             case "recruit":
                 Recruit var1 = (Recruit) msg;
                 Date date1 = new Date();
@@ -294,9 +318,11 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
                     e.printStackTrace();
                     return new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
                 }
+                //添加人才招聘 end
             default:
                 return new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
+        //根据类型添加数据 end
     }
 
     /**
@@ -310,7 +336,9 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
     @Override
     @Transactional
     public Status deleteReleaseDataService(int[] id, String type) {
+        //根据类型删除数据 start
         switch (type) {
+            //删除设备租赁数据 start
             case "equipment":
                 try {
                     this.dao.updateEquipmentDao(id);
@@ -320,6 +348,8 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
                     return new Status(StatusEnum.DEFEAT.getCODE(), StatusEnum.DEFEAT.getEXPLAIN());
                 }
                 return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
+            //删除设备租赁数据 end
+            //删除苗木信息数据 start
             case "seedling":
                 try {
                     this.dao.updateSeedlingDao(id);
@@ -329,6 +359,8 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
                     return new Status(StatusEnum.DEFEAT.getCODE(), StatusEnum.DEFEAT.getEXPLAIN());
                 }
                 return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
+            //删除苗木信息数据 end
+            //删除招标信息数据 start
             case "bid":
                 try {
                     this.dao.updateBidDao(id);
@@ -338,6 +370,8 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
                     return new Status(StatusEnum.DEFEAT.getCODE(), StatusEnum.DEFEAT.getEXPLAIN());
                 }
                 return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
+            //删除招标信息数据 end
+            //删除人才招聘数据 start
             case "recruit":
                 try {
                     this.dao.updateRecruitDao(id);
@@ -347,8 +381,10 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
                     return new Status(StatusEnum.DEFEAT.getCODE(), StatusEnum.DEFEAT.getEXPLAIN());
                 }
                 return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
+            //删除人才招聘数据 end
             default:
                 return new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
+        //根据类型删除数据 end
     }
 }

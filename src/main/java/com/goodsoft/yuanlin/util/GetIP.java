@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class GetIP {
     /**
-     * 创建本类的单例模式（具体说明参见本包下的UUIDUtil类）
+     * 创建本类的单例模式（具体说明参见本包下的UUIDUtil类） start
      */
     private volatile static GetIP instance;
 
@@ -24,9 +24,15 @@ public class GetIP {
         }
         return instance;
     }
+    // 创建本类的单例模式（具体说明参见本包下的UUIDUtil类） end
 
+
+    /**
+     * @param request http请求
+     * @return 访问服务器客户端ip
+     */
     public String getIP(HttpServletRequest request) {
-        //获取用户ip地址
+        //获取用户ip地址 start
         String ip = request.getHeader("x-forwarded-for");
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("Proxy-Client-IP");
@@ -37,6 +43,7 @@ public class GetIP {
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getRemoteAddr();
         }
+        //获取用户ip地址 start
         return ip;
     }
 }

@@ -46,7 +46,7 @@ public class MybatisConfig {
         //支持自动生成主键
         configuration.setUseGeneratedKeys(true);
         //mybatis日志前缀
-        configuration.setLogPrefix("园林");
+        configuration.setLogPrefix("ylcxpt");
         //设置返回数据默认大小（可重写）
         configuration.setDefaultFetchSize(100);
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();

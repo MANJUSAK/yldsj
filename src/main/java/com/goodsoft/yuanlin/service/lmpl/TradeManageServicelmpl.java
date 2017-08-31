@@ -133,6 +133,7 @@ public class TradeManageServicelmpl implements TradeManageService {
         if (page == null || "".equals(page)) {
             return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
+        //将page转换为数据 start
         int arg = 0;
         try {
             arg = Integer.parseInt(page);
@@ -144,8 +145,10 @@ public class TradeManageServicelmpl implements TradeManageService {
             arg = 0;
         }
         arg *= 20;
+        //将page转换为数据 end
+        //根据类型查询数据 start
         switch (type) {
-            //会费数据
+            //会费数据 start
             case "hf":
                 List<Dues> due = null;
                 try {
@@ -159,7 +162,8 @@ public class TradeManageServicelmpl implements TradeManageService {
                     return (T) new Result(0, due);
                 }
                 return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
-            //会员会费数据
+            //会费数据 end
+            //会员会费数据 start
             case "hyhf":
                 if (member == null || "".equals(member)) {
                     return (T) new Status(StatusEnum.NO_PRAM.getCODE(), StatusEnum.NO_PRAM.getEXPLAIN());
@@ -186,7 +190,8 @@ public class TradeManageServicelmpl implements TradeManageService {
                     return (T) new Result(0, mber);
                 }
                 return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
-            //动态资讯数据
+            //会员会费数据 end
+            //动态资讯数据 start
             case "dtzx":
                 List<Information> info = null;
                 try {
@@ -200,7 +205,8 @@ public class TradeManageServicelmpl implements TradeManageService {
                     return (T) new Result(0, info);
                 }
                 return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
-            //优质工程数据
+            //动态资讯数据 end
+            //优质工程数据 start
             case "yzgc":
                 List<QualEngin> qua = null;
                 try {
@@ -214,7 +220,8 @@ public class TradeManageServicelmpl implements TradeManageService {
                     return (T) new Result(0, qua);
                 }
                 return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
-            //联系协会数据
+            //优质工程数据 end
+            //联系协会数据 start
             case "lxxh":
                 List<Contact> con = null;
                 try {
@@ -228,16 +235,17 @@ public class TradeManageServicelmpl implements TradeManageService {
                     return (T) new Result(0, con);
                 }
                 return (T) new Status(StatusEnum.NO_DATA.getCODE(), StatusEnum.NO_DATA.getEXPLAIN());
+            //联系协会数据 end
             default:
                 return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
+        //根据类型查询数据 start
     }
 
 
     /**
      * 行业协会数据添加（含文件）
      *
-     * @param request  http请求，
      * @param files    文件，
      * @param fileType 文件类型（文档/图片），
      * @param type     添加数据类型（协会培训等），
@@ -247,13 +255,14 @@ public class TradeManageServicelmpl implements TradeManageService {
      */
     @Override
     @Transactional
-    public Status addTradeService(HttpServletRequest request, MultipartFile[] files, String fileType, String type, Object msg) {
+    public Status addTradeService(MultipartFile[] files, String fileType, String type, Object msg) {
+        //根据类型添加数据 start
         switch (type) {
-            //协会培训添加
+            //协会培训添加 start
             case "xhpx":
                 TrainsInfo var = (TrainsInfo) msg;
                 var.setFilesId(this.uuid.getUUID().toString());
-                int arg = this.fileService.fileUploadService(files, request, fileType, var.getFilesId());
+                int arg = this.fileService.fileUploadService(files, fileType, var.getFilesId());
                 switch (arg) {
                     case 604:
                         return new Status(StatusEnum.NO_FILE.getCODE(), StatusEnum.NO_FILE.getEXPLAIN());
@@ -272,9 +281,11 @@ public class TradeManageServicelmpl implements TradeManageService {
                     System.out.println(e.toString());
                     return new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
                 }
+                //协会培训添加 end
             default:
                 return new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
+        //根据类型添加数据 end
     }
 
     /**
@@ -288,8 +299,9 @@ public class TradeManageServicelmpl implements TradeManageService {
     @Override
     @Transactional
     public Status addTradeService(String type, Object msg) {
+        //根据类型添加数据 start
         switch (type) {
-            //会费添加
+            //会费添加 start
             case "hf":
                 Dues due = (Dues) msg;
                 try {
@@ -300,7 +312,8 @@ public class TradeManageServicelmpl implements TradeManageService {
                     System.out.println(e.toString());
                     return new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
                 }
-                //动态资讯添加
+                //会费添加 end
+                //动态资讯添加 start
             case "dtzx":
                 Information info = (Information) msg;
                 info.setDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
@@ -312,7 +325,8 @@ public class TradeManageServicelmpl implements TradeManageService {
                     System.out.println(e.toString());
                     return new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
                 }
-                //优质工程添加
+                //动态资讯添加 end
+                //优质工程添加 start
             case "yzgc":
                 QualEngin qua = (QualEngin) msg;
                 try {
@@ -323,7 +337,8 @@ public class TradeManageServicelmpl implements TradeManageService {
                     System.out.println(e.toString());
                     return new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
                 }
-                //联系协会添加
+                //优质工程添加 end
+                //联系协会添加 start
             case "lxxh":
                 Contact con = (Contact) msg;
                 Date date = new Date();
@@ -337,8 +352,10 @@ public class TradeManageServicelmpl implements TradeManageService {
                     System.out.println(e.toString());
                     return new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
                 }
+                //联系协会添加 end
             default:
                 return new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
+        //根据类型添加数据 end
     }
 }

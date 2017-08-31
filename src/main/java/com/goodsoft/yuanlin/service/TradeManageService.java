@@ -18,7 +18,7 @@ public interface TradeManageService {
     public <T> T queryTradeService(String type, String page, String date, String tp, String comp, String year, String keyWord, String member);
 
     //增加行业协会数据(有文件)
-    public Status addTradeService(HttpServletRequest request, MultipartFile[] files, String fileType, String type, Object msg);
+    public Status addTradeService(MultipartFile[] files, String fileType, String type, Object msg);
 
     //增加行业协会数据(无文件)
     public Status addTradeService(String type, Object msg);

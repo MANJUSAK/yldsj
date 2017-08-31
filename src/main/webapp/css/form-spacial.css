@@ -1,0 +1,15 @@
+.ci-item,.ci-content > ul > li{
+	width: 19.78% !important;
+}
+.six > .iic-item >.ci-title >.ci-item{
+	width: 33.15% !important;
+}
+.six > .iic-item > .ci-content > ul > li{
+	width: 33% !important;
+}
+.two > .iic-item >.ci-title >.ci-item{
+	width: 49.86% !important;
+}
+.two > .iic-item > .ci-content > ul > li{
+	width: 49.7% !important;
+}

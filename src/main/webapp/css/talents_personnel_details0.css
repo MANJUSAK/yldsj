@@ -1,0 +1,637 @@
+/*
+ * 描述： 法人库、法人库详情、法人信息录入、从业人员、从业人员详情页、从业人员信息录入的样式都在该css里（除通用的头部和底部）
+ * */
+
+/*****------------  talents_datails2.html  法人库详情页的样式 ---------------****/
+
+body {
+	background-color: #F0F0F0;
+}
+
+p {
+	word-break: break-word;
+}
+span {
+	word-break: break-word;
+}
+.PID_content {
+	width: 100%;
+	height: auto;
+	padding: 40px 0 10px 0;
+}
+
+.PID_center {
+	width: 80%;
+	height: auto;
+	margin: 0 auto;
+}
+
+
+/***************************** 内容 *****************************/
+
+.PID_center_L {
+	width: 100%;
+	height: auto;
+}
+
+.PID_cL_title {
+	width: 100%;
+	height: 28px;
+	border-left: 4px solid #0196FD;
+	box-sizing: border-box;
+}
+
+.PID_cL_title span {
+	line-height: 28px;
+	padding-left: 10px;
+}
+
+
+/** 面包屑导航 **/
+
+.PID_cL_navMnen {
+	width: 98%;
+	height: 50px;
+	line-height: 50px;
+	background-color: #d8eeff;
+	padding-left: 2%;
+	border-top: 20px solid #F0F0F0;
+	border-bottom: 20px solid white;
+}
+
+.PID_cL_navMnen a {
+	color: #3E3D3F;
+	cursor: pointer;
+	font-size: 0.875em;
+}
+
+.PID_cL_navMnen a:hover {
+	color: #0196FD;
+}
+
+.PID_cL_navMnen_hoverNO {
+	font-size: 1em !important;
+}
+
+.PID_cL_navMnen_hoverNO:hover {
+	color: #3E3D3F !important;
+	cursor: auto;
+}
+
+.PID_cL_navMnen_C:hover{
+	cursor: auto;
+	color: #3E3D3F !important;
+}
+
+/** 面包屑导航 结束 **/
+
+/***************面包屑导航下的内容***************/
+.TD_CC{
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+	background-color: white;
+	padding-bottom: 20px;
+}
+.TD_CC_L{
+	width: 45%;
+	height: auto;
+	padding-left: 5%;
+	float: left;
+}
+.TD_CC_L_centent{
+	width: 100%;
+	background-color: #eaefd0;
+	border-radius: 2px;
+	padding: 13px 0;
+	margin-top: 30px;
+}
+.TD_CC_L_centent span{
+	font-size: 16px;
+	line-height: 22px;
+	width: 80%;
+	padding: 0 10%;
+	display: inline-table;
+}
+.TD_CC_R{
+	width: 40%;
+	height: auto;
+	padding-left: 5%;
+	padding-right: 5%;
+	float: left;
+	margin-top: 30px;
+}
+.TD_CC_R_centent{
+	width: 100%;
+	border: 1px solid #CCCCCC;
+	padding: 1px;
+	border-radius: 2px;
+	box-sizing: border-box;
+	min-height: 310px;
+	float: right;
+	display: table-cell;
+	vertical-align: middle;
+	
+}
+.TD_CC_R_centent img{
+	width: 100%;
+	vertical-align: middle;
+}
+
+.TD_CC_B{
+	width: 90%;
+	height: auto;
+	margin: 0 auto;
+	padding-top: 40px;
+}
+
+.TD_CC_B_title{
+	line-height:50px;
+}
+.TD_CC_B_conten{
+	line-height: 26px;
+}
+
+/***************面包屑导航下的内容 结束***************/
+/*****------------ 式 talents_datails.html 法人库详情页 的样式 结束 ---------------****/
+/*****------------ 式 talents.html 法人库 的样式 ---------------****/
+.T_content{
+	width: 100%;
+	height: auto;
+	padding-top: 40px;
+}
+.T_center{
+	width: 80%;
+	height: auto;
+	background-color: white;
+	margin: 0 auto;
+	padding-bottom: 20px;
+	min-height: 500px;
+}
+/*表的title*/
+.TCC_title{
+	width: 90%;
+	padding: 0 5%;
+	display: inline-block;
+	background-color: #d8eeff;
+}
+.TCC_title_1 {
+	width: 20%;
+	height: 50px;
+	float: left;
+}
+.TCC_title_1 span {
+	display: block;
+	color: #3E3D3F;
+	text-align: center;
+	line-height: 50px;
+}
+.TCC_title_2{
+	width: 34%;
+	height: 50px;
+	float: left;
+	color: #3E3D3F;
+	text-align: center;
+	line-height: 50px;
+	font-size: 18px;
+}
+/*循环出来的内容*/
+.TCC_content{
+	width: 90%;
+	margin: 0 5%;
+	display: inline-block;
+	border-bottom: 1px solid #d9d9d9;
+}
+.TCC_content_1{
+	width: 20%;
+	height: 46px;
+	float: left;
+	color: #3E3D3F;
+	text-align: center;
+	line-height: 46px;
+	font-size: 16px;
+}
+.TCC_content_1 a,.TCC_content_3 a,.TCC_content_4 a {
+	height: 46px;
+	text-overflow: -o-ellipsis-lastline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	cursor: pointer;
+	color: #000000;
+}
+/*0B9AFD*/
+.TCC_content_2{
+	width: 34%;
+	height: 46px;
+	float: left;
+	color: #3E3D3F;
+	text-align: center;
+	line-height: 46px;
+	font-size: 16px;
+}
+.TCC_content_2 a{
+	height: 46px;
+	text-overflow: -o-ellipsis-lastline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	cursor: pointer;
+	cursor: pointer;
+	color: #000000;
+}
+.TCC_content:hover div a{
+	color: #0098ff;
+}
+
+/*****------------ 式 talentshtml 法人库 的样式 结束 ---------------****/
+
+/****--------------- 从业人员库的详情页（worker_datails.html） ---------------****/
+.WD_CC{
+	width: 100%;
+	height: auto;
+	background-color: white;
+	padding-bottom: 20px;
+}
+.WD_CC_center{
+	width: 90%;
+	height: auto;
+	margin: 0 auto;
+}
+.WD_CCC_one{
+	width: 100%;
+	height: auto;
+}
+/*左边的内容姓名、性别、录入时间*/
+.WD_CCC_one_L{
+	width: 50%;
+	height: auto;
+	float: left;
+}
+.WD_CCC_oL_one{
+	width: 85%;
+	height: auto;
+	padding: 12px 0 12px 10%;
+	margin-top: 30px;
+	background-color: #eaefd0;
+}
+.WD_CCC_oL_one span{
+	height: auto;
+	width: 95%;
+	line-height: 24px;
+	display: inline-table;
+}
+/*从业人员详情右边的内容（企业名称、职位、职称）*/
+.WD_CCC_one_R{
+	width: 50%;
+	height: auto;
+	float: right;
+}
+.WD_CCC_oR_one{
+	width: 85%;
+	height: auto;
+	padding: 12px 0 12px 10%;
+	margin-top: 30px;
+	margin-left: 5%;
+	background-color: #eaefd0;
+}
+.WD_CCC_oR_one span{
+	height: auto;
+	width: 95%;
+	line-height: 24px;
+	display: inline-table;
+}
+
+.WD_CCC_one_intro{
+	display: block;
+	padding-top: 40px;
+}
+.WD_CCCo_intro_content{
+	width: 100%;
+	height: auto;
+	padding: 10px 0;
+	text-indent: 30px;
+}
+.WD_CCCo_intro_content span{
+	line-height: 22px;
+	font-family: "新宋体";
+}
+/*营业执照*/
+.WD_CCC_one_certificate{
+	display: block;
+	line-height: 50px;
+	padding-top: 10px;
+}
+.WD_CCC_one_certificates{
+	width: 100%;
+	height: auto;
+}
+.WD_CCCo_c_ul{
+	width: 100%;
+	height: auto;
+	text-align: center;
+	
+}
+.WD_CCCo_c_li{
+	width: 48%;
+	height: auto;
+	padding: 1px;
+	margin: 5px 1%;
+	border: 1px solid #CCCCCC;
+	border-radius: 2px;
+	box-sizing: border-box;
+	line-height: 0px;
+	float: left;
+	
+}
+.WD_CCCo_c_li:nth-of-type(odd){
+	clear: left;
+}
+.WD_CCCo_c_li img{
+	width: 100%;
+	height: auto;
+}
+/* 已经发布 */
+.WD_CCC_one_yet{
+	width: 100%;
+	border-left: 3px solid #0196FD;
+	padding: 3px 0 3px 5px;
+	margin: 32px 0 15px 0;
+}
+
+.WD_CCC_one_okProject{
+	width: 100%;
+	height: auto;
+}
+.WD_CCCo_oP_one{
+	width: 90%;
+	height: auto;
+	padding: 10px 5%;
+	background-color: #e5f2fd;
+	margin-top: 5px;
+}
+
+/* 已经发布 结束 */
+
+/****--------------- 从业人员库的详情页（worker_datails.html） 结束 ---------------****/
+
+/***---------------------- input_talents.html 从业人员库页面的样式 ----------------------***/
+.IT_content{
+	width: 100%;
+	height: auto;
+}
+.IT_center{
+	width: 60%;
+	height: auto;
+	padding: 10px 10% 20px 10%;
+	background-color: white;
+	margin: 0 auto;
+}
+/*输入相关信息*/
+.IT_center_input{
+	width: 100%;
+	height: auto;
+	display: flex;
+	padding: 20px 0 4px 0;
+	/*background-color: bisque;*/
+}
+.IT_ci_span{
+	display: block;
+	width: 120px !important;
+	text-align: right;
+	font-size: 16px;
+	line-height: 38px;
+}
+.IT_center_input input{
+	flex: 1;
+	height: 36px;
+	line-height: 36px;
+	border: 1px solid #A9A9A9;
+	border-radius: 2px;
+	width: 100%;
+	padding-left: 0.5%;
+}
+.IT_center_input textarea{
+	flex: 1;
+	height: 100px;
+	line-height: 26px;
+	border: 1px solid #A9A9A9;
+	border-radius: 2px;
+	width: 100%;
+	padding-left: 0.5%;
+	resize: none;
+}
+/*提交和重置*/
+.IT_center_commit{
+	width: 200px;
+	height: auto;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+.IT_center_submit,.IT_center_reset{
+	width: 90px;
+	height: 36px;
+	background-color: #0096FD;
+	border: 1px solid #34ADFF;
+	border-radius: 2px;
+	font-size: 16px;
+	color: white;
+	cursor: pointer;
+}
+.IT_center_submit{
+	float: left;
+}
+.IT_center_reset{
+	float: right;
+}
+
+.IT_center_input label{
+	
+}
+.IT_label{
+	width:34px;
+	display: inline-flex;
+	line-height: 36px;
+	padding-left: 10px;
+	cursor: pointer;
+}
+
+.IT_center_input_radio{
+	width: 14px;
+}
+.IT_center_input > input[type="file"]{
+	cursor: pointer;
+}
+
+.IT_center_hint{
+	padding-left: 130px;
+	color: #7D7D7D;
+	font-size: 14px;
+}
+
+/***---------------------- input_talents.html 从业人员库页面的样式 结束 ----------------------***/
+
+/** 清楚浮动 **/
+.clearBoth {
+	clear: both;
+}
+
+/************ 媒体查询 ************/
+@media only screen and (min-width: 100px) and (max-width: 1025px) {
+	/***-------- talents_datails.html 法人库详情页 -------***/
+	.PID_center{
+		width: 100%;
+	}
+	.TD_CC_L{
+		width: 90% !important;
+		padding-left: 5% !important;
+		padding-right: 5% !important;
+		float: none !important;
+		padding-top: 1px;
+	}
+	.TD_CC_R{
+		width: 80% !important;
+		padding-left: 10% !important;
+		padding-right: 10% !important;
+		float: none !important;
+	}
+	.TD_CC_B{
+		padding-top: 30px !important;
+	}
+	/***-------- talents_datails.html 法人库详情页 结束 -------***/
+	
+	/***---------------式 talentshtml 法人库 的样式 ---------------***/
+	.T_center{
+		width: 98%;
+		height: auto;
+		background-color: white;
+		margin: 0 auto;
+		padding-bottom: 20px;
+	}
+	/***---------------式 talentshtml 法人库 的样式 结束---------------***/
+	/****--------------- 从业人员库的详情页（worker_datails.html） ---------------****/
+	.WD_CC{
+		padding-top: 1px;
+	}
+	.WD_CCC_one_L{
+		float: none !important; 
+		width: 100% !important;
+	}
+	.WD_CCC_oL_one{
+		width: 90% !important;
+		margin-top: 20px;
+	}
+	.WD_CCC_one_R{
+		float: none !important; 
+	}
+	.WD_CCC_one_R{
+		float: none !important; 
+		width: 100% !important;
+	}
+	.WD_CCC_oR_one{
+		width: 90% !important;
+		margin-left: 0;
+		margin-top: 20px;
+	}
+	.WD_CCC_one_intro{
+		padding-top: 25px;
+	}
+	.WD_CCC_one_certificate{
+		line-height: 42px;
+	}
+	.WD_CCC_one_yet{
+		margin-top: 28px;
+	}
+	.WD_CCCo_c_li{
+		width: 80%;
+		float: none !important;
+		margin: 5px auto;
+	}
+	/****--------------- 从业人员库的详情页（worker_datails.html）结束  ---------------****/
+	
+	
+	/***---------------------- input_talents.html 从业人员库页面的样式 ----------------------***/
+	.IT_center{
+		width: 96%;
+		padding: 10px 2% 20px 2%;
+	}
+	.IT_ci_span{
+		text-align: left !important;
+	}
+	.IT_center_input{
+		display: inline-block;
+		width: 100% !important;
+	}
+	.IT_center_hint{
+		padding-left: 0px;
+	}
+	/***---------------------- input_talents.html 从业人员库页面的样式 结束 ----------------------***/
+}
+
+
+/*************************** 点击查看更多 ******************************/
+.more_whole{
+	width: 80%;
+	height: 40px;
+	margin: 0 auto;
+	margin-top: 25px;
+	margin-bottom: 5px;
+}
+.more_L{
+	width: 25%;
+	height: 1px;
+	line-height: 40px;
+	background-color: #FCFCFC;
+	float: left;
+	overflow: hidden;
+	margin-top: 20px;
+}
+.more{
+	width: 40%;
+	height: 40px;
+	float: left;
+	text-align: center;
+	line-height: 40px;
+	background-color: #FCFCFC;
+	margin: 0 5%;
+	color: #999;
+	cursor: pointer;
+	border-radius: 2px;
+}
+.more:hover{
+	background-color: #FFFFFF;
+}
+.more_R{
+	width: 25%;
+	height: 1px;
+	background-color: #FCFCFC;
+	float: left;
+	overflow: hidden;
+	margin-top: 20px;
+}
+@media only screen and (min-width: 100px) and (max-width: 1024px) {
+	.more_whole{
+		padding-top: 0px !important;
+		width: 94% !important;
+	}
+	.more:hover{
+		background-color: #F2F2F2 !important;
+	}
+	.more{
+		background-color: #F7F7F7 !important;
+	}
+	.more_L{
+		background-color: #f7f7f7 !important;
+	}
+	.more_R{
+		background-color: #f7f7f7 !important;
+	}
+}
+
+/*************************** 点击查看更多 结束 ******************************/
+
+

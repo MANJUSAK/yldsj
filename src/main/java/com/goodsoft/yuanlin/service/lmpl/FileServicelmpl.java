@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -29,7 +28,6 @@ public class FileServicelmpl implements FileService {
      * 文件上传业务处理方法
      *
      * @param files    上传的文件,
-     * @param request  http请求（用于文件上传），
      * @param fileType 上传文件类型（苗木、设备租赁等），
      * @param fileId   文件编号（用于查询文件）。
      * @return int 文件上传处理状态（0为成功，其余都失败）
@@ -37,50 +35,60 @@ public class FileServicelmpl implements FileService {
      */
     @Override
     @Transactional
-    public int fileUploadService(MultipartFile[] files, HttpServletRequest request, String fileType, String fileId) {
-        //判断文件是图片还是文档
+    public int fileUploadService(MultipartFile[] files, String fileType, String fileId) {
+        //判断文件是图片还是文档 start
         switch (fileType) {
             case "document":
                 //判断文件是否为空
                 if (!files[0].isEmpty()) {
-                    //判断文件大小是否小于30M
+                    //判断文件大小是否小于30M start
                     if (files[0].getSize() > 30000000) {
                         return 601;
                     }
+                    //判断文件大小是否小于30M end
                     // 获取文件名
                     String fileName = files[0].getOriginalFilename().toLowerCase();
-                    // 判断文件格式是否正确
+                    // 判断文件格式是否正确 start
                     if (!(fileName.endsWith("doc") || fileName.endsWith("docx") || fileName.endsWith("xls") || fileName.endsWith("xlsx") || fileName.endsWith("pdf"))) {
                         return 603;
                     }
+                    // 判断文件格式是否正确 end
                 } else {
                     return 604;
                 }
+                // 判断文件格是否为空 end
                 break;
+            //判断文件是图片还是文档 end
+            //图片文件类型检查 start
             default:
                 for (int i = 0, length = files.length; i < length; ++i) {
-                    //判断文件是否为空
+                    //判断文件是否为空 start
                     if (!files[i].isEmpty()) {
-                        //判断文件大小是否小于1.5M
+                        //判断文件大小是否小于1.5M start
                         if (files[i].getSize() > 1500000) {
                             return 601;
                         }
+                        //判断文件大小是否小于1.5M start
                         // 获取文件名
                         String fileName = files[i].getOriginalFilename().toLowerCase();
-                        // 判断文件格式是否正确
+                        // 判断文件格式是否正确 start
                         if (!(fileName.endsWith("jpg") || fileName.endsWith("jpeg") || fileName.endsWith("png") || fileName.endsWith("gif"))) {
                             return 603;
                         }
+                        // 判断文件格式是否正确 end
                     } else {
                         return 604;
                     }
+                    //判断文件是否为空 end
                 }
                 break;
+            //图片文件类型检查 end
         }
-        //获取服务器项目根目录
-        String var = request.getSession().getServletContext().getRealPath("");
-        //截取服务器根目录
-        String var1 = var.substring(0, var.lastIndexOf("y"));
+        //windows文件路径
+        //String var1 = "D:/ylcxpt";
+        //Linux文件路径
+        String var1 = "/usr/ylcxpt";
+        //文件保存 start
         try {
             //初始化文件实体类
             FileData file = new FileData();
@@ -88,6 +96,7 @@ public class FileServicelmpl implements FileService {
             file.setFileId(fileId);
             List<String> fileList = this.fileUpload.fileUpload(files, fileType, var1);
             file.setBases(var1);
+            //获取文件类型 start
             switch (fileType) {
                 case "seedling":
                     file.setSort("苗木");
@@ -114,11 +123,14 @@ public class FileServicelmpl implements FileService {
                     file.setSort("无分类");
                     break;
             }
+            //获取文件类型 end
+            //文件信息保存 start
             for (int i = 0, length = fileList.size(); i < length; ++i) {
                 //设置文件路径
                 file.setPath(fileList.get(i));
                 this.dao.saveFileDao(file);
             }
+            //文件信息保存 end
             //清除集合里的内容  避免数据混乱
             fileList.clear();
         } catch (Exception e) {
@@ -126,5 +138,6 @@ public class FileServicelmpl implements FileService {
             return 600;
         }
         return 0;
+        //文件保存 end
     }
 }

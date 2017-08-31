@@ -60,12 +60,14 @@ public class CarouselServicelmpl implements CarouselService {
         if (data != null) {
             List<FileData> url = null;
             try {
+                //查询文件
                 url = this.fileDao.queryFileDao(data.getFilesId());
             } catch (Exception e) {
                 System.out.println(e.toString());
             }
             int u = url.size();
             if (u > 0) {
+                //将文件装到list中
                 List<String> path = new ArrayList<String>();
                 String http = this.domainName.getServerDomainName(request).toString();
                 StringBuilder sb = new StringBuilder();
@@ -75,6 +77,7 @@ public class CarouselServicelmpl implements CarouselService {
                     path.add(sb.toString());
                     sb.delete(0, sb.length());
                 }
+                //封装到原有数据
                 data.setPicture(path);
             }
             return (T) new Result(0, data);
@@ -93,9 +96,9 @@ public class CarouselServicelmpl implements CarouselService {
      */
     @Override
     @Transactional
-    public Status addCarouselService(HttpServletRequest request, MultipartFile[] files, Carousel msg) {
+    public Status addCarouselService(MultipartFile[] files, Carousel msg) {
         msg.setFilesId(this.uuid.getUUID().toString());
-        int arg = this.fileService.fileUploadService(files, request, "carousel", msg.getFilesId());
+        int arg = this.fileService.fileUploadService(files, "carousel", msg.getFilesId());
         switch (arg) {
             case 604:
                 return new Status(StatusEnum.NO_FILE.getCODE(), StatusEnum.NO_FILE.getEXPLAIN());

@@ -1,0 +1,185 @@
+.bi-box {
+  width: 100%;
+  height: 690px;
+  background: white;
+  position: relative;
+  
+}
+.bi-box .bb-container {
+  width: 94%;
+  height: 600px;
+  position: absolute;
+  top: 20px;
+  left: 3%;
+}
+.bi-box .bb-container .bb-item {
+  width: 100%;
+  height: 90px;
+  margin-top: 22px;
+}
+.bi-box .bb-container .bb-item .bb-left {
+  width: 12%;
+  height: 90px;
+  float: left;
+  border-right: 2px solid #ECECEC;
+}
+.bi-box .bb-container .bb-item .bb-left .bl-content {
+  width: 90%;
+  height: 90px;
+  margin: 0 auto;
+}
+.bi-box .bb-container .bb-item .bb-left .bl-content .bl-topbar {
+  width: 100%;
+  height: 70px;
+}
+.bi-box .bb-container .bb-item .bb-left .bl-content .bl-topbar h1 {
+  font-size: 50px;
+  text-align: center;
+  line-height: 70px;
+  color: #42A1FA;
+}
+.bi-box .bb-container .bb-item .bb-left .bl-content .bl-inner {
+  width: 100%;
+  height: 20px;
+}
+.bi-box .bb-container .bb-item .bb-left .bl-content .bl-inner span {
+  display: block;
+  text-align: center;
+  line-height: 20px;
+  font-weight: bold;
+  color: #42A1FA;
+}
+.bi-box .bb-container .bb-item .bb-right {
+  width: 87%;
+  height: 90px;
+  float: right;
+}
+.bi-box .bb-container .bb-item .bb-right .br-topbar {
+  width: 100%;
+  height: 45px;
+}
+.bi-box .bb-container .bb-item .bb-right .br-topbar span {
+  line-height: 45px;
+}
+.bi-box .bb-container .bb-item .bb-right .br-topbar span a {
+  color: #484848;
+  font-weight: bold;
+}
+.bi-box .bb-container .bb-item .bb-right .br-topbar span a:hover {
+  color: #0B9AFE;
+}
+.bi-box .bb-container .bb-item .bb-right .br-topbar span:last-child {
+  line-height: 45px;
+}
+.bi-box .bb-container .bb-item .bb-right .br-topbar span:last-child a {
+  font-size: 12px;
+  color: white;
+  padding: 2px 4px;
+  background: #E99037;
+  border-radius: 2px;
+}
+.bi-box .bb-container .bb-item .bb-right .br-inner {
+  width: 100%;
+  height: 45px;
+  overflow: hidden;
+}
+.bi-box .bb-container .bb-item .bb-right .br-inner p {
+  font-size: 14px;
+  color: #6C6C6C;
+  line-height: 25px;
+  text-align: left;
+  height: 50px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+.bi-box .bb-container .bb-item:first-child {
+  margin-top: 0;
+}
+@media only screen and (min-width: 100px) and (max-width: 1024px) {
+	.dr-banner{
+		background: url(../img/guild-banner.jpg) !important;
+		height: 260px !important;
+	}
+	.mm-inner{
+		position: absolute;
+		left: 50% !important;
+		margin-left: -110px !important;
+	}
+	.dt-container{
+		width: 100% !important;
+		margin-top: 0 !important;
+	}
+	.bi-box{
+		height: auto !important;
+	}
+	.bb-container{
+		position: static !important;
+		height: auto !important;
+	}
+	.bb-left{
+		width: 100% !important;
+		height: auto !important;
+		float: none !important;
+	}
+	.bl-content{
+		height: 35px !important;
+	}
+	.bl-topbar{
+		width: 35px !important;
+		height: 35px !important;
+		float: left;
+	}
+	.bl-topbar > h1{
+		font-size: 28px !important;
+		line-height: 35px !important;
+	}
+	.bl-inner{
+		width: 80px !important;
+		float: left;
+		margin-top: 12px;
+	}
+	.bb-right{
+		float: none !important;
+		width: 100% !important;
+	}
+	.bb-container{
+		width: 100% !important;
+		position: absolute;
+		left: 0 !important;
+	}
+	.bb-right{
+		width: 100% !important;
+		height: auto !important; 
+	}
+	.br-topbar > span:first-child{
+		width: 75% !important;
+		float: left;
+		margin-left: 10px;
+		margin-right: 10px;
+		display: block;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+	.br-inner{
+		width: 80% !important;
+		margin:0 auto;
+		height: auto !important;
+		text-align: center;
+	}
+	.bb-item{
+		height: auto !important;
+	}
+	.dc-pages{
+		padding-top: 10px;
+		margin-top: 0 !important;
+		height: 75px !important;
+		background: white;
+	}
+	.dc-pages > ul > li{
+		margin-top: 10px !important;
+	}
+}

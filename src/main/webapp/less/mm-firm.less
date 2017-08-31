@@ -1,0 +1,125 @@
+.mm-banner {
+    width: 100%;
+    height: 280px;
+    background: url("../img/guild-banner.jpg");
+    background-size: 100% 280px;
+    position: relative;
+    .mm-inner {
+        width: 220px;
+        height: 80px;
+        background: rgba(255,255,255,0.3);
+        position: absolute;
+        top: 100px;
+        left: 280px;
+        .gb-topbar {
+            width: 100%;
+            height: 50px;
+            h3 {
+                color: white;
+                line-height: 50px;
+                padding: 0 20px;
+            }
+        }
+        .gb-footer {
+            width: 100%;
+            height: 30px;
+            span {
+                font-size: 14px;
+                color: rgba(255,255,255,0.6);
+                line-height: 30px;
+                padding: 0 10px;
+            }
+        }
+    }
+}
+.mf-box {
+    width: 100%;
+    height: 1170px;
+    .mf-item {
+        width: 100%;
+        height: 180px;
+        margin-top: 15px;
+        background: white;
+        border: 1px solid transparent;
+        position: relative;
+        &:hover {
+            border-color: #4DB6FE;
+            .mi-container {
+                .mc-right {
+                    .mr-title {
+                        a {
+                            color: #0899FA;
+                        }
+                    }
+                    .mr-inner {
+                        .mr-inner-aim {
+                            background: #0196FD;
+                            border-color: #0196FD;
+                            a {
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .mi-container {
+            width: 98%;
+            height: 160px;
+            position: absolute;
+            top: 10px;
+            left: 1%;
+            .mc-left {
+                width: 20%;
+                height: 160px;
+                float: left;
+                img {
+                    width: 100%;
+                    height: 160px;
+                }
+            }
+            .mc-right {
+                width: 79%;
+                height: 210px;
+                float: right;
+                .mr-title {
+                    width: 100%;
+                    height: 30px;
+                    a {
+                        line-height: 30px;
+                        color: #393939;
+                    }
+                }
+                .mr-center {
+                    width: 100%;
+                    height: 90px;
+                    p {
+                        font-size: 14px;
+                        line-height: 25px;
+                        color: #686868;
+                    }
+                }
+                .mr-inner {
+                    width: 100%;
+                    height: 40px;
+                    .mr-inner-aim {
+                        width: 15%;
+                        height: 38px;
+                        border: 1px solid #B6B6B6;
+                        border-radius: 4px;
+                        a {
+                            display: block;
+                            text-align: center;
+                            line-height: 38px;
+                            color: #B6B6B6;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .mf-item:first-child {
+        margin-top: 0;
+    }
+}

@@ -1,0 +1,428 @@
+/*
+ * 描述：该样式为人才招聘详情页（publish-information-datails.html）的样式。
+ * */
+/*****------------ publish-information-datails.html 的样式 ---------------****/
+
+body {
+	background-color: #F0F0F0;
+}
+
+p {
+	word-break: break-word;
+}
+
+.PID_content {
+	width: 100%;
+	height: auto;
+	padding: 40px 0 10px 0;
+}
+
+.PID_center {
+	width: 80%;
+	height: auto;
+	margin: 0 auto;
+}
+
+
+/***************************** 左边的内容 *****************************/
+
+.PID_center_L {
+	width: 98%;
+	height: auto;
+}
+
+.PID_cL_title {
+	width: 100%;
+	height: 28px;
+	border-left: 4px solid #0196FD;
+	box-sizing: border-box;
+}
+
+.PID_cL_title span {
+	line-height: 28px;
+	padding-left: 10px;
+}
+
+
+/** 面包屑导航 **/
+
+.PID_cL_navMnen {
+	width: 98%;
+	height: 50px;
+	line-height: 50px;
+	background-color: #d8eeff;
+	padding-left: 2%;
+	border-top: 20px solid #F0F0F0;
+	border-bottom: 20px solid white;
+	margin: 0 auto;
+}
+
+.PID_cL_navMnen a {
+	color: #3E3D3F;
+	cursor: pointer;
+	font-size: 0.875em;
+}
+
+.PID_cL_navMnen a:hover {
+	color: #0196FD;
+}
+.PID_cL_navMnen_hoverNO{
+	font-size: 1em !important;
+}
+.PID_cL_navMnen_hoverNO:hover{
+	color: #3E3D3F !important;
+	cursor: auto;
+}
+
+/** 面包屑导航 结束 **/
+
+/** 左边公司名称之下 中间部分内容 **/
+
+.PID_cL_content {
+	width: 100%;
+	height: auto;
+}
+
+.PID_cL_center {
+	width: 96%;
+	height: auto;
+	padding-right: 2%;
+	padding-left: 2%;
+	padding-bottom: 10px;
+	background-color: white;
+}
+
+.PID_cL_tenter_one {
+	width: 100%;
+	height: auto;
+	padding-bottom: 40px;
+}
+
+.PID_cLc_one_pName {
+	width: 100%;
+	line-height: 48px;
+	font-size: 1.125em;
+}
+
+.PID_cLc_one_pPost {
+	width: 100%;
+	height: auto;
+	line-height: 34px;
+}
+
+.PID_cLc_one_pSite {
+	width: 100%;
+	height: auto;
+	line-height: 34px;
+}
+
+.PID_cLc_one_pPhone {
+	width: 100%;
+	font-size: 0.875em;
+	line-height: 30px;
+	color: #4B4B4B;
+	line-height: 34px;
+}
+
+.PID_cLc_one_pDate {
+	width: 100%;
+	font-size: 0.875em;
+	line-height: 30px;
+	color: #4B4B4B;
+	line-height: 34px;
+}
+
+
+/*相关描述*/
+
+.PID_cLc_one_pDescribe {
+	width: 100%;
+	height: auto;
+	line-height: 46px;
+	font-size: 1.125em;
+	padding-top: 20px;
+}
+
+.PID_cLc_one_pContent {
+	width: 100%;
+	word-break: break-word;
+	color: #4B4B4B;
+	line-height: 30px;
+}
+/**上一条和下一条**/
+.PID_qinahou{
+	width: 100%;
+	padding: 0px 0 30px 0;
+}
+.PID_qinahou_L{
+	width: 50%;
+	height: auto;
+	float: left;
+}
+.PID_qinahou_R{
+	width: 50%;
+	height: auto;
+	float: left;
+}
+.PID_qinahou_L a,.PID_qinahou_R a{
+	color: #000000;
+	line-height: 26px;
+}
+.PID_qinahou_L a:hover{
+	color: #004974;
+}
+.PID_qinahou_R a:hover{
+	color: #004974;
+}
+
+/**上一条和下一条**/
+
+/***** 相关推荐 ****/
+
+.PID_cL_center_two {
+	width: 100%;
+	height: auto;
+}
+
+
+/*tab*/
+
+.PID_tab {
+	width: 100%;
+	height: 35px;
+	border-bottom: 1px solid #D6E5F8;
+}
+
+.PID_tab_L {
+	width: 130px;
+	height: 34px;
+	line-height: 32px;
+	float: left;
+	border-top: 2px solid #3E7CD4;
+	border-left: 1px solid #D6E5F8;
+	border-right: 1px solid #D6E5F8;
+	display: block;
+	background-color: white;
+	text-align: center;
+	font-family: "新宋体";
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.PID_tab_R {
+	width: 130px;
+	height: 34px;
+	line-height: 34px;
+	float: left;
+	text-align: center;
+	background-color: white;
+	text-align: center;
+	font-family: "新宋体";
+	cursor: pointer;
+}
+
+
+/*tab结束*/
+
+.PID_tab_LChild,
+.PID_tab_RChild {
+	width: 96%;
+	height: auto;
+	padding-left: 2%;
+	padding-right: 2%;
+}
+
+.PID_tab_RChild {
+	display: none;
+}
+
+.PID_two_conter {
+	height: auto;
+	padding: 12px 1%;
+	border-bottom: 1px dashed #D6E5F8;
+	display: inherit;
+}
+
+.PID_two_conter:hover {
+	background-color: rgb(244, 250, 255);
+}
+
+.PID_two_conterC1 {
+	height: 30px;
+	line-height: 30px;
+	color: #315AAA;
+	font-weight: bold;
+	font-family: "新宋体";
+	/*font: 700 1em "simsun";*/
+	cursor: pointer;
+}
+
+.PID_two_conterC2C {
+	width: 50%;
+	float: left;
+	line-height: 27px;
+	color: #315AAA;
+	font-family: "新宋体";
+	cursor: pointer;
+}
+
+.PID_two_conterC2 {
+	width: 98%;
+}
+
+.PID_two_conterC3 {
+	width: 50%;
+	float: left;
+	line-height: 27px;
+	font-family: "新宋体";
+}
+
+.PID_two_conter a:hover {
+	/*text-decoration: underline;*/
+	border-bottom: 1px solid #0080D8;
+}
+
+
+/***** 相关推荐 结束 ****/
+
+
+/** 左边公司名称之下 中间部分内容 结束 **/
+
+
+/***************************** 左边的内容 结束 *****************************/
+
+
+/***************************** 最新职位推荐 *****************************/
+
+.PID_center_post {
+	width: 20%;
+	height: 220px;
+	background-color: #0B9AFD;
+}
+
+
+/***************************** 最新职位推荐结束 *****************************/
+
+
+/** 清楚浮动 **/
+
+.clearBoth {
+	clear: both;
+}
+
+/** 清楚浮动 结束 **/
+/*媒体查询，当浏览器的分辨率在100~1024时进入该样式*/
+@media only screen and (min-width: 100px) and (max-width: 1024px) {
+	.PID_center_L {
+		width: 100%;
+	}
+	.PID_center_C {
+		display: none;
+	}
+	.PID_center_R {
+		display: none;
+	}
+	.PID_center {
+		width: 98%;
+	}
+	.PID_content {
+		padding-top: 20px;
+	}
+	.PID_two_conter a:hover {
+		border: none;
+	}
+	.PID_two_conterC2C{
+		width: 100%;
+		float: none !important;
+	}
+	.PID_two_conterC3{
+		width: 100%;
+		float: none !important;
+	}
+	.PID_qinahou_L{
+		width: 100% !important;
+		float: none !important;
+	}
+	.PID_qinahou_R{
+		width: 100% !important;
+		float: none !important;
+	}
+}
+/*当浏览器宽度在100~640时读取该样式*/
+@media only screen and (min-width: 100px) and (max-width: 640px) {
+	.PID_cL_navMnen a {
+		font-size: 0.75em;
+	}
+}
+
+
+
+/*************************************** 人才招聘的详情页 ******************************************/
+.RD_section{
+	width: 70%;
+	height: auto;
+	margin: 20px auto;
+	min-height: 780px;
+}
+.Rd-topbar{
+	width: 90%;
+	height: auto;
+	background: white;
+	padding: 0 5%;
+}
+
+.Rd-box{
+	width: 90%;
+	height: auto;
+	background: white;
+	padding: 0 5%;
+	padding-bottom: 30px;
+}
+.RD_title{
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+}
+.RD_title span{
+	height: 16px;
+	border-left: 3px solid #0196FD;
+	padding-left: 10px;
+}
+
+
+/*求职详情*/
+.RD2_content{
+	width: 100%;
+	height: auto;
+	background: white;
+	padding-bottom: 30px;
+}
+.RD2_center{
+	width: 90%;
+	margin: 0 auto;
+}
+
+.RD2_center p{
+	padding: 15px 0;
+}
+.RD2_center p span{
+	margin-left: 10px;
+	line-height: 20px;
+}
+.text_index span{
+	display: inline-block;
+	text-indent: 32px;
+	padding: 10px 0;
+}
+.RD2_center_title{
+	font-size: 20px;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 720px) {
+	.RD_section{
+		width: 94% !important;
+	}
+}
+
+
+/*************************************** 人才招聘的详情页  结束 ******************************************/
