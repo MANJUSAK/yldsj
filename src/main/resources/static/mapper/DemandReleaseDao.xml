@@ -79,7 +79,7 @@
         </where>
     </select>
     <!--招标信息查询sql end-->
-    <!--苗木信息查询sql start-->
+    <!--苗木信息结果映射 start-->
     <resultMap id="querySeedling" type="com.goodsoft.yuanlin.domain.entity.demand.Seedling">
         <result property="sid" column="sid"/>
         <result property="titleName" column="titleName"/>
@@ -93,11 +93,19 @@
         <result property="supplier" column="supplier"/>
         <result property="breed" column="breed"/>
         <result property="comp" column="comp"/>
+        <result property="dbh" column="dbh"/>
+        <result property="pdt" column="pdt"/>
+        <result property="height" column="height"/>
+        <result property="unit" column="unit"/>
+        <result property="price" column="price"/>
         <result property="filesId" column="filesId"/>
     </resultMap>
+    <!--苗木信息结果映射 end-->
+    <!--苗木信息查询sql start-->
     <select id="querySeedlingDao" parameterType="Object" resultMap="querySeedling">
         SELECT
-        sid,titleName,content,contact,tel,address,supplier,breed,filesId,comp,date,time,sub
+        sid,titleName,content,contact,tel,address,supplier,breed,filesId,
+        comp,date,time,sub,dbh,pdt,height,num,unit,price
         FROM
         gs_seedling
         <where>
@@ -124,7 +132,36 @@
             limit #{page},20
         </where>
     </select>
-    <!--苗木信息查询sql end-->
+    <!--查询苗木信息sql end-->
+    <!--根据规格查询苗木信息sql start-->
+    <select id="querySeedlingBySpDao" parameterType="Object" resultMap="querySeedling">
+        SELECT
+        sid,titleName,content,contact,tel,address,supplier,breed,filesId,
+        comp,date,time,sub,dbh,pdt,height,num,unit,price
+        FROM
+        gs_seedling
+        <where>
+            <if test="uid !=null and uid !=''">
+                and uid=#{uid}
+            </if>
+            <if test="dbh !=null and dbh !=''">
+                and dbh like '%${dbh}%'
+            </if>
+            <if test="pdt !=null and pdt !=''">
+                and pdt like '%${pdt}%'
+            </if>
+            <if test="ht !=null and ht !=''">
+                and height like '%${ht}%'
+            </if>
+            <if test="price !=null and price !=''">
+                and price like '%${price}%'
+            </if>
+            AND ISNO=0
+            order by sid desc
+            limit #{page},20
+        </where>
+    </select>
+    <!--根据规格查询苗木信息sql end-->
     <!--人员招聘信息查询映射 start-->
     <resultMap id="queryRecruit" type="com.goodsoft.yuanlin.domain.entity.demand.Recruit">
         <result property="rid" column="rid"/>
@@ -216,10 +253,10 @@
     <!--苗木信息数据录入sql start-->
     <insert id="saveSeedlingDao" parameterType="com.goodsoft.yuanlin.domain.entity.demand.Seedling">
         INSERT INTO gs_seedling
-        (titleName, contact, tel, date, time,address, content, supplier, breed, sub, filesId, uid,comp)
+        (titleName, contact, tel, date, time,address, content, supplier, breed, sub, filesId, uid,comp,dbh,pdt,height,num,unit,price)
         VALUES
         (#{titleName}, #{contact}, #{tel}, #{date}, #{time},#{address}, #{content},
-        #{supplier}, #{breed}, #{sub}, #{filesId}, #{uid},#{comp})
+        #{supplier}, #{breed}, #{sub}, #{filesId}, #{uid},#{comp},#{dbh},#{pdt},#{height},#{num},#{unit},#{price})
     </insert>
     <!--苗木信息数据录入sql end-->
     <!--人员招聘数据录入sql start-->

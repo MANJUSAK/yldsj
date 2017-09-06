@@ -156,7 +156,8 @@ header .header-topbar .ht-box .ht-right .right-box .rb-login {
 	width: 320px;
 	height: 40px;
 	float: left;
-	position: relative;
+	position: absolute;
+	right: 0;
 }
 
 header .header-topbar .ht-box .ht-right .right-box .rb-login .rl-box {

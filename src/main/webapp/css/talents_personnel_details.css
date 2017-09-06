@@ -184,6 +184,11 @@ span {
 	text-align: center;
 	line-height: 50px;
 	font-size: 18px;
+	overflow: hidden;
+}
+.TCC_title_1 span {
+	width: 100%;
+	overflow: hidden;
 }
 .TCC_title_2{
 	width: 34%;
@@ -209,11 +214,16 @@ span {
 	text-align: center;
 	line-height: 46px;
 	font-size: 16px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
+
 .TCC_content_1 a,.TCC_content_3 a,.TCC_content_4 a {
-	height: 46px;
+	width: 100%;
 	text-overflow: -o-ellipsis-lastline;
 	overflow: hidden;
+	white-space: normal;
 	text-overflow: ellipsis;
 	display: -webkit-box;
 	-webkit-line-clamp: 1;

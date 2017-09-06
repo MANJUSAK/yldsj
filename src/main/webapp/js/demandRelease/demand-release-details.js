@@ -45,7 +45,7 @@ $(function() {
 		'</div>';
 	$('.nds-topbar').html(html);
 	html_ += '<div class="nds-fc-title">' +
-		'<span><a href="">详细说明</a></span>' +
+		'<span><a href="">需求内容</a></span>' +
 		'</div>' +
 		'<p>' +
 		'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + arr_one.content + '' +
@@ -70,7 +70,6 @@ $(function() {
 		'<div class="ffb-inner">' +
 		'<span><a href="../demandRelease/demand-release.html"><i class="fa fa-angle-double-left"></i>&nbsp;&nbsp;&nbsp;返回列表</a></span>' +
 		'</div>';
-
 	$('.nds-fc-left').html(html_);
 	
 })

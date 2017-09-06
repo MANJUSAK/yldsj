@@ -76,7 +76,7 @@ body {
 }
 .nursery-details-section .nds-box .nds-topbar .nds-topbar-content .nds-tc-center .nds-tcc-aim .tcc-ul {
   width: 100%;
-  height: 125px;
+  height: auto;
   margin-top: 20px;
 }
 .nursery-details-section .nds-box .nds-topbar .nds-topbar-content .nds-tc-center .nds-tcc-aim .tcc-ul ul li {
@@ -89,7 +89,7 @@ body {
 }
 .nursery-details-section .nds-box .nds-topbar .nds-topbar-content .nds-tc-center .nds-tcc-aim .tcc-inner {
   width: 100%;
-  height: 40px;
+  /*height: 40px;*/
 }
 .nursery-details-section .nds-box .nds-topbar .nds-topbar-content .nds-tc-center .nds-tcc-aim .tcc-inner span {
   line-height: 40px;

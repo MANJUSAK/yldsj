@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * <p>
  * 这样的方式不需要添加注解：@ServletComponentScan
  * Created by 严彬荣 on 2017/7/19.
+ * version v1.0
  */
 @Configuration
 public class DruidConfiguration {

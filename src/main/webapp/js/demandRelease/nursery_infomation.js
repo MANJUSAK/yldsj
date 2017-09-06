@@ -306,7 +306,6 @@ $(".bf-submit > .bf-submit-center > span").click(function() {
 	needregEXP = true;
 	but = true;
 	DR_regExp();
-	//Ajax_tj();
 });
 //当键盘按下的时候调用这个事件
 $(".bf-input_input").keyup(function() {
@@ -447,8 +446,6 @@ $(function() {
 	})
 	$('#uid').val($.session.get('uid'))
 	$('#submit_nu').click(function Ajax_tj() {
-		//alert(0)
-		console.log()
 		if(needregEXP == true) {
 			$(".bf-submit > .bf-submit-center > span").text("正在发布...");
 			$(".bf-submit > .bf-submit-center > span").css({

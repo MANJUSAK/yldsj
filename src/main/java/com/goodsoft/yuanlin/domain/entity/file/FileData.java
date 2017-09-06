@@ -12,6 +12,9 @@ public class FileData implements java.io.Serializable {
     private String path;//文件路径
     private String bases;//根目录
     private String sort;//类别
+    private String fileName;//原文件名
+    private String newFileName;//新文件名
+    private String suffix;//文件后缀
 
     @Transient
     public int getFid() {
@@ -53,6 +56,30 @@ public class FileData implements java.io.Serializable {
 
     public void setSort(String sort) {
         this.sort = sort;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public String getSuffix() {
+        return suffix;
+    }
+
+    public void setSuffix(String suffix) {
+        this.suffix = suffix;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getNewFileName() {
+        return newFileName;
+    }
+
+    public void setNewFileName(String newFileName) {
+        this.newFileName = newFileName;
     }
 }
 

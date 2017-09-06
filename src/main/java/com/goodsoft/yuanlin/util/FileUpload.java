@@ -61,7 +61,6 @@ public class FileUpload {
             sb.append(var);
             sb.append(suffix);
             //文件上传到服务器
-            System.out.println(sb.toString());
             files[i].transferTo(new File(sb.toString()));
             //清空sb内容，重新存放文件相对路径以存放数据库 start
             sb.delete(0, sb.length());

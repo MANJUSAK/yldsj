@@ -35,11 +35,11 @@
 			/**设备租赁的错误提示**/
 			
 			.bf-input_nextSpan {
+				
 				padding-top: 3px;
 				/*line-height: 20px;*/
 				font-size: 13px;
 				color: red;
-				padding-left: 70px;
 				visibility: visible;
 			}
 		</style>
@@ -215,12 +215,12 @@
 								</div>
 								<span class="bf-input_nextSpan" id="jobTip"></span>
 								<div class="bf-input1">
-									<span style="font-size: 14px;line-height: 35px;color: #565656;float: left;">职位类型：</span>
+									<span class="bf-input1_span1">职位类型：</span>
 									<span style="line-height: 35px;"><input class="bfinput3" type="radio" name="characters" checked="checked" value="1" /> 全职</span>
 									<span style="line-height: 35px;"><input class="bfinput3" type="radio" name="characters"  value="2"/> 兼职</span>
 								</div>
 								<!--bf-input_nextSpan提示内容 点击按钮 判断为显示或隐藏-->
-								<br /><br />
+								<br />
 								<div class="bf-textarea">
 									<div class="bf-left">
 										<span>工作内容：&nbsp;</span>
@@ -232,8 +232,8 @@
 									</div>
 								</div>
 								<span class="bf-input_nextSpan" id="contentTip"></span>
-								<br /><br />
-								<div class="bf-input" style="margin-top: 0px">
+								<br />
+								<div class="bf-input">
 									<span>职位月薪：</span>
 									<!--<input id="money" type="number"  class="bf-input_input" name="money" />-->
 									<select class="bf-input_input" id="money" name="money">
@@ -252,7 +252,7 @@
 
 								</div>
 								<span class="bf-input_nextSpan" id="moneyTip"></span>
-								<div class="bf-input" style="margin-top: 0px">
+								<div class="bf-input" style="margin-top: 0px;">
 									<span>企业地址：</span><input class="bf-input_input" id="address" name="companyAdress" type="text" />
 								</div>
 								<span class="bf-input_nextSpan" id="addressTip"></span>
@@ -260,13 +260,6 @@
 									<span>&nbsp;&nbsp;&nbsp;联系人：</span><input id="telpersonal" class="bf-input_input" name="contact" type="text" />
 								</div>
 								<span class="bf-input_nextSpan" id="telpersonalTip"></span>
-								<!--发布时间 是隐藏的-->
-								<div class="bf-input" hidden="hidden">
-									<!--<span>发布日期：</span>-->
-									<input id="ucomp" name="comp" hidden="hidden" type="text" value="" />
-									<input id="uid" name="uid" hidden="hidden" value="">
-									<input name="tp" hidden="hidden" value="1" />
-								</div>
 								<div class="bf-input">
 									<span>联系电话：</span><input id="tel" class="bf-input_input bf-input_phoneInput" name="tel" type="text" onkeyup="this.value=this.value.replace(/\D/g, '')" />
 								</div>
@@ -282,6 +275,8 @@
 									<span>工作地点：</span><input id="work" class="bf-input_input" name="workAdress" type="text" />
 								</div>
 								<span class="bf-input_nextSpan" id="workTip"></span>
+								<div style="clear: both;"></div>
+								<br />
 								<div class="bf-textarea">
 									<div class="bf-left">
 										<span>公司简介：&nbsp;</span>
@@ -293,7 +288,13 @@
 									</div>
 								</div>
 								<span class="bf-input_nextSpan" id="companyIntroTip"></span>
-								<br /><br />
+								<!--发布时间 是隐藏的-->
+								<div class="bf-input" hidden="hidden">
+									<!--<span>发布日期：</span>-->
+									<input id="ucomp" name="comp" hidden="hidden" type="text" value="" />
+									<input id="uid" name="uid" hidden="hidden" value="">
+									<input name="tp" hidden="hidden" value="1" />
+								</div>
 								<span id="show_error_" style="color: red;"></span>
 								<div class="bf-submit">
 									<div class="bf-submit-center">
@@ -327,7 +328,7 @@
 								<span class="bf-input_nextSpan" id="Cname1Tip"></span>
 
 								<div class="bf-input1">
-									<span style="font-size: 14px;line-height: 35px;color: #565656;float: left;">职位类型：</span>
+									<span class="bf-input1_span1" style="font-size: 14px;line-height: 35px;color: #565656;float: left;">职位类型：</span>
 									<span style="line-height: 35px;"><input class="bfinput3" type="radio" name="characters" checked="checked" value="1" /> 全职</span>
 									<span style="line-height: 35px;"><input class="bfinput3" type="radio" name="characters"  value="2"/> 兼职</span>
 								</div>
@@ -349,7 +350,7 @@
 									<span>职位月薪：</span>
 									<!--<input id="money1" class="bf-input_input" name="money"  type="number" />-->
 									<select class="bf-input_input" id="money" name="money">
-										<option value="面议">面议</option>
+										<option selected="selected" value="面议">面议</option>
 										<option value="2000以下">2000以下</option>
 										<option value="2000~2999">2000~2999</option>
 										<option value="3000~3999">3000~3999</option>
@@ -363,13 +364,7 @@
 									</select>
 								</div>
 								<span class="bf-input_nextSpan" id="money1Tip"></span>
-
-								<!--发布时间 是隐藏的-->
-								<div class="bf-input" hidden="hidden">
-									<input id="uidx" hidden="hidden" name="uid" value="">
-									<input name="tp" hidden="hidden" value="2" />
-									<input name="comp" id="ucompx" hidden="hidden" value="2" />
-								</div>
+								
 								<div class="bf-input">
 									<span>联系电话：</span><input id="tel1" class="bf-input_input bf-input_phoneInput" name="tel" type="text" onkeyup="this.value=this.value.replace(/\D/g, '')" />
 								</div>
@@ -380,7 +375,7 @@
 								</div>
 								<!--bf-input_nextSpan提示内容 点击按钮 判断为显示或隐藏-->
 								<span class="bf-input_nextSpan" id="enterprise1Tip"></span>
-
+								<br />
 								<div class="bf-textarea">
 									<div class="bf-left">
 										<span>自我评价：&nbsp;</span>
@@ -394,6 +389,12 @@
 								<span class="bf-input_nextSpan" id="companyIntro1Tip"></span>
 								<br /><br />
 								<span id="show_error_" style="color: red;"></span>
+								<!--发布时间 是隐藏的-->
+								<div class="bf-input" hidden="hidden">
+									<input id="uidx" hidden="hidden" name="uid" value="">
+									<input name="tp" hidden="hidden" value="2" />
+									<input name="comp" id="ucompx" hidden="hidden" value="2" />
+								</div>
 								<div class="bf-submit">
 									<div class="bf-submit-center">
 										<span id="qiuzhi" style="border: none;background:none;font-size: 1.125em; color: white;line-height:40px" type="button">发&nbsp;&nbsp;&nbsp;布</span>
@@ -419,8 +420,8 @@
 		<script src="../js/nursery-information.js"></script>
 		<script type="text/javascript" src="../js/jquerySession.js"></script>
 		<script type="text/javascript" src="../js/demandRelease/personal_information.js"></script>
-
 		<script>
+			
 			$(function() {
 				window.sessionStorage.setItem("zp_qz", 1);
 				$.session.remove('header_num');
@@ -510,8 +511,26 @@
 					});
 				}
 			})
+			
+		//	    点击关闭按钮清空输入痕迹
+		$("#faTimes2").click(function(){
+			$("input,select,textarea").val("").focus();
+			$(".bf-input_nextSpan").html("");
+		});
+		$("#niClose").click(function(){
+			$("input,select,textarea").val("").focus();
+			$(".bf-input_nextSpan").html("");
+		});
+		$("#faTimes3").click(function(){
+			$("input,select,textarea").val("").focus();
+			$(".bf-input_nextSpan").html("");
+		});
+		
+		$(".bf-input_input,textarea").keyup(function(){
+			validate();
+			validate1();
+		});
 		</script>
-
 	</body>
 
 </html>

@@ -180,16 +180,20 @@
 										<option value="" class="bf-input_sOption">请选择</option>
 									</select>
 								</div>
+								<br />
+								<div style="clear: both;"></div>
+								<span class="bf-input_nextSpan"><img src="../img/err.png" />分类名称不能为空</span>
 								<div class="bf-input">
 									<span>二级分类&nbsp;: &nbsp;</span>
 									<select id="select_two" name="sub" class="bf-input_select">
 										<option value="" class="bf-input_sOption">--无--</option>
 									</select>
 								</div>
+								<div style="clear: both;"></div>
 								<div style="width: 100%; height: 1px; clear: both;"></div>
 								<!--bf-input_nextSpan提示内容 点击按钮 判断为显示或隐藏-->
 								<span class="bf-input_nextSpan"><img src="../img/err.png" />分类名称不能为空</span>
-								<br /><br />
+								<br />
 								<div class="bf-input">
 									<span>发布企业：</span><input class="bf-input_input" name="comp" type="text" />
 								</div>
@@ -197,6 +201,41 @@
 								<span class="bf-input_nextSpan"><img src="../img/err.png" />发布企业不能为空</span>
 								<input id="uid" name="uid" hidden="hidden" value="">
 								<input id="compId" name="compId" hidden="hidden" value="" />
+								
+								<!------------------------>  
+								<div class="bf-input">
+									<span>高度(H) (CM)：</span><input class="bf-input_input_unll" name="height" type="text" onkeyup="this.value=this.value.replace(/\D/g, '')" />
+								</div>
+								<span class="bf-input_nextSpan"><img src="../img/err.png" />/</span>
+								<div class="bf-input">
+									<span>胸径/地径(CM)：</span><input class="bf-input_input_unll" name="dbh" type="text" />
+								</div>
+								<span class="bf-input_nextSpan"><img src="../img/err.png" />/</span>
+								<div class="bf-input">
+									<span>蓬径(CM)：</span><input class="bf-input_input_unll" name="pdt" type="text" />
+								</div>
+								<span class="bf-input_nextSpan"><img src="../img/err.png" />/</span>
+								<div class="bf-input">
+									<span>数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量：</span><input class="bf-input_input" name="num" type="text" onkeyup="this.value=this.value.replace(/\D/g, '')" />
+								</div>
+								<!--bf-input_nextSpan提示内容 点击按钮 判断为显示或隐藏-->
+								<span class="bf-input_nextSpan"><img src="../img/err.png" />发布数量不能为空</span>
+								<div class="bf-input">
+									<span>单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位：</span>
+									<select id="select_one" name="unit" class="bf-input_select">
+										<option value="株" class="bf-input_sOption">--株--</option>
+										<option value="kg" class="bf-input_sOption">--kg--</option>
+										<option value="从" class="bf-input_sOption">--从--</option>
+										<option value="㎡" class="bf-input_sOption">--㎡--</option>
+									</select>
+								</div>
+								<!--bf-input_nextSpan提示内容 点击按钮 判断为显示或隐藏-->
+								<span class="bf-input_nextSpan"><img src="../img/err.png" />请选择单位！/</span>
+								<br /><br />
+								<div style="clear: both;"></div>
+								
+								<!------------------------------------------------->
+								
 								<div class="bf-textarea">
 									<div class="bf-left">
 										<span>内&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;容：</span>
@@ -234,7 +273,7 @@
 								<div class="bf-input">
 									<span>联系方式：</span><input name="tel" class="bf-input_phoneInput bf-input_input" type="telephone" .bf-input_phoneInput onkeyup="this.value=this.value.replace(/\D/g, '')" required="required" />
 								</div>
-								<span class="bf-input_nextSpan"><img src="../img/err.png" />联系方式不能为空</span>
+								<span class="bf-input_nextSpan"><img src="../img/err.png" />请输入正确的联系方式</span>
 								<div class="bf-input">
 									<span>供应地址：</span><input name="address" class="bf-input_input" type="text" required="required" />
 								</div>
@@ -244,7 +283,7 @@
 								</div>
 								<span class="bf-input_nextSpan"><img src="../img/err.png" />供应商家不能为空</span>
 								<div class="bf-input" hidden="hidden">
-									<span>发布时间：</span><input name="dates" class="bf-input_input" id="dates" type="text" required="required" />
+									<span hidden="hidden">发布时间：</span><input hidden="hidden" name="dates" class="bf-input_input" id="dates" type="text" required="required" />
 								</div>
 								<span id="show_error_" style="color: red;"></span>
 								<div class="bf-submit">
@@ -293,6 +332,24 @@
 					alert('您尚未登录，请登录后再次点击')
 				}
 			})
+			
+			/*动态的获取body的高度*/
+			$("#aFirst").click(function(){
+				var d_height = $(document).height();
+				if(d_height < 1550){
+					$(".ni-section .ni-box .ni-container").css("min-height","1000px")
+				}
+			});
+			
+			//	    点击关闭按钮清空输入痕迹
+		$("#faTimes2").click(function(){
+			$("input,select,textarea").val("").focus();
+			$(".bf-input_nextSpan").html("");
+		});
+		$("#niClose").click(function(){
+			$("input,select,textarea").val("").focus();
+			$(".bf-input_nextSpan").html("");
+		});	
 		</script>
 
 	</body>

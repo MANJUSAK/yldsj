@@ -14,6 +14,7 @@ import java.sql.SQLException;
  * <p>
  * DruidDBConfig类被@Configuration标注，用作配置信息；
  * DataSource对象被@Bean声明，为Spring容器所管理，
+ * version v1.0
  *
  * @author 严彬荣
  *         jdbc.url=${jdbc.url}

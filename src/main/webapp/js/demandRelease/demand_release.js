@@ -135,7 +135,7 @@ $(function() {
 	}
 	/** 输入手机号码正则 结束 **/
 	function Ajax_tj() {
-
+		//debugger;
 		if(needregEXP == true) {
 			//改变按钮的颜色和变为不可点击
 			$(".bf-submit > .bf-submit-center > span").text("正在发布...");
@@ -151,7 +151,6 @@ $(function() {
 				processData: false,
 				contentType: false,
 				success: function(data) {
-
 					if(data.status > 0) {
 						$(".bf-submit > .bf-submit-center > span").text("发       布");
 						$(".bf-submit > .bf-submit-center > span").css({
@@ -160,12 +159,10 @@ $(function() {
 						});
 						$('#show_error_').text(data.msg);
 					} else {
-
 						location.replace(location.href);
 					}
 				},
 				error: function(e) {
-
 					$(".bf-submit > .bf-submit-center > span").text("发       布");
 					$(".bf-submit > .bf-submit-center > span").css({
 						"pointer-events": "auto",
@@ -245,9 +242,13 @@ function getdata_(html, curl_, mydata) {
 						html += '<div class="dc-item">' +
 							'<div class="dc-item-center">' +
 							'<div class="dc-ic-left">' +
-							'<div class="dc-ic-left_center">' +
-							'<img src="' + data[pagenum].picture[0] + '" />' +
-							'</div>' +
+							'<div class="dc-ic-left_center">';
+						if(data[pagenum].picture != null) {
+							html += '<img src="' + data[pagenum].picture[0] + '" />';
+						} else {
+							html += '<img src="" />';
+						}
+						html += '</div>' +
 							'</div>' +
 							'<div class="dc-ti-right">' +
 							'<div class="dc-right-title">' +

@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * function 配置mybatis包扫描
  * Created by 严彬荣 on 2017/8/3.
+ * version v1.0
  */
 @Configuration
 @AutoConfigureAfter(MybatisConfig.class)

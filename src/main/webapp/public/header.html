@@ -75,6 +75,9 @@
 			<li>
 				<a href="../legal_person/talents.html">法人库</a>
 			</li>
+			<li>
+				<a href="../plant-information.html">苗木参考</a>
+			</li>
 		</ul>
 	</div>
 </div>
@@ -125,12 +128,10 @@
 			$.session.get('xq_num');
 		})
 		if($.session.get('header_num') == 1) {
-			//$.session.set('xq_num', 0);
 			$('.hn-nav2 .hn-nav2-item').removeClass("hni_active");
 			$('.hn-nav2 .hn-nav2-item').eq($.session.get('xq_num')).addClass("hni_active");
 		} else {
 			$.session.set('xq_num', 0);
-			//alert($.session.get('xq_num'))
 			$('.hn-nav2 .hn-nav2-item').removeClass("hni_active");
 			$('.hn-nav2 .hn-nav2-item').eq(0).addClass("hni_active");
 		}

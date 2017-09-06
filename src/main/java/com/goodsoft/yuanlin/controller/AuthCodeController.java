@@ -17,6 +17,7 @@ import java.io.IOException;
  * date 2017.03.02
  *
  * @author 严彬荣
+ * @version v1.0
  */
 @Controller
 public class AuthCodeController {

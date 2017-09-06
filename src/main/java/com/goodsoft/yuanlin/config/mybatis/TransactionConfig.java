@@ -14,6 +14,7 @@ import javax.annotation.Resource;
 /**
  * function mybatis事务管理配置
  * Created by 严彬荣 on 2017/8/3.
+ * version v1.0
  */
 @Configuration
 public class TransactionConfig implements TransactionManagementConfigurer {

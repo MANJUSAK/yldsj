@@ -27,6 +27,10 @@ $(function() {
 		'										<li>供应商：' + arr_one.supplier + '</li>' +
 		'										<li>发布时间：' + arr_one.date + '</li>' +
 		'										<li>供应地点：' + arr_one.address + '</li>' +
+		'										<li>高度(H) (CM)：' + arr_one.height + '</li>' +
+		'										<li>胸径/地径(CM)：' + arr_one.dbh + '</li>' +
+		'										<li>蓬径(CM)：' + arr_one.pdt + '</li>' +
+		'										<li>数量：' + arr_one.num + '&nbsp;' + arr_one.unit + '</li>' +
 		'									</ul>' +
 		'								</div>' +
 		'								<div class="tcc-inner">' +
@@ -50,7 +54,7 @@ $(function() {
 	$('.nds-topbar').html(html);
 
 	html_ += '<div class="nds-fc-title">' +
-		'<span><a href="">详细说明</a></span>' +
+		'<span><a href="">需求内容</a></span>' +
 		'</div>' +
 		'<p>&nbsp;&nbsp;' + arr_one.content + '</p>' +
 		'<div class="fc-footer">' +

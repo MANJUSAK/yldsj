@@ -426,7 +426,7 @@ function validate() {
 	var userName = $('#Cname').val();
 	//	招聘职位 
 	var job = $('#job').val();
-	//  联系邮箱
+	//邮箱
 	var enterprise = $('#enterprise').val();
 	//内容
 	var content = $('#content').val();
@@ -440,7 +440,6 @@ function validate() {
 	var tel = $('#tel').val();
 	//工作地点
 	var work = $('#work').val();
-
 	//公司名称
 	userName = $.trim(userName);
 	if(userName == '') {
@@ -459,14 +458,15 @@ function validate() {
 		document.getElementById('jobTip').innerHTML = '<img src="../img/ok.png"/>';
 		//result = true;
 	}
-	//发布企业
-	enterprise = $.trim(enterprise);
-	if(enterprise == '') {
-		document.getElementById('enterpriseTip').innerHTML = '<img src="../img/err.png"/><font color="red">招聘职位不能为空！</font>'
+	//邮箱
+	if(enterprise == ''){
+		document.getElementById("enterpriseTip").innerHTML = '<img src="../img/err.png"/><font color="red">邮箱不能为空！</font>'
+		result = false;
+	}else if(!/^(\w)+(\.\w+)*@(\w)+((\.\w{2,3}){1,3})$/.test(enterprise)) {
+		document.getElementById('enterpriseTip').innerHTML = '<img src="../img/err.png"/><font color="red">请输入正确的邮箱地址！</font>'
 		result = false;
 	} else {
 		document.getElementById('enterpriseTip').innerHTML = '<img src="../img/ok.png"/>';
-		//result = true;
 	}
 	//内容
 	content = $.trim(content);
@@ -480,7 +480,7 @@ function validate() {
 	//公司简介
 	companyIntro = $.trim(companyIntro);
 	if(companyIntro == '') {
-		document.getElementById('companyIntroTip').innerHTML = '<img src="../img/err.png"/><font color="red">内容不能为空！</font>'
+		document.getElementById('companyIntroTip').innerHTML = '<img src="../img/err.png"/><font color="red">公司简介不能为空！</font>'
 		result = false;
 	} else {
 		document.getElementById('companyIntroTip').innerHTML = '<img src="../img/ok.png"/>';
@@ -572,14 +572,22 @@ function validate1() {
 	if(tel1 == '') {
 		$('#tel1Tip').html('<img src="../img/err.png"/><font color="red">联系方式不能为空！</font>');
 		result = false;
-	} else {
+	} else if(!/^(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/.test(tel1)){
+		$("#tel1Tip").html('<img src="../img/err.png"/><font color="red">请填写正确的联系方式！</font>');
+		result = false;
+	}
+	else {
 		$('#tel1Tip').html('<img src=""../img/ok.png"">');
 	}
 	/*邮箱*/
 	if(enterprise1 == '') {
 		$('#enterprise1Tip').html('<img src="../img/err.png"/><font color="red">邮箱不能为空！</font>');
 		result = false;
-	} else {
+	} else if(!/^(\w)+(\.\w+)*@(\w)+((\.\w{2,3}){1,3})$/.test(enterprise1)) {
+		document.getElementById('enterpriseTip').innerHTML = '<img src="../img/err.png"/><font color="red">请输入正确的邮箱地址！</font>'
+		result = false;
+	}
+	else {
 		$('#enterprise1Tip').html('<img src=""../img/ok.png"">');
 	}
 	/*自我评价*/

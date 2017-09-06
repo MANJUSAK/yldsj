@@ -59,6 +59,28 @@ public class FileServicelmpl implements FileService {
                 // 判断文件格是否为空 end
                 break;
             //判断文件是图片还是文档 end
+            //判断文件是否为Excel start
+            case "excel":
+                //判断文件是否为空
+                if (!files[0].isEmpty()) {
+                    //判断文件大小是否小于30M start
+                    if (files[0].getSize() > 30000000) {
+                        return 601;
+                    }
+                    //判断文件大小是否小于30M end
+                    // 获取文件名
+                    String fileName = files[0].getOriginalFilename().toLowerCase();
+                    // 判断文件格式是否正确 start
+                    if (!(fileName.endsWith("xlsx"))) {
+                        return 603;
+                    }
+                    // 判断文件格式是否正确 end
+                } else {
+                    return 604;
+                }
+                // 判断文件格是否为空 end
+                break;
+            //判断文件是否为Excel end
             //图片文件类型检查 start
             default:
                 for (int i = 0, length = files.length; i < length; ++i) {
@@ -119,6 +141,9 @@ public class FileServicelmpl implements FileService {
                 case "trade":
                     file.setSort("行业协会");
                     break;
+                case "excel":
+                    file.setSort("表格文档");
+                    break;
                 default:
                     file.setSort("无分类");
                     break;
@@ -126,6 +151,11 @@ public class FileServicelmpl implements FileService {
             //获取文件类型 end
             //文件信息保存 start
             for (int i = 0, length = fileList.size(); i < length; ++i) {
+                int j = fileList.get(i).lastIndexOf("/") + 1;
+                int s = files[i].getOriginalFilename().lastIndexOf(".");
+                file.setNewFileName(fileList.get(i).substring(j, fileList.get(i).length()));
+                file.setFileName(files[i].getOriginalFilename());
+                file.setSuffix(files[i].getOriginalFilename().substring(s, files[i].getOriginalFilename().length()));
                 //设置文件路径
                 file.setPath(fileList.get(i));
                 this.dao.saveFileDao(file);

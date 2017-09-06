@@ -31,13 +31,25 @@ public class Seedling implements java.io.Serializable {
     private String supplier;
     // 苗木种类
     private String breed;
+    //胸径
+    private String dbh;
+    //蓬径
+    private String pdt;
+    //高度
+    private String height;
+    //数量
+    private String num;
+    //单位
+    private String unit;
+    //价格
+    private String price;
     // 苗木子种类
     private String sub;
     // 文件编号
     private String filesId;
     // 文件路径
     private List<FileData> picture;
-    //企业编号
+    //发布企业
     private String comp;
     // 用户编号
     private String uid;
@@ -152,6 +164,54 @@ public class Seedling implements java.io.Serializable {
 
     public void setComp(String comp) {
         this.comp = comp;
+    }
+
+    public String getDbh() {
+        return dbh;
+    }
+
+    public void setDbh(String dbh) {
+        this.dbh = dbh;
+    }
+
+    public String getPdt() {
+        return pdt;
+    }
+
+    public void setPdt(String pdt) {
+        this.pdt = pdt;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     @Transient

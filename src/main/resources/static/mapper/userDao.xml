@@ -38,7 +38,7 @@
     FROM
     gs_repertory_user
     WHERE
-    (userName=#{userName} or tel=#{userName}) AND passWord=#{passWord} AND ACTIVE='1'
+    (binary userName=#{userName} or tel=#{userName}) AND passWord=#{passWord} AND ACTIVE='1'
     </select>
     <!--用户登录sql end-->
     <!--用户签到结果映射 start-->

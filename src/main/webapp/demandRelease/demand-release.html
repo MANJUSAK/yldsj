@@ -176,7 +176,7 @@
 									<input id="uid" name="uid" value="">
 								</div>-->
 								<span id="show_error_" style="color: red;"></span>
-								<div class="bf-submit">
+								<div class="bf-submit" style="margin-top: 30px;">
 									<div class="bf-submit-center">
 										<span>发&nbsp;&nbsp;&nbsp;布</span>
 									</div>
@@ -225,6 +225,17 @@
 					alert('您尚未登录，请登录后再次点击')
 				}
 			})
+			
+			$("#faTimes2").click(function(){
+				$("input").val("").focus();
+				$(".bf-input_nextSpan").html("");
+			});
+			$("#niClose").click(function(){
+			$("input,select,textarea").val("").focus();
+			$(".bf-input_nextSpan").html("");
+		});
+		
+		
 		</script>
 	</body>
 

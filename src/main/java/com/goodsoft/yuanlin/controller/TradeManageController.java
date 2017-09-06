@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * function 行业协会访问入口
  * Created by 严彬荣 on 2017/8/21.
+ * version v1.0
  */
 @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)
 @RestController

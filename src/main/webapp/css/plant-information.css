@@ -1,0 +1,82 @@
+body {
+  background: #F0F0F0;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+ul li {
+  list-style: none;
+}
+.Pi-box {
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+  min-height: 670px;
+}
+.Pi-box .Pib-title {
+  width: 100%;
+  height: 50px;
+  background: white;
+  margin-top: 20px;
+}
+.Pi-box .Pib-title ul {
+  width: 98%;
+  margin: 0 auto;
+  padding-top: 5px;
+}
+.Pi-box .Pib-title ul li {
+  float: left;
+  text-align: center;
+  width: 16%;
+  height: 40px;
+  line-height: 40px;
+  background: #81C451;
+  color: white;
+  font-size: 14px;
+}
+.Pi-box .Pib-title ul li:not(:first-child) {
+  margin-left: 0.66%;
+}
+.Pi-box .Pib-container {
+  width: 100%;
+  height: auto;
+  background: white;
+  margin-top: 10px;
+}
+.Pi-box .Pib-container .Pib-content {
+  width: 98%;
+  height: auto;
+  margin: 0 auto;
+}
+.Pi-box .Pib-container .Pib-content ul {
+  width: 100%;
+  height: 50px;
+}
+.Pi-box .Pib-container .Pib-content ul li {
+  float: left;
+  width: 16%;
+  height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  color: #636363;
+  text-align: center;
+  line-height: 40px;
+  border-bottom: 1px solid #E7E7E7;
+}
+.Pi-box .Pib-container .Pib-content ul li:not(:first-child) {
+  margin-left: 0.66%;
+}
+.Pi-box .Pib-container .Pib-inner {
+  width: 30%;
+  height: 40px;
+  margin: 30px auto 0;
+  font-size: 14px;
+  text-align: center;
+  line-height: 40px;
+  color: #636363;
+  cursor: pointer;
+  background: #F0F0F0;
+}
