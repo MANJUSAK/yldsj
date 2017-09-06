@@ -115,6 +115,12 @@
             <version>3.14</version>
         </dependency>
         <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.26-incubating</version>
+        </dependency>
+
+        <dependency>
             <groupId>xml-apis</groupId>
             <artifactId>xml-apis</artifactId>
             <version>1.4.01</version>
