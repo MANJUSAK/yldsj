@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * function 企业推荐业务接口类
  * Created by 严彬荣 on 2017/8/14.
+ * version v1.0
  */
 public interface RecomCompService {
 

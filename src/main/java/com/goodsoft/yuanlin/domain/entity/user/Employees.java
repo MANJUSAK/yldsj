@@ -1,12 +1,13 @@
 package com.goodsoft.yuanlin.domain.entity.user;
 
+import java.util.Objects;
+
 /**
  * employees entity. 从业人员库表实体
  * <p>
- * <p>
  * date 2017-08-18
- *
- * @author 严彬荣
+ * author 严彬荣
+ * version v1.0
  */
 public class Employees implements java.io.Serializable {
     // 表id
@@ -72,5 +73,23 @@ public class Employees implements java.io.Serializable {
 
     public void setExperience(String experience) {
         this.experience = experience;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Employees)) return false;
+        Employees employees = (Employees) o;
+        return gender == employees.gender &&
+                Objects.equals(id, employees.id) &&
+                Objects.equals(name, employees.name) &&
+                Objects.equals(company, employees.company) &&
+                Objects.equals(education, employees.education) &&
+                Objects.equals(experience, employees.experience);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, gender, company, education, experience);
     }
 }

@@ -1,8 +1,11 @@
 package com.goodsoft.yuanlin.domain.entity.trade;
 
+import java.util.Objects;
+
 /**
  * function 动态资讯实体
  * Created by 严彬荣 on 2017/8/21.
+ * version v1.0
  */
 public class Information implements java.io.Serializable {
     private int id;//表id
@@ -49,5 +52,22 @@ public class Information implements java.io.Serializable {
 
     public void setInfoType(int infoType) {
         this.infoType = infoType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Information)) return false;
+        Information that = (Information) o;
+        return id == that.id &&
+                infoType == that.infoType &&
+                Objects.equals(title, that.title) &&
+                Objects.equals(content, that.content) &&
+                Objects.equals(date, that.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, content, date, infoType);
     }
 }

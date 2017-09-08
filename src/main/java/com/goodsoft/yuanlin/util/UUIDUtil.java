@@ -5,6 +5,7 @@ import java.util.UUID;
 /**
  * function UUID工具类
  * Created by 严彬荣 on 2017/8/4.
+ * version v1.0
  */
 public class UUIDUtil {
     /**

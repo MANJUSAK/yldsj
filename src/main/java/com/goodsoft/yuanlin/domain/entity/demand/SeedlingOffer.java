@@ -1,6 +1,7 @@
 package com.goodsoft.yuanlin.domain.entity.demand;
 
 import java.beans.Transient;
+import java.util.Objects;
 
 /**
  * 苗木参考报价实体
@@ -89,5 +90,26 @@ public class SeedlingOffer implements java.io.Serializable {
 
     public void setFileId(String fileId) {
         this.fileId = fileId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof SeedlingOffer)) return false;
+        SeedlingOffer that = (SeedlingOffer) o;
+        return Double.compare(that.price, price) == 0 &&
+                Objects.equals(sid, that.sid) &&
+                Objects.equals(material, that.material) &&
+                Objects.equals(specification, that.specification) &&
+                Objects.equals(unit, that.unit) &&
+                Objects.equals(types, that.types) &&
+                Objects.equals(comment, that.comment) &&
+                Objects.equals(date, that.date) &&
+                Objects.equals(fileId, that.fileId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sid, material, specification, unit, price, types, comment, date, fileId);
     }
 }

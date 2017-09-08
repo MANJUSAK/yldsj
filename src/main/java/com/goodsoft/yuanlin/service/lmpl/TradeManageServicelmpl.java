@@ -26,6 +26,7 @@ import java.util.List;
 /**
  * function 行业协会业务接口实现类
  * Created by 严彬荣 on 2017/8/21.
+ * version v1.0
  */
 @SuppressWarnings("ALL")
 @Service

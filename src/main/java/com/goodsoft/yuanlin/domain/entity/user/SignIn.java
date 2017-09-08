@@ -1,10 +1,12 @@
 package com.goodsoft.yuanlin.domain.entity.user;
 
 import java.beans.Transient;
+import java.util.Objects;
 
 /**
  * function 用户签到实体
  * Created by 严彬荣 on 2017/8/14.
+ * version v1.0
  */
 public class SignIn implements java.io.Serializable {
     private Integer sid;//表id
@@ -107,5 +109,28 @@ public class SignIn implements java.io.Serializable {
 
     public void setComments(String comments) {
         this.comments = comments;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof SignIn)) return false;
+        SignIn signIn = (SignIn) o;
+        return Double.compare(signIn.latitude, latitude) == 0 &&
+                Double.compare(signIn.longitude, longitude) == 0 &&
+                Objects.equals(sid, signIn.sid) &&
+                Objects.equals(address, signIn.address) &&
+                Objects.equals(name, signIn.name) &&
+                Objects.equals(time, signIn.time) &&
+                Objects.equals(comp, signIn.comp) &&
+                Objects.equals(uid, signIn.uid) &&
+                Objects.equals(company, signIn.company) &&
+                Objects.equals(dept, signIn.dept) &&
+                Objects.equals(comments, signIn.comments);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sid, address, name, time, comp, uid, latitude, longitude, company, dept, comments);
     }
 }

@@ -1,10 +1,12 @@
 package com.goodsoft.yuanlin.domain.entity.recommend;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * function 企业推荐实体
  * Created by 严彬荣 on 2017/8/11.
+ * version v1.0
  */
 public class RecomComp implements java.io.Serializable {
     private String id;//数据id
@@ -96,5 +98,27 @@ public class RecomComp implements java.io.Serializable {
 
     public void setPicture(List<String> picture) {
         this.picture = picture;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof RecomComp)) return false;
+        RecomComp recomComp = (RecomComp) o;
+        return Objects.equals(id, recomComp.id) &&
+                Objects.equals(companyName, recomComp.companyName) &&
+                Objects.equals(registFund, recomComp.registFund) &&
+                Objects.equals(registAdress, recomComp.registAdress) &&
+                Objects.equals(detailAdress, recomComp.detailAdress) &&
+                Objects.equals(nature, recomComp.nature) &&
+                Objects.equals(companyProfile, recomComp.companyProfile) &&
+                Objects.equals(registeredId, recomComp.registeredId) &&
+                Objects.equals(qualificationId, recomComp.qualificationId) &&
+                Objects.equals(picture, recomComp.picture);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, companyName, registFund, registAdress, detailAdress, nature, companyProfile, registeredId, qualificationId, picture);
     }
 }

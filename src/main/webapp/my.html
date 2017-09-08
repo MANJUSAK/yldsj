@@ -59,7 +59,7 @@
 											<input name="uid" hidden="hidden">
 											<input class="tc-rtl_manage3" type="submit" value="导出我的钱包">
 										</form>-->
-
+										
 									</div>
 									<!--新增添加的内容 结束-->
 								</div>
@@ -105,9 +105,10 @@
 		</div>
 
 		<script src="js/jquery.min.js"></script>
-		<script type="text/javascript" src="../js/hosts.js" ></script>
+		<script type="text/javascript" src="../js/hosts.js"></script>
 		<script src="js/common.js"></script>
 		<script type="text/javascript" src="js/jquerySession.js"></script>
+		<script type="text/javascript" src="js/my.js" ></script>
 
 		<script>
 			$(function() {
@@ -121,19 +122,21 @@
 						'</ul>';
 					$('#user_info').html(user_info);
 					$('#userNamex').html('<span>用户账号：' + $.session.get('uname') + '</span>')
-				}else{
-					window.location.href="login/login.html";
+				} else {
+					window.location.href = "login/login.html";
 				}
 
 			})
 			//跳转慧正
-			$('#tc-rtl_manage1,#tc-rtl_manage2').click(function() {
+			/*$('#tc-rtl_manage1,#tc-rtl_manage2').click(function() {
 				if($.session.get('ucomp')) {
 					window.location.href = window.sessionStorage.getItem('Host1') + $.session.get('ucomp') + '/horizon/basics/getBasics.wf?loginName=' + $.session.get('uname');
 				} else {
 					alert('获取用户信息失败~！')
 				}
-			})
+				$('#gohz').submit();
+
+			})*/
 		</script>
 		<!--当没有图片时就加一个高度-->
 		<script>
@@ -157,7 +160,6 @@
 			$(".masking_submit2").click(function() {
 				$(".masking").hide();
 			});
-			
 		</script>
 		<!--获取高度-->
 	</body>

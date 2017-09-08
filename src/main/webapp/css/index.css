@@ -851,6 +851,8 @@
 		display: inline-block;
 		line-height: normal !important;
 		margin-top: 12px;
+		-ms-line-height: normal !important;
+		-ms-line-height: normal\9 !important;
 	}
 	.ic-content > ul > li > a{
 		width: 80% !important;

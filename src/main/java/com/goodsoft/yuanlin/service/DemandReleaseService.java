@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * function 需求发布业务接口类
  * Created by 严彬荣 on 2017/8/4.
+ * version v1.0
  */
 public interface DemandReleaseService {
     //查询需求发布数据

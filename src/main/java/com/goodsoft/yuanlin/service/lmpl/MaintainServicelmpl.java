@@ -25,6 +25,7 @@ import java.util.List;
 /**
  * 植株养护信息
  * Created by 龙宏 on 2017/8/16.
+ * version v1.0
  */
 @SuppressWarnings("ALL")
 @Service

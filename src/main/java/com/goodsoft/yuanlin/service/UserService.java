@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * function 用户管理业务接口
  * Created by 严彬荣 on 2017/8/10.
+ * version v1.0
  */
 public interface UserService {
 

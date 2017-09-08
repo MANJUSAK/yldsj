@@ -225,7 +225,7 @@
 									<select id="select_one" name="unit" class="bf-input_select">
 										<option value="株" class="bf-input_sOption">--株--</option>
 										<option value="kg" class="bf-input_sOption">--kg--</option>
-										<option value="从" class="bf-input_sOption">--从--</option>
+										<option value="丛" class="bf-input_sOption">--丛--</option>
 										<option value="㎡" class="bf-input_sOption">--㎡--</option>
 									</select>
 								</div>
@@ -323,7 +323,6 @@
 				$.session.set('header_num', 1);
 				$('#header_').load('../public/header.html')
 				$('#footer').load('../public/footer.html')
-
 			});
 			$('#go_mys').click(function() {
 				if($.session.get('uid')) {

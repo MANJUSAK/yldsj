@@ -4,11 +4,13 @@ import com.goodsoft.yuanlin.domain.entity.file.FileData;
 
 import java.beans.Transient;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Seedling domain. 苗木信息表实体
- *
- * @author 严彬荣
+ * <p>
+ * author 严彬荣
+ * version v1.0
  */
 public class Seedling implements java.io.Serializable {
     // 表ID
@@ -223,4 +225,36 @@ public class Seedling implements java.io.Serializable {
         this.uid = uid;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Seedling)) return false;
+        Seedling seedling = (Seedling) o;
+        return Objects.equals(sid, seedling.sid) &&
+                Objects.equals(titleName, seedling.titleName) &&
+                Objects.equals(content, seedling.content) &&
+                Objects.equals(contact, seedling.contact) &&
+                Objects.equals(tel, seedling.tel) &&
+                Objects.equals(date, seedling.date) &&
+                Objects.equals(time, seedling.time) &&
+                Objects.equals(address, seedling.address) &&
+                Objects.equals(supplier, seedling.supplier) &&
+                Objects.equals(breed, seedling.breed) &&
+                Objects.equals(dbh, seedling.dbh) &&
+                Objects.equals(pdt, seedling.pdt) &&
+                Objects.equals(height, seedling.height) &&
+                Objects.equals(num, seedling.num) &&
+                Objects.equals(unit, seedling.unit) &&
+                Objects.equals(price, seedling.price) &&
+                Objects.equals(sub, seedling.sub) &&
+                Objects.equals(filesId, seedling.filesId) &&
+                Objects.equals(picture, seedling.picture) &&
+                Objects.equals(comp, seedling.comp) &&
+                Objects.equals(uid, seedling.uid);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sid, titleName, content, contact, tel, date, time, address, supplier, breed, dbh, pdt, height, num, unit, price, sub, filesId, picture, comp, uid);
+    }
 }

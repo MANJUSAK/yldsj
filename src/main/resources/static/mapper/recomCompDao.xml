@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--suppress ALL -->
-<!--@author 严彬荣-->
+<!--@author 严彬荣，version v1.0-->
 <!--企业推荐mapper start-->
 <mapper namespace="com.goodsoft.yuanlin.domain.dao.RecomCompDao">
     <!--查询企业推荐结果映射 start-->

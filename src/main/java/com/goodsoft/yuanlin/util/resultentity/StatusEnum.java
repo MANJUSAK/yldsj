@@ -4,6 +4,7 @@ package com.goodsoft.yuanlin.util.resultentity;
  * function 系统响应状态提示枚举类
  * <p>
  * Created by 严彬荣 on 2017/7/24.
+ * version v1.0
  */
 public enum StatusEnum implements java.io.Serializable {
     SUCCESS(0, "成功"),
@@ -45,4 +46,5 @@ public enum StatusEnum implements java.io.Serializable {
     public String getEXPLAIN() {
         return EXPLAIN;
     }
+
 }

@@ -4,11 +4,13 @@ import com.goodsoft.yuanlin.domain.entity.file.FileData;
 
 import java.beans.Transient;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Equipment domain. 设备租赁信息表实体
- *
- * @author 严彬荣
+ * <p>
+ * author 严彬荣
+ * version v1.0
  */
 public class Equipment implements java.io.Serializable {
 
@@ -122,5 +124,28 @@ public class Equipment implements java.io.Serializable {
 
     public void setPicture(List<FileData> picture) {
         this.picture = picture;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Equipment)) return false;
+        Equipment equipment = (Equipment) o;
+        return Objects.equals(eid, equipment.eid) &&
+                Objects.equals(titleName, equipment.titleName) &&
+                Objects.equals(content, equipment.content) &&
+                Objects.equals(date, equipment.date) &&
+                Objects.equals(time, equipment.time) &&
+                Objects.equals(contact, equipment.contact) &&
+                Objects.equals(tel, equipment.tel) &&
+                Objects.equals(filesId, equipment.filesId) &&
+                Objects.equals(comp, equipment.comp) &&
+                Objects.equals(uid, equipment.uid) &&
+                Objects.equals(picture, equipment.picture);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(eid, titleName, content, date, time, contact, tel, filesId, comp, uid, picture);
     }
 }

@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * function 需求发布dao层
  * Created by 严彬荣 on 2017/8/4.
+ * version v1.0
  */
 @Repository
 public interface DemandReleaseDao {

@@ -1,10 +1,12 @@
 package com.goodsoft.yuanlin.domain.entity.trade;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * function 培训信息实体
  * Created by 严彬荣 on 2017/8/21.
+ * version v1.0
  */
 public class TrainsInfo implements java.io.Serializable {
     private int id;//表id
@@ -69,5 +71,24 @@ public class TrainsInfo implements java.io.Serializable {
 
     public void setTrainFile(List<String> trainFile) {
         this.trainFile = trainFile;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TrainsInfo)) return false;
+        TrainsInfo that = (TrainsInfo) o;
+        return id == that.id &&
+                Objects.equals(traName, that.traName) &&
+                Objects.equals(date, that.date) &&
+                Objects.equals(content, that.content) &&
+                Objects.equals(filesId, that.filesId) &&
+                Objects.equals(traType, that.traType) &&
+                Objects.equals(trainFile, that.trainFile);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, traName, date, content, filesId, traType, trainFile);
     }
 }

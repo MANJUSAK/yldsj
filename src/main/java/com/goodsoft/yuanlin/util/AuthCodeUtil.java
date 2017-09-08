@@ -13,8 +13,8 @@ import java.util.Random;
  * function 验证码工具类
  * <p>
  * date 2017.03.10
- *
- * @author 严彬荣
+ * author 严彬荣
+ * version v1.0
  */
 @SuppressWarnings("ALL")
 public class AuthCodeUtil {

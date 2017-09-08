@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--suppress ALL -->
-<!--@author 严彬荣-->
+<!--@author 严彬荣，version v1.0-->
 <!--行业协会mapper start-->
 <mapper namespace="com.goodsoft.yuanlin.domain.dao.TradeManageDao">
     <!--行业协会数据查询 start-->

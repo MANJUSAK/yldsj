@@ -9,11 +9,13 @@ import org.springframework.context.annotation.ComponentScan;
 /**
  * function 系统启动程序入口
  * Created by 严彬荣 on 2017/8/4.
+ * version v1.0
  */
 @ComponentScan(basePackages = "com.goodsoft.yuanlin")
 @ServletComponentScan(basePackages = "com.goodsoft.yuanlin.config")
 @SpringBootApplication
 public class YlcxptApplication {
+    //系统日志管理
     private Logger logger = Logger.getLogger(YlcxptApplication.class);
 
     public static void main(String[] args) {

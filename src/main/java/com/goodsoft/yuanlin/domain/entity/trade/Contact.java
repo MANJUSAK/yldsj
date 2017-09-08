@@ -1,8 +1,11 @@
 package com.goodsoft.yuanlin.domain.entity.trade;
 
+import java.util.Objects;
+
 /**
  * function 联系协会实体
  * Created by 严彬荣 on 2017/8/21.
+ * version v1.0
  */
 public class Contact implements java.io.Serializable {
     private int id;//表id
@@ -85,5 +88,26 @@ public class Contact implements java.io.Serializable {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Contact)) return false;
+        Contact contact = (Contact) o;
+        return id == contact.id &&
+                postCode == contact.postCode &&
+                Objects.equals(name, contact.name) &&
+                Objects.equals(tel, contact.tel) &&
+                Objects.equals(address, contact.address) &&
+                Objects.equals(email, contact.email) &&
+                Objects.equals(webSite, contact.webSite) &&
+                Objects.equals(date, contact.date) &&
+                Objects.equals(time, contact.time);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, tel, address, email, webSite, postCode, date, time);
     }
 }

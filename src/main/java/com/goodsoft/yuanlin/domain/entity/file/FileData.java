@@ -1,10 +1,12 @@
 package com.goodsoft.yuanlin.domain.entity.file;
 
 import java.beans.Transient;
+import java.util.Objects;
 
 /**
  * function 文件数据实体类
  * Created by 严彬荣 on 2017/8/4.
+ * version v1.0
  */
 public class FileData implements java.io.Serializable {
     private int fid;//表id
@@ -80,6 +82,26 @@ public class FileData implements java.io.Serializable {
 
     public void setNewFileName(String newFileName) {
         this.newFileName = newFileName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof FileData)) return false;
+        FileData fileData = (FileData) o;
+        return fid == fileData.fid &&
+                Objects.equals(fileId, fileData.fileId) &&
+                Objects.equals(path, fileData.path) &&
+                Objects.equals(bases, fileData.bases) &&
+                Objects.equals(sort, fileData.sort) &&
+                Objects.equals(fileName, fileData.fileName) &&
+                Objects.equals(newFileName, fileData.newFileName) &&
+                Objects.equals(suffix, fileData.suffix);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fid, fileId, path, bases, sort, fileName, newFileName, suffix);
     }
 }
 

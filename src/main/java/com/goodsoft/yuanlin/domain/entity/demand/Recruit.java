@@ -1,11 +1,13 @@
 package com.goodsoft.yuanlin.domain.entity.demand;
 
 import java.beans.Transient;
+import java.util.Objects;
 
 /**
  * Blueprint domain. 人员招聘表实体
- *
- * @author 严彬荣
+ * <p>
+ * author 严彬荣
+ * version v1.0
  */
 public class Recruit implements java.io.Serializable {
 
@@ -200,5 +202,36 @@ public class Recruit implements java.io.Serializable {
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Recruit)) return false;
+        Recruit recruit = (Recruit) o;
+        return tp == recruit.tp &&
+                characters == recruit.characters &&
+                Objects.equals(rid, recruit.rid) &&
+                Objects.equals(positions, recruit.positions) &&
+                Objects.equals(companyName, recruit.companyName) &&
+                Objects.equals(companyIntro, recruit.companyIntro) &&
+                Objects.equals(companyAdress, recruit.companyAdress) &&
+                Objects.equals(workAdress, recruit.workAdress) &&
+                Objects.equals(content, recruit.content) &&
+                Objects.equals(contact, recruit.contact) &&
+                Objects.equals(email, recruit.email) &&
+                Objects.equals(money, recruit.money) &&
+                Objects.equals(experience, recruit.experience) &&
+                Objects.equals(tel, recruit.tel) &&
+                Objects.equals(evaluate, recruit.evaluate) &&
+                Objects.equals(date, recruit.date) &&
+                Objects.equals(time, recruit.time) &&
+                Objects.equals(comp, recruit.comp) &&
+                Objects.equals(uid, recruit.uid);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(rid, positions, companyName, companyIntro, companyAdress, workAdress, content, contact, email, money, experience, tel, evaluate, date, time, tp, characters, comp, uid);
     }
 }

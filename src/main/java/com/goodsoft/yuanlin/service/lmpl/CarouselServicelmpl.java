@@ -25,6 +25,7 @@ import java.util.List;
 /**
  * function 轮播图业务接口类
  * Created by 严彬荣 on 2017/8/18.
+ * version v1.0
  */
 @SuppressWarnings("ALL")
 @Service

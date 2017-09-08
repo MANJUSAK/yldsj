@@ -1,10 +1,12 @@
 package com.goodsoft.yuanlin.domain.entity.user;
 
 import java.beans.Transient;
+import java.util.Objects;
 
 /**
  * function：用户实体
  * Created by 严彬荣 on 2017/8/10.
+ * version v1.0
  */
 public class User implements java.io.Serializable {
 
@@ -125,5 +127,30 @@ public class User implements java.io.Serializable {
 
     public void setDept(String dept) {
         this.dept = dept;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return sex == user.sex &&
+                lev == user.lev &&
+                Objects.equals(uid, user.uid) &&
+                Objects.equals(name, user.name) &&
+                Objects.equals(userName, user.userName) &&
+                Objects.equals(passWord, user.passWord) &&
+                Objects.equals(tel, user.tel) &&
+                Objects.equals(member, user.member) &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(date, user.date) &&
+                Objects.equals(idCard, user.idCard) &&
+                Objects.equals(comp, user.comp) &&
+                Objects.equals(dept, user.dept);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(uid, name, userName, passWord, tel, member, email, sex, date, idCard, comp, dept, lev);
     }
 }

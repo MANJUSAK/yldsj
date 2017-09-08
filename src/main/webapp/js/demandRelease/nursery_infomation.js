@@ -236,11 +236,13 @@ function getdata_(html, curl_, mydata) {
 
 				})
 
-				////进入详情
+				////进入详情 sfiltrate1
 				$('.nc-ir-aim').click(function() {
+					var num = $(this).parent().parent().parent().parent().index();
+//					$('.ni-cotents').click(function() {
 					debugger;
 					if($.session.get('uid')) {
-						window.sessionStorage.setItem('datax', JSON.stringify(data[$(this).index()]))
+						window.sessionStorage.setItem('datax', JSON.stringify(data[num]))
 						window.open('nursery-details.html', '_blank');
 					} else {
 						$("#niYaler").css({

@@ -1,8 +1,11 @@
 package com.goodsoft.yuanlin.domain.entity.trade;
 
+import java.util.Objects;
+
 /**
  * function 会费实体
  * Created by 严彬荣 on 2017/8/21.
+ * version v1.0
  */
 public class Dues implements java.io.Serializable {
     private int id;//表id
@@ -85,5 +88,26 @@ public class Dues implements java.io.Serializable {
 
     public void setRegisterCapital(Double registerCapital) {
         this.registerCapital = registerCapital;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Dues)) return false;
+        Dues dues = (Dues) o;
+        return id == dues.id &&
+                Objects.equals(name, dues.name) &&
+                Objects.equals(date, dues.date) &&
+                Objects.equals(address, dues.address) &&
+                Objects.equals(project, dues.project) &&
+                Objects.equals(compScale, dues.compScale) &&
+                Objects.equals(qlifLevel, dues.qlifLevel) &&
+                Objects.equals(compType, dues.compType) &&
+                Objects.equals(registerCapital, dues.registerCapital);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, date, address, project, compScale, qlifLevel, compType, registerCapital);
     }
 }

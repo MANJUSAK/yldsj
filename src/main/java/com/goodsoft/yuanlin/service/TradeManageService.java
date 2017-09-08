@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * function 行业协会业务接口类
  * Created by 严彬荣 on 2017/8/21.
+ * version v1.0
  */
 public interface TradeManageService {
 

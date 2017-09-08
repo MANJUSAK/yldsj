@@ -1,8 +1,11 @@
 package com.goodsoft.yuanlin.domain.entity.maintenance;
 
+import java.util.Objects;
+
 /**
  * 园林管护信息
  * Created by 龙宏 on 2017/8/16.
+ * version v1.0
  */
 public class PlantInformation {
     /**
@@ -104,5 +107,25 @@ public class PlantInformation {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PlantInformation)) return false;
+        PlantInformation that = (PlantInformation) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(code, that.code) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(purpose, that.purpose) &&
+                Objects.equals(specifications, that.specifications) &&
+                Objects.equals(address, that.address) &&
+                Objects.equals(time, that.time) &&
+                Objects.equals(dept, that.dept);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, code, name, purpose, specifications, address, time, dept);
     }
 }

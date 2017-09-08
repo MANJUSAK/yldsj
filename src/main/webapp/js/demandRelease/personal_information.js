@@ -516,15 +516,12 @@ function validate() {
 	//	}
 	//联系方式
 	tel = $.trim(tel);
-	if(!/^(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/.test(tel)) {
+	if(/^1[3|4|5|8][0-9]\d{4,8}$/.test(tel) || /^0\d{2,3}-?\d{7,8}$/.test(tel)){
 		//错误的提示
-		document.getElementById('telTip').innerHTML = '<img src="../img/err.png"/><font color="red">必须填写正确的电话号码！</font>'
-		result = false;
-	} else if(tel.length > 11 || tel.length < 7) {
-		document.getElementById('telTip').innerHTML = '<img src="../img/err.png"/><font color="red">必须填写正确的电话号码！</font>'
-		result = false;
-	} else {
 		document.getElementById('telTip').innerHTML = '<img src="../img/ok.png"/>';
+	} else {
+		document.getElementById('telTip').innerHTML = '<img src="../img/err.png"/><font color="red">必须填写正确的电话号码！</font>';
+		result = false;
 	}
 	//alert("这是测试状态"+result);
 	return result;
@@ -569,15 +566,12 @@ function validate1() {
 		$('#content1Tip').html('<img src=""../img/ok.png"">');
 	}
 	/*联系方式*/
-	if(tel1 == '') {
+	if(/^1[3|4|5|8][0-9]\d{4,8}$/.test(tel1) || /^0\d{2,3}-?\d{7,8}$/.test(tel1)) {
+		$('#tel1Tip').html('<img src=""../img/ok.png"">');
+		
+	} else {
 		$('#tel1Tip').html('<img src="../img/err.png"/><font color="red">联系方式不能为空！</font>');
 		result = false;
-	} else if(!/^(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/.test(tel1)){
-		$("#tel1Tip").html('<img src="../img/err.png"/><font color="red">请填写正确的联系方式！</font>');
-		result = false;
-	}
-	else {
-		$('#tel1Tip').html('<img src=""../img/ok.png"">');
 	}
 	/*邮箱*/
 	if(enterprise1 == '') {

@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * 养护信息查询及录入
  * Created by 龙宏 on 2017/8/15.
+ * version v1.0
  */
 @Repository
 public interface MaintainDao {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--suppress ALL -->
+<!--@author 严彬荣，version v1.0-->
 <!--苗木参考报价mapper start-->
 <mapper namespace="com.goodsoft.yuanlin.domain.dao.SeedlingOfferDao">
     <!--查询苗木参考报价 start-->

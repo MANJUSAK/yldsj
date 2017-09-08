@@ -9,8 +9,9 @@ import java.util.GregorianCalendar;
 
 /**
  * 日期工具类
- *
- * @author
+ * <p>
+ * author 严彬荣
+ * version v1.0
  */
 @SuppressWarnings("ALL")
 public class DateUtils {
@@ -80,12 +81,9 @@ public class DateUtils {
     public boolean isBefore(Date date1, Date date2) {
         Calendar c1 = Calendar.getInstance();
         c1.setTime(date1);
-
         Calendar c2 = Calendar.getInstance();
         c2.setTime(date2);
-
         if (c1.before(c2)) return true;
-
         return false;
     }
 

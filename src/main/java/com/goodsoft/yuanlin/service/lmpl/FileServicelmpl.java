@@ -4,6 +4,8 @@ import com.goodsoft.yuanlin.domain.dao.FileDao;
 import com.goodsoft.yuanlin.domain.entity.file.FileData;
 import com.goodsoft.yuanlin.service.FileService;
 import com.goodsoft.yuanlin.util.FileUpload;
+import com.goodsoft.yuanlin.util.GetOsName;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,6 +16,7 @@ import java.util.List;
 /**
  * function 文件上传业务接口实现类
  * Created by 严彬荣 on 2017/8/4.
+ * version v1.0
  */
 @SuppressWarnings("ALL")
 @Service
@@ -23,6 +26,10 @@ public class FileServicelmpl implements FileService {
     private FileUpload fileUpload;
     @Resource
     private FileDao dao;
+    //实例化获取操作系统类型工具类
+    private GetOsName getOsName = GetOsName.getInstance();
+    //实例化日志管理
+    private Logger logger = Logger.getLogger(FileServicelmpl.class);
 
     /**
      * 文件上传业务处理方法
@@ -106,10 +113,15 @@ public class FileServicelmpl implements FileService {
                 break;
             //图片文件类型检查 end
         }
-        //windows文件路径
-        //String var1 = "D:/ylcxpt";
-        //Linux文件路径
-        String var1 = "/usr/ylcxpt";
+        //文件保存根目录
+        String var1 = null;
+        if (this.getOsName.getOsName()) {
+            //Linux文件路径
+            var1 = "/usr/ylcxpt";
+        } else {
+            //windows文件路径
+            var1 = "D:/ylcxpt";
+        }
         //文件保存 start
         try {
             //初始化文件实体类
@@ -129,9 +141,6 @@ public class FileServicelmpl implements FileService {
                 case "user":
                     file.setSort("用户");
                     break;
-                case "project":
-                    file.setSort("项目");
-                    break;
                 case "document":
                     file.setSort("文档文件");
                     break;
@@ -145,16 +154,21 @@ public class FileServicelmpl implements FileService {
                     file.setSort("表格文档");
                     break;
                 default:
-                    file.setSort("无分类");
+                    file.setSort("未知分类");
                     break;
             }
             //获取文件类型 end
             //文件信息保存 start
             for (int i = 0, length = fileList.size(); i < length; ++i) {
+                //截取新文件名字符位置
                 int j = fileList.get(i).lastIndexOf("/") + 1;
+                //截取文件后缀字符位置
                 int s = files[i].getOriginalFilename().lastIndexOf(".");
+                //获取文件新命名
                 file.setNewFileName(fileList.get(i).substring(j, fileList.get(i).length()));
+                //获取原文件名
                 file.setFileName(files[i].getOriginalFilename());
+                //获取文件后缀
                 file.setSuffix(files[i].getOriginalFilename().substring(s, files[i].getOriginalFilename().length()));
                 //设置文件路径
                 file.setPath(fileList.get(i));
@@ -165,6 +179,7 @@ public class FileServicelmpl implements FileService {
             fileList.clear();
         } catch (Exception e) {
             System.out.println(e.toString());
+            this.logger.error(e);
             return 600;
         }
         return 0;

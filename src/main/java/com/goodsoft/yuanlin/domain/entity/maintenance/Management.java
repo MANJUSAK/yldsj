@@ -1,8 +1,11 @@
 package com.goodsoft.yuanlin.domain.entity.maintenance;
 
+import java.util.Objects;
+
 /**
  * app管护信息录入
  * Created by 龙宏 on 2017/8/16.
+ * version v1.0
  */
 public class Management {
     private String id;         //表ID
@@ -149,5 +152,33 @@ public class Management {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Management)) return false;
+        Management that = (Management) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(code, that.code) &&
+                Objects.equals(address, that.address) &&
+                Objects.equals(time, that.time) &&
+                Objects.equals(personnel, that.personnel) &&
+                Objects.equals(content, that.content) &&
+                Objects.equals(frontPhoto, that.frontPhoto) &&
+                Objects.equals(afterPhoto, that.afterPhoto) &&
+                Objects.equals(problem, that.problem) &&
+                Objects.equals(cleaning, that.cleaning) &&
+                Objects.equals(plantGrowth, that.plantGrowth) &&
+                Objects.equals(remarks, that.remarks) &&
+                Objects.equals(userId, that.userId) &&
+                Objects.equals(type, that.type) &&
+                Objects.equals(maintenanceCode, that.maintenanceCode) &&
+                Objects.equals(dept, that.dept);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, code, address, time, personnel, content, frontPhoto, afterPhoto, problem, cleaning, plantGrowth, remarks, userId, type, maintenanceCode, dept);
     }
 }

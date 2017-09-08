@@ -283,8 +283,9 @@ function getdata_(html, curl_, mydata) {
 					div_.html(html);
 					//详情信息
 					$('.dc-inner-content').click(function() {
+						var num = $(this).parent().parent().parent().parent().index();
 						if($.session.get('uid')) {
-							window.sessionStorage.setItem('dem_data', JSON.stringify(data[$(this).index()]));
+							window.sessionStorage.setItem('dem_data', JSON.stringify(data[num]));
 							window.open('demand-release-details.html', '_blank');
 						} else {
 							$("#niYaler").css({

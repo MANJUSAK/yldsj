@@ -1,11 +1,14 @@
 package com.goodsoft.yuanlin.domain.entity.carousel;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * function 轮播图实体
  * Created by 严彬荣 on 2017/8/18.
+ * version v1.0
  */
+@SuppressWarnings("ALL")
 public class Carousel implements java.io.Serializable {
 
     private String id;//图片id
@@ -79,5 +82,25 @@ public class Carousel implements java.io.Serializable {
 
     public void setUrlAddress(String urlAddress) {
         this.urlAddress = urlAddress;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Carousel)) return false;
+        Carousel carousel = (Carousel) o;
+        return Objects.equals(id, carousel.id) &&
+                Objects.equals(picture, carousel.picture) &&
+                Objects.equals(picName, carousel.picName) &&
+                Objects.equals(description, carousel.description) &&
+                Objects.equals(effect, carousel.effect) &&
+                Objects.equals(urlAddress, carousel.urlAddress) &&
+                Objects.equals(date, carousel.date) &&
+                Objects.equals(filesId, carousel.filesId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, picture, picName, description, effect, urlAddress, date, filesId);
     }
 }

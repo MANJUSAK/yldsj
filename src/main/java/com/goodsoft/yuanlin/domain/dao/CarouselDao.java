@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 /**
  * function 轮播图数据dao层
  * Created by 严彬荣 on 2017/8/18.
+ * version v1.0
  */
 @Repository
 public interface CarouselDao {

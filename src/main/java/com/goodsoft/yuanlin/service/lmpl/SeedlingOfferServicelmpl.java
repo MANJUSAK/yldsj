@@ -43,7 +43,7 @@ public class SeedlingOfferServicelmpl implements SeedlingOfferService {
     @Override
     public <T> T querySeedlingOfferService(String price, String mate, String tp, String spf, String date, String page) {
         //判断page start
-        if (page == null || page == "") {
+        if (page == null || "".equals(page)) {
             return (T) new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
         //end
@@ -77,7 +77,9 @@ public class SeedlingOfferServicelmpl implements SeedlingOfferService {
 
     @Override
     public Status addSeedlingOfferService(MultipartFile[] files) {
+        //设置文件编号
         String uuid = this.uuid.getUUID().toString();
+        //文件上传
         int arg = this.fileService.fileUploadService(files, "excel", uuid);
         switch (arg) {
             case 604:
@@ -90,9 +92,11 @@ public class SeedlingOfferServicelmpl implements SeedlingOfferService {
                 return new Status(StatusEnum.FILE_UPLOAD.getCODE(), StatusEnum.FILE_UPLOAD.getEXPLAIN());
         }
         try {
+            //获取上传文件路径
             List<FileData> file = this.fileDao.queryFileDao(uuid);
             StringBuilder sb = new StringBuilder(file.get(0).getBases());
             sb.append(file.get(0).getPath());
+            //获取上传excel文件数据
             List<List<SeedlingOffer>> list = this.excelUtil.readExcel(sb.toString(), uuid);
             for (int i = 0, len = list.size(); i < len; ++i) {
                 List<SeedlingOffer> msg = list.get(i);

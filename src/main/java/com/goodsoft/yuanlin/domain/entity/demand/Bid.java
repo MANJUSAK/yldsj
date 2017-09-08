@@ -1,11 +1,13 @@
 package com.goodsoft.yuanlin.domain.entity.demand;
 
 import java.beans.Transient;
+import java.util.Objects;
 
 /**
  * Bid domain. 招标信息表实体
- *
- * @author 严彬荣
+ * <p>
+ * author 严彬荣
+ * version v1.0
  */
 public class Bid implements java.io.Serializable {
 
@@ -101,4 +103,24 @@ public class Bid implements java.io.Serializable {
         this.uid = uid;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Bid)) return false;
+        Bid bid1 = (Bid) o;
+        return Objects.equals(bid, bid1.bid) &&
+                Objects.equals(titleName, bid1.titleName) &&
+                Objects.equals(content, bid1.content) &&
+                Objects.equals(contact, bid1.contact) &&
+                Objects.equals(tel, bid1.tel) &&
+                Objects.equals(date, bid1.date) &&
+                Objects.equals(time, bid1.time) &&
+                Objects.equals(comp, bid1.comp) &&
+                Objects.equals(uid, bid1.uid);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bid, titleName, content, contact, tel, date, time, comp, uid);
+    }
 }

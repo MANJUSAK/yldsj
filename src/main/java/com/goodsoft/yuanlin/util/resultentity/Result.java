@@ -1,11 +1,13 @@
 package com.goodsoft.yuanlin.util.resultentity;
 
+import java.util.Objects;
+
 /**
- * function 返回结果集实体（无文件）
+ * function 返回结果集实体
  * <p>
  * date 2017.06.19
- *
- * @author 严彬荣
+ * author 严彬荣
+ * version v1.0
  */
 public class Result implements java.io.Serializable {
 
@@ -41,4 +43,17 @@ public class Result implements java.io.Serializable {
         this.data = data;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Result)) return false;
+        Result result = (Result) o;
+        return errorCode == result.errorCode &&
+                Objects.equals(data, result.data);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(errorCode, data);
+    }
 }

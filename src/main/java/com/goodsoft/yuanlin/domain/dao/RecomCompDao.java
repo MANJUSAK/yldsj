@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * function 企业推荐dao层
  * Created by 严彬荣 on 2017/8/11.
+ * version v1.0
  */
 @Repository
 public interface RecomCompDao {

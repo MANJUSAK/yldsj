@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * function 行业协会动态dao层
  * Created by 严彬荣 on 2017/8/21.
+ * version v1.0
  */
 @Repository
 public interface TradeManageDao {

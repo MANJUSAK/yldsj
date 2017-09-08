@@ -28,6 +28,7 @@ import java.util.List;
 /**
  * function 用户管理业务接口实现类
  * Created by 严彬荣 on 2017/8/10.
+ * version v1.0
  */
 @SuppressWarnings("ALL")
 @Service

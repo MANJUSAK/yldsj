@@ -1,12 +1,14 @@
 package com.goodsoft.yuanlin.domain.entity.user;
 
+import java.util.Objects;
+
 /**
  * Corporation entity. 法人库实体
  * <p>
- * <p>
  * date 2017-08-18
- *
- * @author 严彬荣
+ * <p>
+ * author 严彬荣
+ * version v1.0
  */
 public class Corporation implements java.io.Serializable {
 
@@ -72,5 +74,24 @@ public class Corporation implements java.io.Serializable {
 
     public void setCompanyIntro(String companyIntro) {
         this.companyIntro = companyIntro;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Corporation)) return false;
+        Corporation that = (Corporation) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(company, that.company) &&
+                Objects.equals(registerCap, that.registerCap) &&
+                Objects.equals(detailAddress, that.detailAddress) &&
+                Objects.equals(nature, that.nature) &&
+                Objects.equals(registerAddress, that.registerAddress) &&
+                Objects.equals(companyIntro, that.companyIntro);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, company, registerCap, detailAddress, nature, registerAddress, companyIntro);
     }
 }
