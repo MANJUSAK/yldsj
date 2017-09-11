@@ -106,42 +106,6 @@
     FROM gs_repertory_employees limit #{page},20
     </select>
     <!--从业人员库sql end-->
-    <!--  &lt;!&ndash;检索用户名是否存在&ndash;&gt;
-      <select id="queryUserByNameDao" parameterType="java.lang.String" resultType="int">
-          SELECT count(*) FROM hz7.to_horizon_user where LOGIN_NAME=#{userName}
-      </select>-->
-    <!--&lt;!&ndash;获取部门id&ndash;&gt;
-    <select id="queryDeptByNameDao" parameterType="java.lang.String" resultType="java.lang.String">
-    SELECT ID FROM hz7.to_horizon_dept WHERE
-    PARENT_ID IN (SELECT id FROM hz7.to_horizon_dept
-    WHERE
-    DEPT_LEVEL = 0) and DEPT_NAME= #{dept}
-    </select>
-    &lt;!&ndash;获取部门权限等级&ndash;&gt;
-    <select id="queryDeptLevelByIdDao" parameterType="java.lang.String" resultType="java.lang.String">
-        SELECT DEPT_LEVEL FROM hz7.to_horizon_dept where ID=#{deptId}
-    </select>
-    &lt;!&ndash;获取用户所在部门id&ndash;&gt;
-    <select id="queryDeptIdByUidDao" parameterType="java.lang.String" resultType="java.lang.String">
-        SELECT DEPT_ID FROM hz7.tor_horizon_user_dept where USER_ID=#{uid}
-    </select>-->
-    <!-- &lt;!&ndash;添加用户信息&ndash;&gt;
-     <insert id="addUserDao" parameterType="com.goodsoft.yuanlin.domain.entity.user.User">
-         INSERT INTO hz7.to_horizon_user
-         (ID, NAME, LOGIN_NAME, EMAIL, REGISTER_TIME,PASSWORD, SEX,
-          CELLPHONE, CERT_TYPE, CERT_NO, F1, F2,ACTIVE,CERTIFICATE)
-          VALUES
-          (#{uid}, #{name}, #{userName}, #{email}, #{date},#{passWord},
-           #{sex}, #{tel}, '0', #{idCard}, #{filesId}, #{deptId},'1','password')
-     </insert>-->
-    <!--&lt;!&ndash;将用户添加到部门&ndash;&gt;
-    <insert id="addDeptDao" parameterType="java.lang.String">
-    INSERT INTO
-    hz7.tor_horizon_user_dept
-    (ID, USER_ID, DEPT_ID, JOIN_TIME, ACTIVE, ORDER_NO, ISDEFAULT)
-    VALUES
-    (#{id}, #{uid}, #{deptId}, #{time},'1', '0', '1')
-    </insert>-->
     <!--用户签到sql start-->
     <insert id="signInDao" parameterType="com.goodsoft.yuanlin.domain.entity.user.SignIn">
         INSERT INTO gs_signin

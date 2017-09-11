@@ -41,10 +41,10 @@ public interface DemandReleaseDao {
     public void saveBidDao(Bid msg) throws Exception;
 
     // 设备租赁信息数据删除dao接口
-    public void updateEquipmentDao(@Param("id") int[] id) throws Exception;
+    public void updateEquipmentDao(@Param("id") String[] id) throws Exception;
 
     // 苗木信息数据删除dao接口
-    public void updateSeedlingDao(@Param("id") int[] id) throws Exception;
+    public void updateSeedlingDao(@Param("id") String[] id) throws Exception;
 
     // 人员招聘信息数据删除dao接口
     public void updateRecruitDao(@Param("id") int[] id) throws Exception;

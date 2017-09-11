@@ -70,7 +70,6 @@ public class DemandReleaseController {
         return this.service.releaseDataService(files, msg, "seedling");
     }
 
-
     /**
      * 发布招标数据接口
      *
@@ -95,9 +94,21 @@ public class DemandReleaseController {
         return this.service.releaseDataService(msg, "recruit");
     }
 
+    /**
+     * 删除需求发布数据访问入口(有文件)
+     *
+     * @param id   数据id（文件编号），
+     * @param type 删除类型（苗木、设备租赁等），
+     * @return 删除结果
+     */
+    @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)
+    @RequestMapping(value = "/delete/cont/{type}", method = RequestMethod.POST)
+    public Status deleteDemandReleaseController(@PathVariable("type") String type, String[] id) {
+        return this.service.deleteReleaseDataService(id, type);
+    }
 
     /**
-     * 删除需求发布数据访问入口
+     * 删除需求发布数据访问入口(无文件)
      *
      * @param id   数据id，
      * @param type 删除类型（苗木、设备租赁等），

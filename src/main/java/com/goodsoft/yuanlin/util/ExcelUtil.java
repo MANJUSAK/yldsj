@@ -55,11 +55,11 @@ public class ExcelUtil {
         XSSFWorkbook wb;
         try {
             wb = new XSSFWorkbook(is);
+            //读取excel end
+            return getSheetExcel(wb, fileId);
         } finally {
             is.close();
         }
-        //读取excel end
-        return getSheetExcel(wb, fileId);
     }
 
 
@@ -168,7 +168,7 @@ public class ExcelUtil {
                     }
                 }
             }
-            if (so.getMaterial() != null) {
+            if (so.getMaterial() != null && so.getPrice() != 0.0 && so.getTypes() != null) {
                 list.add(so);
             }
         }

@@ -86,20 +86,4 @@ public class UserController {
     public Object SignInController(SignIn msg) {
         return this.service.signInService(msg);
     }
-
-
-    /**
-     * 增加用户接口
-     *
-     * @param request http请求,
-     *                files 用户文件
-     *                msg 用户信息
-     *                userCode 用户验证码
-     * @return 增加用户结果
-     */
-   /* @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public Status addUserController(@RequestParam("files") MultipartFile[] files, HttpServletRequest request, User msg, String userCode) {
-        return this.service.addUserService(files, request, msg, userCode);
-    }*/
 }

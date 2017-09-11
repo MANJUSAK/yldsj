@@ -17,6 +17,12 @@ public interface FileDao {
     //文件查询
     public List<FileData> queryFileDao(@Param("fileId") String fileId) throws Exception;
 
+    //单文件查询
+    public FileData queryFileOneDao(@Param("fileId") String fileId) throws Exception;
+
     //文件保存
     public void saveFileDao(FileData msg) throws Exception;
+
+    //文件删除
+    public void deleteFileDao(@Param("fileId") String[] fileId) throws Exception;
 }

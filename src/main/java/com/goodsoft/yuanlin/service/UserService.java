@@ -23,7 +23,4 @@ public interface UserService {
 
     //查询人才库数据
     public <T> T queryTalentPoolService(String tp, String page);
-
-    //添加用户信息
-//    public Status addUserService(MultipartFile[] files, User msg, String userCode);
 }

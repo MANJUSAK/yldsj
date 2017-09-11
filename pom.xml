@@ -13,7 +13,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.5.6.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -114,12 +114,12 @@
             <artifactId>poi-scratchpad</artifactId>
             <version>3.14</version>
         </dependency>
+        <!--word 插件-->
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
             <version>2.3.26-incubating</version>
         </dependency>
-
         <dependency>
             <groupId>xml-apis</groupId>
             <artifactId>xml-apis</artifactId>

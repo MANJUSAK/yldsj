@@ -53,11 +53,12 @@ public class UserServicelmpl implements UserService {
     /**
      * 用户授权业务实现方法
      *
-     * @param request http请求,
-     *                userName 用户名
-     *                passWord 密码
-     *                userCode 用户验证码
+     * @param request  http请求,
+     * @param userName 用户名
+     * @param passWord 密码
+     * @param userCode 用户验证码
      * @return 用户授权结果
+     * @throws Exception
      */
     @Override
     public <T> T queryUserService(HttpServletRequest request, String userName, String passWord, String userCode) {
@@ -252,64 +253,4 @@ public class UserServicelmpl implements UserService {
             return new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
         }
     }
-
-
-    /**
-     * 增加用户业务实现方法
-     *
-     * @param request http请求,
-     * @param msg     用户信息
-     * @param files   用户文件
-     * @param userCode 用户验证码
-     * @return 增加用户结果
-     */
-    /*@Override
-    @Transactional
-    public Status addUserService(MultipartFile[] files, HttpServletRequest request, User msg, String userCode) {
-        //获取系统验证码
-        String pcCode = (String) request.getSession().getAttribute("pcCode");
-        //匹配用户验证码
-        if (pcCode == null || !pcCode.equals(userCode)) {
-            return new Status(StatusEnum.CHECKCODE.getCODE(), StatusEnum.CHECKCODE.getEXPLAIN());
-        }
-        try {
-            int num = this.dao.queryUserByNameDao(msg.getUserName());
-            if (num > 0) {
-                return new Status(StatusEnum.USERNAME.getCODE(), StatusEnum.USERNAME.getEXPLAIN());
-            }
-        } catch (Exception e) {
-            System.out.println(e.toString());
-            this.logger.error(e);
-            return new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
-        }
-        msg.setFilesId(this.uuid.getUUID().toString());
-        int arg = this.fileService.fileUploadService(files, request, "user", msg.getFilesId());
-        switch (arg) {
-            case 604:
-                return new Status(StatusEnum.NO_FILE.getCODE(), StatusEnum.NO_FILE.getEXPLAIN());
-            case 603:
-                return new Status(StatusEnum.FILE_FORMAT.getCODE(), StatusEnum.FILE_FORMAT.getEXPLAIN());
-            case 601:
-                return new Status(StatusEnum.FILE_SIZE.getCODE(), StatusEnum.FILE_SIZE.getEXPLAIN());
-            case 600:
-                return new Status(StatusEnum.FILE_UPLOAD.getCODE(), StatusEnum.FILE_UPLOAD.getEXPLAIN());
-        }
-        try {
-            String deptId = this.dao.queryDeptByNameDao(msg.getCompanyName());
-            msg.setDeptId(deptId);
-            msg.setUid(this.uuid.getUUID().toString());
-            msg.setPassWord(DESEDE.encryptIt(msg.getPassWord()));
-            String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-            msg.setDate(date);
-            this.dao.addUserDao(msg);
-            this.dao.addDeptDao(this.uuid.getUUID().toString(), msg.getUid(), deptId, date);
-            //增加用户成功后清除该用户验证码
-            request.getSession().removeAttribute("pcCode");
-            return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
-        } catch (Exception e) {
-            System.out.println(e.toString());
-            this.logger.error(e);
-            return new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
-        }
-}*/
 }

@@ -17,19 +17,48 @@
     <!--轮播图数据映射 end-->
     <!--获取轮播图数据sql start-->
     <select id="queryCarouselDao" resultMap="carouselInfo">
-    SELECT
-    cid, picName, description, effect, urlAddress, dates,filesId
-    FROM
-    gs_carousel
-    ORDER BY DATES desc limit 0,1
+        SELECT
+        cid, picName, description, effect, urlAddress, dates,filesId
+        FROM
+        gs_carousel
+        ORDER BY DATES desc limit 0,1
     </select>
     <!--获取轮播图数据sql end-->
     <!--添加轮播图sql start-->
     <insert id="addCarouselDao" parameterType="com.goodsoft.yuanlin.domain.entity.carousel.Carousel">
-    INSERT INTO gs_carousel (picName, description, effect, urlAddress, dates,filesId)
-    VALUES
-    (#{picName}, #{description}, #{effect}, #{urlAddress}, #{date}, #{filesId});
+        INSERT INTO gs_carousel (picName, description, effect, urlAddress, dates,filesId)
+        VALUES
+        (#{picName}, #{description}, #{effect}, #{urlAddress}, #{date}, #{filesId});
     </insert>
     <!--添加轮播图sql end-->
+    <!--修改轮播图sql start-->
+    <update id="updateCarouselDao" parameterType="com.goodsoft.yuanlin.domain.entity.carousel.Carousel">
+        UPDATE gs_carousel SET
+        <if test="picName !=null and picName!=''">
+            picName=#{picName},
+        </if>
+        <if test="description !=null and description!=''">
+            description=#{description},
+        </if>
+        <if test="effect !=null and effect!=''">
+            effect=#{effect},
+        </if>
+        <if test="urlAddress !=null and urlAddress!=''">
+            urlAddress=#{urlAddress},
+        </if>
+        <if test="filesId !=null and filesId!=''">
+            filesId=#{filesId},
+        </if>
+        dates=#{date} WHERE cid=#{id}
+    </update>
+    <!--修改轮播图sql end-->
+    <!--删除轮播图sql start-->
+    <delete id="deleteCarouselDao" parameterType="java.util.Arrays">
+        DELETE from gs_carousel WHERE filesId IN
+        <foreach collection="id" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+    <!--删除轮播图sql end-->
 </mapper>
         <!--轮播图mapper end-->

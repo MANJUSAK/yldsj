@@ -15,6 +15,12 @@ public interface CarouselService {
     //查询轮播图
     public <T> T queryCarouselService(HttpServletRequest request);
 
-    //查询轮播图
+    //添加轮播图
     public Status addCarouselService(MultipartFile[] files, Carousel msg);
+
+    //添加轮播图
+    public Status updateCarouselService(MultipartFile[] files, Carousel msg);
+
+    //删除轮播图
+    public Status deleteCarouselService(String[] id);
 }

@@ -77,6 +77,11 @@ public class SeedlingOfferServicelmpl implements SeedlingOfferService {
 
     @Override
     public Status addSeedlingOfferService(MultipartFile[] files) {
+        //判断表格是否为07版以上
+        boolean suffix = files[0].getOriginalFilename().endsWith("xls");
+        if (suffix) {
+            return new Status(StatusEnum.FILE_FORMAT.getCODE(), StatusEnum.FILE_FORMAT.getEXPLAIN());
+        }
         //设置文件编号
         String uuid = this.uuid.getUUID().toString();
         //文件上传
@@ -93,9 +98,9 @@ public class SeedlingOfferServicelmpl implements SeedlingOfferService {
         }
         try {
             //获取上传文件路径
-            List<FileData> file = this.fileDao.queryFileDao(uuid);
-            StringBuilder sb = new StringBuilder(file.get(0).getBases());
-            sb.append(file.get(0).getPath());
+            FileData file = this.fileDao.queryFileOneDao(uuid);
+            StringBuilder sb = new StringBuilder(file.getBases());
+            sb.append(file.getPath());
             //获取上传excel文件数据
             List<List<SeedlingOffer>> list = this.excelUtil.readExcel(sb.toString(), uuid);
             for (int i = 0, len = list.size(); i < len; ++i) {

@@ -23,4 +23,10 @@ public interface TradeManageService {
 
     //增加行业协会数据(无文件)
     public Status addTradeService(String type, Object msg);
+
+    //删除行业协会数据(有文件)
+    public Status deleteTradeService(String type, String[] id);
+
+    //删除行业协会数据(无文件)
+    public Status deleteTradeService(String type, int[] id);
 }

@@ -296,7 +296,7 @@
     <!--更新招标数据状态(isNo=1表示数据已删除) end-->
     <!--更新人员招聘数据状态(isNo=1表示数据已删除) start-->
     <update id="updateRecruitDao" parameterType="java.util.Arrays">
-        UPDATE gs_recruit SET isNo='1' WHERE rid IN
+        UPDATE gs_recruit SET isNo='1' WHERE filesId IN
         <foreach collection="id" item="item" open="(" separator="," close=")">
             #{item}
         </foreach>

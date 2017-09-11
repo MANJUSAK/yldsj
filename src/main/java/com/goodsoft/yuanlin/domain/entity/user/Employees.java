@@ -15,7 +15,7 @@ public class Employees implements java.io.Serializable {
     // 姓名
     private String name;
     // 性别
-    private int gender;
+    private String gender;
     // 隶属企业
     private String company;
     //是否继续教育
@@ -27,9 +27,6 @@ public class Employees implements java.io.Serializable {
         return id;
     }
 
-    public void setGender(int gender) {
-        this.gender = gender;
-    }
 
     public void setId(String id) {
         this.id = id;
@@ -43,11 +40,11 @@ public class Employees implements java.io.Serializable {
         this.name = name;
     }
 
-    public Integer getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Integer gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

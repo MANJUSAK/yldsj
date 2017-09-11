@@ -113,4 +113,28 @@ public class TradeManageController {
     public Status addController(@RequestParam("files") MultipartFile[] files, String fileType, TrainsInfo msg) {
         return this.service.addTradeService(files, fileType, "xhpx", msg);
     }
+
+    /**
+     * 删除行业协会数据接口（有文件）
+     *
+     * @param type 删除数据类型（如：删除协会培训数据等）
+     * @param id   数据id（文件编号）
+     * @return 响应结果
+     */
+    @RequestMapping("/delete/cont/{type}")
+    public Status deleteTradeController(@PathVariable("type") String type, String[] id) {
+        return this.service.deleteTradeService(type, id);
+    }
+
+    /**
+     * 删除行业协会数据接口（无文件）
+     *
+     * @param type 删除数据类型（如：删除会费数据等）
+     * @param id   数据id（文件编号）
+     * @return 响应结果
+     */
+    @RequestMapping("/delete/{type}")
+    public Status deleteTradeController(@PathVariable("type") String type, int[] id) {
+        return this.service.deleteTradeService(type, id);
+    }
 }

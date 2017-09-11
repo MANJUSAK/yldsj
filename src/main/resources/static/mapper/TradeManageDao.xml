@@ -201,5 +201,39 @@
     </insert>
     <!--添加联系协会数据sql end-->
     <!--行业协会数据添加 end-->
+    <!--行业协会数据删除 start-->
+    <!--会费数据删除sql start-->
+    <delete id="deleteDuesDao" parameterType="java.util.Arrays">
+        DELETE FROM gs_dues WHERE did IN
+        <foreach collection="id" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+    <!--会费数据删除sql end-->
+    <!--动态资讯数据删除sql start-->
+    <delete id="deleteInformationDao" parameterType="java.util.Arrays">
+        DELETE FROM gs_information WHERE id IN
+        <foreach collection="id" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+    <!--动态资讯数据删除sql end-->
+    <!--优质工程数据删除sql start-->
+    <delete id="deleteQualEngineeringDao" parameterType="java.util.Arrays">
+        DELETE FROM gs_qualengineering WHERE qid IN
+        <foreach collection="id" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+    <!--优质工程数据删除sql end-->
+    <!--协会培训数据删除sql start-->
+    <delete id="deleteTrainInfoDao" parameterType="java.util.Arrays">
+        DELETE FROM gs_traininfo WHERE filesId IN
+        <foreach collection="fileId" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+    <!--协会培训数据删除sql end-->
+    <!--行业协会数据删除 end-->
 </mapper>
         <!--行业协会mapper start-->

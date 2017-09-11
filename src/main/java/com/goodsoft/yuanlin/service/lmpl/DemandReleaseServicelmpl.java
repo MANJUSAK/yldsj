@@ -9,6 +9,7 @@ import com.goodsoft.yuanlin.domain.entity.demand.Seedling;
 import com.goodsoft.yuanlin.domain.entity.file.FileData;
 import com.goodsoft.yuanlin.service.DemandReleaseService;
 import com.goodsoft.yuanlin.service.FileService;
+import com.goodsoft.yuanlin.util.DeleteFileUtil;
 import com.goodsoft.yuanlin.util.DomainNameUtil;
 import com.goodsoft.yuanlin.util.UUIDUtil;
 import com.goodsoft.yuanlin.util.resultentity.Result;
@@ -46,6 +47,8 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
     private UUIDUtil uuid = UUIDUtil.getInstance();
     //实例化服务器域名地址工具类
     private DomainNameUtil domainName = DomainNameUtil.getInstance();
+    //实例化文件删除工具类
+    private DeleteFileUtil deleteFile = DeleteFileUtil.getInstance();
 
     /**
      * 查询需求发布数据
@@ -327,7 +330,71 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
     }
 
     /**
-     * 需求发布数据删除业务处理
+     * 需求发布数据删除业务处理（有文件）
+     *
+     * @param id   删除数据编号，
+     * @param type 删除类型（苗木、设备租赁等）。
+     * @return 删除结果
+     * @throws Exception
+     */
+    @Override
+    @Transactional
+    public Status deleteReleaseDataService(String[] id, String type) {
+        //根据类型删除数据 start
+        switch (type) {
+            //删除设备租赁数据 start
+            case "equipment":
+                try {
+                    for (int i = 0, length = id.length; i < length; ++i) {
+                        List<FileData> fileData = this.fileDao.queryFileDao(id[i]);
+                        //删除硬盘上的文件
+                        this.deleteFile.deleteFile(fileData);
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.toString());
+                }
+                try {
+                    //删除数据
+                    this.dao.updateEquipmentDao(id);
+                    //删除数据库文件数据
+                    this.fileDao.deleteFileDao(id);
+                } catch (Exception e) {
+                    this.logger.error(e);
+                    System.out.println(e.toString());
+                    return new Status(StatusEnum.DEFEAT.getCODE(), StatusEnum.DEFEAT.getEXPLAIN());
+                }
+                return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
+            //删除设备租赁数据 end
+            //删除苗木信息数据 start
+            case "seedling":
+                try {
+                    for (int i = 0, length = id.length; i < length; ++i) {
+                        List<FileData> fileData = this.fileDao.queryFileDao(id[i]);
+                        //删除硬盘上的文件
+                        this.deleteFile.deleteFile(fileData);
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.toString());
+                }
+                try {
+                    this.dao.updateSeedlingDao(id);
+                    //删除数据库中的文件数据
+                    this.fileDao.deleteFileDao(id);
+                } catch (Exception e) {
+                    this.logger.error(e);
+                    System.out.println(e.toString());
+                    return new Status(StatusEnum.DEFEAT.getCODE(), StatusEnum.DEFEAT.getEXPLAIN());
+                }
+                return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
+            //删除苗木信息数据 end
+            default:
+                return new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
+        }
+        //根据类型删除数据 end
+    }
+
+    /**
+     * 需求发布数据删除业务处理（无文件）
      *
      * @param id   删除数据编号，
      * @param type 删除类型（苗木、设备租赁等）。
@@ -339,28 +406,6 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
     public Status deleteReleaseDataService(int[] id, String type) {
         //根据类型删除数据 start
         switch (type) {
-            //删除设备租赁数据 start
-            case "equipment":
-                try {
-                    this.dao.updateEquipmentDao(id);
-                } catch (Exception e) {
-                    this.logger.error(e);
-                    System.out.println(e.toString());
-                    return new Status(StatusEnum.DEFEAT.getCODE(), StatusEnum.DEFEAT.getEXPLAIN());
-                }
-                return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
-            //删除设备租赁数据 end
-            //删除苗木信息数据 start
-            case "seedling":
-                try {
-                    this.dao.updateSeedlingDao(id);
-                } catch (Exception e) {
-                    this.logger.error(e);
-                    System.out.println(e.toString());
-                    return new Status(StatusEnum.DEFEAT.getCODE(), StatusEnum.DEFEAT.getEXPLAIN());
-                }
-                return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
-            //删除苗木信息数据 end
             //删除招标信息数据 start
             case "bid":
                 try {

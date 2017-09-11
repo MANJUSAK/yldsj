@@ -78,7 +78,7 @@ public class FileServicelmpl implements FileService {
                     // 获取文件名
                     String fileName = files[0].getOriginalFilename().toLowerCase();
                     // 判断文件格式是否正确 start
-                    if (!(fileName.endsWith("xlsx"))) {
+                    if (!(fileName.endsWith("xlsx") || fileName.endsWith("xls"))) {
                         return 603;
                     }
                     // 判断文件格式是否正确 end

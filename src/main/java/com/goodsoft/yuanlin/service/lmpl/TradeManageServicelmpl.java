@@ -6,6 +6,7 @@ import com.goodsoft.yuanlin.domain.entity.file.FileData;
 import com.goodsoft.yuanlin.domain.entity.trade.*;
 import com.goodsoft.yuanlin.service.FileService;
 import com.goodsoft.yuanlin.service.TradeManageService;
+import com.goodsoft.yuanlin.util.DeleteFileUtil;
 import com.goodsoft.yuanlin.util.DomainNameUtil;
 import com.goodsoft.yuanlin.util.UUIDUtil;
 import com.goodsoft.yuanlin.util.resultentity.Result;
@@ -44,6 +45,8 @@ public class TradeManageServicelmpl implements TradeManageService {
     private UUIDUtil uuid = UUIDUtil.getInstance();
     //实例化服务器域名地址工具类
     private DomainNameUtil domainName = DomainNameUtil.getInstance();
+    //实例化文件删除工具类
+    private DeleteFileUtil deleteFile = DeleteFileUtil.getInstance();
 
     /**
      * 行业协会数据查询（含文件）
@@ -358,5 +361,98 @@ public class TradeManageServicelmpl implements TradeManageService {
                 return new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
         //根据类型添加数据 end
+    }
+
+    /**
+     * 删除行业协会数据业务方法（有文件）
+     *
+     * @param type 删除数据类型（如：协会培训数据）
+     * @param id   数据id
+     * @return 删除结果
+     */
+    @Override
+    @Transactional
+    public Status deleteTradeService(String type, String[] id) {
+        //删除行业协会数据 start
+        switch (type) {
+            //删除协会培训数据 start
+            case "xhpx":
+                try {
+                    for (int i = 0, len = id.length; i < len; ++i) {
+                        //获取数据文件
+                        List<FileData> fileData = this.fileDao.queryFileDao(id[i]);
+                        //删除硬盘上的文件
+                        this.deleteFile.deleteFile(fileData);
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.toString());
+                }
+                try {
+                    //删除数据
+                    this.dao.deleteTrainInfoDao(id);
+                    //删除数据库文件数据
+                    this.fileDao.deleteFileDao(id);
+                    return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
+                } catch (Exception e) {
+                    this.logger.error(e);
+                    System.out.println(e.toString());
+                    return new Status(StatusEnum.DEFEAT.getCODE(), StatusEnum.DEFEAT.getEXPLAIN());
+                }
+                //删除协会培训数据 end
+            default:
+                return new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
+        }
+        //删除行业协会数据 start
+    }
+
+    /**
+     * 删除行业协会数据业务方法（无文件）
+     *
+     * @param type 删除数据类型（如：动态资讯数据）
+     * @param id   数据id
+     * @return 删除结果
+     */
+    @Override
+    @Transactional
+    public Status deleteTradeService(String type, int[] id) {
+        //删除行业协会数据 start
+        switch (type) {
+            //删除会费数据 stat
+            case "hf":
+                try {
+                    this.dao.deleteDuesDao(id);
+                    return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
+                } catch (Exception e) {
+                    this.logger.error(e);
+                    System.out.println(e.toString());
+                    return new Status(StatusEnum.DEFEAT.getCODE(), StatusEnum.DEFEAT.getEXPLAIN());
+                }
+                //删除会费数据 end
+                //删除动态资讯数据 stat
+            case "dtzx":
+                try {
+                    this.dao.deleteInformationDao(id);
+                    return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
+                } catch (Exception e) {
+                    this.logger.error(e);
+                    System.out.println(e.toString());
+                    return new Status(StatusEnum.DEFEAT.getCODE(), StatusEnum.DEFEAT.getEXPLAIN());
+                }
+                //删除动态资讯数据 end
+                //删除优质工程数据 stat
+            case "yzgc":
+                try {
+                    this.dao.deleteQualEngineeringDao(id);
+                    return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
+                } catch (Exception e) {
+                    this.logger.error(e);
+                    System.out.println(e.toString());
+                    return new Status(StatusEnum.DEFEAT.getCODE(), StatusEnum.DEFEAT.getEXPLAIN());
+                }
+                //删除优质工程数据 end
+            default:
+                return new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
+        }
+        //删除行业协会数据 end
     }
 }

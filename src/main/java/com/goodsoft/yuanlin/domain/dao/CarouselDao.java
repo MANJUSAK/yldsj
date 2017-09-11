@@ -1,6 +1,7 @@
 package com.goodsoft.yuanlin.domain.dao;
 
 import com.goodsoft.yuanlin.domain.entity.carousel.Carousel;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -16,4 +17,10 @@ public interface CarouselDao {
 
     //添加轮播图
     public void addCarouselDao(Carousel msg) throws Exception;
+
+    //添加轮播图
+    public void updateCarouselDao(Carousel msg) throws Exception;
+
+    //删除轮播图
+    public void deleteCarouselDao(@Param("id") String[] id) throws Exception;
 }

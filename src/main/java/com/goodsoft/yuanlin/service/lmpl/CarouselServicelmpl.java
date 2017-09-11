@@ -6,6 +6,7 @@ import com.goodsoft.yuanlin.domain.entity.carousel.Carousel;
 import com.goodsoft.yuanlin.domain.entity.file.FileData;
 import com.goodsoft.yuanlin.service.CarouselService;
 import com.goodsoft.yuanlin.service.FileService;
+import com.goodsoft.yuanlin.util.DeleteFileUtil;
 import com.goodsoft.yuanlin.util.DomainNameUtil;
 import com.goodsoft.yuanlin.util.UUIDUtil;
 import com.goodsoft.yuanlin.util.resultentity.Result;
@@ -41,6 +42,8 @@ public class CarouselServicelmpl implements CarouselService {
     private DomainNameUtil domainName = DomainNameUtil.getInstance();
     //实例化UUID工具类
     private UUIDUtil uuid = UUIDUtil.getInstance();
+    //实例化文件删除工具类
+    private DeleteFileUtil deleteFile = DeleteFileUtil.getInstance();
 
     /**
      * function 查询轮播图业务接口类
@@ -117,6 +120,76 @@ public class CarouselServicelmpl implements CarouselService {
         } catch (Exception e) {
             System.out.println(e.toString());
             return new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
+        }
+    }
+
+    /**
+     * 轮播图修改业务方法
+     *
+     * @param files 修改文件
+     * @param msg   修改数据
+     * @return 修改结果
+     * @throws Exception
+     */
+    @Override
+    @Transactional
+    public Status updateCarouselService(MultipartFile[] files, Carousel msg) {
+        String uuid = this.uuid.getUUID().toString();
+        int arg = this.fileService.fileUploadService(files, "carousel", uuid);
+        switch (arg) {
+            case 603:
+                return new Status(StatusEnum.FILE_FORMAT.getCODE(), StatusEnum.FILE_FORMAT.getEXPLAIN());
+            case 601:
+                return new Status(StatusEnum.FILE_SIZE.getCODE(), StatusEnum.FILE_SIZE.getEXPLAIN());
+            case 600:
+                return new Status(StatusEnum.FILE_UPLOAD.getCODE(), StatusEnum.FILE_UPLOAD.getEXPLAIN());
+        }
+        if (arg != 604) {
+            String id = msg.getFilesId();
+            String[] fid = {id};
+            try {
+                List<FileData> fileData = this.fileDao.queryFileDao(id);
+                this.deleteFile.deleteFile(fileData);
+                this.fileDao.deleteFileDao(fid);
+            } catch (Exception e) {
+                System.out.println(e.toString());
+            }
+            msg.setFilesId(uuid);
+        }
+        msg.setDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        try {
+            this.dao.updateCarouselDao(msg);
+            return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            return new Status(StatusEnum.SERVER_ERROR.getCODE(), StatusEnum.SERVER_ERROR.getEXPLAIN());
+        }
+    }
+
+    /**
+     * 删除轮播图业务方法
+     *
+     * @param id 数据id
+     * @return 删除结果
+     */
+    @Override
+    @Transactional
+    public Status deleteCarouselService(String[] id) {
+        try {
+            for (int i = 0, length = id.length; i < length; ++i) {
+                List<FileData> fileData = this.fileDao.queryFileDao(id[i]);
+                this.deleteFile.deleteFile(fileData);
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        try {
+            this.dao.deleteCarouselDao(id);
+            this.fileDao.deleteFileDao(id);
+            return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            return new Status(StatusEnum.DEFEAT.getCODE(), StatusEnum.DEFEAT.getEXPLAIN());
         }
     }
 }
