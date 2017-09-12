@@ -18,7 +18,7 @@
     <!--会费简略数据sql end-->
     <!--会费详细数据结果映射 start-->
     <resultMap id="mberDuesInfo" type="com.goodsoft.yuanlin.domain.entity.trade.Dues">
-        <result property="id" column="did"/>
+        <result property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="date" column="dates"/>
         <result property="address" column="address"/>
@@ -32,7 +32,7 @@
     <!--会费详细数据sql start-->
     <select id="queryMberDuesDao" parameterType="java.lang.Object" resultMap="mberDuesInfo">
         SELECT
-        did,
+        id,
         name,
         dates,
         address,
@@ -82,7 +82,7 @@
     <!--动态资讯数据sql end-->
     <!--优质工程数据结果映射 start-->
     <resultMap id="qualEnginInfo" type="com.goodsoft.yuanlin.domain.entity.trade.QualEngin">
-        <result property="id" column="qid"/>
+        <result property="id" column="id"/>
         <result property="engName" column="engName"/>
         <result property="date" column="dates"/>
         <result property="selectYear" column="selectYear"/>
@@ -91,7 +91,7 @@
     <!--优质工程数据结果映射 end-->
     <!--优质工程数据sql start-->
     <select id="queryQualEnginDao" parameterType="java.lang.Object" resultMap="qualEnginInfo">
-        SELECT qid,engName,dates,selectYear,company FROM gs_qualengineering
+        SELECT id,engName,dates,selectYear,company FROM gs_qualengineering
         <where>
             <if test="date !=null and date !=''">
                 and dates LIKE '%${date}%'
@@ -111,7 +111,6 @@
     <!--优质工程数据sql end-->
     <!--培训信息数据结果映射 start-->
     <resultMap id="trainInfo" type="com.goodsoft.yuanlin.domain.entity.trade.TrainsInfo">
-        <result property="id" column="tid"/>
         <result property="traType" column="traType"/>
         <result property="traName" column="traName"/>
         <result property="date" column="dates"/>
@@ -122,7 +121,7 @@
     <!--培训信息数据sql start-->
     <select id="queryTrainInfoDao" parameterType="java.lang.Object" resultMap="trainInfo">
         SELECT
-        tid, traType, traName, dates, content, filesId
+        traType, traName, dates, content, filesId
         FROM
         gs_traininfo
         <where>
@@ -141,7 +140,7 @@
     <!--培训信息数据sql end-->
     <!--联系协会数据结果映射 start-->
     <resultMap id="contactInfo" type="com.goodsoft.yuanlin.domain.entity.trade.Contact">
-        <result property="id" column="cid"/>
+        <result property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="tel" column="tel"/>
         <result property="address" column="address"/>
@@ -154,7 +153,7 @@
     <!--联系协会数据结果映射 end-->
     <!--联系协会数据sql start-->
     <select id="queryContactDao" parameterType="java.lang.Object" resultMap="contactInfo">
-        SELECT cid,name,tel,address,dates,times,email,webSite,postCode FROM gs_contact
+        SELECT id,name,tel,address,dates,times,email,webSite,postCode FROM gs_contact
         <where>
             <if test="date !=null and date !=''">
                 and dates LIKE '%${date}%'
@@ -167,24 +166,24 @@
     <!--行业协会数据添加 start-->
     <!--添加会费数据sql start-->
     <insert id="addDuesDao" parameterType="com.goodsoft.yuanlin.domain.entity.trade.Dues">
-    INSERT INTO gs_dues (name, dates, address, project, compScale,
+    INSERT INTO gs_dues (id,name, dates, address, project, compScale,
     compType, qlifLevel, registerCapital)
-    VALUES (#{name}, #{date}, #{address}, #{project}, #{compScale}, #{compType}, #{qlifLevel}, #{registerCapital})
+    VALUES (#{id},#{name}, #{date}, #{address}, #{project}, #{compScale}, #{compType}, #{qlifLevel}, #{registerCapital})
     </insert>
     <!--添加会费数据sql end-->
     <!--添加动态资讯数据sql start-->
     <insert id="addInformationDao" parameterType="com.goodsoft.yuanlin.domain.entity.trade.Information">
     INSERT INTO gs_information
-    (title, content, dates, infoType)
-    VALUES (#{title}, #{content}, #{date}, #{infoType});
+    (id,title, content, dates, infoType)
+    VALUES (#{id},#{title}, #{content}, #{date}, #{infoType});
     </insert>
     <!--添加动态资讯数据sql end-->
     <!--添加优质工程数据sql start-->
     <insert id="addQualEngineeringDao" parameterType="com.goodsoft.yuanlin.domain.entity.trade.QualEngin">
     INSERT INTO gs_qualengineering
-    (engName, dates, selectYear, company)
+    (id,engName, dates, selectYear, company)
     VALUES
-    (#{engName}, #{date}, #{selectYear}, #{company});
+    (#{id},#{engName}, #{date}, #{selectYear}, #{company});
     </insert>
     <!--添加优质工程数据sql end-->
     <!--添加培训信息数据sql start-->
@@ -196,15 +195,15 @@
     <!--添加培训信息数据sql end-->
     <!--添加联系协会数据sql start-->
     <insert id="addContactDao" parameterType="com.goodsoft.yuanlin.domain.entity.trade.Contact">
-    INSERT INTO gs_contact (name, tel, dates,times, address, email, webSite, postCode)
-    VALUES (#{name}, #{tel}, #{date},#{time}, #{address}, #{email}, #{webSite}, #{postCode});
+    INSERT INTO gs_contact (id,name, tel, dates,times, address, email, webSite, postCode)
+    VALUES (#{id},#{name}, #{tel}, #{date},#{time}, #{address}, #{email}, #{webSite}, #{postCode});
     </insert>
     <!--添加联系协会数据sql end-->
     <!--行业协会数据添加 end-->
     <!--行业协会数据删除 start-->
     <!--会费数据删除sql start-->
     <delete id="deleteDuesDao" parameterType="java.util.Arrays">
-        DELETE FROM gs_dues WHERE did IN
+        DELETE FROM gs_dues WHERE id IN
         <foreach collection="id" item="item" open="(" separator="," close=")">
             #{item}
         </foreach>
@@ -220,7 +219,7 @@
     <!--动态资讯数据删除sql end-->
     <!--优质工程数据删除sql start-->
     <delete id="deleteQualEngineeringDao" parameterType="java.util.Arrays">
-        DELETE FROM gs_qualengineering WHERE qid IN
+        DELETE FROM gs_qualengineering WHERE id IN
         <foreach collection="id" item="item" open="(" separator="," close=")">
             #{item}
         </foreach>

@@ -8,17 +8,17 @@ import java.util.Objects;
  * version v1.0
  */
 public class QualEngin implements java.io.Serializable {
-    private int id;//表id
+    private String id;//表id
     private String engName;//优质工程名称
     private String date;//发布日期
     private String selectYear;//评选年度
     private String company;//施工企业
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -308,6 +308,7 @@ public class TradeManageServicelmpl implements TradeManageService {
             //会费添加 start
             case "hf":
                 Dues due = (Dues) msg;
+                due.setId(this.uuid.getUUID().toString());
                 try {
                     this.dao.addDuesDao(due);
                     return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
@@ -321,6 +322,7 @@ public class TradeManageServicelmpl implements TradeManageService {
             case "dtzx":
                 Information info = (Information) msg;
                 info.setDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+                info.setId(this.uuid.getUUID().toString());
                 try {
                     this.dao.addInformationDao(info);
                     return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
@@ -333,6 +335,7 @@ public class TradeManageServicelmpl implements TradeManageService {
                 //优质工程添加 start
             case "yzgc":
                 QualEngin qua = (QualEngin) msg;
+                qua.setId(this.uuid.getUUID().toString());
                 try {
                     this.dao.addQualEngineeringDao(qua);
                     return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
@@ -348,6 +351,7 @@ public class TradeManageServicelmpl implements TradeManageService {
                 Date date = new Date();
                 con.setDate(new SimpleDateFormat("yyyy-MM-dd").format(date));
                 con.setTime(new SimpleDateFormat("HH:mm:ss").format(date));
+                con.setId(this.uuid.getUUID().toString());
                 try {
                     this.dao.addContactDao(con);
                     return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
@@ -390,7 +394,7 @@ public class TradeManageServicelmpl implements TradeManageService {
                 try {
                     //删除数据
                     this.dao.deleteTrainInfoDao(id);
-                    //删除数据库文件数据
+                    //删除数据库中的文件数据
                     this.fileDao.deleteFileDao(id);
                     return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
                 } catch (Exception e) {
@@ -399,25 +403,7 @@ public class TradeManageServicelmpl implements TradeManageService {
                     return new Status(StatusEnum.DEFEAT.getCODE(), StatusEnum.DEFEAT.getEXPLAIN());
                 }
                 //删除协会培训数据 end
-            default:
-                return new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
-        }
-        //删除行业协会数据 start
-    }
-
-    /**
-     * 删除行业协会数据业务方法（无文件）
-     *
-     * @param type 删除数据类型（如：动态资讯数据）
-     * @param id   数据id
-     * @return 删除结果
-     */
-    @Override
-    @Transactional
-    public Status deleteTradeService(String type, int[] id) {
-        //删除行业协会数据 start
-        switch (type) {
-            //删除会费数据 stat
+                //删除会费数据 stat
             case "hf":
                 try {
                     this.dao.deleteDuesDao(id);
@@ -453,6 +439,6 @@ public class TradeManageServicelmpl implements TradeManageService {
             default:
                 return new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
         }
-        //删除行业协会数据 end
+        //删除行业协会数据 start
     }
 }

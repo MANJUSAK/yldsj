@@ -140,9 +140,7 @@
             this._clearFallback();
             return this;
         }
-
     };
-
     $.session._init();
 
 })(jQuery);

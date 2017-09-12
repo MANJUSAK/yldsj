@@ -210,9 +210,18 @@
 						</div>
 					</div>
 					<div class="bid_content_bottom">
+						<!--有下一篇，但是现在只展示当前的几条，所以下一篇表为已经是第一篇-->
+						<!--<div class="bid_cb_L">上一篇：
+							<a href="../bid/bid_one02.html">观山湖区吉利项目配套排洪沟及周边市政绿化工程设计招标公告 </a>
+						</div>
+						<div class="bid_cb_R ">下一篇：
+							<a href="../bid/bid_one11.html">贵阳市档案馆建设工程——智能化建设项目(二次）招标公告 </a>
+						</div>-->
 						<div class="bid_cb_L">上一篇：
-							<a href="../bid/bid_one02.html" ">观山湖区吉利项目配套排洪沟及周边市政绿化工程设计招标公告 </a></div>
-						<div class="bid_cb_R ">下一篇：<a href="../bid/bid_one11.html "">贵阳市档案馆建设工程——智能化建设项目(二次）招标公告 </a>
+							<a href="../bid/bid_one02.html">观山湖区吉利项目配套排洪沟及周边市政绿化工程设计招标公告 </a>
+						</div>
+						<div class="bid_cb_R ">下一篇：
+							<a>已经是最后一条了</a>
 						</div>
 						<div class="clearBoth"></div>
 					</div>
@@ -227,12 +236,10 @@
 		<script type="text/javascript" src="../js/jquerySession.js"></script>
 
 		<script>
-			$(function() {
-				$.session.remove('header_num');
-				$.session.set('header_num', 1);
-				$('#header').load('../public/header.html');
-				$('#footer').load('../public/footer.html');
-			})
+			$.session.remove('header_num');
+			$.session.set('header_num', 1);
+			$('#header').load('../public/header.html');
+			$('#footer').load('../public/footer.html');
 		</script>
 	</body>
 

@@ -9,7 +9,7 @@ import java.util.Objects;
  * version v1.0
  */
 public class SignIn implements java.io.Serializable {
-    private Integer sid;//表id
+    private String sid;//表id
     private String address;//签到地址
     private String name;//用户姓名
     private String time;//签到时间
@@ -21,11 +21,11 @@ public class SignIn implements java.io.Serializable {
     private String dept;//部门
     private String comments;//备注
 
-    public Integer getSid() {
+    public String getSid() {
         return sid;
     }
 
-    public void setSid(Integer sid) {
+    public void setSid(String sid) {
         this.sid = sid;
     }
 

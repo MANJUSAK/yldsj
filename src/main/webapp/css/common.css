@@ -38,15 +38,15 @@ header .header-topbar .ht-box {
 }
 
 header .header-topbar .ht-box .logo {
-	width: 30%;
+	width: 40%;
 	height: 60px;
 	float: left;
 }
 
 header .header-topbar .ht-box .logo .logo-img {
-	width: 25%;
 	height: 60px;
 	float: left;
+	padding-right: 20px;
 }
 
 header .header-topbar .ht-box .logo .logo-img img {
@@ -283,21 +283,25 @@ header .header-navs .hn-box ul li:hover .hn-nav2 {
 
 header .header-navs .hn-box ul li a {
 	color: white;
-	padding: 10.5px 30px;
+	padding: 10.5px 24px;
 	line-height: 40px;
 	font-size: 14px;
 }
 
 header .header-navs .hn-box ul li a:hover {
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#C80080D9,endColorstr=#C80080D9);
+	background-color: #0084DF;
 	background: rgba(0,128,217,0.8);
 }
 .bi_nav_num{
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#C80080D9,endColorstr=#C80080D9);
 	background: rgba(0,128,217,0.8);
 }
 
 header .header-navs .hn-box ul li .hn-nav2 {
 	width: 100%;
 	height: 160px;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#66000000,endColorstr=#66000000);
 	background: rgba(0, 0, 0, 0.35);
 	position: absolute;
 	top: 40px;
@@ -599,5 +603,6 @@ footer .footer-box .fb-content ul li a {
 	background: #0080D9 !important;
 }
 .hni_active{
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#C80080D9,endColorstr=#C80080D9);
 	background: rgba(0,128,217,0.8) !important;
 }

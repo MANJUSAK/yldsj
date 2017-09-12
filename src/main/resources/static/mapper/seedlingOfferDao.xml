@@ -7,7 +7,6 @@
     <!--查询苗木参考报价 start-->
     <!--苗木参考报价结果映射 start-->
     <resultMap id="seedlingOfferInfo" type="com.goodsoft.yuanlin.domain.entity.demand.SeedlingOffer">
-        <result property="sid" column="sid"/>
         <result property="material" column="material"/>
         <result property="specification" column="specification"/>
         <result property="unit" column="unit"/>
@@ -19,7 +18,7 @@
     <!--苗木参考报价结果映射 end-->
     <!--查询苗木参考报价sql start-->
     <select id="querySeedlingOfferDao" resultMap="seedlingOfferInfo" parameterType="java.lang.Object">
-        SELECT sid,material,specification,unit,price,types,comments,date
+        SELECT material,specification,unit,price,types,comments,date
         FROM
         gs_seedlingoffer
         <where>

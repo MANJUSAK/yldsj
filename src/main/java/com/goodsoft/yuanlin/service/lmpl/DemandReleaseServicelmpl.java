@@ -301,6 +301,7 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
                 Date date = new Date();
                 var.setDate(new SimpleDateFormat("yyyy-MM-dd").format(date));
                 var.setTime(new SimpleDateFormat("HH:mm:ss").format(date));
+                var.setBid(this.uuid.getUUID().toString());
                 try {
                     this.dao.saveBidDao(var);
                     return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
@@ -315,6 +316,7 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
                 Date date1 = new Date();
                 var1.setDate(new SimpleDateFormat("yyyy-MM-dd").format(date1));
                 var1.setTime(new SimpleDateFormat("HH:mm:ss").format(date1));
+                var1.setRid(this.uuid.getUUID().toString());
                 try {
                     this.dao.saveRecruitDao(var1);
                     return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
@@ -387,25 +389,6 @@ public class DemandReleaseServicelmpl implements DemandReleaseService {
                 }
                 return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
             //删除苗木信息数据 end
-            default:
-                return new Status(StatusEnum.NO_URL.getCODE(), StatusEnum.NO_URL.getEXPLAIN());
-        }
-        //根据类型删除数据 end
-    }
-
-    /**
-     * 需求发布数据删除业务处理（无文件）
-     *
-     * @param id   删除数据编号，
-     * @param type 删除类型（苗木、设备租赁等）。
-     * @return 删除结果
-     * @throws Exception
-     */
-    @Override
-    @Transactional
-    public Status deleteReleaseDataService(int[] id, String type) {
-        //根据类型删除数据 start
-        switch (type) {
             //删除招标信息数据 start
             case "bid":
                 try {

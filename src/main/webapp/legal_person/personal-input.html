@@ -19,8 +19,8 @@
 		<link rel="stylesheet" type="text/css" href="../css/common.css" />
 		<link rel="shortcut icon" type="text/css" href="../img/log_2.ico" />
 		<link rel="stylesheet" href="../css/talents_personnel_details.css" />
-        <script src="../js/jquery.min.js"></script>
-        <script src="../js/forms.js"></script>
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/forms.js"></script>
 		<!--<link rel="stylesheet" href="../css/bid.css" />-->
 		<!--		<link rel="stylesheet" type="text/css" href="../css/nursery-details.css" />-->
 		<!-- 让IE9以下的浏览器支持HTML5标签 -->
@@ -29,13 +29,15 @@
         	<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 	</head>
-		<!--
+	<!--
 			这里是法人库的法人录入界面（input_talents.php）
 		-->
+
 	<body>
 		<!-- 头部（包括导航） -->
-<header id="header"></header><!--头部结束-->
-			<!--input_talents.html页面简称为IT-->
+		<header id="header"></header>
+		<!--头部结束-->
+		<!--input_talents.html页面简称为IT-->
 		<!--这里引用的是bid_one01.html页面的样式-->
 		<section class="IT_content">
 			<div class="IT_center">
@@ -43,8 +45,8 @@
 				<form id="myform" method="post" enctype="multipart/form-data">
 					<div class="IT_center_input">
 						<span class="IT_ci_span">姓&nbsp;&nbsp;&nbsp;名：&nbsp;</span>
-						<input  type="text" placeholder="请输入姓名" name="name" />
-					</div> 
+						<input type="text" placeholder="请输入姓名" name="name" />
+					</div>
 					<!--当输入的文符长度为零时，点击提交按钮显示提示内容-->
 					<div class="IT_center_hint"><span>输入不能超过50个字符</span></div>
 					<div class="IT_center_input">
@@ -54,27 +56,29 @@
 					</div>
 					<div class="IT_center_input">
 						<span class="IT_ci_span">企业名称：&nbsp;</span>
-						<input  type="text" placeholder="请输入企业名称" name="companyName" />
-					</div> 
+						<input type="text" placeholder="请输入企业名称" name="companyName" />
+					</div>
 					<!--当输入的文符长度为零时，点击提交按钮显示提示内容-->
 					<div class="IT_center_hint"><span>输入不能超过100个字符</span></div>
-                    <div class="IT_center_input">
-                        <span class="IT_ci_span">公司简介：&nbsp;</span>
-                        <textarea placeholder="请输入公司简介" name="companyProfile"></textarea>
-                    </div>
-                    <!--当输入的文符长度为零时，点击提交按钮显示提示内容-->
-                    <div class="IT_center_hint"><span>输入不能超过3000个字符</span></div>
+					<div class="IT_center_input">
+						<span class="IT_ci_span">公司简介：&nbsp;</span>
+						<textarea placeholder="请输入公司简介" name="companyProfile"></textarea>
+					</div>
+					<!--当输入的文符长度为零时，点击提交按钮显示提示内容-->
+					<div class="IT_center_hint"><span>输入不能超过3000个字符</span></div>
 					<div class="IT_center_input">
 						<span class="IT_ci_span">职&nbsp;&nbsp;&nbsp;位：&nbsp;</span>
-						<input  type="text" placeholder="请输入职位" name="position" />
-					</div><div class="IT_center_hint"><span>输入不能超过50个字符</span></div>
+						<input type="text" placeholder="请输入职位" name="position" />
+					</div>
+					<div class="IT_center_hint"><span>输入不能超过50个字符</span></div>
 					<div class="IT_center_input">
 						<span class="IT_ci_span">职&nbsp;&nbsp;&nbsp;称：&nbsp;</span>
-						<input  type="text" placeholder="请输入职称" name="titled" />
-					</div><div class="IT_center_hint"><span>输入不能超过50个字符</span></div>
+						<input type="text" placeholder="请输入职称" name="titled" />
+					</div>
+					<div class="IT_center_hint"><span>输入不能超过50个字符</span></div>
 					<div class="IT_center_input" style="display: none">
 						<span class="IT_ci_span">提交时间：&nbsp;</span>
-						<input  type="text" name="dates" value="<?php echo date('Y-m-d',time())?>" />
+						<input type="text" name="dates" value="<?php echo date('Y-m-d',time())?>" />
 					</div>
 
 					<div class="IT_center_input">
@@ -90,43 +94,42 @@
 				</form>
 				<!--信息录入  结束-->
 			</div>
-            <script>
-            	//点击提交
-                $("#mysubmit").click(function(){
-                    var form = new FormData(document.getElementById('myform'));
-                    $.ajax({
-                        url:"http://172.16.13.113/Garden/talentpool/saveCorporation';?>",
-                        type:"post",
-                        data:form,
-                        processData:false,
-                        contentType:false,
-                        success:function(data){
-                            if(data.status>0){
-                                alert(data.result)
-                            }else{
-                                alert("发布成功~！")
-                                location.replace(location.href);
-                            }
-                        },
-                        error:function(e){
-                            alert("发布失败~！错误代码："+e.status)
-                        }
-                    });
-                });
-            </script>
+			<script>
+				//点击提交
+				$("#mysubmit").click(function() {
+					var form = new FormData(document.getElementById('myform'));
+					$.ajax({
+						url: "http://172.16.13.113/Garden/talentpool/saveCorporation';?>",
+						type: "post",
+						data: form,
+						processData: false,
+						contentType: false,
+						success: function(data) {
+							if(data.status > 0) {
+								alert(data.result)
+							} else {
+								alert("发布成功~！")
+								location.replace(location.href);
+							}
+						},
+						error: function(e) {
+							alert("发布失败~！错误代码：" + e.status)
+						}
+					});
+				});
+			</script>
 		</section>
 		<!--网页底部-->
-		<footer id="footer"></footer><!--网页底部  结束-->
-		<script type="text/javascript" src="../js/jquery.min.js" ></script>
-		<script type="text/javascript" src="../js/hosts.js" ></script>
-		<script type="text/javascript" src="../js/jquerySession.js" ></script>
+		<footer id="footer"></footer>
+		<!--网页底部  结束-->
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/hosts.js"></script>
+		<script type="text/javascript" src="../js/jquerySession.js"></script>
 		<script>
-			$(function() {
-								$.session.remove('header_num');
-				$.session.set('header_num', 6);
-				$('#header').load('../public/header.html');
-				$('#footer').load('../public/footer.html');
-			})
+			$.session.remove('header_num');
+			$.session.set('header_num', 6);
+			$('#header').load('../public/header.html');
+			$('#footer').load('../public/footer.html');
 		</script>
 	</body>
 

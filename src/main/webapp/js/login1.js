@@ -1,5 +1,5 @@
 /*
- * 描述：登录页面的正则、ajax提交数据
+ * 描述：登录页面的正则、ajax提交数据、点击跳转到主页
  * */
 /*------------------------- 登录页面（login.js）的js 该js暂不使用 -------------------------*/
 $(function() {
@@ -9,12 +9,18 @@ $(function() {
 	$("#loginCloose").click(function() {
 		$("#loginYaler").css("display", "none");
 	});
-	var islogin = GetQueryString('relogin')
+	var islogin = GetQueryString('relogin');
 	if(islogin) {
 		$.session.clear();
 		window.location.href = "login.html";
 	}
 });
+
+/***** 点击logo部分跳转到主页 *****/
+$(".L-title").click(function(){
+	window.location.href="../index.html";
+});
+/***** 点击logo部分跳转到主页  结束 *****/
 
 /*------------------------- 登录页面（login.js）的js 该js暂不使用 结束 -------------------------*/
 

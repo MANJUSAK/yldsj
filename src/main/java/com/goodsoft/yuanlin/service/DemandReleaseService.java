@@ -20,9 +20,7 @@ public interface DemandReleaseService {
     //添加需求发布数据（无文件）
     public Status releaseDataService(Object msg, String type);
 
-    //删除需求发布数据(有文件)
+    //删除需求发布数据
     public Status deleteReleaseDataService(String[] id, String type);
 
-    //删除需求发布数据（无文件）
-    public Status deleteReleaseDataService(int[] id, String type);
 }

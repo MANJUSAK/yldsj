@@ -8,7 +8,7 @@ import java.util.Objects;
  * version v1.0
  */
 public class Dues implements java.io.Serializable {
-    private int id;//表id
+    private String id;//表id
     private String name;//姓名
     private String date;//成立时间
     private String address;//所在地
@@ -18,11 +18,11 @@ public class Dues implements java.io.Serializable {
     private String compType;//企业类型
     private Double registerCapital;//注册资金
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

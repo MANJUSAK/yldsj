@@ -33,7 +33,7 @@
 		<section class="nursery-details-section">
 			<div class="nds-box">
 				<div class="nds-topbar">
-					
+
 				</div>
 				<div class="nds-footer">
 					<div class="nds-footer-content">
@@ -86,18 +86,16 @@
 		<!--网页底部-->
 		<footer id="footer"></footer>
 		<script type="text/javascript" src="../js/jquery.min.js"></script>
-		<script type="text/javascript" src="../js/hosts.js" ></script>
+		<script type="text/javascript" src="../js/hosts.js"></script>
 		<script src="../js/common.js"></script>
 		<script src="../js/nursery-information.js"></script>
 		<script type="text/javascript" src="../js/jquerySession.js"></script>
-		<script type="text/javascript" src="../js/demandRelease/nursery_details.js" ></script>
+		<script type="text/javascript" src="../js/demandRelease/nursery_details.js"></script>
 		<script>
-			$(function() {
-				$.session.remove('header_num');
-				$.session.set('header_num', 1);
-				$('#header').load('../public/header.html');
-				$('#footer').load('../public/footer.html'); 
-			})
+			$.session.remove('header_num');
+			$.session.set('header_num', 1);
+			$('#header').load('../public/header.html');
+			$('#footer').load('../public/footer.html');
 		</script>
 	</body>
 

@@ -12,7 +12,7 @@ import java.util.Objects;
 public class Recruit implements java.io.Serializable {
 
     // 表ID
-    private Integer rid;
+    private String rid;
     // 职位
     private String positions;
     // 企业名称
@@ -50,12 +50,11 @@ public class Recruit implements java.io.Serializable {
     // 用户编号
     private String uid;
 
-
-    public Integer getRid() {
+    public String getRid() {
         return rid;
     }
 
-    public void setRid(Integer rid) {
+    public void setRid(String rid) {
         this.rid = rid;
     }
 

@@ -35,7 +35,6 @@
 			/**设备租赁的错误提示**/
 			
 			.bf-input_nextSpan {
-				
 				padding-top: 3px;
 				/*line-height: 20px;*/
 				font-size: 13px;
@@ -80,7 +79,7 @@
 				<div class="dt-container">
 					<div class="dc-title">
 						<div class="dc-title-left">
-							<a href="">人才招聘</a>
+							<a>人才招聘</a>
 						</div>
 						<!--	<div class="dc-title-right">
 							<div class="dc-right-aim" id="aFirst">
@@ -113,13 +112,13 @@
 							<div class="pi-title">
 								<div class="pt-content" id="mycontent0">
 									<div class="pt-item">
-										<a href="" class="a1">企业名称</a>
+										<a class="a1">企业名称</a>
 									</div>
 									<div class="pt-item pt-second">
-										<a href="">招聘职位</a>
+										<a>招聘职位</a>
 									</div>
 									<div class="pt-item">
-										<a href="" class="a3">发布时间</a>
+										<a class="a3">发布时间</a>
 									</div>
 								</div>
 							</div>
@@ -141,13 +140,13 @@
 							<div class="pi-title">
 								<div class="pt-content" id="mycontent0">
 									<div class="pt-item">
-										<a href="" class="a1">姓名</a>
+										<a class="a1">姓名</a>
 									</div>
 									<div class="pt-item pt-second">
-										<a href="">职位</a>
+										<a>职位</a>
 									</div>
 									<div class="pt-item">
-										<a href="" class="a3">月薪</a>
+										<a class="a3">月薪</a>
 									</div>
 								</div>
 							</div>
@@ -216,8 +215,8 @@
 								<span class="bf-input_nextSpan" id="jobTip"></span>
 								<div class="bf-input1">
 									<span class="bf-input1_span1">职位类型：</span>
-									<span style="line-height: 35px;"><input class="bfinput3" type="radio" name="characters" checked="checked" value="1" /> 全职</span>
-									<span style="line-height: 35px;"><input class="bfinput3" type="radio" name="characters"  value="2"/> 兼职</span>
+									<label style="line-height: 35px;"><input class="bfinput3" type="radio" name="characters" checked="checked" value="1" /> 全职</label>
+									<label style="line-height: 35px;"><input class="bfinput3" type="radio" name="characters"  value="2"/> 兼职</label>
 								</div>
 								<!--bf-input_nextSpan提示内容 点击按钮 判断为显示或隐藏-->
 								<br />
@@ -329,8 +328,8 @@
 
 								<div class="bf-input1">
 									<span class="bf-input1_span1" style="font-size: 14px;line-height: 35px;color: #565656;float: left;">职位类型：</span>
-									<span style="line-height: 35px;"><input class="bfinput3" type="radio" name="characters" checked="checked" value="1" /> 全职</span>
-									<span style="line-height: 35px;"><input class="bfinput3" type="radio" name="characters"  value="2"/> 兼职</span>
+									<label style="line-height: 35px;"><input class="bfinput3" type="radio" name="characters" checked="checked" value="1" /> 全职</label>
+									<label style="line-height: 35px;"><input class="bfinput3" type="radio" name="characters"  value="2"/> 兼职</label>
 								</div>
 								<!--bf-input_nextSpan提示内容 点击按钮 判断为显示或隐藏-->
 								<br /><br />
@@ -364,7 +363,7 @@
 									</select>
 								</div>
 								<span class="bf-input_nextSpan" id="money1Tip"></span>
-								
+
 								<div class="bf-input">
 									<span>联系电话：</span><input id="tel1" class="bf-input_input bf-input_phoneInput" name="tel" type="text" onkeyup="this.value=this.value.replace(/\D/g, '')" />
 								</div>
@@ -421,19 +420,19 @@
 		<script type="text/javascript" src="../js/jquerySession.js"></script>
 		<script type="text/javascript" src="../js/demandRelease/personal_information.js"></script>
 		<script>
+			/**** 加载公用的头部和底部 ****/
+			window.sessionStorage.setItem("zp_qz", 1);
+			$.session.remove('header_num');
+			$.session.set('header_num', 1);
+			$('#uid').val($.session.get('uid'));
+			$('#uidx').val($.session.get('uid'));
+			$('#ucomp').val($.session.get('ucomp'));
+			$('#ucompx').val($.session.get('ucomp'));
+			//alert($('#uid').val())
+			$('#header').load('../public/header.html');
+			$('#footer').load('../public/footer.html');
+			/**** 加载公用的头部和底部 结束 ****/
 			
-			$(function() {
-				window.sessionStorage.setItem("zp_qz", 1);
-				$.session.remove('header_num');
-				$.session.set('header_num', 1);
-				$('#uid').val($.session.get('uid'));
-				$('#uidx').val($.session.get('uid'));
-				$('#ucomp').val($.session.get('ucomp'));
-				$('#ucompx').val($.session.get('ucomp'));
-				//alert($('#uid').val())
-				$('#header').load('../public/header.html');
-				$('#footer').load('../public/footer.html');
-			})
 			$('#go_mys').click(function() {
 				if($.session.get('uid')) {
 					window.location.href = "../my.html";
@@ -511,25 +510,25 @@
 					});
 				}
 			})
-			
-		//	    点击关闭按钮清空输入痕迹
-		$("#faTimes2").click(function(){
-			$("input,select,textarea").val("").focus();
-			$(".bf-input_nextSpan").html("");
-		});
-		$("#niClose").click(function(){
-			$("input,select,textarea").val("").focus();
-			$(".bf-input_nextSpan").html("");
-		});
-		$("#faTimes3").click(function(){
-			$("input,select,textarea").val("").focus();
-			$(".bf-input_nextSpan").html("");
-		});
-		
-		$(".bf-input_input,textarea").keyup(function(){
-			validate();
-			validate1();
-		});
+
+			/*****点击关闭按钮清空输入痕迹*****/
+			$("#faTimes2").click(function() {
+				$("input,select,textarea").val("").focus();
+				$(".bf-input_nextSpan").html("");
+			});
+			$("#niClose").click(function() {
+				$("input,select,textarea").val("").focus();
+				$(".bf-input_nextSpan").html("");
+			});
+			$("#faTimes3").click(function() {
+				$("input,select,textarea").val("").focus();
+				$(".bf-input_nextSpan").html("");
+			});
+			/*****点击关闭按钮清空输入痕迹  结束*****/
+			$(".bf-input_input,textarea").keyup(function() {
+				validate();
+				validate1();
+			});
 		</script>
 	</body>
 

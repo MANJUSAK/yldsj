@@ -222,7 +222,7 @@
 		<!--网页底部-->
 		<footer id="footer"></footer>
 		<!--网页底部  结束-->
-<!--		<div class="my-icon" id="myIcon">
+		<!--		<div class="my-icon" id="myIcon">
 			<a href="../my.html"><img src="../img/my-pic.png" /></a>
 		</div>-->
 		<div class="return-top" id="myp">
@@ -232,18 +232,16 @@
 		<script src="../js/jquery.min.js"></script>
 		<script src="../js/common.js"></script>
 		<script type="text/javascript" src="../js/captrue.js"></script>
-		<script type="text/javascript" src="../js/jquerySession.js" ></script>
+		<script type="text/javascript" src="../js/jquerySession.js"></script>
 		<script>
 			capture('mr-center', 180);
 		</script>
 
 		<script>
-			$(function() {
-				$.session.remove('header_num');
-				$.session.set('header_num', 2);
-				$('#header').load('../public/header.html');
-				$('#footer').load('../public/footer.html');
-			})
+			$.session.remove('header_num');
+			$.session.set('header_num', 2);
+			$('#header').load('../public/header.html');
+			$('#footer').load('../public/footer.html');
 		</script>
 	</body>
 

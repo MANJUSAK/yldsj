@@ -9,21 +9,12 @@ import java.util.Objects;
  * version v1.0
  */
 public class TrainsInfo implements java.io.Serializable {
-    private int id;//表id
     private String traName;//培训名称
     private String date;//培训日期
     private String content;//培训内容
     private String filesId;//文件编号
     private String traType;//培训类型（1为施工员/2为研修班/3为草坪工/4为绿化工）
     private List<String> trainFile;//培训文件
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getTraName() {
         return traName;
@@ -78,8 +69,7 @@ public class TrainsInfo implements java.io.Serializable {
         if (this == o) return true;
         if (!(o instanceof TrainsInfo)) return false;
         TrainsInfo that = (TrainsInfo) o;
-        return id == that.id &&
-                Objects.equals(traName, that.traName) &&
+        return Objects.equals(traName, that.traName) &&
                 Objects.equals(date, that.date) &&
                 Objects.equals(content, that.content) &&
                 Objects.equals(filesId, that.filesId) &&
@@ -89,6 +79,6 @@ public class TrainsInfo implements java.io.Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, traName, date, content, filesId, traType, trainFile);
+        return Objects.hash(traName, date, content, filesId, traType, trainFile);
     }
 }

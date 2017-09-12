@@ -8,7 +8,7 @@ import java.util.Objects;
  * version v1.0
  */
 public class Contact implements java.io.Serializable {
-    private int id;//表id
+    private String id;//表id
     private String name;//姓名
     private String tel;//联系方式
     private String address;//联系地址
@@ -18,11 +18,11 @@ public class Contact implements java.io.Serializable {
     private String date;//日期
     private String time;//时间
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

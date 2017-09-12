@@ -4,7 +4,7 @@
 .button{width:20px; height:20px; float:left; margin-left:10px; text-align:center;line-height:20px; color:#FFF;
  font-size:10px; background:rgba(255,108,108,0.7); border:none;}
 .four_benner_ul_a{ width:20px; height:20px; float:left; margin-left:10px; text-align:center; line-height:20px; color:#FFF;
- font-size:10px; background:rgba(255,108,108,0.7); border:none; text-decoration:none; cursor: pointer;}
-.ahover{ background:rgba(112,197,112,0.8);}
+ font-size:10px; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2FF6C6C,endColorstr=#B2FF6C6C); background:rgba(255,108,108,0.7); border:none; text-decoration:none; cursor: pointer;}
+.ahover{filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#C870C570,endColorstr=#C870C570); background:rgba(112,197,112,0.8);}
 #four_benner #benner_img{ width:900px; height:430px;}
 /*benner结束*/

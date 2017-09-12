@@ -47,7 +47,7 @@ public class FileServicelmpl implements FileService {
         switch (fileType) {
             case "document":
                 //判断文件是否为空
-                if (!files[0].isEmpty()) {
+                if (!(files[0].isEmpty())) {
                     //判断文件大小是否小于30M start
                     if (files[0].getSize() > 30000000) {
                         return 601;
@@ -69,7 +69,7 @@ public class FileServicelmpl implements FileService {
             //判断文件是否为Excel start
             case "excel":
                 //判断文件是否为空
-                if (!files[0].isEmpty()) {
+                if (!(files[0].isEmpty())) {
                     //判断文件大小是否小于30M start
                     if (files[0].getSize() > 30000000) {
                         return 601;
@@ -92,7 +92,7 @@ public class FileServicelmpl implements FileService {
             default:
                 for (int i = 0, length = files.length; i < length; ++i) {
                     //判断文件是否为空 start
-                    if (!files[i].isEmpty()) {
+                    if (!(files[i].isEmpty())) {
                         //判断文件大小是否小于1.5M start
                         if (files[i].getSize() > 1500000) {
                             return 601;

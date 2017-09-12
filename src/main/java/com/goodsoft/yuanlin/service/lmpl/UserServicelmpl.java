@@ -245,6 +245,7 @@ public class UserServicelmpl implements UserService {
     public Status signInService(SignIn msg) {
         try {
             msg.setTime(new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date()));
+            msg.setSid(this.uuid.getUUID().toString());
             this.dao.signInDao(msg);
             return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
         } catch (Exception e) {

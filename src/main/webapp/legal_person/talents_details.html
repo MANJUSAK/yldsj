@@ -67,13 +67,15 @@
 								</div>
 							</div>-->
 							<div class="WD_CCC_one_R">
-								<div class="WD_CCC_oL_one"><span class="nameSpan">注册资金：&nbsp;<span id="registerCap"></span></span>
+								<div class="WD_CCC_oL_one"><span class="nameSpan">注册资金：&nbsp;<span id="registerCap"></span>（万元）</span>
 								</div>
 							</div>
 							<div style="clear: both;"></div>
 							<div class="WD_CCC_one_two">
-								<div class="WD_CCC_oL_onetwo"><span class="nameSpan2">详细地址：&nbsp;<span id="detailAddress"></span></span></div>
-								<div class="WD_CCC_oL_onetwo"><span class="nameSpan2">注册地址：&nbsp;<span id="registerAddress"></span></span></div>
+								<div class="WD_CCC_oL_onetwo"><span class="nameSpan2">详细地址：&nbsp;<span id="detailAddress"></span></span>
+								</div>
+								<div class="WD_CCC_oL_onetwo"><span class="nameSpan2">注册地址：&nbsp;<span id="registerAddress"></span></span>
+								</div>
 							</div>
 							<div class="clearBoth"></div>
 							<span class="WD_CCC_one_intro">公司简介：</span>
@@ -109,16 +111,14 @@
 			};
 		</script>
 		<script type="text/javascript" src="../js/jquery.min.js"></script>
-		<script type="text/javascript" src="../js/hosts.js" ></script>
+		<script type="text/javascript" src="../js/hosts.js"></script>
 		<script type="text/javascript" src="../js/jquerySession.js"></script>
 		<script type="text/javascript" src="../js/legal_person/talents_details.js"></script>
 		<script>
-			$(function() {
-				$.session.remove('header_num');
-				$.session.set('header_num', 6);
-				$('#header').load('../public/header.html');
-				$('#footer').load('../public/footer.html');
-			})
+			$.session.remove('header_num');
+			$.session.set('header_num', 6);
+			$('#header').load('../public/header.html');
+			$('#footer').load('../public/footer.html');
 		</script>
 	</body>
 

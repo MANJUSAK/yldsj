@@ -53,16 +53,16 @@ $(function() {
 		'<div class="fc-footer">' +
 		'<div class="ff-box">' +
 		'<div class="ffb-title">' +
-		'<span>' + arr_one.contact + '提供，致电了解详情</span>' +
+		'<span>' + arr_one.contact + "&nbsp;&nbsp;" + '提供，致电了解详情</span>' +
 		'</div>' +
 		'<div class="ffb-content">' +
 		'<div class="ffb-icon">' +
 		'<i class="fa fa-volume-control-phone"></i>' +
 		'</div>' +
 		'<div class="ffb-text">' +
-		'<h2>12345678912</h2>' +
-		'<h2>4001-123-123</h2><br />' +
-		'<p>联系时请说明实在园林诚信平台上看到的，谢谢。</p>' +
+		'<h2>' + arr_one.tel + '</h2>' +
+		'<h2></h2><br />' +
+		'<p>联系时请说明实在园林诚信平台上看到的，谢谢!</p>' +
 		'</div>' +
 		'</div>' +
 		'</div>' +

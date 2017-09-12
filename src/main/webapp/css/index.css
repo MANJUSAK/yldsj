@@ -378,6 +378,7 @@
   height: 206px;
   background: #F0F0F0;
   position: relative;
+  cursor: pointer;
 }
 .index-section .is-box .plant .plant-content .pc-item .pc-text:hover {
   background: #0196FD;
@@ -552,6 +553,7 @@
   width: 10%;
   height: 36px;
   float: left;
+  cursor: default;
 }
 .index-section .is-box .industry-association .ia-topbar .ia-tabs:hover {
   background: #0096FD;
@@ -847,7 +849,6 @@
 		padding: 10px 0;
 	}
 	.ic-content > ul > li > i{
-		float: none !important;
 		display: inline-block;
 		line-height: normal !important;
 		margin-top: 12px;
@@ -882,6 +883,9 @@
 		padding: 0 !important;
 		padding-left: 10px !important;
 	}
+	.gt-center .show_hidden{
+		display: none;
+	}
 	.gt-center > span:last-child{
 		display: none;
 	}
@@ -902,6 +906,9 @@
 	.pt-center > span{
 		padding: 0 !important;
 		padding-left: 10px !important;
+	}
+	.pt-center .show_hidden{
+		display: none;
 	}
 	.pt-center > span:last-child{
 		display: none;
@@ -932,6 +939,9 @@
 		padding: 0 !important;
 		padding-left: 10px !important;
 	}
+	.ia-tc-center .show_hidden{
+		display: none;
+	}
 	.ia-tc-center > span:last-child{
 		display: none;
 	}
@@ -954,7 +964,10 @@
 		padding: 10px 0;
 		display: flex;
 	}
-	.ia-right-box > ul > li > i,.li-a{
+	.ia-right-box > ul > li > i{
+		display: inline-block;
+	}
+	.ia-right-box > ul > li > .li-a{
 		display: inline-block;
 		float: none !important;
 	}
@@ -972,7 +985,7 @@
 		text-overflow:ellipsis;
 	}
 	.ia-right-box > ul > li > span{
-		display: block !important;
+		/*display: block !important;*/
 		width: 100px !important;
 		height: auto !important;
 		float: none !important;

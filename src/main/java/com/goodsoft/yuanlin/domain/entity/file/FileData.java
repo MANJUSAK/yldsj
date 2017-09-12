@@ -9,7 +9,6 @@ import java.util.Objects;
  * version v1.0
  */
 public class FileData implements java.io.Serializable {
-    private int fid;//表id
     private String fileId;//文件编号
     private String path;//文件路径
     private String bases;//根目录
@@ -17,15 +16,6 @@ public class FileData implements java.io.Serializable {
     private String fileName;//原文件名
     private String newFileName;//新文件名
     private String suffix;//文件后缀
-
-    @Transient
-    public int getFid() {
-        return fid;
-    }
-
-    public void setFid(int fid) {
-        this.fid = fid;
-    }
 
     @Transient
     public String getFileId() {
@@ -89,8 +79,7 @@ public class FileData implements java.io.Serializable {
         if (this == o) return true;
         if (!(o instanceof FileData)) return false;
         FileData fileData = (FileData) o;
-        return fid == fileData.fid &&
-                Objects.equals(fileId, fileData.fileId) &&
+        return Objects.equals(fileId, fileData.fileId) &&
                 Objects.equals(path, fileData.path) &&
                 Objects.equals(bases, fileData.bases) &&
                 Objects.equals(sort, fileData.sort) &&
@@ -101,7 +90,7 @@ public class FileData implements java.io.Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(fid, fileId, path, bases, sort, fileName, newFileName, suffix);
+        return Objects.hash(fileId, path, bases, sort, fileName, newFileName, suffix);
     }
 }
 

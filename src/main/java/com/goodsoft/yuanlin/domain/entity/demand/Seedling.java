@@ -13,8 +13,7 @@ import java.util.Objects;
  * version v1.0
  */
 public class Seedling implements java.io.Serializable {
-    // 表ID
-    private Integer sid;
+
     // 标题名称
     private String titleName;
     // 内容
@@ -55,14 +54,6 @@ public class Seedling implements java.io.Serializable {
     private String comp;
     // 用户编号
     private String uid;
-
-    public Integer getSid() {
-        return sid;
-    }
-
-    public void setSid(Integer sid) {
-        this.sid = sid;
-    }
 
     public String getTitleName() {
         return titleName;
@@ -230,8 +221,7 @@ public class Seedling implements java.io.Serializable {
         if (this == o) return true;
         if (!(o instanceof Seedling)) return false;
         Seedling seedling = (Seedling) o;
-        return Objects.equals(sid, seedling.sid) &&
-                Objects.equals(titleName, seedling.titleName) &&
+        return Objects.equals(titleName, seedling.titleName) &&
                 Objects.equals(content, seedling.content) &&
                 Objects.equals(contact, seedling.contact) &&
                 Objects.equals(tel, seedling.tel) &&
@@ -255,6 +245,6 @@ public class Seedling implements java.io.Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(sid, titleName, content, contact, tel, date, time, address, supplier, breed, dbh, pdt, height, num, unit, price, sub, filesId, picture, comp, uid);
+        return Objects.hash(titleName, content, contact, tel, date, time, address, supplier, breed, dbh, pdt, height, num, unit, price, sub, filesId, picture, comp, uid);
     }
 }

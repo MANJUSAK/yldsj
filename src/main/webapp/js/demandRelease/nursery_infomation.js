@@ -240,9 +240,8 @@ function getdata_(html, curl_, mydata) {
 				$('.nc-ir-aim').click(function() {
 					var num = $(this).parent().parent().parent().parent().index();
 //					$('.ni-cotents').click(function() {
-					debugger;
 					if($.session.get('uid')) {
-						window.sessionStorage.setItem('datax', JSON.stringify(data[num]))
+						window.sessionStorage.setItem('datax', JSON.stringify(data[num]));
 						window.open('nursery-details.html', '_blank');
 					} else {
 						$("#niYaler").css({

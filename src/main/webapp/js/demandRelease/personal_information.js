@@ -362,7 +362,8 @@ function getdata_(html, curl_, mydata, div_num, tynum) {
 				}
 
 			} else {
-				alert('已经没有更多数据了')
+				
+				//alert('已经没有更多数据了')
 			}
 		},
 		error: function(err) {
@@ -529,7 +530,6 @@ function validate() {
 
 /*************************** 苗木信息 求职 做正则判断(求职发布) ***************************/
 function validate1() {
-
 	result = true;
 	//姓名
 	var telpersonal1 = $('#telpersonal1').val();
@@ -549,26 +549,25 @@ function validate1() {
 		$('#telpersonal1Tip').html('<img src="../img/err.png"/><font color="red">姓名不能为空！</font>');
 		result = false;
 	} else {
-		$('#telpersonal1Tip').html('<img src=""../img/ok.png"">');
+		$('#telpersonal1Tip').html('<img src="../img/ok.png">');
 	}
 	/*职位*/
 	if(Cname1 == '') {
 		$('#Cname1Tip').html('<img src="../img/err.png"/><font color="red">职位不能为空！</font>');
 		result = false;
 	} else {
-		$('#Cname1Tip').html('<img src=""../img/ok.png"">');
+		$('#Cname1Tip').html('<img src="../img/ok.png">');
 	}
 	/*求职经历*/
 	if(content1 == '') {
 		$('#content1Tip').html('<img src="../img/err.png"/><font color="red">求职经历不能为空！</font>');
 		result = false;
 	} else {
-		$('#content1Tip').html('<img src=""../img/ok.png"">');
+		$('#content1Tip').html('<img src="../img/ok.png">');
 	}
 	/*联系方式*/
 	if(/^1[3|4|5|8][0-9]\d{4,8}$/.test(tel1) || /^0\d{2,3}-?\d{7,8}$/.test(tel1)) {
-		$('#tel1Tip').html('<img src=""../img/ok.png"">');
-		
+		$('#tel1Tip').html('<img src="../img/ok.png">');
 	} else {
 		$('#tel1Tip').html('<img src="../img/err.png"/><font color="red">联系方式不能为空！</font>');
 		result = false;
@@ -582,14 +581,14 @@ function validate1() {
 		result = false;
 	}
 	else {
-		$('#enterprise1Tip').html('<img src=""../img/ok.png"">');
+		$('#enterprise1Tip').html('<img src="../img/ok.png">');
 	}
 	/*自我评价*/
 	if(companyIntro1 == '') {
 		$('#companyIntro1Tip').html('<img src="../img/err.png"/><font color="red">自我评价不能为空！</font>');
 		result = false;
 	} else {
-		$('#companyIntro1Tip').html('<img src=""../img/ok.png"">');
+		$('#companyIntro1Tip').html('<img src="../img/ok.png">');
 	}
 	return result;
 };

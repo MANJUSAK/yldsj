@@ -14,8 +14,6 @@ import java.util.Objects;
  */
 public class Equipment implements java.io.Serializable {
 
-    // 表ID
-    private Integer eid;
     // 标题名称
     private String titleName;
     // 内容
@@ -36,14 +34,6 @@ public class Equipment implements java.io.Serializable {
     private String uid;
     // 文件路径
     private List<FileData> picture;
-
-    public Integer getEid() {
-        return eid;
-    }
-
-    public void setEid(Integer eid) {
-        this.eid = eid;
-    }
 
     public String getTitleName() {
         return titleName;
@@ -131,8 +121,7 @@ public class Equipment implements java.io.Serializable {
         if (this == o) return true;
         if (!(o instanceof Equipment)) return false;
         Equipment equipment = (Equipment) o;
-        return Objects.equals(eid, equipment.eid) &&
-                Objects.equals(titleName, equipment.titleName) &&
+        return Objects.equals(titleName, equipment.titleName) &&
                 Objects.equals(content, equipment.content) &&
                 Objects.equals(date, equipment.date) &&
                 Objects.equals(time, equipment.time) &&
@@ -146,6 +135,6 @@ public class Equipment implements java.io.Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(eid, titleName, content, date, time, contact, tel, filesId, comp, uid, picture);
+        return Objects.hash(titleName, content, date, time, contact, tel, filesId, comp, uid, picture);
     }
 }

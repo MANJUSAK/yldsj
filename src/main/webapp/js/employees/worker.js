@@ -19,7 +19,6 @@ function get_data(html, url_, para_data, div_) {
 				var data = result.data;
 				var len = result.data.length;
 				$.each(data, function(i) {
-					data[i].gender = data[i].gender == 0 ? '男' : '女';
 					html += '<div class="show_details"><div class="TCC_content">' +
 						'<span hidden="hidden">' + i + ',</span>' +
 						'<div class="TCC_content_1">' +

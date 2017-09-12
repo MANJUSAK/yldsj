@@ -12,7 +12,7 @@ import java.util.Objects;
 public class Bid implements java.io.Serializable {
 
     // 表ID
-    private Integer bid;
+    private String bid;
     // 标题名称
     private String titleName;
     // 招标内容
@@ -30,11 +30,11 @@ public class Bid implements java.io.Serializable {
     // 用户ID
     private String uid;
 
-    public Integer getBid() {
+    public String getBid() {
         return bid;
     }
 
-    public void setBid(Integer bid) {
+    public void setBid(String bid) {
         this.bid = bid;
     }
 

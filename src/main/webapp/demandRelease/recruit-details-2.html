@@ -26,10 +26,11 @@
         	<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 	</head>
-		<!--
+	<!--
 			描述：该页面为人才招聘的详情页
 			简称RD2；
 		-->
+
 	<body>
 		<!-- 头部（包括导航） -->
 		<header id="header"></header>
@@ -44,27 +45,25 @@
 			</div>
 			<!--中间的内容-->
 			<div class="RD2_content">
-				
+
 			</div>
-				
+
 		</section>
 		<!--网页底部-->
 		<footer id="footer"></footer>
 		<!--网页底部  结束-->
 		<script type="text/javascript" src="../js/jquery.min.js"></script>
-		<script type="text/javascript" src="../js/hosts.js" ></script>
+		<script type="text/javascript" src="../js/hosts.js"></script>
 		<script src="../js/common.js"></script>
 		<script src="../js/nursery-information.js"></script>
 		<script type="text/javascript" src="../js/jquerySession.js"></script>
 		<script type="text/javascript" src="../js/demandRelease/personal-information-details.js"></script>
 
 		<script>
-			$(function() {
-				$.session.remove('header_num');
-				$.session.set('header_num', 1);
-				$('#header').load('../public/header.html');
-				$('#footer').load('../public/footer.html');
-			})
+			$.session.remove('header_num');
+			$.session.set('header_num', 1);
+			$('#header').load('../public/header.html');
+			$('#footer').load('../public/footer.html');
 		</script>
 	</body>
 

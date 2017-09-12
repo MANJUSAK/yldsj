@@ -9,7 +9,6 @@ import java.util.Objects;
  * version v1.0
  */
 public class SeedlingOffer implements java.io.Serializable {
-    private Integer sid;//序号
     private String material;//材料
     private String specification;//规格
     private String unit;//单位
@@ -18,14 +17,6 @@ public class SeedlingOffer implements java.io.Serializable {
     private String comment;//备注
     private String date;//日期
     private String fileId;//文件编号
-
-    public Integer getSid() {
-        return sid;
-    }
-
-    public void setSid(Integer sid) {
-        this.sid = sid;
-    }
 
     public String getMaterial() {
         return material;
@@ -98,7 +89,6 @@ public class SeedlingOffer implements java.io.Serializable {
         if (!(o instanceof SeedlingOffer)) return false;
         SeedlingOffer that = (SeedlingOffer) o;
         return Double.compare(that.price, price) == 0 &&
-                Objects.equals(sid, that.sid) &&
                 Objects.equals(material, that.material) &&
                 Objects.equals(specification, that.specification) &&
                 Objects.equals(unit, that.unit) &&
@@ -110,6 +100,6 @@ public class SeedlingOffer implements java.io.Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(sid, material, specification, unit, price, types, comment, date, fileId);
+        return Objects.hash(material, specification, unit, price, types, comment, date, fileId);
     }
 }

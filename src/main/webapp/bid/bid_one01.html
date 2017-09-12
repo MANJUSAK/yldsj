@@ -29,7 +29,7 @@
 	<!--
 			"在publish-information-details.html中简称为PID"
 			这是使用如上的.html样式和面包屑导航
-		-->
+	-->
 
 	<body>
 		<!-- 头部（包括导航） -->
@@ -227,14 +227,11 @@
 		<!--网页底部  结束-->
 		<script type="text/javascript" src="../js/jquery.min.js"></script>
 		<script type="text/javascript" src="../js/jquerySession.js"></script>
-
 		<script>
-			$(function() {
-				$.session.remove('header_num');
-				$.session.set('header_num', 1);
-				$('#header').load('../public/header.html');
-				$('#footer').load('../public/footer.html');
-			})
+			$.session.remove('header_num');
+			$.session.set('header_num', 1);
+			$('#header').load('../public/header.html');
+			$('#footer').load('../public/footer.html');
 		</script>
 	</body>
 

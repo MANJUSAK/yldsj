@@ -36,7 +36,8 @@ body {
 .Ga-ul {
 	width: 100%;
 	height: auto;
-	background: rgba(0,0,0,0.35);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);
+	background: rgba(0,0,0,0.6);
 	display: none;
 	position: relative;
 	z-index: 999;
@@ -51,9 +52,11 @@ body {
 	margin-top: 5px;
 }
 .Ga-li:hover {
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F0080D9,endColorstr=#7F0080D9);
 	background: rgba(0,128,217,0.5);
 }
 .Ga-li-active {
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F0080D9,endColorstr=#7F0080D9);
 	background: rgba(0,128,217,0.5);
 	margin-top: 0;
 }

@@ -20,17 +20,16 @@
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
 		<link rel="stylesheet" type="text/css" href="css/baby.css" />
 		<link rel="shortcut icon" type="text/css" href="img/log_2.ico" />
-
 		<!-- 让IE9以下的浏览器支持HTML5标签 -->
 		<!--[if lt IE 9]>
         	<script src="http://cdn.bootcss.com/html5shiv/r29/html5.js"></script>
         	<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <style>
-        	#footer{
-        		border-top: 20px solid white !important;
-        	}
-        </style>
+		<style>
+			#footer {
+				border-top: 20px solid white !important;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -124,7 +123,7 @@
 							</div>
 							<div class="gt-center">
 								<span>企业推荐</span>
-								<span>ENTERPRISE RECOMMENDATION</span>
+								<span class="show_hidden">ENTERPRISE RECOMMENDATION</span>
 							</div>
 							<div class="gt-right">
 								<div class="gt-more-box">
@@ -326,7 +325,7 @@
 							</div>
 							<div class="pt-center">
 								<span>苗木信息</span>
-								<span>SEEDLING INFORMATION</span>
+								<span class="show_hidden">SEEDLING INFORMATION</span>
 							</div>
 							<div class="pt-right">
 								<div class="pt-more-box">
@@ -351,7 +350,7 @@
 									</div>
 									<div class="ti-footer">
 										<div class="ti-title">
-											<a href="">浙江萧山万国园艺场</a><span>2016-10-11</span>
+											<a>浙江萧山万国园艺场</a><span>2016-10-11</span>
 										</div>
 										<div class="ti-icon">
 											<div class="icon-right">
@@ -372,9 +371,6 @@
 						</div>
 	-->
 					</div>
-					<script>
-						/*$.session.set('test','asdasdasdasffdhfh');*/
-					</script>
 				</div>
 				<div class="industry-association">
 					<div class="ia-title">
@@ -382,11 +378,11 @@
 							<div class="ia-tc-left"></div>
 							<div class="ia-tc-center">
 								<span>行业协会</span>
-								<span>INDUSTRY ASSOCIATION</span>
+								<span class="show_hidden">INDUSTRY ASSOCIATION</span>
 							</div>
 							<div class="ia-tc-right">
 								<div class="more-box">
-									<a href="guild.html">更多</a>
+									<a href="dues-show/guild.html">更多</a>
 									<div class="mb-img">
 										<img src="img/more.png" />
 									</div>
@@ -397,13 +393,13 @@
 					<div class="ia-top"></div>
 					<div class="ia-topbar">
 						<div class="ia-tabs ia-active">
-							<a href="">协会新闻</a>
+							<a>协会新闻</a>
 						</div>
 						<div class="ia-tabs">
-							<a href="">协会资讯</a>
+							<a>协会资讯</a>
 						</div>
 						<div class="ia-tabs">
-							<a href="">政府法规</a>
+							<a>政府法规</a>
 						</div>
 					</div>
 					<div class="ia-content">
@@ -556,28 +552,26 @@
 		</div>
 
 		<script src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquerySession.js"></script>
+		<script>
+			$.session.remove('header_num');
+			$.session.set('header_num', 0);
+			$('#header').load('header.html');
+			$('#footer').load('footer.html');
+		</script>
 		<script type="text/javascript" src="js/hosts.js"></script>
 		<script src="js/common.js"></script>
-		<script type="text/javascript" src="js/jquerySession.js"></script>
 		<script type="text/javascript" src="js/index_modular.js"></script>
 		<script src="js/index.js"></script>
 		<script>
-			$(function() {
-				$.session.remove('header_num');
-				$.session.set('header_num', 0);
-				$('#header').load('header.html');
-				$('#footer').load('footer.html');
-				
-			})
 			$('#go_mys').click(function() {
 				if($.session.get('uid')) {
 					window.location.href = "my.html";
 				} else {
-					alert('您尚未登录，请登录后再次点击')
+					alert('您尚未登录，请登录后再次点击');
 				}
-			})
+			});
 		</script>
-
 	</body>
-		
+
 </html>

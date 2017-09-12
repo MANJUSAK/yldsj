@@ -4,7 +4,7 @@
 	<div class="ht-box">
 		<div class="logo">
 			<div class="logo-img">
-				<a href=""><img id='header_login' src="../img/log_2.png" /></a>
+				<a><img id='header_login' src="../img/log_2.png" /></a>
 			</div>
 			<div class="logo-text">
 				<div class="lt-content">
@@ -89,7 +89,6 @@
 
 <script>
 	/***************************** 导航做判断 点击时出现背景色 ********************************/
-
 	$(function() {
 		var cc = 0;
 		var ss = 1;
@@ -108,21 +107,23 @@
 		/*设置导航标题背景*/
 		for(var i = 0; i < 7; i++) {
 			$('ul > li:eq(' + i + ') a').removeClass('hn-active');
-
 		}
 		$('ul > li:eq(' + cc + ') a:eq(0)').addClass('hn-active');
 		/*判断是否为需求发布*/
 		if(cc == 1) {
 			//设置需求下标 标题属性
-
 			$('.hn-nav2-item:eq(0)').addClass('hni_active');
 			for(var j = 0; j < $(".hn-nav2-item").length; j++) {
 				$(".hn-nav2 div:eq(" + j + ")").removeClass("hni_active")
 			}
 			$('.hn-nav2 div:eq(' + ss + ')').addClass('hni_active');
-
 		}
-
+		//点击需求发布导航时，使苗木信息有背景
+		$('ul > li:eq(1) a').click(function(){
+			$.session.set('xq_num', 0);
+		});
+		
+		
 		$('.hn-nav2 .hn-nav2-item').click(function() {
 			$.session.set('xq_num', $(this).index());
 			$.session.get('xq_num');
@@ -135,7 +136,6 @@
 			$('.hn-nav2 .hn-nav2-item').removeClass("hni_active");
 			$('.hn-nav2 .hn-nav2-item').eq(0).addClass("hni_active");
 		}
-
 	})
 	$(function() {
 		var login_ = '';

@@ -330,7 +330,7 @@ function getdata_(html, curl_, mydata) {
 			} else {
 				/*var str = '暂无数据';
 				div_.html(str);*/
-				alert('没有更多数据了')
+				//alert('没有更多数据了')
 			}
 		},
 		error: function(err) {

@@ -6,7 +6,6 @@
 <mapper namespace="com.goodsoft.yuanlin.domain.dao.CarouselDao">
     <!--轮播图数据映射 start-->
     <resultMap id="carouselInfo" type="com.goodsoft.yuanlin.domain.entity.carousel.Carousel">
-        <result property="id" column="cid"/>
         <result property="urlAddress" column="urlAddress"/>
         <result property="description" column="description"/>
         <result property="effect" column="effect"/>
@@ -18,7 +17,7 @@
     <!--获取轮播图数据sql start-->
     <select id="queryCarouselDao" resultMap="carouselInfo">
         SELECT
-        cid, picName, description, effect, urlAddress, dates,filesId
+        picName, description, effect, urlAddress, dates,filesId
         FROM
         gs_carousel
         ORDER BY DATES desc limit 0,1

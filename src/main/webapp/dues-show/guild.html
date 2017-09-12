@@ -82,7 +82,7 @@
 								<div class="Ga-item Ga-item_flex">
 									<div class="Ga-left">
 										<!--<div class="Ga-img">-->
-											<img src="../img/xhjj.jpg" />
+										<img src="../img/xhjj.jpg" />
 										<!--</div>-->
 									</div>
 									<div class="Ga-right">
@@ -222,23 +222,17 @@
 			<span><i class="fa fa-chevron-up" id="goTop" title="回到顶部"></i></span>
 		</div>
 		<script src="../js/jquery.min.js"></script>
-		<script type="text/javascript" src="../js/hosts.js" ></script>
-
+		<script type="text/javascript" src="../js/hosts.js"></script>
 		<script src="../js/common.js"></script>
 		<script type="text/javascript" src="../js/jquerySession.js"></script>
 		<script type="text/javascript" src="../js/dues-show/guild_list0.js"></script>
 		<script>
-			//切换卡
-			/*	tabs.tabs('span1', 'span2', 'body1', 'body2');
-				tabs.tabs('span3', 'span4', 'body3', 'body4');*/
-		</script>
-		<script>
-			$(function() {
-				$.session.remove('header_num');
-				$.session.set('header_num', 4);
-				$('#header').load('../public/header.html');
-				$('#footer').load('../public/footer.html');
-			})
+			/*** 加载页面的头部和底部（通用） ***/
+			$.session.remove('header_num');
+			$.session.set('header_num', 4);
+			$('#header').load('../public/header.html');
+			$('#footer').load('../public/footer.html');
+			/*** 加载页面的头部和底部（通用） 结束  ***/
 
 			$(".Gt-li:first-child").mouseover(function() {
 				$("#GaUl").show();

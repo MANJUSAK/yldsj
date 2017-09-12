@@ -11,6 +11,17 @@ body {
   height: auto;
   margin: 0 auto;
 }
+.nursery-details-section .nds-box .PID_cL_title{
+	padding-bottom: 30px;
+}
+.nursery-details-section .nds-box .PID_cL_title span {
+	height: 16px;
+	border-left: 3px solid #0196FD;
+	padding-left: 10px;
+}
+
+
+
 .nursery-details-section .nds-box .nds-topbar {
   width: 100%;
   height: auto;

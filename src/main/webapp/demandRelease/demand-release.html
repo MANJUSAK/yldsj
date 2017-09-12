@@ -65,7 +65,7 @@
 				<div class="dt-container">
 					<div class="dc-title">
 						<div class="dc-title-left">
-							<a href="">设备租赁</a>
+							<a>设备租赁</a>
 						</div>
 						<div class="dc-title-right">
 							<div class="dc-right-aim" id="aFirst">
@@ -191,7 +191,7 @@
 				</div>
 			</div>
 		</div>
-<!--		<div class="my-icon" id="myIcon">
+		<!--		<div class="my-icon" id="myIcon">
 			<a id="go_mys" href="javascript:void(0);"><img src="../img/my-pic.png" /></a>
 		</div>-->
 		<div class="return-top" id="myp">
@@ -200,28 +200,26 @@
 		</div>
 
 		<script type="text/javascript" src="../js/jquery.min.js"></script>
-		<script type="text/javascript" src="../js/hosts.js" ></script>
+		<script type="text/javascript" src="../js/hosts.js"></script>
 		<script src="../js/common.js"></script>
 		<script type="text/javascript" src="../js/register_login.js"></script>
 		<script src="../js/nursery-information.js"></script>
 		<script type="text/javascript" src="../js/captrue.js"></script>
 		<script type="text/javascript" src="../js/jquerySession.js"></script>
 		<script type="text/javascript" src="../js/demandRelease/demand_release.js"></script>
-
 		<script>
-			$(function() {
-				$.session.remove('header_num');
-				$.session.set('header_num', 1);
-				$('#header').load('../public/header.html');
-				$('#footer').load('../public/footer.html');
-			})
-
+			/**** 加载公用的头部和底部 ****/
+			$.session.remove('header_num');
+			$.session.set('header_num', 1);
+			$('#header').load('../public/header.html');
+			$('#footer').load('../public/footer.html');
+			/**** 加载公用的头部和底部 结束 ****/
 			/*********************** ni-yaler 点击我要发布，蒙层的高度铺满下面的屏幕 高度到底部 ************************/
-			window.onload = function() {
+			$(function() {
 				var bodyHeight = $(document.body).height();
 				$(".ni-yaler").css("height", bodyHeight + "px");
 
-			}
+			});
 			$('#go_mys').click(function() {
 				if($.session.get('uid')) {
 					window.location.href = "../my.html";
@@ -229,17 +227,15 @@
 					alert('您尚未登录，请登录后再次点击')
 				}
 			})
-			
-			$("#faTimes2").click(function(){
+
+			$("#faTimes2").click(function() {
 				$("input").val("").focus();
 				$(".bf-input_nextSpan").html("");
 			});
-			$("#niClose").click(function(){
-			$("input,select,textarea").val("").focus();
-			$(".bf-input_nextSpan").html("");
-		});
-		
-		
+			$("#niClose").click(function() {
+				$("input,select,textarea").val("").focus();
+				$(".bf-input_nextSpan").html("");
+			});
 		</script>
 	</body>
 

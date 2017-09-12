@@ -8,17 +8,17 @@ import java.util.Objects;
  * version v1.0
  */
 public class Information implements java.io.Serializable {
-    private int id;//表id
+    private String id;//表id
     private String title;//标题
     private String content;//内容
     private String date;//发布日期
     private int infoType;//类别（1为协会动态/2为行业动态/3为媒体报道/4为公告通知）
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

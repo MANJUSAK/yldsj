@@ -13,7 +13,6 @@
 		<meta name="renderer" content="webkit">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>园林诚信平台</title>
-		<!--<link rel="shortcut icon" href=""/>-->
 		<link rel="stylesheet" type="text/css" href="vendor/font-awesome-4.6.3/css/font-awesome.css" />
 		<link rel="stylesheet" type="text/css" href="vendor/font-awesome-4.6.3/css/font-awesome.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/common.css" />
@@ -206,7 +205,7 @@
 		<!--网页底部-->
 		<footer id="footer"></footer>
 		<!--网页底部  结束-->
-<!--		<div class="my-icon" id="myIcon">
+		<!--		<div class="my-icon" id="myIcon">
 			<a href="my.html"><img src="img/my-pic.png" /></a>
 		</div>-->
 		<div class="return-top" id="myp">
@@ -216,14 +215,12 @@
 		<script src="js/jquery.min.js"></script>
 		<script src="js/common.js"></script>
 		<script src="js/laws.js"></script>
-		<script type="text/javascript" src="js/jquerySession.js" ></script>
+		<script type="text/javascript" src="js/jquerySession.js"></script>
 		<script>
-			$(function() {
-				$.session.remove('header_num');
-				$.session.set('header_num', 3);
-				$('#header').load('header.html');
-				$('#footer').load('footer.html');
-			})
+			$.session.remove('header_num');
+			$.session.set('header_num', 3);
+			$('#header').load('header.html');
+			$('#footer').load('footer.html');
 		</script>
 	</body>
 
