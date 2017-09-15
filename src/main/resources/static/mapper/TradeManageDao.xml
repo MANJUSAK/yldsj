@@ -13,7 +13,7 @@
     <!--会费简略数据结果映射 end-->
     <!--会费简略数据sql start-->
     <select id="queryDuesDao" parameterType="int" resultMap="duesInfo">
-        SELECT name,dates FROM gs_dues gs_dues ORDER BY dates desc limit #{page},20
+        SELECT name,dates FROM gs_dues gs_dues ORDER BY did desc limit #{page},20
     </select>
     <!--会费简略数据sql end-->
     <!--会费详细数据结果映射 start-->
@@ -51,7 +51,7 @@
                 and dates like '%${date}%'
             </if>
         </where>
-        ORDER BY dates desc limit #{page},20
+        ORDER BY did desc limit #{page},20
     </select>
     <!--会费详细数据sql end-->
     <!--动态资讯数据结果映射 start-->
@@ -77,7 +77,7 @@
                 and infoType=#{tp}
             </if>
         </where>
-        ORDER BY dates desc limit #{page},20
+        ORDER BY fid desc limit #{page},20
     </select>
     <!--动态资讯数据sql end-->
     <!--优质工程数据结果映射 start-->
@@ -106,7 +106,7 @@
                 and company LIKE '%${comp}%'
             </if>
         </where>
-        ORDER BY dates desc limit #{page},20
+        ORDER BY qid desc limit #{page},20
     </select>
     <!--优质工程数据sql end-->
     <!--培训信息数据结果映射 start-->
@@ -135,7 +135,7 @@
                 and dates LIKE '%${date}%'
             </if>
         </where>
-        ORDER BY dates desc limit #{page},20
+        ORDER BY tid desc limit #{page},20
     </select>
     <!--培训信息数据sql end-->
     <!--联系协会数据结果映射 start-->
@@ -159,7 +159,7 @@
                 and dates LIKE '%${date}%'
             </if>
         </where>
-        ORDER BY dates desc limit #{page},20
+        ORDER BY cid desc limit #{page},20
     </select>
     <!--联系协会数据sql end-->
     <!--行业协会数据查询 end-->

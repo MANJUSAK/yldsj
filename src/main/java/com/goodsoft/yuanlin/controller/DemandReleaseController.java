@@ -104,7 +104,7 @@ public class DemandReleaseController {
      */
     @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)
     @RequestMapping(value = "/delete/{type}", method = RequestMethod.POST)
-    public Status deleteDemandReleaseController(@PathVariable("type") String type, String[] id) {
+    public Status deleteDemandReleaseController(@PathVariable("type") String type, String... id) {
         return this.service.deleteReleaseDataService(id, type);
     }
 }

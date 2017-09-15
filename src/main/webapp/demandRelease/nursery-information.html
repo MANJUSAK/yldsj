@@ -44,7 +44,6 @@
 			<div class="ni-box">
 				<div class="xqfb-mnav">
 					<ul>
-
 						<li class="xqgbm-acive">
 							<a href="nursery-information.html">苗木信息</a>
 						</li>
@@ -67,7 +66,8 @@
 									<ul>
 										<li>种类筛选：</li>
 										<li>
-											<a onclick="gettype(0)" class="ni-lis-a">乔木信息</a>
+											<!-- 在a标签里添加这个class就会出现背景样式 class="ni-lis-a"-->
+											<a onclick="gettype(0)">乔木信息</a>
 											<div class="ni-li2">
 												<div class="ni-li2-item">
 													<a onclick="gettype(1)">普通乔木</a>
@@ -177,10 +177,10 @@
 								<div class="bf-input">
 									<span>分类名称：</span>
 									<select id="select_one" name="breed" class="bf-input_select">
-										<option value="" class="bf-input_sOption">请选择</option>
+										<!--<option value="" class="bf-input_sOption">请选择</option>-->
 									</select>
 								</div>
-								<br />
+								<!--<br />-->
 								<div style="clear: both;"></div>
 								<span class="bf-input_nextSpan"><img src="../img/err.png" />分类名称不能为空</span>
 								<div class="bf-input">
@@ -203,20 +203,20 @@
 								<input id="compId" name="compId" hidden="hidden" value="" />
 
 								<!------------------------>
-								<div class="bf-input">
-									<span>高度(H) (CM)：</span><input class="bf-input_input_unll" name="height" type="text" onkeyup="this.value=this.value.replace(/\D/g, '')" />
+								<div class="bf-input"><!--只能输入数字.和--->
+									<span>高度(H) (CM)：</span><input class="bf-input_input_unll" name="height" type="text" onKeyPress="if (event.keyCode!=46 && event.keyCode!=45 && (event.keyCode<48 || event.keyCode>57)) event.returnValue=false" />
 								</div>
 								<span class="bf-input_nextSpan"><img src="../img/err.png" />/</span>
 								<div class="bf-input">
-									<span>胸径/地径(CM)：</span><input class="bf-input_input_unll" name="dbh" type="text" />
+									<span>胸径/地径(CM)：</span><input class="bf-input_input_unll" name="dbh" type="text"  onKeyPress="if (event.keyCode!=46 && event.keyCode!=45 && (event.keyCode<48 || event.keyCode>57)) event.returnValue=false" />
 								</div>
 								<span class="bf-input_nextSpan"><img src="../img/err.png" />/</span>
 								<div class="bf-input">
-									<span>蓬径(CM)：</span><input class="bf-input_input_unll" name="pdt" type="text" />
+									<span>蓬径(CM)：</span><input class="bf-input_input_unll" name="pdt" type="text"  onKeyPress="if (event.keyCode!=46 && event.keyCode!=45 && (event.keyCode<48 || event.keyCode>57)) event.returnValue=false" />
 								</div>
 								<span class="bf-input_nextSpan"><img src="../img/err.png" />/</span>
 								<div class="bf-input">
-									<span>数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量：</span><input class="bf-input_input" name="num" type="text" onkeyup="this.value=this.value.replace(/\D/g, '')" />
+									<span>数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量：</span><input class="bf-input_input" name="num" type="text" onKeyPress="if (event.keyCode!=46 && event.keyCode!=45 &&(event.keyCode<48 || event.keyCode>57)) event.returnValue=false" />
 								</div>
 								<!--bf-input_nextSpan提示内容 点击按钮 判断为显示或隐藏-->
 								<span class="bf-input_nextSpan"><img src="../img/err.png" />发布数量不能为空</span>
@@ -271,9 +271,9 @@
 								</div>
 								<span class="bf-input_nextSpan"><img src="../img/err.png" />联系人不能为空</span>
 								<div class="bf-input">
-									<span>联系方式：</span><input name="tel" class="bf-input_phoneInput bf-input_input" type="telephone" onkeyup="this.value=this.value.replace(/\D/g, '')" required="required" />
+									<span>联系方式：</span><input name="tel" class="bf-input_phoneInput bf-input_input" type="telephone" required="required" onKeyPress="if (event.keyCode!=46 && event.keyCode!=45 && (event.keyCode<48 || event.keyCode>57)) event.returnValue=false" />
 								</div>
-								<span class="bf-input_nextSpan"><img src="../img/err.png" />请输入正确的联系方式</span>
+								<span class="bf-input_nextSpan bf-input_nextSpan_phone"><img src="../img/err.png" />联系方式不能为空</span>
 								<div class="bf-input">
 									<span>供应地址：</span><input name="address" class="bf-input_input" type="text" required="required" />
 								</div>
@@ -288,7 +288,7 @@
 								<span id="show_error_" style="color: red;"></span>
 								<div class="bf-submit">
 									<div class="bf-submit-center">
-										<span id="submit_nu" class="RU_center_firm_one_input_register" type="button">发&nbsp;&nbsp;&nbsp;布</span>
+										<span id="submit_nu" class="RU_center_firm_one_input_register">发&nbsp;&nbsp;&nbsp;布</span>
 									</div>
 								</div>
 							</div>
@@ -330,18 +330,19 @@
 					$(".ni-section .ni-box .ni-container").css("min-height", "1000px")
 				}
 			});
-
 			//点击关闭按钮清空输入痕迹
 			$("#faTimes2").click(function() {
-				$("input,select,textarea").val("").focus();
-				$(".bf-input_nextSpan").html("");
+				$("input,textarea").val("").focus();
+				$(".bf-input_nextSpan").css("visibility","hidden");
+				$("#bf-is-item1_img").prop("src","../img/thumbnail.jpg");
 			});
 			$("#niClose").click(function() {
-				$("input,select,textarea").val("").focus();
-				$(".bf-input_nextSpan").html("");
+				$("input,textarea").val("").focus();
+				$(".bf-input_nextSpan").css("visibility","hidden");
+				$("#bf-is-item1_img").prop("src","../img/thumbnail.jpg");
 			});
 		</script>
-		
+
 		<script type="text/javascript" src="../js/hosts.js"></script>
 		<script type="text/javascript" src="../js/forms.js"></script>
 		<script src="../js/nursery-information.js"></script>

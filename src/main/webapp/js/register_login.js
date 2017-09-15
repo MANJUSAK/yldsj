@@ -50,18 +50,18 @@ function xmTanUploadImg() {
 }
 */
 
-//选择图片，马上预览  上传图片
+/*********选择图片，马上预览  上传图片 (苗木信息、设备租赁的图片) ************/
 function uploadImg(obj, ID) {
 	var file = obj.files[0];
 	var reader = new FileReader();
 	reader.onload = function(e) {
-		
 		var qq = document.getElementById(ID);
 		qq.src = e.target.result;
 		//或者 img.src = this.result;  //e.target == this
 	}
 	reader.readAsDataURL(file);
 }
+/*********选择图片，马上预览  上传图片 (苗木信息、设备租赁的图片) 结束 ************/
 
 /**企业注册和个人注册的切换卡**/
 function register_titleTab() {

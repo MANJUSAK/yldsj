@@ -49,7 +49,7 @@ public class DomainNameUtil {
             str.append(":");
             str.append(request.getServerPort());
         }
-        //判断服务器端口是否为80端开口 start
+        //判断服务器端口是否为80端开口 end
         return str;
     }
 }

@@ -260,9 +260,9 @@
 								</div>
 								<span class="bf-input_nextSpan" id="telpersonalTip"></span>
 								<div class="bf-input">
-									<span>联系电话：</span><input id="tel" class="bf-input_input bf-input_phoneInput" name="tel" type="text" onkeyup="this.value=this.value.replace(/\D/g, '')" />
+									<span>联系电话：</span><input id="tel" class="bf-input_input bf-input_phoneInput bf-input_phoneInput1" name="tel" type="text" onKeyPress="if (event.keyCode!=46 && event.keyCode!=45 && (event.keyCode<48 || event.keyCode>57)) event.returnValue=false" />
 								</div>
-								<span class="bf-input_nextSpan" id="telTip"></span>
+								<span class="bf-input_nextSpan bf-input_nextSpan_phone1" id="telTip"></span>
 
 								<div class="bf-input">
 									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱：</span><input id="enterprise" class="bf-input_input" name="email" type="email" />
@@ -294,7 +294,7 @@
 									<input id="uid" name="uid" hidden="hidden" value="">
 									<input name="tp" hidden="hidden" value="1" />
 								</div>
-								<span id="show_error_" style="color: red;"></span>
+								<span id="show_error_" style="color: red; margin-left: 106px;"></span>
 								<div class="bf-submit">
 									<div class="bf-submit-center">
 										<span id="fabu" style="border: none;background:none;font-size: 1.125em; color: white;line-height:40px" type="button">发&nbsp;&nbsp;&nbsp;布</span>
@@ -365,9 +365,9 @@
 								<span class="bf-input_nextSpan" id="money1Tip"></span>
 
 								<div class="bf-input">
-									<span>联系电话：</span><input id="tel1" class="bf-input_input bf-input_phoneInput" name="tel" type="text" onkeyup="this.value=this.value.replace(/\D/g, '')" />
+									<span>联系电话：</span><input id="tel1" class="bf-input_input bf-input_phoneInput bf-input_phoneInput2" name="tel" type="text" onKeyPress="if (event.keyCode!=46 && event.keyCode!=45 && (event.keyCode<48 || event.keyCode>57)) event.returnValue=false" />
 								</div>
-								<span class="bf-input_nextSpan" id="tel1Tip"></span>
+								<span class="bf-input_nextSpan bf-input_nextSpan_phone2" id="tel1Tip"></span>
 
 								<div class="bf-input">
 									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱：</span><input id="enterprise1" class="bf-input_input" name="email" type="email" />
@@ -375,7 +375,7 @@
 								<!--bf-input_nextSpan提示内容 点击按钮 判断为显示或隐藏-->
 								<span class="bf-input_nextSpan" id="enterprise1Tip"></span>
 								<br />
-								<div class="bf-textarea">
+								<div class="bf-textarea" style="margin-top: 20px; clear: both;">
 									<div class="bf-left">
 										<span>自我评价：&nbsp;</span>
 									</div>
@@ -387,7 +387,7 @@
 								</div>
 								<span class="bf-input_nextSpan" id="companyIntro1Tip"></span>
 								<br /><br />
-								<span id="show_error_" style="color: red;"></span>
+								<span id="show_error_" style="color: red; margin-left: 106px;"></span>
 								<!--发布时间 是隐藏的-->
 								<div class="bf-input" hidden="hidden">
 									<input id="uidx" hidden="hidden" name="uid" value="">
@@ -443,16 +443,16 @@
 			$("#dcSpan1").click(function() {
 				$(this).addClass("dc-span-active");
 				$("#dcSpan2").removeClass("dc-span-active");
-				$("#piSpan1").addClass("pi-span-active");
-				$("#piSpan2").removeClass("pi-span-active");
+				//$("#piSpan1").addClass("pi-span-active");
+				//$("#piSpan2").removeClass("pi-span-active");
 				$("#piBox1").show();
 				$("#piBox2").hide();
 			});
 			$("#dcSpan2").click(function() {
 				$(this).addClass("dc-span-active");
 				$("#dcSpan1").removeClass("dc-span-active");
-				$("#piSpan3").addClass("pi-span-active");
-				$("#piSpan4").removeClass("pi-span-active");
+				//$("#piSpan3").addClass("pi-span-active");
+				//$("#piSpan4").removeClass("pi-span-active");
 				$("#piBox2").show();
 				$("#piBox1").hide();
 			});
@@ -513,22 +513,27 @@
 
 			/*****点击关闭按钮清空输入痕迹*****/
 			$("#faTimes2").click(function() {
-				$("input,select,textarea").val("").focus();
+				/*$("input,textarea").val("").focus();*/
 				$(".bf-input_nextSpan").html("");
+				document.getElementById('myform0').reset();
+				document.getElementById('myform').reset();
 			});
 			$("#niClose").click(function() {
-				$("input,select,textarea").val("").focus();
 				$(".bf-input_nextSpan").html("");
+				document.getElementById('myform0').reset();
+				document.getElementById('myform').reset();
 			});
 			$("#faTimes3").click(function() {
-				$("input,select,textarea").val("").focus();
 				$(".bf-input_nextSpan").html("");
+				document.getElementById('myform0').reset();
+				document.getElementById('myform').reset();
 			});
 			/*****点击关闭按钮清空输入痕迹  结束*****/
+			/*
 			$(".bf-input_input,textarea").keyup(function() {
 				validate();
 				validate1();
-			});
+			});*/
 		</script>
 	</body>
 

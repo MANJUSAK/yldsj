@@ -33,7 +33,12 @@ function gettype(a) {
 			break;
 	}
 }
-
+var but = false;
+var needregEXP = true;
+var imgSize = 0; //图片大小
+/** 输入手机号码正则 **/
+var phones = /^1[3|4|5|8][0-9]\d{8}$/;
+var phones_2 = /^0\d{2,3}-?\d{7}$/;
 $(function() {
 	var curl_ = window.sessionStorage.getItem("Host") + '/xqfb/find/equipment';
 	getdata_(html, curl_, {
@@ -48,11 +53,12 @@ $(function() {
 		$('#uid').val($.session.get('uid'));
 	}
 	/*******************表单验证*************************/
-	var but = false;
+	/*var but = false;
 	var needregEXP = true;
+	var imgSize = 0; //图片大小*/
 	/** 输入手机号码正则 **/
-	var phones = /^1[3|4|5|8][0-9]\d{4,8}$/;
-	var phones_2 = /^0\d{2,3}-?\d{7,8}$/;
+	var phones = /^1[3|4|5|8][0-9]\d{8}$/;
+	var phones_2 = /^0\d{2,3}-?\d{7}$/;
 	//点击发布信息
 	$(".bf-submit > .bf-submit-center > span").click(function() {
 		needregEXP = true;
@@ -82,9 +88,33 @@ $(function() {
 		if(but == true) {
 			DR_regExp();
 		}
-	});
+		/** 判断上传的图片不能大于1.5M **/
+		$('#show_error_').text("");
+		var file = this.files[0]; //上传的图片的所有信息
+		//首先判断是否是图片
+		if(!/image\/\w+/.test(file.type)) {
+			alert("上传的不是图片");
+			$(this).parent().parent().parent().parent().next(".bf-input_nextSpan").html('<img src="../img/err.png" />上传文件只能为图片');
+			$(this).parent().parent().parent().parent().next(".bf-input_nextSpan").css("visibility", "visible");
+		} else {
+			//在此限制图片的大小
+			imgSize = file.size;
+			//35160  计算机存储数据最为常用的单位是字节(B)
+			//在此处我们限制图片大小为1.5M
+			if(imgSize > 1.5 * 1024 * 1024) {
+				$(this).parent().parent().parent().parent().next(".bf-input_nextSpan").html('<img src="../img/err.png" />上传图片不能大于1.5MB');
+				$(this).parent().parent().parent().parent().next(".bf-input_nextSpan").css("visibility", "visible");
+			} else {
+				$(this).parent().parent().parent().parent().next(".bf-input_nextSpan").html('<img src="../img/err.png" />上传图片不能为空');
+				$(this).parent().parent().parent().parent().next(".bf-input_nextSpan").css("visibility", "hidden");
+			}
+		}
+
+	})
+	/** 判断上传的图片不能大于1.5M 结束 **/
 
 	function DR_regExp() {
+		$('#show_error_').text("");
 		//var Binput=$(".bf-input > input");
 		for(var i = 0; i < $(".bf-input_input").length; i++) {
 			if($.trim($(".bf-input_input:eq(" + i + ")").val()) == '') {
@@ -98,8 +128,12 @@ $(function() {
 		if($(".bf-is-item2 > .bfis-item2_center >input").val() == "") {
 			$(".bf-is-item2 > .bfis-item2_center >input").parent().parent().parent().parent().next(".bf-input_nextSpan").css("visibility", "visible");
 			needregEXP = false;
+			//console.log("图片为空")
 		} else {
-			$(".bf-is-item2 > .bfis-item2_center >input").parent().parent().parent().parent().next(".bf-input_nextSpan").css("visibility", "hidden");
+			//大于1.5MB时不能提交
+			if(imgSize > 1.5 * 1024 * 1024) {
+				needregEXP = false;
+			}
 		}
 		//输入内容的部分
 		if($.trim($(".bf-textarea-center > textarea").val()) == '') {
@@ -126,16 +160,21 @@ $(function() {
 	function phonesExpIf() {
 		if(phones.test($(".bf-input_phoneInput").val()) || phones_2.test($(".bf-input_phoneInput").val())) {
 			$(".bf-input_phoneInput").parent().next(".bf-input_nextSpan").css("visibility", "hidden");
-			console.log("这里是判断电话格式0000正确")
+			//console.log("这里是判断电话格式0000正确")
 		} else {
 			$(".bf-input_phoneInput").parent().next(".bf-input_nextSpan").css("visibility", "visible");
+			if($(".bf-input_phoneInput").val() != ''){
+				$(".bf-input_nextSpan_phone").html('<img src="../img/err.png" />请输入正确的联系方式');
+			}else{
+				$(".bf-input_nextSpan_phone").html('<img src="../img/err.png" />联系方式不能为空');
+			}
 			needregEXP = false;
 			//console.log("这里是判断电话格式11111错误")
 		}
 	}
 	/** 输入手机号码正则 结束 **/
 	function Ajax_tj() {
-		//debugger;
+		
 		if(needregEXP == true) {
 			//改变按钮的颜色和变为不可点击
 			$(".bf-submit > .bf-submit-center > span").text("正在发布...");
@@ -151,7 +190,7 @@ $(function() {
 				processData: false,
 				contentType: false,
 				success: function(data) {
-					if(data.status > 0) {
+					if(data.errorCode > 0) {
 						$(".bf-submit > .bf-submit-center > span").text("发       布");
 						$(".bf-submit > .bf-submit-center > span").css({
 							"pointer-events": "auto",
@@ -163,12 +202,13 @@ $(function() {
 					}
 				},
 				error: function(e) {
+					alert("进入了第二个alert");
 					$(".bf-submit > .bf-submit-center > span").text("发       布");
 					$(".bf-submit > .bf-submit-center > span").css({
 						"pointer-events": "auto",
 						"background-color": "#0096FD"
 					});
-					$('#show_error_').text('错误代码：' + e.status);
+					$('#show_error_').val('错误代码：' + e.status);
 				}
 			});
 		}
@@ -177,7 +217,6 @@ $(function() {
 	window.onload = function() {
 		var bodyHeight = $(document.body).height();
 		$(".ni-yaler").css("height", bodyHeight + "px");
-
 	}
 
 	//添加时间
@@ -302,9 +341,9 @@ function getdata_(html, curl_, mydata) {
 							});
 							$("#niClose").click(function() {
 								$("#niYaler").css("display", "none");
+								but = false;
 							});
 						}
-
 					})
 
 					html_more += '<div class="more_whole" style="padding-top: 40px;"><div class="more_L"></div><div class="more" id="more">加载更多</div><div class="more_R"></div></div><div style="clear: both;"></div>';
@@ -317,9 +356,7 @@ function getdata_(html, curl_, mydata) {
 							mydata.page = mydata.page + 1;
 							getdata_(html, curl_, mydata);
 						}
-
 					})
-
 				}
 				/*第一次进入时*/
 				if(pagenum == 0) {
@@ -363,10 +400,11 @@ function isloginMinMax() {
 		$("#faTimes2").click(function() {
 			$("#nyBox").css("display", "none");
 			$("#niYaler").css("display", "none");
+			but = false;
 		});
 		$("#niClose").click(function() {
-
 			$("#niYaler").css("display", "none");
+			but = false;
 		});
 	} else {
 		// 还没有登录的时候显示进入登录页面
@@ -381,6 +419,7 @@ function isloginMinMax() {
 		});
 		$("#niClose").click(function() {
 			$("#niYaler").css("display", "none");
+			but = false;
 		});
 	}
 }

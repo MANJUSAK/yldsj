@@ -122,7 +122,7 @@ public class TradeManageController {
      * @return 响应结果
      */
     @RequestMapping("/delete/{type}")
-    public Status deleteTradeController(@PathVariable("type") String type, String[] id) {
+    public Status deleteTradeController(@PathVariable("type") String type, String... id) {
         return this.service.deleteTradeService(type, id);
     }
 }

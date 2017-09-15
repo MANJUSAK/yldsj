@@ -6,6 +6,7 @@
 <mapper namespace="com.goodsoft.yuanlin.domain.dao.CarouselDao">
     <!--轮播图数据映射 start-->
     <resultMap id="carouselInfo" type="com.goodsoft.yuanlin.domain.entity.carousel.Carousel">
+        <result property="id" column="id"/>
         <result property="urlAddress" column="urlAddress"/>
         <result property="description" column="description"/>
         <result property="effect" column="effect"/>
@@ -17,17 +18,17 @@
     <!--获取轮播图数据sql start-->
     <select id="queryCarouselDao" resultMap="carouselInfo">
         SELECT
-        picName, description, effect, urlAddress, dates,filesId
+        id,picName, description, effect, urlAddress, dates,filesId
         FROM
         gs_carousel
-        ORDER BY DATES desc limit 0,1
+        ORDER BY cid desc limit 0,1
     </select>
     <!--获取轮播图数据sql end-->
     <!--添加轮播图sql start-->
     <insert id="addCarouselDao" parameterType="com.goodsoft.yuanlin.domain.entity.carousel.Carousel">
-        INSERT INTO gs_carousel (picName, description, effect, urlAddress, dates,filesId)
+        INSERT INTO gs_carousel (id,picName, description, effect, urlAddress, dates,filesId)
         VALUES
-        (#{picName}, #{description}, #{effect}, #{urlAddress}, #{date}, #{filesId});
+        (#{id},#{picName}, #{description}, #{effect}, #{urlAddress}, #{date}, #{filesId});
     </insert>
     <!--添加轮播图sql end-->
     <!--修改轮播图sql start-->
@@ -42,13 +43,13 @@
         <if test="effect !=null and effect!=''">
             effect=#{effect},
         </if>
-        <if test="urlAddress !=null and urlAddress!=''">
+        <if test="urlAddress !=null and urlAddress !=''">
             urlAddress=#{urlAddress},
         </if>
-        <if test="filesId !=null and filesId!=''">
+        <if test="filesId !=null and filesId !=''">
             filesId=#{filesId},
         </if>
-        dates=#{date} WHERE cid=#{id}
+        dates=#{date} WHERE id=#{id}
     </update>
     <!--修改轮播图sql end-->
     <!--删除轮播图sql start-->

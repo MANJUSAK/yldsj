@@ -48,15 +48,15 @@ public interface TradeManageDao {
     public void addInformationDao(Information msg) throws Exception;
 
     //删除会费信息
-    public void deleteDuesDao(@Param("id") String[] id) throws Exception;
+    public void deleteDuesDao(@Param("id") String... id) throws Exception;
 
     //删除培训信息
-    public void deleteTrainInfoDao(@Param("fileId") String[] fileId) throws Exception;
+    public void deleteTrainInfoDao(@Param("fileId") String... fileId) throws Exception;
 
     //删除优质工程信息
-    public void deleteQualEngineeringDao(@Param("id") String[] id) throws Exception;
+    public void deleteQualEngineeringDao(@Param("id") String... id) throws Exception;
 
     //删除动态资讯信息
-    public void deleteInformationDao(@Param("id") String[] id) throws Exception;
+    public void deleteInformationDao(@Param("id") String... id) throws Exception;
 
 }

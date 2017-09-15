@@ -186,6 +186,9 @@ $(function() {
 			submit_login();
 		}
 	}
+	
+	//让 用户名 的input获得焦点
+	$("#username").focus();
 
 })
 

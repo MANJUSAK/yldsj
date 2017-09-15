@@ -11,7 +11,7 @@ import java.util.Objects;
 @SuppressWarnings("ALL")
 public class Carousel implements java.io.Serializable {
 
-    private String id;//图片id
+    private String id;//数据id
     private List<String> picture;//图片
     private String picName;//图片名称
     private String description;//图片描述
@@ -20,20 +20,20 @@ public class Carousel implements java.io.Serializable {
     private String date;//时间
     private String filesId;//图片编号
 
-    public String getFilesId() {
-        return filesId;
-    }
-
-    public void setFilesId(String filesId) {
-        this.filesId = filesId;
-    }
-
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getFilesId() {
+        return filesId;
+    }
+
+    public void setFilesId(String filesId) {
+        this.filesId = filesId;
     }
 
     public String getDate() {

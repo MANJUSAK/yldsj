@@ -22,5 +22,5 @@ public interface CarouselDao {
     public void updateCarouselDao(Carousel msg) throws Exception;
 
     //删除轮播图
-    public void deleteCarouselDao(@Param("id") String[] id) throws Exception;
+    public void deleteCarouselDao(@Param("id") String... id) throws Exception;
 }

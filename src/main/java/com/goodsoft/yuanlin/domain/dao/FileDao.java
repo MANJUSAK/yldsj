@@ -24,5 +24,5 @@ public interface FileDao {
     public void saveFileDao(FileData msg) throws Exception;
 
     //文件删除
-    public void deleteFileDao(@Param("fileId") String[] fileId) throws Exception;
+    public void deleteFileDao(@Param("fileId") String... fileId) throws Exception;
 }

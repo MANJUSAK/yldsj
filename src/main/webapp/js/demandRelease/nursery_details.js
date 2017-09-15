@@ -1,11 +1,17 @@
 $(function() {
 	//获取区分参数
-	//var num = GetQueryString('num');
+	var num = GetQueryString('num');
 	var html = '';
 	var html_ = '';
 	var arr_one;
+	if(num=='index'){
+		//拼接sessionStorage key		获取该页数据
+	var data = sessionStorage.getItem('index_mm')
+	}else{
 	//拼接sessionStorage key		获取该页数据
-	var data = sessionStorage.getItem('datax')
+	var data = sessionStorage.getItem('datax')	
+	}
+	
 	console.log(data)
 
 	if(data == null) {

@@ -22,5 +22,5 @@ public interface CarouselService {
     public Status updateCarouselService(MultipartFile[] files, Carousel msg);
 
     //删除轮播图
-    public Status deleteCarouselService(String[] id);
+    public Status deleteCarouselService(String... id);
 }

@@ -114,6 +114,7 @@ public class CarouselServicelmpl implements CarouselService {
                 return new Status(StatusEnum.FILE_UPLOAD.getCODE(), StatusEnum.FILE_UPLOAD.getEXPLAIN());
         }
         msg.setDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        msg.setId(this.uuid.getUUID().toString());
         try {
             this.dao.addCarouselDao(msg);
             return new Status(StatusEnum.SUCCESS.getCODE(), StatusEnum.SUCCESS.getEXPLAIN());
@@ -174,7 +175,7 @@ public class CarouselServicelmpl implements CarouselService {
      */
     @Override
     @Transactional
-    public Status deleteCarouselService(String[] id) {
+    public Status deleteCarouselService(String... id) {
         try {
             for (int i = 0, length = id.length; i < length; ++i) {
                 List<FileData> fileData = this.fileDao.queryFileDao(id[i]);

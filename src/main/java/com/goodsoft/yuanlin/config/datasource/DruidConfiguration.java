@@ -27,12 +27,13 @@ public class DruidConfiguration {
         ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new StatViewServlet(), "/dataMonitoring/*");
         //添加初始化参数：initParams
         //白名单(允许访问数据监控ip)：
-        servletRegistrationBean.addInitParameter("allow", "222.85.161.225,172.16.0.253,127.0.0.1");
+        servletRegistrationBean.addInitParameter("allow", "222.85.161.225,172.16.13.136,127.0.0.1");
         //IP黑名单 (存在共同时，deny优先于allow) : 如果满足deny的话提示:无权访问.
         //servletRegistrationBean.addInitParameter("deny", "127.0.0.1");
         //登录查看信息的账号密码.
         servletRegistrationBean.addInitParameter("loginUsername", "admin");
         servletRegistrationBean.addInitParameter("loginPassword", "goodsoft");
+        //备用地址
         servletRegistrationBean.addUrlMappings("/backups/ylcxpt/*");
         //是否重置数据.
         servletRegistrationBean.addInitParameter("resetEnable", "true");

@@ -49,12 +49,12 @@ public class UserController {
     /**
      * 查询用户签到数据接口
      *
-     * @param uid  用户编号，
-     * @param dept 企业，
-     * @param page 页数。
+     * @param uid  用户编号
      * @param comp 所属企业
-     * @param dep  部门
-     * @param dept 是否为人事部
+     * @param lev  用户权限等级
+     * @param dept 部门（用户当前所在部门，用以判断是否有权限查询数据）
+     * @param dep  部门 （用以查询部门数据）
+     * @param page 页数
      * @return 响应结果
      */
     @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.GET)

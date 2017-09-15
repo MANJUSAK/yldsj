@@ -52,7 +52,7 @@ public class CarouselController {
      */
     @CrossOrigin(origins = "*", maxAge = 3600, methods = RequestMethod.POST)
     @RequestMapping("/delete/carousel")
-    public Status deleteCarouselController(String[] id) {
+    public Status deleteCarouselController(String... id) {
         return this.service.deleteCarouselService(id);
     }
 

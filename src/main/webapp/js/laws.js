@@ -38,18 +38,18 @@ biPrev.onclick = function() {
 		i = 3;
 	}
 	//改变背景图
-	blContent.style.background = 'url("img/' + pics[i] + '")';
+	blContent.style.background = 'url("img/' + pics[i] + '") no-repeat';
 	//设置图片宽和高都铺满
-	blContent.style.backgroundSize = '100% 100%px';
+	blContent.style.backgroundSize = '100% 100%';
 	changePoint();
 }
 for(var j = 0; j < 4; j++) {
 	document.getElementById('point' + j).onclick = function(j) {
 		return function() {
 			//改变背景图
-			blContent.style.background = 'url("img/' + pics[j] + '")';
+			blContent.style.background = 'url("img/' + pics[j] + '") no-repeat';
 			//设置图片宽和高都铺满
-			blContent.style.backgroundSize = '100% 100%px';
+			blContent.style.backgroundSize = '100% 100%';
 			i = j;
 			changePoint();
 		}
@@ -64,7 +64,6 @@ if(window.innerWidth) {
 //winWidth <= 1024时设置#blContent的高度
 if (winWidth <= 1024) {
 	var gnh = $('.gbl-none').height();
-
 	$('#blContent').css('height',gnh)
 }
 

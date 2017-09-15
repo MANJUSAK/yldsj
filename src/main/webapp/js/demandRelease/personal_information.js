@@ -1,6 +1,9 @@
 var result = true;
 //初始化页面内容
 var html = '';
+/*用于判断是否点击发布按钮*/
+var true_false0 = false;
+var true_false1 = false;
 
 function gettype(a) {
 	var url = window.sessionStorage.getItem("Host");
@@ -33,6 +36,8 @@ function gettype(a) {
 				});
 				$("#niClose").click(function() {
 					$("#niYaler").css("display", "none");
+					true_false0 = false;
+					true_false1 = false;
 				});
 			}
 			break;
@@ -77,8 +82,22 @@ function gettype(a) {
 			getdata_(html, curl_, mydata, div_num, 1);
 			break;
 	}
-
 }
+
+
+
+/***** 键盘按下调用正则表达式 *****/
+$(".bf-input_input,textarea").keyup(function() {
+	if(true_false0 == true) {
+		validate();
+	}
+	if(true_false1 == true) {
+		console.log(true_false1);
+		validate1();
+	}
+});
+/***** 键盘按下调用正则表达式  结束*****/
+
 $(function() {
 	var curl_ = window.sessionStorage.getItem("Host") + '/xqfb/find/recruit';
 	getdata_(html, curl_, {
@@ -119,18 +138,24 @@ $(function() {
 		}, 1000);
 	};
 
-	$('#fabu,#qiuzhi').click(function() {
+	$('#fabu').click(function() {
+		true_false0 = true;
+		Ajax_tj();
+	});
+	$('#qiuzhi').click(function() {
+		true_false1 = true;
 		Ajax_tj();
 	});
 
 	//提交发布
 	function Ajax_tj() {
-
 		var form;
 		if(window.sessionStorage.getItem('zp_qz') == 1) {
+			//招聘发布
 			validate();
 			form = new FormData(document.getElementById("myform"));
 		} else {
+			//求职发布
 			validate1();
 			form = new FormData(document.getElementById("myform0"));
 		}
@@ -164,7 +189,12 @@ $(function() {
 					}
 				},
 				error: function(e) {
-
+					$(".bf-submit > .bf-submit-center > span").text("发       布");
+					$(".bf-submit > .bf-submit-center > span").css({
+						"pointer-events": "auto",
+						"background-color": "#0096FD"
+					});
+					//$('#show_error_').text(data.msg);
 					alert(e.status)
 				}
 			});
@@ -191,7 +221,7 @@ function getdata_(html, curl_, mydata, div_num, tynum) {
 		async: true,
 		data: mydata,
 		success: function(result) {
-			console.log(result)
+
 			if(result.errorCode == 0) {
 				//提前数据
 				var data = result.data;
@@ -240,37 +270,13 @@ function getdata_(html, curl_, mydata, div_num, tynum) {
 					}
 					div_arr[div_num].html(html);
 
-					$('.item-content').click(function() {
+					$('.pi-item').click(function() {
+						//alert($(this).index())
 						if(mydata.tp == 2) {
 							if($.session.get('uid')) {
-								var num = $(this).text().split(',')[0];
-								var textx = data[num];
-								var arr = [];
-								var str = '';
-								var i = 0;
-								var numner = /^\+?[1-9][0-9]*$/;
-								//将数据对象转换为json格式 储存到session中
-								$.each(textx, function(k) {
-									if(i == 0) {
-										if(numner.test(textx[k])) {
-											str += '' + k + ':' + textx[k] + '';
-										} else {
-											str += '' + k + ':' + textx[k] + '';
-										}
-										i++;
-									} else {
-										if(numner.test(textx[k])) {
-											str += ',' + k + ':' + textx[k] + '';
-										} else {
-											str += ',' + k + ':' + textx[k] + '';
-										}
-									}
-								});
-								str += ''
-								window.sessionStorage.setItem('per_datax' + num, str)
-
-								window.open('recruit-details-2.html?num=' + num + '&tp=2', '_blank');
-
+								var str = JSON.stringify(data[$(this).index()]);
+								window.sessionStorage.setItem('per_datax', str)
+								window.open('recruit-details-2.html?tp=2', '_blank');
 							} else {
 								$("#niYaler").css({
 									"display": "block",
@@ -286,38 +292,15 @@ function getdata_(html, curl_, mydata, div_num, tynum) {
 								});
 								$("#niClose").click(function() {
 									$("#niYaler").css("display", "none");
+									true_false0 = false;
+									true_false1 = false;
 								});
 							}
 						} else {
 							if($.session.get('uid')) {
-								var num = $(this).text().split(',')[0];
-								var textx = data[num];
-								var arr = [];
-								var str = '';
-								var i = 0;
-								var numner = /^\+?[1-9][0-9]*$/;
-								//将数据对象转换为json格式 储存到session中
-								$.each(textx, function(k) {
-									if(i == 0) {
-										if(numner.test(textx[k])) {
-											str += '' + k + ':' + textx[k] + '';
-										} else {
-											str += '' + k + ':' + textx[k] + '';
-										}
-										i++;
-									} else {
-										if(numner.test(textx[k])) {
-											str += ',' + k + ':' + textx[k] + '';
-										} else {
-											str += ',' + k + ':' + textx[k] + '';
-										}
-									}
-								});
-								str += ''
-								window.sessionStorage.setItem('per_data' + num, str)
-
-								window.open('recruit-details.html?num=' + num + '&tp=1', '_blank');
-
+								var str = JSON.stringify(data[$(this).index()]);
+								window.sessionStorage.setItem('per_data', str)
+								window.open('recruit-details.html?tp=1', '_blank');
 							} else {
 								$("#niYaler").css({
 									"display": "block",
@@ -333,12 +316,12 @@ function getdata_(html, curl_, mydata, div_num, tynum) {
 								});
 								$("#niClose").click(function() {
 									$("#niYaler").css("display", "none");
+									true_false0 = false;
+									true_false1 = false;
 								});
 							}
 						}
-
 					})
-
 					//查看更多
 					html_more += '<div class="more_whole"><div class="more_L"></div><div class="more" id="more">加载更多</div><div class="more_R"></div></div><div style="clear: both;"></div>';
 					$('.dc-pages').html(html_more);
@@ -353,16 +336,14 @@ function getdata_(html, curl_, mydata, div_num, tynum) {
 
 					})
 					//进入详情
-
 				}
 				/*第一次进入时*/
 				if(pagenum == 0) {
 					//首次进入直接使用初始参数
 					show_data();
 				}
-
 			} else {
-				
+
 				//alert('已经没有更多数据了')
 			}
 		},
@@ -373,7 +354,6 @@ function getdata_(html, curl_, mydata, div_num, tynum) {
 }
 //检测登录
 function isloginMinMax() {
-
 	$(".li-qm").mouseover(function() {
 		$(".ni-li2-item").css("display", "block");
 	});
@@ -395,13 +375,19 @@ function isloginMinMax() {
 		$("#faTimes2").click(function() {
 			$("#nyBox").css("display", "none");
 			$("#niYaler").css("display", "none");
+			true_false0 = false;
+			true_false1 = false;
 		});
 		$("#faTimes3").click(function() {
 			$("#nyBox").css("display", "none");
 			$("#niYaler").css("display", "none");
+			true_false0 = false;
+			true_false1 = false;
 		});
 		$("#niClose").click(function() {
 			$("#niYaler").css("display", "none");
+			true_false0 = false;
+			true_false1 = false;
 		});
 	} else {
 		// 还没有登录的时候显示进入登录页面
@@ -416,6 +402,8 @@ function isloginMinMax() {
 		});
 		$("#niClose").click(function() {
 			$("#niYaler").css("display", "none");
+			true_false0 = false;
+			true_false1 = false;
 		});
 	}
 }
@@ -447,7 +435,7 @@ function validate() {
 		document.getElementById('CnameTip').innerHTML = '<img src="../img/err.png"/><font color="red">公司名称不能为空！</font>'
 		result = false;
 	} else {
-		document.getElementById('CnameTip').innerHTML = '<img src="../img/ok.png"/>';
+		document.getElementById('CnameTip').innerHTML = '';
 		//result = true;
 	}
 	//招聘职位
@@ -456,18 +444,18 @@ function validate() {
 		document.getElementById('jobTip').innerHTML = '<img src="../img/err.png"/><font color="red">招聘职位不能为空！</font>'
 		result = false;
 	} else {
-		document.getElementById('jobTip').innerHTML = '<img src="../img/ok.png"/>';
+		document.getElementById('jobTip').innerHTML = '';
 		//result = true;
 	}
 	//邮箱
-	if(enterprise == ''){
+	if(enterprise == '') {
 		document.getElementById("enterpriseTip").innerHTML = '<img src="../img/err.png"/><font color="red">邮箱不能为空！</font>'
 		result = false;
-	}else if(!/^(\w)+(\.\w+)*@(\w)+((\.\w{2,3}){1,3})$/.test(enterprise)) {
+	} else if(!/^(\w)+(\.\w+)*@(\w)+((\.\w{2,3}){1,3})$/.test(enterprise)) {
 		document.getElementById('enterpriseTip').innerHTML = '<img src="../img/err.png"/><font color="red">请输入正确的邮箱地址！</font>'
 		result = false;
 	} else {
-		document.getElementById('enterpriseTip').innerHTML = '<img src="../img/ok.png"/>';
+		document.getElementById('enterpriseTip').innerHTML = '';
 	}
 	//内容
 	content = $.trim(content);
@@ -475,7 +463,7 @@ function validate() {
 		document.getElementById('contentTip').innerHTML = '<img src="../img/err.png"/><font color="red">内容不能为空！</font>'
 		result = false;
 	} else {
-		document.getElementById('contentTip').innerHTML = '<img src="../img/ok.png"/>';
+		document.getElementById('contentTip').innerHTML = '';
 		//result = true;
 	}
 	//公司简介
@@ -484,7 +472,7 @@ function validate() {
 		document.getElementById('companyIntroTip').innerHTML = '<img src="../img/err.png"/><font color="red">公司简介不能为空！</font>'
 		result = false;
 	} else {
-		document.getElementById('companyIntroTip').innerHTML = '<img src="../img/ok.png"/>';
+		document.getElementById('companyIntroTip').innerHTML = '';
 		//result = true;
 	}
 	//企业地址
@@ -493,7 +481,7 @@ function validate() {
 		document.getElementById('addressTip').innerHTML = '<img src="../img/err.png"/><font color="red">企业地址不能为空！</font>'
 		result = false;
 	} else {
-		document.getElementById('addressTip').innerHTML = '<img src="../img/ok.png"/>';
+		document.getElementById('addressTip').innerHTML = '';
 		//result = true;
 	}
 	//联系人
@@ -502,7 +490,7 @@ function validate() {
 		document.getElementById('telpersonalTip').innerHTML = '<img src="../img/err.png"/><font color="red">联系人不能为空！</font>'
 		result = false;
 	} else {
-		document.getElementById('telpersonalTip').innerHTML = '<img src="../img/ok.png"/>';
+		document.getElementById('telpersonalTip').innerHTML = '';
 		//result = true;
 	}
 	//工作地点
@@ -511,17 +499,22 @@ function validate() {
 		document.getElementById('workTip').innerHTML = '<img src="../img/err.png"/><font color="red">工作地点不能为空！</font>'
 		result = false;
 	} else {
-		document.getElementById('workTip').innerHTML = '<img src="../img/ok.png"/>';
+		document.getElementById('workTip').innerHTML = '';
 		//result = true;
 	}
 	//	}
 	//联系方式
 	tel = $.trim(tel);
-	if(/^1[3|4|5|8][0-9]\d{4,8}$/.test(tel) || /^0\d{2,3}-?\d{7,8}$/.test(tel)){
+	if(/^1[3|4|5|8][0-9]\d{8}$/.test(tel) || /^0\d{2,3}-?\d{7}$/.test(tel)) {
 		//错误的提示
-		document.getElementById('telTip').innerHTML = '<img src="../img/ok.png"/>';
+		document.getElementById('telTip').innerHTML = '';
 	} else {
-		document.getElementById('telTip').innerHTML = '<img src="../img/err.png"/><font color="red">必须填写正确的电话号码！</font>';
+		document.getElementById('telTip').innerHTML = '<img src="../img/err.png"/><font color="red">请输入正确的联系电话！</font>';
+		if($(".bf-input_phoneInput1").val() != ''){
+			$(".bf-input_nextSpan_phone1").html('<img src="../img/err.png"/><font color="red">请输入正确的联系电话！</font>');
+		}else{
+			$(".bf-input_nextSpan_phone1").html('<img src="../img/err.png"/><font color="red">联系方式不能为空！</font>');
+		}
 		result = false;
 	}
 	//alert("这是测试状态"+result);
@@ -549,27 +542,32 @@ function validate1() {
 		$('#telpersonal1Tip').html('<img src="../img/err.png"/><font color="red">姓名不能为空！</font>');
 		result = false;
 	} else {
-		$('#telpersonal1Tip').html('<img src="../img/ok.png">');
+		$('#telpersonal1Tip').html('');
 	}
 	/*职位*/
 	if(Cname1 == '') {
 		$('#Cname1Tip').html('<img src="../img/err.png"/><font color="red">职位不能为空！</font>');
 		result = false;
 	} else {
-		$('#Cname1Tip').html('<img src="../img/ok.png">');
+		$('#Cname1Tip').html('');
 	}
 	/*求职经历*/
 	if(content1 == '') {
 		$('#content1Tip').html('<img src="../img/err.png"/><font color="red">求职经历不能为空！</font>');
 		result = false;
 	} else {
-		$('#content1Tip').html('<img src="../img/ok.png">');
+		$('#content1Tip').html('');
 	}
 	/*联系方式*/
-	if(/^1[3|4|5|8][0-9]\d{4,8}$/.test(tel1) || /^0\d{2,3}-?\d{7,8}$/.test(tel1)) {
-		$('#tel1Tip').html('<img src="../img/ok.png">');
+	if(/^1[3|4|5|8][0-9]\d{8}$/.test(tel1) || /^0\d{2,3}-?\d{7}$/.test(tel1)) {
+		$('#tel1Tip').html('');
 	} else {
-		$('#tel1Tip').html('<img src="../img/err.png"/><font color="red">联系方式不能为空！</font>');
+		$('#tel1Tip').html('<img src="../img/err.png"/><font color="red">请输入正确的联系电话！</font>');
+		if($(".bf-input_phoneInput2").val() != ''){
+			$(".bf-input_nextSpan_phone2").html('<img src="../img/err.png"/><font color="red">请输入正确的联系电话！</font>');
+		}else{
+			$(".bf-input_nextSpan_phone2").html('<img src="../img/err.png"/><font color="red">联系方式不能为空！</font>');
+		}
 		result = false;
 	}
 	/*邮箱*/
@@ -579,16 +577,15 @@ function validate1() {
 	} else if(!/^(\w)+(\.\w+)*@(\w)+((\.\w{2,3}){1,3})$/.test(enterprise1)) {
 		document.getElementById('enterpriseTip').innerHTML = '<img src="../img/err.png"/><font color="red">请输入正确的邮箱地址！</font>'
 		result = false;
-	}
-	else {
-		$('#enterprise1Tip').html('<img src="../img/ok.png">');
+	} else {
+		$('#enterprise1Tip').html('');
 	}
 	/*自我评价*/
 	if(companyIntro1 == '') {
 		$('#companyIntro1Tip').html('<img src="../img/err.png"/><font color="red">自我评价不能为空！</font>');
 		result = false;
 	} else {
-		$('#companyIntro1Tip').html('<img src="../img/ok.png">');
+		$('#companyIntro1Tip').html('');
 	}
 	return result;
 };

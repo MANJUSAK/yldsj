@@ -215,7 +215,7 @@ header .header-topbar .ht-box .ht-right .right-box .rb-login .rl-box2 {
 
 header .header-topbar .ht-box .ht-right .right-box .rb-login .rl-box2 .box2-left {
 	width: 80%;
-	height: 20px;
+	height: auto;
 	float: left;
 	overflow: hidden;
 	text-align: right;

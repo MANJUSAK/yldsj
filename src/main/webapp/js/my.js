@@ -15,10 +15,11 @@ $(function() {
 		return temp;
 	}
 	$("#tc-rtl_manage1,#tc-rtl_manage2").click(function() {
+		var num = Math.random() * 10000;
 		//调用方法 如        
 		post(window.sessionStorage.getItem("Host1") + $.session.get('ucomp') + '/horizon/basics/getBasics.wf', {
 			loginName: $.session.get('uname'),
-			isNo: 1
+			isNo: num
 		});
 	})
 })

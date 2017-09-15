@@ -87,7 +87,7 @@
     <!--法人库sql start-->
     <select id="queryCorporationDao" parameterType="int" resultMap="corporationInfo">
     SELECT id,company,registerCap,detailAddress,registerAddress,nature,companyIntro
-    FROM gs_repertory_corporate limit #{page},20
+    FROM gs_repertory_corporate ORDER BY cid limit #{page},20
     </select>
     <!--法人库sql end-->
     <!--从业人员库结果映射 start-->
@@ -103,7 +103,7 @@
     <!--从业人员库sql start-->
     <select id="queryEmployeesDao" parameterType="int" resultMap="employeesInfo">
     SELECT id,company,name,sex,education,experience
-    FROM gs_repertory_employees limit #{page},20
+    FROM gs_repertory_employees ORDER  BY eid limit #{page},20
     </select>
     <!--从业人员库sql end-->
     <!--用户签到sql start-->

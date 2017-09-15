@@ -148,7 +148,6 @@
 								<!--bf-input_nextSpan提示内容 点击按钮 判断为显示或隐藏-->
 								<span class="bf-input_nextSpan"><img src="../img/err.png" />发布企业不能为空</span>
 								<br /><br />
-
 								<!--上传图片开始-->
 								<div class="bf-img-show">
 									<div class="bf-is">
@@ -171,16 +170,16 @@
 								</div>
 								<span class="bf-input_nextSpan"><img src="../img/err.png" />联系人不能为空</span>
 								<div class="bf-input">
-									<span>联系方式：</span><input name="tel" type="text" class="bf-input_phoneInput bf-input_input" onkeyup="this.value=this.value.replace(/\D/g, '')" />
+									<span>联系方式：</span><input name="tel" type="text" class="bf-input_phoneInput bf-input_input" onKeyPress="if (event.keyCode!=46 && event.keyCode!=45 && (event.keyCode<48 || event.keyCode>57)) event.returnValue=false" />
 								</div>
-								<span class="bf-input_nextSpan"><img src="../img/err.png" />请填入正确的联系方式</span>
+								<span class="bf-input_nextSpan bf-input_nextSpan_phone"><img src="../img/err.png" />联系方式不能为空</span>
 								<!--发布时间 是隐藏的-->
 								<!--<div class="bf-input" style="display: none;">
 									<span>发布日期：</span><input id="dates" name="dates" type="text" value="" />
 									<input id="uid" name="uid" value="">
 								</div>-->
 								<span id="show_error_" style="color: red;"></span>
-								<div class="bf-submit" style="margin-top: 30px;">
+								<div class="bf-submit" style="margin-top: 10px;">
 									<div class="bf-submit-center">
 										<span>发&nbsp;&nbsp;&nbsp;布</span>
 									</div>
@@ -229,12 +228,14 @@
 			})
 
 			$("#faTimes2").click(function() {
-				$("input").val("").focus();
-				$(".bf-input_nextSpan").html("");
+				$("input,textarea").val("").focus();
+				$(".bf-input_nextSpan").css("visibility","hidden");
+				$("#bf-is-item1_img").prop("src","../img/thumbnail.jpg");
 			});
 			$("#niClose").click(function() {
 				$("input,select,textarea").val("").focus();
-				$(".bf-input_nextSpan").html("");
+				$(".bf-input_nextSpan").css("visibility","hidden");
+				$("#bf-is-item1_img").prop("src","../img/thumbnail.jpg");
 			});
 		</script>
 	</body>

@@ -98,10 +98,16 @@ public class UserServicelmpl implements UserService {
 
     /**
      * 查询用户签到数据业务接口方法
+     * 1.查询普通用户签到记录只需传入uid（用户编号），page等参数，
+     * 2.查询企业签到记录需传入comp，dept，page，lev等参数
+     * 3.查询企业各部门签到记录需传入comp，dept，dep，page，lev等参数
      *
-     * @param uid  用户编号，
-     * @param dept 企业，
-     * @param page 页数。
+     * @param uid  用户编号
+     * @param comp 所属企业
+     * @param lev  用户权限等级
+     * @param dept 部门（用户当前所在部门，用以判断是否有权限查询数据）
+     * @param dep  部门 （用以查询部门数据）
+     * @param page 页数
      * @return 查询结果
      * @throws Exception
      */
@@ -146,8 +152,10 @@ public class UserServicelmpl implements UserService {
                     return (T) new Status(StatusEnum.NO_PRAM.getCODE(), StatusEnum.NO_PRAM.getEXPLAIN());
                 }
                 //人事部可查处数据
-                if (!("人事部".equals(dept)) && v > 2 || v < 2) {
-                    return (T) new Status(StatusEnum.NO_RIGHTS.getCODE(), StatusEnum.NO_RIGHTS.getEXPLAIN());
+                if (!("人事部".equals(dept))) {
+                    if (v > 1) {
+                        return (T) new Status(StatusEnum.NO_RIGHTS.getCODE(), StatusEnum.NO_RIGHTS.getEXPLAIN());
+                    }
                 }
             }
         } catch (Exception e) {

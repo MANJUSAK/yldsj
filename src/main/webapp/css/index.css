@@ -429,7 +429,6 @@
 .index-section .is-box .plant .plant-content .pc-item .pc-text .text-inner .ti-footer {
   width: 100%;
   height: 45px;
-  cursor: default;
 }
 .index-section .is-box .plant .plant-content .pc-item .pc-text .text-inner .ti-footer .ti-title {
   width: 100%;
@@ -478,6 +477,7 @@
   display: block;
   text-align: center;
   line-height: 35px;
+  cursor: default;
 }
 .index-section .is-box .plant .plant-content .pc-item .pc-text .text-inner .ti-footer .ti-icon .icon-right .ir-item a i {
   color: #FFFFFF;

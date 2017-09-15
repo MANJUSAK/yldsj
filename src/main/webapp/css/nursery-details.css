@@ -52,7 +52,7 @@ body {
   border-radius: 2px;
   display: inline-table;
   vertical-align: middle;
-  min-height: 200px;
+  min-height: 220px;
 }
 
 .nursery-details-section .nds-box .nds-topbar .nds-topbar-content .nds-tc-left .nds-tc-left_center {
@@ -78,7 +78,7 @@ body {
   margin-left: 4%;
 }
 .nursery-details-section .nds-box .nds-topbar .nds-topbar-content .nds-tc-center .nds-tcc-aim {
-  width: 78%;
+  width: 70%;
   height: auto;
   float: left;
 }
@@ -116,7 +116,7 @@ body {
   float: right;
 }
 .nursery-details-section .nds-box .nds-topbar .nds-topbar-content .nds-tc-center .nds-tc-right {
-  width: 20%;
+  width: 26%;
   height: auto;
   float: right;
   border: 1px solid #E9F5FC;
@@ -124,15 +124,16 @@ body {
 }
 .nursery-details-section .nds-box .nds-topbar .nds-topbar-content .nds-tc-right .nds-tcr-title {
   width: 100%;
-  height: 30px;
+  height: 40px;
   background: #E6F4FF;
 }
 .nursery-details-section .nds-box .nds-topbar .nds-topbar-content .nds-tc-right .nds-tcr-title span {
-  line-height: 30px;
+  line-height: 40px;
   padding: 0 10px;
   color: #3E3E3D;
   font-size: 15px;
   width: 93%;
+  text-align: center;
   display: block;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -142,7 +143,10 @@ body {
   font-size: 14px;
   line-height: 30px;
   padding: 0 10px;
-  padding-top: 4px;
+  padding-top: 10px;
+}
+.nursery-details-section .nds-box .nds-topbar .nds-topbar-content .nds-tc-right ul {
+	padding-bottom: 10px;
 }
 .nursery-details-section .nds-box .nds-topbar .nds-topbar-content .nds-tc-right ul li {
   font-size: 13px;
@@ -186,7 +190,7 @@ body {
   text-indent: 28px;
 }
 .nursery-details-section .nds-box .nds-footer .nds-footer-content .nds-fc-left .fc-footer {
-  width: 100%;
+  width: 99%;
   height: 148px;
   border: 1px solid #C8E4B1;
   margin-top: 20px;

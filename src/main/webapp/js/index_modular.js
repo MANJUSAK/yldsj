@@ -57,9 +57,16 @@ function get_seedling(url_seed, seed_data, show_position) {
 				});
 				//绑定数据显示
 				show_position.html(html);
-				$('#index_seedling').on('click', '.pc-item .pc-text', function() {
-					//console.log($(this).index())
-					window.open('demandRelease/nursery-information.html');
+				//$('#index_seedling').on('click', '.pc-item .pc-text', function() {
+				$('.pc-text').click(function() {
+					//console.log($(this).parent().parent().parent().index())
+					if($.session.get('uid')) {
+						window.sessionStorage.setItem('index_mm', JSON.stringify(data[$(this).parent().index()]));
+						//window.open('demandRelease/nursery-information.html');
+						window.open("demandRelease/nursery-details.html?num=index")
+					}else{
+						alert('您尚未登录')
+					}
 				})
 			}
 		},
