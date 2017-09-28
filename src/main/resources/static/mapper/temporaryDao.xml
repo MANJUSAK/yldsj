@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--@author 严彬荣，version v1.0-->
+<!--mapper 法人库 start -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--suppress ALL -->
+<mapper namespace="com.goodsoft.yuanlin.domain.dao.TemporaryDao">
+    <insert id="temporaryDao" parameterType="java.util.List">
+        INSERT INTO `gs_repertory_corporate`
+        (`id`,`company`,`registerCap`,`detailAddress`,`nature`,`registerAddress`,`companyIntro`)
+        VALUES
+        <foreach collection="list" index="index" item="item" separator=",">
+            (#{item.id},#{item.company},#{item.registerCap},#{item.detailAddress},
+            #{item.nature},#{item.registerAddress},#{item.companyIntro})
+        </foreach>
+    </insert>
+</mapper>
+        <!--mapper 法人库 end -->

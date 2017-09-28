@@ -27,7 +27,7 @@ public enum StatusEnum implements java.io.Serializable {
     NO_FILE(604, "文件不能为空"),
     CHECKCODE(402, "验证码不正确"),
     NO_EXCEL(605, "excel文件无sheet表"),
-    NO_EXCEL_DATA(606, "excel文件无内容"),
+    NO_EXCEL_DATA(606, "excel数据无效"),
     NO_PRAM(400, "参数错误");
 
 
